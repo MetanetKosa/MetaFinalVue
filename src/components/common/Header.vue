@@ -24,6 +24,15 @@
                                 <a class="dropdown-item" href="index-3.html">1:1 문의</a>
                             </div>
                         </li>
+                        <li class="header-menu nav-item dropdown">
+                            <a class="nav-link" id="docsDropdownMenuLink" href="index.html" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">테스트&nbsp;<i class="fas fa-angle-down"></i></a>
+                            <div class="dropdown-menu" aria-labelledby="homeDropdownMenuLink">
+                                <router-link class="dropdown-item" :to="{name: 'AdminRegister'}">관리자 등록 페이지</router-link>
+                                <a class="dropdown-item" href="/../public/html/index.html">사용설명서 찾기</a>
+                                <a class="dropdown-item" href="/../public/index-2.html">A/S 신청</a>
+                                <a class="dropdown-item" href="index-3.html">1:1 문의</a>
+                            </div>
+                        </li>
                         <li class="nav-item mt-3 mt-lg-0 ms-lg-3 d-lg-none d-xl-inline-block"></li>
                     </ul>
                 </div>
