@@ -1,11 +1,11 @@
 <template>
   <div id="App">
     <Header />
+    <router-view />
   </div>
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
 import Header from '@/components/common/Header.vue'
 
 export default {  

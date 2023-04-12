@@ -51,8 +51,9 @@
                             <div class="dropdown-menu" aria-labelledby="homeDropdownMenuLink">
                                 <a class="dropdown-item" href="/mypage">사용중인 제품</a>
                                 <a class="dropdown-item" href="/../public/index-2.html">주문내역</a>
-                                <a class="dropdown-item" href="/login">로그인</a>
-                            </div></li>
+                                <router-link class="dropdown-item" :to="{name: 'Login'}">로그인</router-link>
+                            </div>
+                        </li>
                         <li class="nav-item"><a class="nav-link dropdown" href="/" id="mybell"><i class="fas fa-bell fa-lg"></i></a></li>
                         <li class="nav-item mt-3 mt-lg-0 ms-lg-3 d-lg-none d-xl-inline-block" id="headerEmpty"></li>
                     </ul>
@@ -64,8 +65,9 @@
 </template>
 
 <script>
+
 export default {
-    name: 'Header'
+    name: 'Header',
 }
 </script>
 
