@@ -61,6 +61,7 @@
                                 <a class="dropdown-item" href="/mypage">사용중인 제품</a>
                                 <a class="dropdown-item" href="/../public/index-2.html">주문내역</a>
                                 <router-link class="dropdown-item" :to="{name: 'Login'}">로그인</router-link>
+                                <router-link class="dropdown-item" :to="{name: 'Admin'}">관리자</router-link>
                             </div>
                         </li>
                         <li class="nav-item"><a class="nav-link dropdown" href="/" id="mybell"><i class="fas fa-bell fa-lg"></i></a></li>
@@ -76,7 +77,7 @@
 <script>
 
 export default {
-    name: 'Header',
+    name: 'Header'
 }
 </script>
 
