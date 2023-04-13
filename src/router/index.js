@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Home from '@/components/pages/Home.vue';
 import Login from '@/components/pages/member/Login.vue';
+import Signup from '@/components/pages/member/Signup.vue';
 import AdminRegister from '@/components/pages/admin/AdminRegister.vue';
 import AdminList from '@/components/pages/admin/AdminList.vue';
 import AdminDetail from '@/components/pages/admin/AdminDetail.vue';
@@ -15,8 +16,7 @@ import MyPage from '@/components/pages/mypage/MyPage.vue';
 
 const router = createRouter({
     history: createWebHistory(),
-    routes: [
-        {
+    routes: [{
             path: '/',
             name: 'Home',
             component: Home
@@ -25,6 +25,11 @@ const router = createRouter({
             path: '/login',
             name: 'Login',
             component: Login
+        },
+        {
+            path: '/signup',
+            name: 'Signup',
+            component: Signup
         },
         {
             path: '/adminregister',
@@ -76,7 +81,7 @@ const router = createRouter({
             name: 'MyPage',
             component: MyPage
         },
-        
+
     ]
 });
 

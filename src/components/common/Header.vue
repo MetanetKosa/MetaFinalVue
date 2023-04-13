@@ -60,7 +60,7 @@
                                   </div>
                               </form>
                           </li>
-                          <li class="nav-item"><a class="nav-link" href="/signup">Sign up</a></li>
+                          <li class="nav-item"><router-link class="nav-link" :to="{name: 'Signup'}">Sign up</router-link></li>
                           <li class="nav-item dropdown">
                               <a class="nav-link dropdown" href="index.html" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="personIcon"><i class="fas fa-user-alt fa-lg"></i></a>
                               <div class="dropdown-menu" aria-labelledby="homeDropdownMenuLink">
