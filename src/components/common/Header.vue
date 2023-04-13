@@ -31,9 +31,9 @@
                                   <router-link class="dropdown-item" :to="{name: 'AdminList'}">관리자 목록 페이지</router-link>
                                   <router-link class="dropdown-item" :to="{name: 'AdminDetail'}">관리자 상세 페이지</router-link>
                                   <router-link class="dropdown-item" :to="{name: 'AdminMember'}">관리자 회원관리 페이지</router-link>
-                                  <a class="dropdown-item" href="/../public/html/index.html">사용설명서 찾기</a>
-                                  <a class="dropdown-item" href="/../public/index-2.html">A/S 신청</a>
-                                  <a class="dropdown-item" href="index-3.html">1:1 문의</a>
+                                  <router-link class="dropdown-item" :to="{name: 'Rental1'}">rental1</router-link>
+                                  <router-link class="dropdown-item" :to="{name: 'Rental2'}">rental2</router-link>
+                                  <router-link class="dropdown-item" :to="{name: 'Rental3'}">rental3</router-link>
                               </div>
                           </li>
                           <li class="nav-item mt-3 mt-lg-0 ms-lg-3 d-lg-none d-xl-inline-block"></li>
