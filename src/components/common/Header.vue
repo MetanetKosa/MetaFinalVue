@@ -3,7 +3,7 @@
           <!-- Navbar-->
           <nav class="navbar navbar-expand-lg fixed-top shadow navbar-light bg-white">
               <div class="container">
-                  <div class="d-flex align-items-center"><a class="navbar-brand py-1" href="/"><img src="img/logo.svg" alt="Directory logo"></a>
+                  <div class="d-flex align-items-center"><router-link class="navbar-brand py-1" :to="{name: 'Home'}"><img src="img/logo.svg" alt="Directory logo"></router-link>
                       <ul class="navbar-nav ms-auto">
                           <li class="header-menu nav-item dropdown"><a class="nav-link" id="homeDropdownMenuLink" href="/../public/html/index.html" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                               제품&nbsp;<i class="fas fa-angle-down"></i></a>

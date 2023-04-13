@@ -1,5 +1,5 @@
 <template>
-    <body style="padding-top: 72px;">
+    <body>
      <section class="d-flex align-items-center dark-overlay bg-cover" style="background-image: url(/../html/img/photo/photo-1525610553991-2bede1a236e2.jpg);">
        <div class="container py-6 py-lg-7 text-white overlay-content text-center"> 
          <div class="row">
