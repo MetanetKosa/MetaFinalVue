@@ -9,6 +9,8 @@ import Rental1 from '@/components/pages/order/Rental1.vue';
 import Rental2 from '@/components/pages/order/Rental2.vue';
 import Rental3 from '@/components/pages/order/Rental3.vue';
 import Detail from '@/components/pages/product/Detail.vue';
+import MyProduct from '@/components/pages/mypage/MyProduct.vue';
+import MyPage from '@/components/pages/mypage/MyPage.vue';
 
 
 const router = createRouter({
@@ -63,6 +65,16 @@ const router = createRouter({
             path: '/detail',
             name: 'Detail',
             component: Detail
+        },
+        {
+            path: '/myproduct',
+            name: 'MyProduct',
+            component: MyProduct
+        },
+        {
+            path: '/mypage',
+            name: 'MyPage',
+            component: MyPage
         },
         
     ]
