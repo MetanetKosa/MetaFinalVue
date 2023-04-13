@@ -8,6 +8,7 @@ import AdminMember from '@/components/pages/admin/AdminMember.vue';
 import Rental1 from '@/components/pages/order/Rental1.vue';
 import Rental2 from '@/components/pages/order/Rental2.vue';
 import Rental3 from '@/components/pages/order/Rental3.vue';
+import Detail from '@/components/pages/product/Detail.vue';
 
 
 const router = createRouter({
@@ -57,6 +58,11 @@ const router = createRouter({
             path: '/rental3',
             name: 'Rental3',
             component: Rental3
+        },
+        {
+            path: '/detail',
+            name: 'Detail',
+            component: Detail
         },
         
     ]
