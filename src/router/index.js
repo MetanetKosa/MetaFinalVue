@@ -13,6 +13,8 @@ import Detail from '@/components/pages/product/Detail.vue';
 import List from '@/components/pages/product/List.vue';
 import MyProduct from '@/components/pages/mypage/MyProduct.vue';
 import MyPage from '@/components/pages/mypage/MyPage.vue';
+import MyOrderList from '@/components/pages/mypage/MyOrderList.vue';
+import MyPayList from '@/components/pages/mypage/MyPayList.vue';
 
 
 const router = createRouter({
@@ -86,6 +88,16 @@ const router = createRouter({
             path: '/mypage',
             name: 'MyPage',
             component: MyPage
+        },
+        {
+            path: '/myorder',
+            name: 'MyOrderList',
+            component: MyOrderList
+        },
+        {
+            path: '/mylist',
+            name: 'MyPayList',
+            component: MyPayList
         },
 
     ]

@@ -38,6 +38,8 @@
                                   <router-link class="dropdown-item" :to="{name: 'List'}">상품목록페이지</router-link>
                                   <router-link class="dropdown-item" :to="{name: 'MyPage'}">마이페이지 첫화면</router-link>
                                   <router-link class="dropdown-item" :to="{name: 'MyProduct'}">마이페이지</router-link>
+                                  <router-link class="dropdown-item" :to="{name: 'MyOrderList'}">주문내역</router-link>
+                                  <router-link class="dropdown-item" :to="{name: 'MyPayList'}">납부내역</router-link>
                               </div>
                           </li>
                           <li class="nav-item mt-3 mt-lg-0 ms-lg-3 d-lg-none d-xl-inline-block"></li>
