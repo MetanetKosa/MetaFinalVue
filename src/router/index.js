@@ -70,13 +70,13 @@ const router = createRouter({
             component: Rental3
         },
         {
-            path: '/detail',
-            name: 'Detail',
+            path: '/detail/:pno',
+            name: 'ProductDetail',
             component: Detail
         },
         {
             path: '/list',
-            name: 'List',
+            name: 'ProductList',
             component: List
         },
         {
