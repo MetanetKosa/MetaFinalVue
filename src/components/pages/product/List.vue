@@ -1,16 +1,137 @@
 <template>
     <body>
-      <div class="container">
+    <div class="container">
     <div class="container-fluid pt-5 pb-3 border-bottom px-lg-5">
       <div class="row">
-        <div class="col-xl-8">
-          <h1>Stay on Manhattan, NY    </h1>
-          <p class="lead text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi.</p>
-        </div>
+        <section class="py-6 bg-gray-100"> 
+       <div class="container">
+         <div class="text-center pb-lg-4">
+           <p class="subtitle text-secondary">Best Items 5</p>
+           <h2 class="mb-5">베스트 상품</h2>
+         </div>
+       </div>
+       <div class="container">
+         <!-- Slider main container-->
+         <div class="swiper-container swiper-container-mx-negative items-slider px-lg-5 pt-3">
+           <!-- Additional required wrapper-->
+           <div class="swiper-wrapper pb-5">
+             <!-- Slides-->
+             <div class="swiper-slide h-auto px-2" :value="bestProduct.productNo" :key="bestProduct.productNo" v-for="bestProduct in bestProducts">
+               <!-- venue item-->
+               <div class="w-100 h-100 hover-animate" data-marker-id="59c0c8e33b1527bfe2abaf92">
+                 <div class="card h-100 border-0 shadow">
+                   <!-- <div class="card-img-top overflow-hidden dark-overlay bg-cover" style="background-image: url({{ bestProduct.imgUrl }}); min-height: 200px;"><a class="tile-link" href="detail.html"></a> -->
+                    <div class="card-img-top overflow-hidden bg-cover"><img class="img-fluid" v-bind:src="bestProduct.imgUrl" > 
+                    <!-- <div class="card-img-overlay-bottom z-index-20">
+                       <h4 class="text-white text-shadow">Blue Hill</h4>
+                       <p class="mb-2 text-xs"><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300">                    </i>
+                       </p>
+                     </div> 
+                     <div class="card-img-overlay-top d-flex justify-content-between align-items-center">
+                       <div class="badge badge-transparent badge-pill px-3 py-2">Restaurants</div><a class="card-fav-icon position-relative z-index-40" href="javascript: void();"> 
+                         <svg class="svg-icon text-white">
+                           <use xlink:href="#heart-1"> </use>
+                         </svg></a>
+                     </div> -->
+                   </div>
+                   <div class="card-body">
+                     <p class="text-sm text-muted text-uppercase mb-1">{{ bestProduct.productName }}</p>
+                     <p class="text-sm mb-0">구매&nbsp;&nbsp;&nbsp;{{ bestProduct.productPrice.toLocaleString() }}원</p>
+                     <p class="text-sm mb-0">렌탈&nbsp;&nbsp;월&nbsp;&nbsp;{{ bestProduct.productRentalPrice.toLocaleString() }}원</p>
+                   </div>
+                 </div>
+               </div>
+             </div>
+             <div class="swiper-slide h-auto px-2">
+               <!-- venue item-->
+               <div class="w-100 h-100 hover-animate" data-marker-id="59c0c8e322f3375db4d89128">
+                 <div class="card h-100 border-0 shadow">
+                   <div class="card-img-top overflow-hidden dark-overlay bg-cover" style="background-image: url(/../html/img/photo/restaurant-1436018626274-89acd1d6ec9d.jpg); min-height: 200px;"><a class="tile-link" href="detail.html"></a>
+                     <div class="card-img-overlay-bottom z-index-20">
+                       <h4 class="text-white text-shadow">Plutorque</h4>
+                       <p class="mb-2 text-xs"><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i>
+                       </p>
+                     </div>
+                     <div class="card-img-overlay-top d-flex justify-content-between align-items-center">
+                       <div class="badge badge-transparent badge-pill px-3 py-2">Restaurant</div><a class="card-fav-icon position-relative z-index-40" href="javascript: void();"> 
+                         <svg class="svg-icon text-white">
+                           <use xlink:href="#heart-1"> </use>
+                         </svg></a>
+                     </div>
+                   </div>
+                   <div class="card-body">
+                     <p class="text-sm text-muted mb-3"> Proident irure eiusmod velit veniam consectetur id minim irure et nostrud mollit magna velit. Commodo amet proident aliq...</p>
+                     <p class="text-sm text-muted text-uppercase mb-1">By <a href="#" class="text-dark">Matt Damon</a></p>
+                     <p class="text-sm mb-0"><a class="me-1" href="#">Restaurant,</a><a class="me-1" href="#">Fusion</a>
+                     </p>
+                   </div>
+                 </div>
+               </div>
+             </div>
+             <div class="swiper-slide h-auto px-2">
+               <!-- venue item-->
+               <div class="w-100 h-100 hover-animate" data-marker-id="59c0c8e39aa2eed0626e485d">
+                 <div class="card h-100 border-0 shadow">
+                   <div class="card-img-top overflow-hidden dark-overlay bg-cover" style="background-image: url(/../html/img/photo/restaurant-1504087697492-238a6bf49ce8.jpg); min-height: 200px;"><a class="tile-link" href="detail.html"></a>
+                     <div class="card-img-overlay-bottom z-index-20">
+                       <h4 class="text-white text-shadow">Prosure</h4>
+                       <p class="mb-2 text-xs"><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i>
+                       </p>
+                     </div>
+                     <div class="card-img-overlay-top d-flex justify-content-between align-items-center">
+                       <div class="badge badge-transparent badge-pill px-3 py-2">Restaurant</div><a class="card-fav-icon position-relative z-index-40" href="javascript: void();"> 
+                         <svg class="svg-icon text-white">
+                           <use xlink:href="#heart-1"> </use>
+                         </svg></a>
+                     </div>
+                   </div>
+                   <div class="card-body">
+                     <p class="text-sm text-muted mb-3"> Cillum sunt reprehenderit ea non irure veniam dolore commodo labore fugiat est consequat velit. Cupidatat nisi qui ad si...</p>
+                     <p class="text-sm text-muted text-uppercase mb-1">By <a href="#" class="text-dark">Matt Damon</a></p>
+                     <p class="text-sm mb-0"><a class="me-1" href="#">Nisi,</a><a class="me-1" href="#">Ex,</a><a class="me-1" href="#">Eiusmod</a>
+                     </p>
+                   </div>
+                 </div>
+               </div>
+             </div>
+             <div class="swiper-slide h-auto px-2">
+               <!-- venue item-->
+               <div class="w-100 h-100 hover-animate" data-marker-id="59c0c8e39aa2edasd626e485d">
+                 <div class="card h-100 border-0 shadow">
+                   <div class="card-img-top overflow-hidden dark-overlay bg-cover" style="background-image: url(/../html/img/photo/restaurant-1505275350441-83dcda8eeef5.jpg); min-height: 200px;"><a class="tile-link" href="detail.html"></a>
+                     <div class="card-img-overlay-bottom z-index-20">
+                       <h4 class="text-white text-shadow">Take That</h4>
+                       <p class="mb-2 text-xs"><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300">                    </i>
+                       </p>
+                     </div>
+                     <div class="card-img-overlay-top d-flex justify-content-between align-items-center">
+                       <div class="badge badge-transparent badge-pill px-3 py-2">Café</div><a class="card-fav-icon position-relative z-index-40" href="javascript: void();"> 
+                         <svg class="svg-icon text-white">
+                           <use xlink:href="#heart-1"> </use>
+                         </svg></a>
+                     </div>
+                   </div>
+                   <div class="card-body">
+                     <p class="text-sm text-muted mb-3"> Cillum sunt reprehenderit ea non irure veniam dolore commodo labore fugiat est consequat velit. Cupidatat nisi qui ad si...</p>
+                     <p class="text-sm text-muted text-uppercase mb-1">By <a href="#" class="text-dark">Matt Damon</a></p>
+                     <p class="text-sm mb-0"><a class="me-1" href="#">Nisi,</a><a class="me-1" href="#">Ex,</a><a class="me-1" href="#">Eiusmod</a>
+                     </p>
+                   </div>
+                 </div>
+               </div>
+             </div>
+           </div>
+           <!-- If we need pagination-->
+           <div class="swiper-pagination"></div>
+         </div>
+         <div class="text-center mt-5"><a class="btn btn-outline-primary" href="category-2.html">See all places</a></div>
+       </div>
+     </section>
       </div>
     </div>
     <div class="container-fluid py-5 px-lg-5">
       <div class="row">
+        <!-- 왼쪽 사이드 바 필터 -->
         <div class="col-lg-3 pt-3">
           <form class="pe-xl-3" action="#" autocomplete="off">
             <div class="mb-4">
@@ -20,23 +141,26 @@
               </div>
             </div>
             <div class="mb-4">
-              <label class="form-label" for="form_guests">Guests</label>
+              <label class="form-label" for="form_guests">기능</label>
               <select class="selectpicker form-control" name="guests" id="form_guests" data-style="btn-selectpicker" title=" ">
-                <option value="guests_0">1    </option>
-                <option value="guests_1">2    </option>
-                <option value="guests_2">3    </option>
-                <option value="guests_3">4    </option>
-                <option value="guests_4">5    </option>
+                <option value="guests_0">냉정수기</option>
+                <option value="guests_1">냉온정수기</option>
+                <option value="guests_2">얼음</option>
+                <option value="guests_3">탄산</option>
+                <option value="guests_4">정수전용</option>
               </select>
             </div>
             <div class="mb-4">
-              <label class="form-label" for="form_type">Home type</label>
+              <label class="form-label" for="form_type">설치 타입</label>
               <select class="selectpicker form-control" name="type" id="form_type" multiple data-style="btn-selectpicker" title="">
-                <option value="type_0">Entire place    </option>
-                <option value="type_1">Private room    </option>
-                <option value="type_2">Shared room    </option>
+                <option value="type_0">데스크탑</option>
+                <option value="type_1">언더싱크</option>
+                <option value="type_2">스탠드</option>
               </select>
             </div>
+
+            <!-- ========================================== -->
+            <!-- more filter 버튼 눌렀을때 나오는 -->
             <div class="pb-4">
               <div class="collapse" id="moreFilters">
                 <div class="filter-block">
@@ -285,11 +409,14 @@
                   </ul>
                 </div>
               </div>
+              <!-- ========================================== -->
+
+              <!-- more filter 버튼 -->
               <div class="mb-4">
                 <button class="btn btn-link btn-collapse ps-0 text-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#moreFilters" aria-expanded="false" aria-controls="moreFilters" data-expanded-text="Less filters" data-collapsed-text="More filters">More filters</button>
               </div>
               <div class="mb-4">
-                <button class="btn btn-primary" type="submit"> <i class="fas fa-filter me-1"></i>Filter                </button>
+                <button class="btn btn-primary" type="submit"><i class="fas fa-filter me-1"></i>Filter</button>
               </div>
             </div>
           </form>
@@ -297,7 +424,7 @@
         <div class="col-lg-9">
           <div class="d-flex justify-content-between align-items-center flex-column flex-md-row mb-4">
             <div class="me-3">
-              <p class="mb-3 mb-md-0"><strong>12</strong> results found</p>
+              <p class="mb-3 mb-md-0"><strong><span class="h5 text-primary">{{productTotal}}</span></strong> &nbsp;results found</p>
             </div>
             <div>
               <label class="form-label me-2" for="form_sort">Sort by</label>
@@ -308,172 +435,47 @@
                 <option value="sortBy_3">Oldest   </option>
                 <option value="sortBy_4">Closest   </option>
               </select>
-            </div>
+            </div> 
           </div>
+
           <div class="row">
-            <!-- place item-->
-            <div class="col-sm-6 col-xl-4 mb-5 hover-animate" data-marker-id="59c0c8e33b1527bfe2abaf92">
-              <div class="card h-100 border-0 shadow">
-                <div class="card-img-top overflow-hidden gradient-overlay"> <img class="img-fluid" src="../../../../public/html/img/photo/photo-1484154218962-a197022b5858.jpg" alt="Modern, Well-Appointed Room"/><a class="tile-link" href="detail-rooms.html"></a>
-                  <div class="card-img-overlay-bottom z-index-20">
-                    <div class="d-flex text-white text-sm align-items-center"><img class="avatar avatar-border-white flex-shrink-0 me-2" src="../../../../public/html/img/avatar/avatar-0.jpg" alt="Pamela"/>
-                      <div>Pamela</div>
+            <!-- 상품 리스트 -->
+            <section class="product-section">
+              <div class="product-list row">
+                <div class="col-sm-6 col-xl-4 mb-5 hover-animate" data-marker-id="59c0c8e33b1527bfe2abaf92" :value="product.productNo" :key="product.productNo" v-for="product in products">
+                  <div @click="moveToProductDetailPage(product.productNo)" class="card h-100 border-0 shadow">
+                    <div class="card-img-top overflow-hidden"><img class="img-fluid" v-bind:src="product.imgUrl" >
+                      <hr>
+                      <div class="card-img-overlay-bottom z-index-20">
+                      </div>
+                      <!-- <div class="card-img-overlay-top text-end"><a class="card-fav-icon position-relative z-index-40" href="javascript: void();"> 
+                          <svg class="svg-icon text-white">
+                            <use xlink:href="#heart-1"> </use>
+                          </svg></a>
+                      </div> -->
                     </div>
-                  </div>
-                  <div class="card-img-overlay-top text-end"><a class="card-fav-icon position-relative z-index-40" href="javascript: void();"> 
-                      <svg class="svg-icon text-white">
-                        <use xlink:href="#heart-1"> </use>
-                      </svg></a></div>
-                </div>
-                <div class="card-body d-flex align-items-center">
-                  <div class="w-100">
-                    <h6 class="card-title"><a class="text-decoration-none text-dark" href="detail-rooms.html">Modern, Well-Appointed Room</a></h6>
-                    <div class="d-flex card-subtitle mb-3">
-                      <p class="flex-grow-1 mb-0 text-muted text-sm">Private room</p>
-                      <p class="flex-shrink-1 mb-0 card-stars text-xs text-end"><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i>
-                      </p>
+                    <div class="card-body d-flex align-items-center">
+                      <div class="w-100">
+                        <br>
+                        <h3 class="mb-5" style="text-align: center;"><a class="text-decoration-none text-dark" href="detail-rooms.html">{{ product.productName }}</a></h3>
+                        <!-- <div class="d-flex card-subtitle mb-3">
+                          <p class="flex-grow-1 mb-0 text-muted text-sm">Private room</p>
+                          <p class="flex-shrink-1 mb-0 card-stars text-xs text-end"><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i>
+                          </p>
+                        </div> -->
+                        <p class="card-text text-muted">기능&nbsp;&nbsp;&nbsp;&nbsp;<span class="h5 text-primary">{{ product.productFunction }}</span></p>
+                        <p class="card-text text-muted">색상&nbsp;&nbsp;&nbsp;&nbsp;<span class="h5 text-primary">{{ product.productColor }}</span></p>
+                        <br>
+                        <hr>
+                        <p class="card-text text-muted" style="text-align: right;">구매가격&nbsp;&nbsp;&nbsp;&nbsp;<span class="h5 text-primary">{{ product.productPrice.toLocaleString() }}&nbsp;원</span></p>
+                        <p class="card-text text-muted" style="text-align: right;">렌탈가격&nbsp;<span class="h5 text-primary">~월&nbsp;{{ product.productRentalPrice.toLocaleString() }}&nbsp;원</span></p>
+                      </div>
                     </div>
-                    <p class="card-text text-muted"><span class="h4 text-primary">$80</span> per night</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- place item-->
-            <div class="col-sm-6 col-xl-4 mb-5 hover-animate" data-marker-id="59c0c8e322f3375db4d89128">
-              <div class="card h-100 border-0 shadow">
-                <div class="card-img-top overflow-hidden gradient-overlay"> <img class="img-fluid" src="../../../../public/html/img/photo/photo-1426122402199-be02db90eb90.jpg" alt="Cute Quirky Garden apt, NYC adjacent"/><a class="tile-link" href="detail-rooms.html"></a>
-                  <div class="card-img-overlay-bottom z-index-20">
-                    <div class="d-flex text-white text-sm align-items-center"><img class="avatar avatar-border-white flex-shrink-0 me-2" src="../../../../public/html/img/avatar/avatar-7.jpg" alt="John"/>
-                      <div>John</div>
-                    </div>
-                  </div>
-                  <div class="card-img-overlay-top text-end"><a class="card-fav-icon position-relative z-index-40" href="javascript: void();"> 
-                      <svg class="svg-icon text-white">
-                        <use xlink:href="#heart-1"> </use>
-                      </svg></a></div>
-                </div>
-                <div class="card-body d-flex align-items-center">
-                  <div class="w-100">
-                    <h6 class="card-title"><a class="text-decoration-none text-dark" href="detail-rooms.html">Cute Quirky Garden apt, NYC adjacent</a></h6>
-                    <div class="d-flex card-subtitle mb-3">
-                      <p class="flex-grow-1 mb-0 text-muted text-sm">Entire apartment</p>
-                      <p class="flex-shrink-1 mb-0 card-stars text-xs text-end"><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300">                                  </i>
-                      </p>
-                    </div>
-                    <p class="card-text text-muted"><span class="h4 text-primary">$121</span> per night</p>
                   </div>
                 </div>
               </div>
-            </div>
-            <!-- place item-->
-            <div class="col-sm-6 col-xl-4 mb-5 hover-animate" data-marker-id="59c0c8e3a31e62979bf147c9">
-              <div class="card h-100 border-0 shadow">
-                <div class="card-img-top overflow-hidden gradient-overlay"> <img class="img-fluid" src="../../../../public/html/img/photo/photo-1512917774080-9991f1c4c750.jpg" alt="Modern Apt - Vibrant Neighborhood!"/><a class="tile-link" href="detail-rooms.html"></a>
-                  <div class="card-img-overlay-bottom z-index-20">
-                    <div class="d-flex text-white text-sm align-items-center"><img class="avatar avatar-border-white flex-shrink-0 me-2" src="../../../../public/html/img/avatar/avatar-8.jpg" alt="Julie"/>
-                      <div>Julie</div>
-                    </div>
-                  </div>
-                  <div class="card-img-overlay-top text-end"><a class="card-fav-icon position-relative z-index-40" href="javascript: void();"> 
-                      <svg class="svg-icon text-white">
-                        <use xlink:href="#heart-1"> </use>
-                      </svg></a></div>
-                </div>
-                <div class="card-body d-flex align-items-center">
-                  <div class="w-100">
-                    <h6 class="card-title"><a class="text-decoration-none text-dark" href="../../../../public/html/detail-rooms.html">Modern Apt - Vibrant Neighborhood!</a></h6>
-                    <div class="d-flex card-subtitle mb-3">
-                      <p class="flex-grow-1 mb-0 text-muted text-sm">Entire apartment</p>
-                      <p class="flex-shrink-1 mb-0 card-stars text-xs text-end"><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300">                                  </i><i class="fa fa-star text-gray-300">                                  </i>
-                      </p>
-                    </div>
-                    <p class="card-text text-muted"><span class="h4 text-primary">$75</span> per night</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- place item-->
-            <div class="col-sm-6 col-xl-4 mb-5 hover-animate" data-marker-id="59c0c8e3503eb77d487e8082">
-              <div class="card h-100 border-0 shadow">
-                <div class="card-img-top overflow-hidden gradient-overlay"> <img class="img-fluid" src="../../../../public/html/img/photo/photo-1494526585095-c41746248156.jpg" alt="Sunny Private Studio-Apartment"/><a class="tile-link" href="detail-rooms.html"></a>
-                  <div class="card-img-overlay-bottom z-index-20">
-                    <div class="d-flex text-white text-sm align-items-center"><img class="avatar avatar-border-white flex-shrink-0 me-2" src="../../../../public/html/img/avatar/avatar-9.jpg" alt="Barbora"/>
-                      <div>Barbora</div>
-                    </div>
-                  </div>
-                  <div class="card-img-overlay-top text-end"><a class="card-fav-icon position-relative z-index-40" href="javascript: void();"> 
-                      <svg class="svg-icon text-white">
-                        <use xlink:href="#heart-1"> </use>
-                      </svg></a></div>
-                </div>
-                <div class="card-body d-flex align-items-center">
-                  <div class="w-100">
-                    <h6 class="card-title"><a class="text-decoration-none text-dark" href="detail-rooms.html">Sunny Private Studio-Apartment</a></h6>
-                    <div class="d-flex card-subtitle mb-3">
-                      <p class="flex-grow-1 mb-0 text-muted text-sm">Shared room</p>
-                      <p class="flex-shrink-1 mb-0 card-stars text-xs text-end"><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300">                                  </i>
-                      </p>
-                    </div>
-                    <p class="card-text text-muted"><span class="h4 text-primary">$93</span> per night</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- place item-->
-            <div class="col-sm-6 col-xl-4 mb-5 hover-animate" data-marker-id="59c0c8e39aa2eed0626e485d">
-              <div class="card h-100 border-0 shadow">
-                <div class="card-img-top overflow-hidden gradient-overlay"> <img class="img-fluid" src="../../../../public/html/img/photo/photo-1522771739844-6a9f6d5f14af.jpg" alt="Mid-Century Modern Garden Paradise"/><a class="tile-link" href="detail-rooms.html"></a>
-                  <div class="card-img-overlay-bottom z-index-20">
-                    <div class="d-flex text-white text-sm align-items-center"><img class="avatar avatar-border-white flex-shrink-0 me-2" src="../../../../public/html/img/avatar/avatar-10.jpg" alt="Jack"/>
-                      <div>Jack</div>
-                    </div>
-                  </div>
-                  <div class="card-img-overlay-top text-end"><a class="card-fav-icon position-relative z-index-40" href="javascript: void();"> 
-                      <svg class="svg-icon text-white">
-                        <use xlink:href="#heart-1"> </use>
-                      </svg></a></div>
-                </div>
-                <div class="card-body d-flex align-items-center">
-                  <div class="w-100">
-                    <h6 class="card-title"><a class="text-decoration-none text-dark" href="detail-rooms.html">Mid-Century Modern Garden Paradise</a></h6>
-                    <div class="d-flex card-subtitle mb-3">
-                      <p class="flex-grow-1 mb-0 text-muted text-sm">Entire house</p>
-                      <p class="flex-shrink-1 mb-0 card-stars text-xs text-end"><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i>
-                      </p>
-                    </div>
-                    <p class="card-text text-muted"><span class="h4 text-primary">$115</span> per night</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- place item-->
-            <div class="col-sm-6 col-xl-4 mb-5 hover-animate" data-marker-id="59c0c8e39aa2edasd626e485d">
-              <div class="card h-100 border-0 shadow">
-                <div class="card-img-top overflow-hidden gradient-overlay"> <img class="img-fluid" src="../../../../public/html/img/photo/photo-1488805990569-3c9e1d76d51c.jpg" alt="Brooklyn Life, Easy to Manhattan"/><a class="tile-link" href="detail-rooms.html"></a>
-                  <div class="card-img-overlay-bottom z-index-20">
-                    <div class="d-flex text-white text-sm align-items-center"><img class="avatar avatar-border-white flex-shrink-0 me-2" src="../../../../public/html/img/avatar/avatar-11.jpg" alt="Stuart"/>
-                      <div>Stuart</div>
-                    </div>
-                  </div>
-                  <div class="card-img-overlay-top text-end"><a class="card-fav-icon position-relative z-index-40" href="javascript: void();"> 
-                      <svg class="svg-icon text-white">
-                        <use xlink:href="#heart-1"> </use>
-                      </svg></a></div>
-                </div>
-                <div class="card-body d-flex align-items-center">
-                  <div class="w-100">
-                    <h6 class="card-title"><a class="text-decoration-none text-dark" href="detail-rooms.html">Brooklyn Life, Easy to Manhattan</a></h6>
-                    <div class="d-flex card-subtitle mb-3">
-                      <p class="flex-grow-1 mb-0 text-muted text-sm">Private room</p>
-                      <p class="flex-shrink-1 mb-0 card-stars text-xs text-end"><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300">                                  </i>
-                      </p>
-                    </div>
-                    <p class="card-text text-muted"><span class="h4 text-primary">$123</span> per night</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+            </section>
+            
           <!-- Pagination -->
           <nav aria-label="Page navigation example">
             <ul class="pagination pagination-template d-flex justify-content-center">
@@ -488,13 +490,76 @@
       </div>
     </div>
   </div>
+    </div>
+
+   
     </body>
 </template>
 
 <script>
-export default {
+import axios from 'axios';
+import { ref, onMounted } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 
+export default {
+  setup() {
+    //let productList = ref(null);
+    const productTotal = ref(0);
+    const route = useRoute();
+    const router = useRouter();
+    const product = ref('');
+    const products = ref([]);
+    const bestProduct = ref('');
+    const bestProducts = ref([]);
+
+    const getProductList = async() => {
+      console.log("상품 받아와??");
+      const res = await axios.get('/product/products');
+      console.log(res.data);
+      products.value = res.data;
+      productTotal.value = products.value.length;
+    }
+    
+    onMounted(() => {
+      getProductList();
+    });
+
+    const getBestProductList = async() => {
+      console.log("베스트 상품 받아와??");
+      const res = await axios.get('/product/best');
+      console.log(res.data);
+      bestProducts.value = res.data;
+    }
+    
+    onMounted(() => {
+      getBestProductList();
+    });
+
+    const moveToProductDetailPage = (p) => {
+      console.log("param : " + p);
+      router.push({
+        name: 'ProductDetail',
+        params: {
+          pno: p
+        }
+      });
+    }
+
+  return {
+    //productList,
+    productTotal,
+    products,
+    product,
+    route,
+    router,
+    bestProduct,
+    bestProducts,
+    moveToProductDetailPage,
+  }
+
+  }
 }
+
 </script>
 
 <style>
