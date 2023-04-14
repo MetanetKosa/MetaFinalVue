@@ -186,12 +186,39 @@
 </template>
 
 <script>
-import Sidebar from '@/components/pages/admin/Sidebar.vue'
-export default {
-  components: {
-    Sidebar
-  }
-}
+// import {useRoute, useRouter} from 'vue-router';
+// import axios from 'axios';
+// import Sidebar from '@/components/pages/admin/Sidebar.vue'
+// export default {
+//   components: {
+//     Sidebar
+//   },
+//    setup(){
+//         const route = useRoute();
+//         const router = useRouter();
+//         const product = ref(null);
+        
+//        const productNo = route.params.id;
+
+     
+
+//        const getProduct = async(productNo) => {
+//             const res = await axios.get(`/product/products/${productNo}`);
+//             product.value = {...res.data};
+//             console.log(product.value);
+        
+
+//             // originalResume.value = {...res.data};
+        
+    
+        
+//        };
+//        getProduct();
+//         return {
+//         product,
+//         }
+//    }    
+// }
 </script>
 
 <style>

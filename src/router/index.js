@@ -4,7 +4,7 @@ import Login from '@/components/pages/member/Login.vue';
 import Signup from '@/components/pages/member/Signup.vue';
 import AdminRegister from '@/components/pages/admin/AdminRegister.vue';
 import AdminList from '@/components/pages/admin/AdminList.vue';
-import AdminDetail from '@/components/pages/admin/AdminDetail.vue';
+import AdminProductDetail from '@/components/pages/admin/AdminProductDetail.vue';
 import AdminMember from '@/components/pages/admin/AdminMember.vue';
 import Rental1 from '@/components/pages/order/Rental1.vue';
 import Rental2 from '@/components/pages/order/Rental2.vue';
@@ -42,9 +42,9 @@ const router = createRouter({
             component: AdminList
         },
         {
-            path: '/admindetail',
-            name: 'AdminDetail',
-            component: AdminDetail
+            path: '/adminProductDetail',
+            name: 'AdminProductDetail',
+            component: AdminProductDetail
         },
         {
             path: '/adminmember',

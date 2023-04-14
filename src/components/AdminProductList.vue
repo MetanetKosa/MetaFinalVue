@@ -124,7 +124,8 @@
 </template>
 
 <script>
-import {useRouter} from 'vue-router';
+import {useRoute, useRouter} from 'vue-router';
+
 export default {
     props: {
         products: Object,
@@ -142,7 +143,7 @@ export default {
         const moveToPage = (productNo) => {
             console.log(productNo);
             router.push({
-                name:'/admindetail',
+                name:'AdminProductDetail',
                 params:{
                     id: productNo
                 }
