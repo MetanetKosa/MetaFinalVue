@@ -8,10 +8,18 @@ module.exports = defineConfig({
         target: "http://localhost:8082",
         changeOrigin: true,
         logLevel: 'debug',
-      }
+      },
+      '/product': {
+        target: 'http://localhost:8082',
+        changeOrigin: true,
+        logLevel: 'debug',
+        }
     }
   }
+
 })
+
+
 
 // // 이미지 loader
 // module.exports = {
