@@ -126,13 +126,13 @@
                                     </div>                 
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">대표이미지경로</label>
+                                    <label class="col-sm-2 col-form-label">대표이미지</label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" v-model= "state.form.img_url">
                                     </div>                  
                                 </div>              
                             </div>
-                             <div class="col-md-12">
+                             <!-- <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="exampleInputFile">제품 이미지</label>
                                     <div class="input-group">
@@ -145,21 +145,21 @@
                                         </div>
                                     </div>
                                 </div>
-                             </div> 
-                            <div class="col-md-12">
+                             </div>  -->
+                            <!-- <div class="col-md-12">
                                 <div class="form-group">
                                  <label for="exampleInputFile">제품 사용 설명서</label>
                                     <div class="input-group">
                                         <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="exampleInputFile">
+                                            <input type="file" class="custom-file-input" id="exampleInputFile" multiple>
                                             <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                                          </div>
                                     <div class="input-group-append">
-                                        <span class="input-group-text">Upload</span>
+                                        <span class="input-group-text" @click="uploadBtn()">Upload</span>
                                     </div>
                                 </div>
                             </div>
-                        </div>          
+                        </div>           -->
                         <!-- <div class="col-md-12">
                             <div class="card card-outline card-info">
                             <div class="card-body">
@@ -172,148 +172,95 @@
                     <button  @click="submit()" class="btn btn-primary">Submit</button> -->
                      
                         <div class="card-header">
-                            <h3 class="card-title">상품 정보</h3>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                    <i class="fas fa-minus"></i>
-                                 </button>
-                                 <button type="button" class="btn btn-tool" data-card-widget="remove">
-                                    <i class="fas fa-times"></i>
-                                </button>
-                             </div>
+                            <h3 class="card-title">제품 정보</h3>
                         </div>
-                        <div class="card-body p-0">
-                                <!-- <table class="table table-hover text-nowrap">
-                                    <thead>
-                                        <tr>
-                                        <th>번호</th>
-                                        <th>모델명</th>
-                                        <th>기능명</th>
-                                        <th>월 렌탈료(3년 약정기준)</th>
-                                        <th>구매가(3년 약정기준)</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                        <td>175</td>
-                                        <td>
-                                            <input type="text" class="form-control" placeholder="김철수">
-                                        </td>
-                                        <td>
-                                            <input type="text" class="form-control" placeholder="김철수">
-                                        </td>
-                                        <td>
-                                             <input type="text" class="form-control" placeholder="김철수">
-                                        </td>
-                                        <td>
-                                             <input type="text" class="form-control" placeholder="김철수">
-                                        </td>
-                                        </tr>
-                                    </tbody>
-                                </table> -->
-                                <table class="table table-striped projects">
+                        <div class="card-body p-0">                                
+                                <table class="table">
                                  <thead>
-                                     <tr>
-                                        <th style="width: 5%">
-                                            번호
-                                        </th>
+                                     <tr>                                      
                                         <th style="width: 20%">
                                             모델명
                                         </th>
                                         <th style="width: 20%">
                                             기능명
                                         </th>
-                                        <th>
+                                        <th style="width: 10%">
                                             월 렌탈료(3년 약정기준)
                                         </th>
                                         <th style="width: 10%" class="text-center">
-                                            구매가(3년 약정기준)
+                                            구매가
                                         </th>
-                                        <th style="width: 20%" class="text-center">
-                                            <button class="btn btn-info btn-sm" @click="add_tr('table_body')">
-                                                <i class="fas fa-pencil-alt">
-                                                </i>
-                                                추가
-                                            </button>
+                                        <th style="width: 10%" class="text-center">
+                                            색상
                                         </th>
+                                      
                                     </tr>
                                 </thead>
                                 <tbody ref="table_body">
                                     <tr>
-                                        <td>
-                                        1
-                                        </td>
+                                        
                                         <td>                          
                                             <a>
-                                                <input type="text" class="form-control">
+                                                <input type="text" class="form-control"  v-model= "state.form. product_model" >
                                             </a>
                                          </td>
                                         <td>
                                             <ul class="list-inline">
                                             <a>
-                                                <input type="text" class="form-control">
+                                                 <select class="form-control select2"  v-model= "state.form.product_function" style="width: 100%;">
+                                                    <option value="냉정수기">냉정수기</option>
+                                                    <option value="정수전용">정수전용</option>
+                                                </select>
                                             </a>
                                             </ul>
                                         </td>
                                          <td class="project_progress">
-                                             <input type="text" class="form-control">
+                                             <input type="text" class="form-control" v-model= "state.form.product_rentalPrice">
                                          </td>
                                          <td class="project-state">
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" v-model= "state.form.product_price">
                                         </td>
-                                         <td class="project-actions text-right">
-                                            <a class="btn btn-primary btn-sm" href="#">
-                                                <i class="fas fa-folder">
-                                                </i>
-                                                등록
-                                            </a>
-                                            <a class="btn btn-info btn-sm" href="#">
-                                                <i class="fas fa-pencil-alt">
-                                                </i>
-                                                수정
-                                            </a>
-                                            <a class="btn btn-danger btn-sm" href="#">
-                                                <i class="fas fa-trash">
-                                                </i>
-                                                삭제
-                                            </a>
+                                          <td class="project-state">
+                                            <input type="text" class="form-control" v-model= "state.form.product_color">
                                         </td>
-                                    </tr>
+                                       </tr>  
                                 </tbody>
                                 </table>
-                                <!-- <div class="col-md-6">
-                                    <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">모델명</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" class="form-control">
-                                        </div>  
-                                    </div> -->
-                                <!-- <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">월 렌탈료(3년 약정 기준)</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control">
-                                    </div>  
-                                </div> -->
-                                <!-- <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">기능명</label>
-                                        <div class="col-sm-10">
-                                            <select class="form-control select2"  style="width: 100%;">
-                                                <option value="빌트인">빌트인</option>
-                                                <option value="데스크탑">데스크탑</option>
-                                                <option value="스탠드">스탠드</option>
-                                            </select>
-                                        </div>
-                                </div>                              -->
-                                <!-- <div class="form-group row">
-                                     <label class="col-sm-2 col-form-label">구매가(3년 약정 기준)</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" >
-                                    </div>  
-                                </div> --> 
                             </div>
                         </div>
+                        <div class="card-header">
+                            <h3 class="card-title">제품 이미지</h3>
+                        </div>
+                        <div class="card-body p-0">                                
+                            <div class="input-group">
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="exampleInputFile">
+                                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                </div>
+                                <div class="input-group-append">
+                                    <span class="input-group-text">Upload</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-header">
+                            <h3 class="card-title">사용설명서</h3>
+                        </div>
+                        <div class="card-body p-0">                                
+                            <div class="input-group">
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="exampleInputFile">
+                                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                </div>
+                                <div class="input-group-append">
+                                    <span class="input-group-text">Upload</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                    <button class="btn btn-primary" onclick="stepper.previous()">Previous</button>
+                    <button  @click="submit()" class="btn btn-primary">Submit</button>
                     </form>
-                    <!-- /.row -->
                     </div>
                 </div>
             </div>
@@ -359,33 +306,31 @@ export default {
         product_method: "",
        product_company: "",
         img_url:"",
+        product_sales:"",
+        product_function:"",
+        product_model:"",
+        product_rentalPrice: "",
+        product_price : "",
+        product_color :""
       },
     })
     const submit = () => {
       const args = JSON.parse(JSON.stringify(state.form));
       axios.post("/product/productInsert", args).then(() => {
         console.log("등록되었습니다");
+        router.push({path: "/adminlist"});
       })
     }
 
-    const add_tr = (table_id) => {
-    console.log(table_body.value);
-    // let table_body = this.$refs.table_id.value;
-    // console.log(table_body);
-    // let first_tr   = table_body.firstElementChild;
-    // console.log(first_tr);
-    // let tr_clone   = first_tr.cloneNode(true);
-    // console.log(tr_clone);
+    const uploadBtn = () => {
 
-    // table_body.append(tr_clone);
-    // clean_first_tr(table_body.firstElementChild);
     }
     
 
     return {
         state, 
         submit,
-        add_tr
+        uploadBtn
         }
   
     }
