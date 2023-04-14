@@ -484,7 +484,13 @@
       const res = await axios.get('/product/products/' +productNo);
       console.log(res.data);
       detailProduct.value = {...res.data};
-
+      //  await axios
+      //   .get('/product/products/' +productNo)
+      //   .then((res)=>{
+      //     console.log(res)
+      //     console.log(res.data)
+      //     detailProduct.value = res.data
+      //   });
       
       console.log("11111");
       console.log(detailProduct.value);
