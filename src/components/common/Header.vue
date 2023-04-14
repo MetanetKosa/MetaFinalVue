@@ -35,6 +35,8 @@
                                   <router-link class="dropdown-item" :to="{name: 'Rental2'}">rental2</router-link>
                                   <router-link class="dropdown-item" :to="{name: 'Rental3'}">rental3</router-link>
                                   <router-link class="dropdown-item" :to="{name: 'Detail'}">상품상세페이지</router-link>
+                                  <router-link class="dropdown-item" :to="{name: 'MyProduct'}">마이페이지 첫화면</router-link>
+                                  <router-link class="dropdown-item" :to="{name: 'MyPage'}">마이페이지</router-link>
                               </div>
                           </li>
                           <li class="nav-item mt-3 mt-lg-0 ms-lg-3 d-lg-none d-xl-inline-block"></li>
@@ -58,7 +60,7 @@
                                   </div>
                               </form>
                           </li>
-                          <li class="nav-item"><a class="nav-link" href="/signup">Sign up</a></li>
+                          <li class="nav-item"><router-link class="nav-link" :to="{name: 'Signup'}">Sign up</router-link></li>
                           <li class="nav-item dropdown">
                               <a class="nav-link dropdown" href="index.html" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="personIcon"><i class="fas fa-user-alt fa-lg"></i></a>
                               <div class="dropdown-menu" aria-labelledby="homeDropdownMenuLink">
