@@ -45,9 +45,19 @@
 </template>
 
 <script>
-export default {
+// import axios from 'axios';
+// import { useRouter } from 'vue-router';
+// import { Ref } from 'vue';
+// export default {
+//     setup(){
+//         const route = useRouter();
+//         const signup = ref(null);
 
-}
+//         const getData = async() => {
+//             const res = await axios.get
+//         } 
+//     }
+// }
 </script>
 
 <style>
