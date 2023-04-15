@@ -6,7 +6,9 @@
           <div class="col-lg-7">
             <div class="text-block">
               <div class="row gallery mb-3 ms-n1 me-n1">
-                <div class="col-lg-12 col-6 px-1 mb-2"><a href="/../../../../html/img/photo/sample1.PNG" data-fancybox="gallery" title="Our street"><img class="img-fluid" v-bind:src="detailProduct.imgUrl" alt="..."></a></div>
+
+                <!-- 이미지 URL -->
+                <div class="col-lg-12 col-6 px-1 mb-2"><img class="img-fluid" v-bind:src="detailProduct.imgUrl"></div>
                 <div class="col-lg-4 col-6 px-1 mb-2"><a href="/../../../../html/img/photo/photo-1512917774080-9991f1c4c750.jpg" data-fancybox="gallery" title="Outside"><img class="img-fluid" src="/../../../../html/img/photo/photo-1512917774080-9991f1c4c750.jpg" alt="..."></a></div>
                 <div class="col-lg-4 col-6 px-1 mb-2"><a href="/../../../../html/img/photo/photo-1494526585095-c41746248156.jpg" data-fancybox="gallery" title="Rear entrance"><img class="img-fluid" src="/../../../../html/img/photo/photo-1494526585095-c41746248156.jpg" alt="..."></a></div>
                 <div class="col-lg-4 col-6 px-1 mb-2"><a href="/../../../../html/img/photo/photo-1494526585095-c41746248156.jpg" data-fancybox="gallery" title="Rear entrance"><img class="img-fluid" src="/../../../../html/img/photo/photo-1494526585095-c41746248156.jpg" alt="..."></a></div>
@@ -15,6 +17,45 @@
                 <div class="col-lg-4 col-6 px-1 mb-2"><a href="img/photo/photo-1488805990569-3c9e1d76d51c.jpg" data-fancybox="gallery" title="Bedroom"><img class="img-fluid" src="img/photo/photo-1488805990569-3c9e1d76d51c.jpg" alt="..."></a></div> -->
               </div>
             </div>   
+
+            <!-- 상세 탭 -->
+            <div class="vip_tabBar">
+              <div class="tabType anchor vip">
+                <ul>
+                  <li class="on">
+                    <a href="#vip_detail_wrap">
+                      상세설명
+                      ::after
+                    </a>
+                  </li>
+                  <li class>
+                    <a href="#vip_buyInfo_wrap" onclick="$('#vip_buyInfo_wrap .moreArea').first().addClass('more');">
+                      구매정보
+                      ::after
+                    </a>
+                  </li>
+                  <li class>
+                    <a href="#vip_review_wrap">
+                      리뷰
+                      <em id="tab_rvscnt_area">리뷰개수</em>
+                      ::after
+                    </a>
+                  </li>
+                  <li class>
+                    <a href="#vip_inquiry_wrap" onclick="$('#vip_inquiry_wrap .moreArea').first().addClass('more');">
+                      문의
+                      <em id="tab_cscnt_area">문의개수</em>
+                      ::after
+                    </a>
+                  </li>
+                </ul>
+
+              </div>
+            </div>
+
+
+
+            <!-- 상품 상세정보 -->
             <div class="text-block">
               <p class="text-primary"><i class="fa-map-marker-alt fa me-1"></i> Brooklyn, New York</p>
               <h1>정수기 이름</h1>
@@ -78,9 +119,13 @@
             </div>
             
   
+            <!-- 리뷰 -->
             <div class="text-block">
               <p class="subtitle text-sm text-primary">Reviews    </p>
+              <p class="mb-3 mb-md-0"><strong><span class="h5 text-primary">{{reviewTotal}}</span></strong> &nbsp;개의 리뷰가 있습니다</p>
               <h5 class="mb-4">Listing Reviews </h5>
+
+              <!-- 리뷰 작성 ============== -->
               <div>
                 <button class="btn btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#leaveReview" aria-expanded="false" aria-controls="leaveReview">Leave a review</button>
                 <div class="collapse mt-4" id="leaveReview">
@@ -118,15 +163,20 @@
                   </form>
                 </div>
               </div>
-              <div class="d-flex d-block d-sm-flex review">
-                <div class="text-md-center flex-shrink-0 me-4 me-xl-5"><img class="d-block avatar avatar-xl p-2 mb-2" src="img/avatar/avatar-8.jpg" alt="Padmé Amidala"><span class="text-uppercase text-muted text-sm">Dec 2018</span></div>
-                <div>
-                  <h6 class="mt-2 mb-1">Padmé Amidala</h6>
-                  <div class="mb-2"><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i>
+              <!-- ============== -->
+              <!-- <section class="review-section"> -->
+                <div class="d-flex d-block d-sm-flex review" :value="review.reviewNo" :key="review.reviewNo" v-for="review in reviews">
+                  <div class="text-md-center flex-shrink-0 me-4 me-xl-5"><img class="d-block avatar avatar-xl p-2 mb-2" v-bind:src="review.reImageUrl"><span class="text-uppercase text-muted text-sm">{{review.reDate}}</span></div>
+
+                  <div>
+                    <h6 class="mt-2 mb-1">리뷰 제목</h6>
+                    <div class="mb-2"><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i>
+                    </div>
+                    <p class="text-muted text-sm">{{ review.reConent }}</p>
                   </div>
-                  <p class="text-muted text-sm">One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections     </p>
                 </div>
-              </div>
+              <!-- </section> -->
+              
               <div class="d-flex d-block d-sm-flex review">
                 <div class="text-md-center flex-shrink-0 me-4 me-xl-5"><img class="d-block avatar avatar-xl p-2 mb-2" src="img/avatar/avatar-2.jpg" alt="Luke Skywalker"><span class="text-uppercase text-muted text-sm">Dec 2018</span></div>
                 <div>
@@ -136,7 +186,7 @@
                   <p class="text-muted text-sm">The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. &quot;What's happened to me?&quot; he thought. It wasn't a dream.     </p>
                 </div>
               </div>
-              <div class="d-flex d-block d-sm-flex review">
+<!--               <div class="d-flex d-block d-sm-flex review">
                 <div class="text-md-center flex-shrink-0 me-4 me-xl-5"><img class="d-block avatar avatar-xl p-2 mb-2" src="img/avatar/avatar-3.jpg" alt="Princess Leia"><span class="text-uppercase text-muted text-sm">Dec 2018</span></div>
                 <div>
                   <h6 class="mt-2 mb-1">Princess Leia</h6>
@@ -154,42 +204,52 @@
                   <p class="text-muted text-sm">Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame.     </p>
                 </div>
               </div>
-              
+               -->
             </div>
           </div>
+
+          <!-- 상품 상세 -->
           <div class="col-lg-5">
             <div class="p-4 shadow ms-lg-4 rounded sticky-top" style="top: 200px;">
               <p  class="text-primary">New 프로모션 진행중</p>
               <br>
               <p class><span class="text h1">{{detailProduct.productName}}</span></p>
               <br>
-              <p  class="text-muted">{{detailProduct.productModel}}</p>
-  
+              <p  class="text-muted">모델명 | {{detailProduct.productModel}}</p>
+              <p  class="text-muted"> 기능  | {{detailProduct.productFunction}}</p>
               <hr class="my-4">
               <form class="form" id="booking-form" method="get" action="#" autocomplete="off">
                 <div class="mb-4">
-                  <label class="form-label" for="guests">렌탈/구매 *</label>
-                  <select class="form-control" name="guests" id="guests">
+                  <label class="form-label" for="orderType">렌탈/구매 *</label>
+                  <select class="form-control" name="orderType" id="orderType">
                     <option value="1">렌탈</option>
                     <option value="2">구매</option>
                   </select>
                 </div>
                 <div class="mb-4">
-                  <label class="form-label" for="guests">약정기간 *</label>
-                  <select class="form-control" name="guests" id="guests">
+                  <label class="form-label" for="contractLength">약정기간 *</label>
+                  <select class="form-control" name="contractLength" id="contractLength">
                     <option value="1">3년</option>
                     <option value="2">6년</option>
                   </select>
                 </div>
                 <hr class="my-4">
-                <div class="mb-4" style="text-align: right;">
+                <div class="mb-4" style="text-align: right;" id="purchasePrice">
                   <label class="form-label h5">구매금액</label> &nbsp;&nbsp;
-                  <strong class="text-primary h3">{{detailProduct.productPrice}}원</strong>
+                  <strong class="text-primary h3">{{ detailProduct.productPrice.toLocaleString() }}원</strong>
+                </div>
+                <div class="mb-4" style="text-align: right;" id="rentalPrice">
+                  <label class="form-label h5" name="orderPrice">렌탈금액</label> &nbsp;&nbsp;
+                  <strong class="text-primary h3"> 월 {{ detailProduct.productRentalPrice.toLocaleString() }}원</strong>
+                </div>
+                <!-- <div class="mb-4" style="text-align: right;" name="rentalPrice">
+                  <label class="form-label h5">구매금액</label> &nbsp;&nbsp;
+                  <strong class="text-primary h3">{{ detailProduct.productPrice.toLocaleString() }}원</strong>
                 </div>
                 <div class="mb-4" style="text-align: right;">
-                  <label class="form-label h5">렌탈금액</label> &nbsp;&nbsp;
-                  <strong class="text-primary h3"> 월 {{detailProduct.productRentalPrice}}원</strong>
-                </div>
+                  <label class="form-label h5" name="orderPrice">렌탈금액</label> &nbsp;&nbsp;
+                  <strong class="text-primary h3"> 월 {{ detailProduct.productRentalPrice.toLocaleString() }}원</strong>
+                </div> -->
                 <div class="d-grid mb-4">
                   <button class="btn btn-primary" type="submit">주문하기</button>
                 </div>
@@ -467,21 +527,32 @@
   
   <script>
   import axios from 'axios';
-  import { ref, onMounted } from 'vue';
+  import { ref, onMounted, mounted } from 'vue';
   import { useRoute, useRouter } from 'vue-router';
-
+  
   export default {
   setup() {
     const route = useRoute();
     const router = useRouter();
-    const detailProduct = ref(null);
+    //const detailProduct = ref(null);
+    //const detailProduct = ref([]);
+    const review = ref('');
+    const reviews = ref([]);
+    const reviewTotal = ref(0);
+    const detailProduct = ref({
+      productName: '',
+      productModel: '',
+      productFunction: '',
+      productPrice: 0,
+      productRentalPrice: 0,
+    });
     const productNo = route.params.pno;
     console.log("detail page : "+productNo);
 
     const getProductDetail = async() => {
       console.log("해당 상품 받아와??");
       console.log("상품 번호: "+productNo);
-      const res = await axios.get('/product/products/' +productNo);
+      const res = await axios.get('/product/' +productNo);
       console.log(res.data);
       detailProduct.value = {...res.data};
       //  await axios
@@ -503,13 +574,79 @@
     
     onMounted(() => {
       getProductDetail();
-    });
+    }); 
+
+    const getReviewList = async() => {
+      console.log("리뷰 받아와??");
+      const res = await axios.get('/product/' +productNo+ '/reviews');
+      console.log(res.data);
+      reviews.value = res.data;
+      reviewTotal.value = reviews.value.length;
+    }
     
+    onMounted(() => {
+      getReviewList();
+    });
+
+    // const orderTypeSelect = document.getElementById('orderType');
+    // const contractLengthDiv = document.querySelector('.mb-4[label="약정기간 *"]');
+
+    // orderTypeSelect.addEventListener('change', function() {
+    //   if (this.value === '2') { // 구매가 선택된 경우
+    //     contractLengthDiv.style.display = 'none';
+    //   } else {
+    //     contractLengthDiv.style.display = ''; // 다른 경우 (렌탈이 선택된 경우)는 기본값으로 표시
+    //   }
+    // });
+
+    // const orderTypeSelect = document.getElementById('orderType');
+    // const contractLengthSelect = document.getElementById('contractLength');
+
+    // const updateProductPrice = () => {
+    //   const rentalPriceLabel = document.querySelector('.h5[name="orderPrice"]');
+    //   const purchasePriceLabel = document.querySelector('.h5[name="rentalPrice"]');
+
+    //   const orderType = orderTypeSelect.value;
+    //   const contractLength = contractLengthSelect.value;
+    //   let productPrice;
+
+    //   if (orderType === '1') { // 렌탈
+    //     if (contractLength === '1') {
+    //       productPrice = detailProduct.productRentalPrice;
+    //     } else if (contractLength === '2') {
+    //       productPrice = detailProduct.productRentalPrice + 4000;
+    //     }
+    //     if (rentalPriceLabel) {
+    //       rentalPriceLabel.textContent = `월 ${productPrice}원`;
+    //       rentalPriceLabel.style.display = 'block';
+    //     }
+    //     if (purchasePriceLabel) {
+    //       purchasePriceLabel.style.display = 'none';
+    //     }
+    //   } else if (orderType === '2') { // 구매
+    //     productPrice = detailProduct.productPrice;
+    //     if (purchasePriceLabel) {
+    //       purchasePriceLabel.textContent = `${productPrice}원`;
+    //       purchasePriceLabel.style.display = 'block';
+    //     }
+    //     if (rentalPriceLabel) {
+    //       rentalPriceLabel.style.display = 'none';
+    //     }
+    //   }
+    // };
+
+    // onMounted(() => {
+    //   orderTypeSelect.addEventListener('change', updateProductPrice);
+    //   contractLengthSelect.addEventListener('change', updateProductPrice);
+    // });
     
   return {
     route,
     router,
     detailProduct,
+    review,
+    reviews,
+    reviewTotal,
   }
 
   }
