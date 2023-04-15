@@ -18,8 +18,71 @@
               </div>
             </div>   
 
-            <!-- 상세 탭 -->
-            <div class="vip_tabBar">
+            
+          </div>
+
+          <!-- 상품 상세 -->
+          <div class="col-lg-5">
+            <div class="p-4 shadow ms-lg-4 rounded sticky-top" style="top: 200px;">
+              <p  class="text-primary">New 프로모션 진행중</p>
+              <br>
+              <p class><span class="text h1">{{detailProduct.productName}}</span></p>
+              <br>
+              <p  class="text-muted">모델명 | {{detailProduct.productModel}}</p>
+              <p  class="text-muted"> 기능  | {{detailProduct.productFunction}}</p>
+              <hr class="my-4">
+              <form class="form" id="booking-form" method="get" action="#" autocomplete="off">
+                <div class="mb-4">
+                  <label class="form-label" for="orderType">렌탈/구매 *</label>
+                  <select class="form-control" name="orderType" id="orderType">
+                    <option value="1">렌탈</option>
+                    <option value="2">구매</option>
+                  </select>
+                </div>
+                <div class="mb-4">
+                  <label class="form-label" for="contractLength">약정기간 *</label>
+                  <select class="form-control" name="contractLength" id="contractLength">
+                    <option value="1">3년</option>
+                    <option value="2">6년</option>
+                  </select>
+                </div>
+                <hr class="my-4">
+                <div class="mb-4" style="text-align: right;" id="purchasePrice">
+                  <label class="form-label h5">구매금액</label> &nbsp;&nbsp;
+                  <strong class="text-primary h3">{{ detailProduct.productPrice.toLocaleString() }}원</strong>
+                </div>
+                <div class="mb-4" style="text-align: right;" id="rentalPrice">
+                  <label class="form-label h5" name="orderPrice">렌탈금액</label> &nbsp;&nbsp;
+                  <strong class="text-primary h3"> 월 {{ detailProduct.productRentalPrice.toLocaleString() }}원</strong>
+                </div>
+                <!-- <div class="mb-4" style="text-align: right;" name="rentalPrice">
+                  <label class="form-label h5">구매금액</label> &nbsp;&nbsp;
+                  <strong class="text-primary h3">{{ detailProduct.productPrice.toLocaleString() }}원</strong>
+                </div>
+                <div class="mb-4" style="text-align: right;">
+                  <label class="form-label h5" name="orderPrice">렌탈금액</label> &nbsp;&nbsp;
+                  <strong class="text-primary h3"> 월 {{ detailProduct.productRentalPrice.toLocaleString() }}원</strong>
+                </div> -->
+                <div class="d-grid mb-4">
+                  <button class="btn btn-primary" type="submit">주문하기</button>
+                </div>
+              </form>
+<!-- 
+              <p class="text-muted text-sm text-center">Some additional text can be also placed here.</p>
+              <hr class="my-4">
+              <div class="text-center">
+                <p> <a class="text-secondary text-sm" href="#"> <i class="fa fa-heart"></i> Bookmark This Listing</a></p>
+                <p class="text-muted text-sm">79 people bookmarked this place </p>
+              </div>
+               -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="py-6 bg-gray-100"> 
+        <div class="container">
+          <!-- 상세 탭 -->
+          <div class="vip_tabBar">
               <div class="tabType anchor vip">
                 <ul>
                   <li class="on">
@@ -169,10 +232,10 @@
                   <div class="text-md-center flex-shrink-0 me-4 me-xl-5"><img class="d-block avatar avatar-xl p-2 mb-2" v-bind:src="review.reImageUrl"><span class="text-uppercase text-muted text-sm">{{review.reDate}}</span></div>
 
                   <div>
-                    <h6 class="mt-2 mb-1">리뷰 제목</h6>
-                    <div class="mb-2"><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i>
-                    </div>
-                    <p class="text-muted text-sm">{{ review.reConent }}</p>
+                    <h6 class="mt-2 mb-1">작성자 </h6>
+                    <!-- <div class="mb-2"><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i></div> -->
+                    <div class="mb-2"><i v-for="n in review.reStar" :key="n" class="fa fa-xs fa-star text-primary"></i></div>
+                    <p class="text-muted text-sm">{{ review.reContent }}</p>
                   </div>
                 </div>
               <!-- </section> -->
@@ -206,68 +269,7 @@
               </div>
                -->
             </div>
-          </div>
 
-          <!-- 상품 상세 -->
-          <div class="col-lg-5">
-            <div class="p-4 shadow ms-lg-4 rounded sticky-top" style="top: 200px;">
-              <p  class="text-primary">New 프로모션 진행중</p>
-              <br>
-              <p class><span class="text h1">{{detailProduct.productName}}</span></p>
-              <br>
-              <p  class="text-muted">모델명 | {{detailProduct.productModel}}</p>
-              <p  class="text-muted"> 기능  | {{detailProduct.productFunction}}</p>
-              <hr class="my-4">
-              <form class="form" id="booking-form" method="get" action="#" autocomplete="off">
-                <div class="mb-4">
-                  <label class="form-label" for="orderType">렌탈/구매 *</label>
-                  <select class="form-control" name="orderType" id="orderType">
-                    <option value="1">렌탈</option>
-                    <option value="2">구매</option>
-                  </select>
-                </div>
-                <div class="mb-4">
-                  <label class="form-label" for="contractLength">약정기간 *</label>
-                  <select class="form-control" name="contractLength" id="contractLength">
-                    <option value="1">3년</option>
-                    <option value="2">6년</option>
-                  </select>
-                </div>
-                <hr class="my-4">
-                <div class="mb-4" style="text-align: right;" id="purchasePrice">
-                  <label class="form-label h5">구매금액</label> &nbsp;&nbsp;
-                  <strong class="text-primary h3">{{ detailProduct.productPrice.toLocaleString() }}원</strong>
-                </div>
-                <div class="mb-4" style="text-align: right;" id="rentalPrice">
-                  <label class="form-label h5" name="orderPrice">렌탈금액</label> &nbsp;&nbsp;
-                  <strong class="text-primary h3"> 월 {{ detailProduct.productRentalPrice.toLocaleString() }}원</strong>
-                </div>
-                <!-- <div class="mb-4" style="text-align: right;" name="rentalPrice">
-                  <label class="form-label h5">구매금액</label> &nbsp;&nbsp;
-                  <strong class="text-primary h3">{{ detailProduct.productPrice.toLocaleString() }}원</strong>
-                </div>
-                <div class="mb-4" style="text-align: right;">
-                  <label class="form-label h5" name="orderPrice">렌탈금액</label> &nbsp;&nbsp;
-                  <strong class="text-primary h3"> 월 {{ detailProduct.productRentalPrice.toLocaleString() }}원</strong>
-                </div> -->
-                <div class="d-grid mb-4">
-                  <button class="btn btn-primary" type="submit">주문하기</button>
-                </div>
-              </form>
-<!-- 
-              <p class="text-muted text-sm text-center">Some additional text can be also placed here.</p>
-              <hr class="my-4">
-              <div class="text-center">
-                <p> <a class="text-secondary text-sm" href="#"> <i class="fa fa-heart"></i> Bookmark This Listing</a></p>
-                <p class="text-muted text-sm">79 people bookmarked this place </p>
-              </div>
-               -->
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="py-6 bg-gray-100"> 
-        <div class="container">
           <h5 class="mb-0">Similar places</h5>
           <p class="subtitle text-sm text-primary mb-4">You may also like         </p>
           <!-- Slider main container-->
