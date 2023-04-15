@@ -2,7 +2,60 @@
       <!-- <body class="hold-transition sidebar-mini">
         <div class="wrapper">
          <Sidebar /> -->
-
+ <div class="content-wrapper">
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <form action="enhanced-results.html">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label>기능명</label>
+                                    <select class="select2" multiple="multiple" data-placeholder="Any" style="width: 100%;">
+                                        <option>냉온정수기</option>
+                                        <option>냉정수기</option>
+                                        <option>냉온절수기 + 얼음</option> 
+                                        <option>냉정절수기 + 얼음</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-group">
+                                    <label>Sort Order:</label>
+                                    <select class="select2" style="width: 100%;">
+                                        <option selected>ASC</option>
+                                        <option>DESC</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-group">
+                                    <label>Order By:</label>
+                                    <select class="select2" style="width: 100%;">
+                                        <option selected>Title</option>
+                                        <option>Date</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group input-group-lg">
+                                <input type="search" class="form-control form-control-lg" placeholder="Type your keywords here" value="Lorem ipsum">
+                                <div class="input-group-append">
+                                    <button type="submit" class="btn btn-lg btn-default">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+  </div>
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
@@ -92,16 +145,12 @@
                                     </i>
                                     View
                                 </a> -->
-                                <a class="btn btn-info btn-sm" href="#">
-                                    <i class="fas fa-pencil-alt">
-                                    </i>
-                                    Edit
-                                </a>
-                                <a class="btn btn-danger btn-sm" href="#">
-                                    <i class="fas fa-trash">
-                                    </i>
-                                    Delete
-                                </a>
+                                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-lg" >
+                                    수정
+                                </button>
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-lg" >
+                                    삭제
+                                </button>
                             </td>
                         </tr>
                     </tbody>

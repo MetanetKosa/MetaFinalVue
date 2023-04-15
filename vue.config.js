@@ -4,16 +4,21 @@ module.exports = defineConfig({
   lintOnSave : false,
    devServer: {
     proxy: {
-      '/auth' :{
-        target: "http://localhost:8082",
-        changeOrigin: true,
-        logLevel: 'debug',
-      },
-      '/product': {
-        target: 'http://localhost:8082',
-        changeOrigin: true,
-        logLevel: 'debug',
-        }
+      // '/auth' :{
+      //   target: "http://localhost:8082",
+      //   changeOrigin: true,
+      //   logLevel: 'debug',
+      // },
+      // '/product': {
+      //   target: 'http://localhost:8082',
+      //   changeOrigin: true,
+      //   logLevel: 'debug',
+      //   },
+        '/upload': {
+          target: 'http://localhost:8082',
+          changeOrigin: true,
+          logLevel: 'debug',
+          }
     }
   }
 
