@@ -61,31 +61,13 @@
           <div class="text-block">
             <h1>주문내역</h1>
             <div class="p-4 shadow ms-lg-4 rounded" style="background-color:gainsboro;">
-              <div class="d-flex p-3 row text-block">
+              <div class="d-flex p-3 row text-block" v-for="(order, index) in state.myOrders" :key="index">
                 <div class="col-2">
                   <img class="img-fluid" src="/../../../../html/img/photo/sample1.PNG">
                 </div>
                 <div class="col-10">
-                  <h6>품번</h6>
-                  <h6>품명</h6>
-                </div>
-              </div>
-              <div class="d-flex p-3 row text-block">
-                <div class="col-2">
-                  <img class="img-fluid" src="/../../../../html/img/photo/sample1.PNG">
-                </div>
-                <div class="col-10">
-                  <h6>품번</h6>
-                  <h6>품명</h6>
-                </div>
-              </div>
-              <div class="d-flex p-3 row text-block">
-                <div class="col-2">
-                  <img class="img-fluid" src="/../../../../html/img/photo/sample1.PNG">
-                </div>
-                <div class="col-10">
-                  <h6>품번</h6>
-                  <h6>품명</h6>
+                  <h6>{{ order.orderNo }}</h6>
+                  <h6>{{ order.productNo }}</h6>
                 </div>
               </div>
             </div>
@@ -99,8 +81,26 @@
 </template>
 
 <script>
+import axios from "axios";
+import {reactive} from "vue";
+
 export default {
 
+  setup(){
+    const state = reactive({
+      myOrders: []
+    })
+
+    let  memNo = 1;
+         // memNo 임의 설정 1
+    axios.get(`/mypage/myorder/${memNo}`).then(({data}) =>{
+      state.myOrders = data;
+      console.log(" 데이터값 " + data);
+    }).catch((error) => {
+        console.error("API 요청 실패", error);
+    });
+    return {state};
+  }
 }
 </script>
 
