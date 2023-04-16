@@ -69,21 +69,28 @@ export default {
                 memPw: ""
             },
         })
+        
 
         const login = () => {
             console.log("memId확인" + state.form.memId);
             console.log("memPw확인" + state.form.memPw);
+            const data = {
+                memId: state.form.memId,
+                memPw: state.form.memPw
+            };
+            console.log("data memId 확인: " + data.memId);
+            console.log("data memPw 확인: " + data.memPw);
 
-            const args = JSON.parse(JSON.stringify(state.form));
-            axios.post("/auth/login", args).then(() => {
+            // const args = JSON.parse(JSON.stringify(state.form));
+            axios.post("/auth/login", data).then(() => {
                 alert("로그인");
-                router.push({path: "/login"})
+                router.push({path: "/"})
             })
         }
 
         return{
             state,
-            login
+            login,
         }
     }
 }
