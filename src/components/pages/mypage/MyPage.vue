@@ -66,26 +66,23 @@
                     <h4 class="mb-5">사용중인 제품</h4>
                     <div class="row">
                         <!-- place item-->
-                        <div class="col-sm-6 col-lg-4 mb-30px hover-animate" data-marker-id="59c0c8e33b1527bfe2abaf92">
-                            <div class="card h-100 border-0 shadow">
-                                <div class="card-img-top overflow-hidden gradient-overlay"> <img class="img-fluid" src="../../../../public/html/img/photo/photo-1484154218962-a197022b5858.jpg" alt="Modern, Well-Appointed Room"/><a class="tile-link" href="detail-rooms.html"></a>
-                                    <div class="card-img-overlay-bottom z-index-20">
-                                    </div>
-                                    <div class="card-img-overlay-top text-end"></div>
-                                </div>
-                                <div class="card-body d-flex align-items-center">
-                                    <div class="w-100">
-                                        <h6 class="card-title"><a class="text-decoration-none text-dark" href="detail-rooms.html">아이콘 정수기 2</a></h6>
-                                        <div class="d-flex card-subtitle mb-3">
-                                            <p class="flex-grow-1 mb-0 text-muted text-sm">Private room</p>
-                                            <p class="flex-shrink-1 mb-0 card-stars text-xs text-end"><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i>
-                                            </p>
+                            <div class="col-sm-6 col-lg-4 mb-30px hover-animate" v-for="(product, index) in state.myProducts" :key="index" data-marker-id="59c0c8e33b1527bfe2abaf92">
+                                <div class="card h-100 border-0 shadow">
+                                    <div class="card-img-top overflow-hidden gradient-overlay"> <img class="img-fluid" src="../../../../public/html/img/photo/photo-1484154218962-a197022b5858.jpg" alt="Modern, Well-Appointed Room"/><a class="tile-link" href="detail-rooms.html"></a>
+                                        <div class="card-img-overlay-bottom z-index-20">
                                         </div>
-                                        <p class="card-text text-muted"><span class="h4 text-primary">$80</span> per night</p>
+                                        <div class="card-img-overlay-top text-end"></div>
+                                    </div>
+                                    <div class="card-body d-flex align-items-center">
+                                        <div class="w-100">
+                                            <h6 class="card-title"><a class="text-decoration-none text-dark" href="detail-rooms.html">{{product.productName}}</a></h6>
+                                            <div class="d-flex card-subtitle mb-3">
+                                                <p class="flex-grow-1 mb-0 text-muted text-sm">{{product.productModel}}</p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
                     </div>
                 </div>
 
@@ -116,7 +113,7 @@
                     </div>
                 </div>
                 <div class="text-block">
-                    <p class="subtitle text-sm text-primary">Reviews    </p>
+                    <p class="subtitle text-sm text-primary">Reviews</p>
                     <h5 class="mb-4">Listing Reviews </h5>
                     <div class="d-flex d-block d-sm-flex review">
                         <div class="text-md-center flex-shrink-0 me-4 me-xl-5"><img class="d-block avatar avatar-xl p-2 mb-2" src="../../../../public/html/img/avatar/avatar-8.jpg" alt="Padmé Amidala"><span class="text-uppercase text-muted text-sm">Dec 2018</span></div>
@@ -173,9 +170,32 @@
 </template>
 
 <script>
+import axios from "axios";
+import {reactive} from "vue";
+
 export default {
 
+   setup(){
+    const state = reactive({
+      myProducts: []
+    })
+
+
+
+    // axios.get("/mypage/myproduct/" + route.params.memNo).then(({data}) =>{ /.
+    
+    let  memNo = 1;
+         // memNo 임의 설정 1
+    axios.get(`/mypage/myproduct/${memNo}`).then(({data}) =>{
+      state.myProducts = data;
+      console.log(" 데이터값 " + data);
+    }).catch((error) => {
+        console.error("API 요청 실패", error);
+    });
+    return {state};
+  }
 }
+
 </script>
 
 <style>

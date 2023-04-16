@@ -19,6 +19,7 @@ import MyPayList from '@/components/pages/mypage/MyPayList.vue';
 
 const router = createRouter({
     history: createWebHistory(),
+    mode: history,
     routes: [{
             path: '/',
             name: 'Home',
@@ -85,7 +86,7 @@ const router = createRouter({
             component: MyProduct
         },
         {
-            path: '/mypage',
+            path: '/mypage/myproduct',
             name: 'MyPage',
             component: MyPage
         },

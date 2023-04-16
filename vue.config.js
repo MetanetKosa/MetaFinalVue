@@ -1,21 +1,27 @@
 const { defineConfig } = require('@vue/cli-service')
 module.exports = defineConfig({
-  transpileDependencies: true,
-  lintOnSave : false,
-   devServer: {
-    proxy: {
-      '/auth' :{
-        target: "http://localhost:8082",
-        changeOrigin: true,
-        logLevel: 'debug',
-      },
-      '/product': {
-        target: 'http://localhost:8082',
-        changeOrigin: true,
-        logLevel: 'debug',
+    transpileDependencies: true,
+    lintOnSave: false,
+    devServer: {
+        proxy: {
+            '/auth': {
+                target: "http://localhost:8082",
+                changeOrigin: true,
+                logLevel: 'debug',
+            },
+
+            '/product': {
+                target: 'http://localhost:8082',
+                changeOrigin: true,
+                logLevel: 'debug',
+            },
+            '/mypage': {
+                target: 'http://localhost:8082',
+                changeOrigin: true,
+                logLevel: 'debug',
+            }
         }
     }
-  }
 
 })
 
