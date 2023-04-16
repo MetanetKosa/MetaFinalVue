@@ -77,6 +77,19 @@
               <button class="btn btn-primary mx-1"><i class="fas fa-won-sign"></i>&nbsp;납부 방법 변경&nbsp;<i class="fas fa-angle-right"></i></button>
               <button class="btn btn-primary mx-1"><i class="fas fa-info"></i>&nbsp;제품 사용 신청서&nbsp;<i class="fas fa-angle-right"></i></button>
               <button class="btn mx-1 text-muted">해지신청<i class="fas fa-angle-right"></i></button>
+              <button class="btn mx-1 text-muted" @click="showModal = true">문의 남기기</button>
+                  <div v-if="showModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close" @click="showModal = false">&times;</span>
+                        <h3>별점</h3>
+                        <h3>사용후기</h3>
+                        <textarea></textarea>
+                        <h6>리뷰 작성 시 유의사항
+타인에게 불쾌감을 유발할 수 있는 언어 및 이미지가 포함된 리뷰는 사용자의 신고 또는 관리자 권한에 의해 노출이 제한될 수 있습니다.
+부적절한 내용 등으로 작성자에 대한 신고가 반복 접수되는 경우는 서비스 이용이 제한될 수 있습니다.</h6>
+                        <p>모달 내용입니다.</p>
+                    </div>
+                  </div>
             </div>
           </div>
           <div class="text-block">
@@ -140,11 +153,52 @@
 </template>
 
 <script>
-export default {
-
-}
+ export default {
+    data() {
+      return {
+        showModal: false,
+      };
+    },
+  };
 </script>
 
 <style>
-
+   /* 모달 스타일링 */
+   .modal {
+    display: block;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 60%;
+    position: relative; /* close 버튼과의 위치 조정을 위해 */
+  }
+  
+  .close {
+    color: #aaa;
+    position: absolute; /* 위치 조정 -> modal-content와 */
+    float: right;
+    right: 16px;
+    top: 11px;
+    font-size: 36px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
 </style>
