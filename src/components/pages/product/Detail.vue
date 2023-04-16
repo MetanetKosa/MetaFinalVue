@@ -180,16 +180,124 @@
                 <li class="list-inline-item mb-2"><span class="badge rounded-pill bg-light p-3 text-muted fw-normal">Washing machine</span></li>
               </ul>
             </div>
+
+            <!-- 스펙 -->
+            <div class="text-block">
+              <h2 data-bs-toggle="collapse" data-bs-target="#Details" aria-expanded="false" aria-controls="Details">+ Product Details</h2>
+            
+
+              <!-- ============== -->
+              <!-- <section class="question-section"> -->
+                
+                <div class="collapse mt-4 Details" id="Details">
+                  <h4 class="text-primary mb-4">상품 스펙</h4>
+                  <table border="1" style="border-collapse: collapse; width: 100%;">
+                    <colgroup>
+                      <col style="width: 16%;">
+                      <col style="width: 30%;">
+                      <col style="width: 20%;">
+                      <col style="width: 34%;">
+                    </colgroup>
+                    <tr>
+                      <td class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">모델명*</td>
+                      <td h5 class="mt-2 mb-1" style="text-align: center; border: 1px solid black; padding: 10px;">{{detailProduct.productModel}}</td>
+                      <td class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">주요 기능*</td>
+                      <td h5 class="mt-2 mb-1" style="text-align: center; border: 1px solid black; padding: 10px;">{{detailProduct.productFunction}}</td>
+                    </tr>
+                    <tr>
+                      <td class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">색상</td>
+                      <td style="text-align: center; border: 1px solid black; padding: 10px;">{{detailProduct.productColor}}</td>
+                      <td class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">크기 (가로x세로x높이)</td>
+                      <td style="text-align: center; border: 1px solid black; padding: 10px;">{{detailProduct.productSize}}</td>
+                    </tr>
+                    <tr>
+                      <td class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">무게</td>
+                      <td style="text-align: center; border: 1px solid black; padding: 10px;">{{detailProduct.productWeight}}</td>
+                      <td class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">직수 방식*</td>
+                      <td style="text-align: center; border: 1px solid black; padding: 10px;">{{detailProduct.productMethod}}</td>
+                    </tr>
+                    <tr>
+                      <td class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">설치 형태*</td>
+                      <td style="text-align: center; border: 1px solid black; padding: 10px;">{{detailProduct.productType}}</td>
+                      <td class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">출시 년월</td>
+                      <td style="text-align: center; border: 1px solid black; padding: 10px;">{{ detailProduct.productRdate }}</td>
+                    </tr>
+                    <tr>
+                      <td class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">제조사</td>
+                      <td style="text-align: center; border: 1px solid black; padding: 10px;">{{detailProduct.productCompany}}</td>
+                      <td class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">제조 국가</td>
+                      <td style="text-align: center; border: 1px solid black; padding: 10px;">made in KOREA</td>
+                    </tr>
+                  </table>
+                </div>
+            </div>
+
+
+            <!-- 가격 -->
+            <div class="text-block">
+              <h2 data-bs-toggle="collapse" data-bs-target="#Price" aria-expanded="false" aria-controls="Price">+ Price Details</h2>
+             
+
+              <!-- ============== -->
+              <!-- <section class="question-section"> -->
+                
+                <div class="collapse mt-4 Price" id="Price">
+                  <h4 class="text-primary mb-4">가격 혜택</h4>
+                  <table border="1" style="border-collapse: collapse; width: 100%;">
+                    <colgroup>
+                      <col style="width: 16%;">
+                      <col style="width: 30%;">
+                      <col style="width: 20%;">
+                      <col style="width: 34%;">
+                    </colgroup>
+                    <tr>
+                      <td class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">모델명</td>
+                      <td h5 class="mt-2 mb-1" style="text-align: center; border: 1px solid black; padding: 10px;">{{detailProduct.productModel}}</td>
+                      <td class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">주요 기능</td>
+                      <td h5 class="mt-2 mb-1" style="text-align: center; border: 1px solid black; padding: 10px;">{{detailProduct.productFunction}}</td>
+                    </tr>
+                    <tr>
+                      <td class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">색상</td>
+                      <td style="text-align: center; border: 1px solid black; padding: 10px;">{{detailProduct.productColor}}</td>
+                      <td class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">크기 (가로x세로x높이)</td>
+                      <td style="text-align: center; border: 1px solid black; padding: 10px;">{{detailProduct.productSize}}</td>
+                    </tr>
+                    <tr>
+                      <td class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">무게</td>
+                      <td style="text-align: center; border: 1px solid black; padding: 10px;">{{detailProduct.productWeight}}</td>
+                      <td class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">직수 방식</td>
+                      <td style="text-align: center; border: 1px solid black; padding: 10px;">{{detailProduct.productMethod}}</td>
+                    </tr>
+                    <tr>
+                      <td class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">설치 형태</td>
+                      <td style="text-align: center; border: 1px solid black; padding: 10px;">{{detailProduct.productType}}</td>
+                      <td class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">출시 년월</td>
+                      <td style="text-align: center; border: 1px solid black; padding: 10px;">{{ detailProduct.productRdate }}</td>
+                    </tr>
+                    <tr>
+                      <td class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">제조사</td>
+                      <td style="text-align: center; border: 1px solid black; padding: 10px;">{{detailProduct.productCompany}}</td>
+                      <td class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">제조 국가</td>
+                      <td style="text-align: center; border: 1px solid black; padding: 10px;">made in KOREA</td>
+                    </tr>
+                  </table>
+                </div>
+              <!-- </section> -->
+              
+            </div>
+
             
   
             <!-- 리뷰 -->
             <div class="text-block">
-              <p class="subtitle text-sm text-primary">Reviews    </p>
+              <h2 data-bs-toggle="collapse" data-bs-target="#Reviews" aria-expanded="false" aria-controls="Reviews">+ Reviews (<i class="fa fa-xs fa-star text-primary"></i>&nbsp;{{ avgStar }})</h2>
+               
               <p class="mb-3 mb-md-0"><strong><span class="h5 text-primary">{{reviewTotal}}</span></strong> &nbsp;개의 리뷰가 있습니다</p>
-              <h5 class="mb-4">Listing Reviews </h5>
-
+<!--                        <h3 class="mb-4">리뷰 평점 <i class="fa fa-xs fa-star text-primary"></i>&nbsp;{{ avgStar }}</h3> -->
+              <br>
+              <button class="btn btn-outline-primary" type="button">리뷰 남기기</button>
               <!-- 리뷰 작성 ============== -->
-              <div>
+              <!-- <div>
                 <button class="btn btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#leaveReview" aria-expanded="false" aria-controls="leaveReview">Leave a review</button>
                 <div class="collapse mt-4" id="leaveReview">
                   <h5 class="mb-4">Leave a review</h5>
@@ -225,14 +333,15 @@
                     <button class="btn btn-primary" type="submit">Post review</button>
                   </form>
                 </div>
-              </div>
+              </div> -->
+
               <!-- ============== -->
               <!-- <section class="review-section"> -->
-                <div class="d-flex d-block d-sm-flex review" :value="review.reviewNo" :key="review.reviewNo" v-for="review in reviews">
+                <div class="collapse mt-4 review" id="Reviews" :value="review.reviewNo" :key="review.reviewNo" v-for="review in reviews">
                   <div class="text-md-center flex-shrink-0 me-4 me-xl-5"><img class="d-block avatar avatar-xl p-2 mb-2" v-bind:src="review.reImageUrl"><span class="text-uppercase text-muted text-sm">{{review.reDate}}</span></div>
 
                   <div>
-                    <h6 class="mt-2 mb-1">작성자 </h6>
+                    <h6 class="mt-2 mb-1">{{review.member.mem_name}}</h6>
                     <!-- <div class="mb-2"><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i></div> -->
                     <div class="mb-2"><i v-for="n in review.reStar" :key="n" class="fa fa-xs fa-star text-primary"></i></div>
                     <p class="text-muted text-sm">{{ review.reContent }}</p>
@@ -240,7 +349,7 @@
                 </div>
               <!-- </section> -->
               
-              <div class="d-flex d-block d-sm-flex review">
+              <!-- <div class="d-flex d-block d-sm-flex review">
                 <div class="text-md-center flex-shrink-0 me-4 me-xl-5"><img class="d-block avatar avatar-xl p-2 mb-2" src="img/avatar/avatar-2.jpg" alt="Luke Skywalker"><span class="text-uppercase text-muted text-sm">Dec 2018</span></div>
                 <div>
                   <h6 class="mt-2 mb-1">Luke Skywalker</h6>
@@ -248,7 +357,145 @@
                   </div>
                   <p class="text-muted text-sm">The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. &quot;What's happened to me?&quot; he thought. It wasn't a dream.     </p>
                 </div>
+              </div> -->
+<!--               <div class="d-flex d-block d-sm-flex review">
+                <div class="text-md-center flex-shrink-0 me-4 me-xl-5"><img class="d-block avatar avatar-xl p-2 mb-2" src="img/avatar/avatar-3.jpg" alt="Princess Leia"><span class="text-uppercase text-muted text-sm">Dec 2018</span></div>
+                <div>
+                  <h6 class="mt-2 mb-1">Princess Leia</h6>
+                  <div class="mb-2"><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-gray-200"></i><i class="fa fa-xs fa-star text-gray-200"></i>
+                  </div>
+                  <p class="text-muted text-sm">His room, a proper human room although a little too small, lay peacefully between its four familiar walls. A collection of textile samples lay spread out on the table.     </p>
+                </div>
               </div>
+              <div class="d-flex d-block d-sm-flex review">
+                <div class="text-md-center flex-shrink-0 me-4 me-xl-5"><img class="d-block avatar avatar-xl p-2 mb-2" src="img/avatar/avatar-4.jpg" alt="Jabba Hut"><span class="text-uppercase text-muted text-sm">Dec 2018</span></div>
+                <div>
+                  <h6 class="mt-2 mb-1">Jabba Hut</h6>
+                  <div class="mb-2"><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i>
+                  </div>
+                  <p class="text-muted text-sm">Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame.     </p>
+                </div>
+              </div>
+               -->
+            </div>
+
+            <!-- 문의 -->
+            <div class="text-block">
+              <h2 data-bs-toggle="collapse" data-bs-target="#Questions" aria-expanded="false" aria-controls="Questions">+ Questions</h2>
+               
+            <p class="mb-3 mb-md-0"><strong><span class="h5 text-primary">{{inquiryTotal}}</span></strong> &nbsp;개의 문의가 있습니다</p>
+<!--                        <h3 class="mb-4">리뷰 평점 <i class="fa fa-xs fa-star text-primary"></i>&nbsp;{{ avgStar }}</h3> -->
+
+              <!-- 문의 작성 ============== -->
+              <br>
+              <div>
+                <button class="btn btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#leaveQuestion" aria-expanded="false" aria-controls="leaveQuestion">문의하기</button>
+                <div class="collapse mt-4" id="leaveQuestion">
+                  <h5 class="mb-4">문의하실 제목과 내용을 작성하신 후 [작성하기] 버튼을 클릭하세요 :)</h5>
+                  <form class="form" id="contact-form" method="get" action="#">
+                    <div class="mb-4">
+                      <label class="form-label" for="questiontitle">문의 제목</label>
+                      <input class="form-control" name="question" id="question" placeholder="Enter question title" required="required"/>
+                    </div>
+                    <div class="mb-4">
+                      <label class="form-label" for="questionContent">문의 내용</label>
+                      <textarea class="form-control" rows="4" name="question" id="question" placeholder="Enter your question" required="required"></textarea>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <div class="mb-4">
+                          <label class="form-label" for="name">작성자 |</label>
+                          &nbsp;&nbsp;&nbsp;<label>정소희</label>
+                        </div>
+                        <div class="mb-4">
+                          <label class="form-label" for="email">이메일 |</label>
+                          &nbsp;&nbsp;&nbsp;<span>ssohee98@naver.com</span>
+                        </div>
+                        <div class="mb-4">
+                          <label class="form-label" for="phone">휴대폰 |</label>
+                          &nbsp;&nbsp;&nbsp;<span>010-2685-2139</span>
+                        </div>
+                      </div>
+                      <!-- <div class="col-sm-6">
+                        <div class="mb-4">
+                          <label class="form-label" for="rating">Your rating *</label>
+                          <select class="form-select focus-shadow-0" name="rating" id="rating">
+                            <option value="5">&#9733;&#9733;&#9733;&#9733;&#9733; (5/5)</option>
+                            <option value="4">&#9733;&#9733;&#9733;&#9733;&#9734; (4/5)</option>
+                            <option value="3">&#9733;&#9733;&#9733;&#9734;&#9734; (3/5)</option>
+                            <option value="2">&#9733;&#9733;&#9734;&#9734;&#9734; (2/5)</option>
+                            <option value="1">&#9733;&#9734;&#9734;&#9734;&#9734; (1/5)</option>
+                          </select>
+                        </div>
+                      </div> -->
+                    </div>
+                    
+                    <button class="btn btn-primary" type="submit">문의 작성하기</button>
+                  </form>
+                </div>
+              </div> 
+
+              <!-- ============== -->
+              <!-- <section class="question-section"> -->
+                
+                <div class="collapse mt-4 review" id="Questions" :value="inquiry.proqNo" :key="inquiry.proqNo" v-for="inquiry in inquirys">
+                  <div class="row">
+                    <div class="col-md-2">
+                      <p class="text-muted text-sm">문의 상태</p>
+                    </div>
+                    <div class="col-md-5">
+                      <p class="text-muted text-sm">문의 제목</p>
+                    </div>
+                    <div class="col-md-2">
+                      <p class="text-muted text-sm">작성자</p>
+                    </div>
+                    <!-- <div class="col-md-4">
+                      <p class="text-muted text-sm">{{ inquiry.proqContent }}</p>
+                    </div> -->
+                    <div class="col-md-3">
+                      <p class="text-muted text-sm">문의 일시</p>
+                      <!-- <p class="text-muted text-sm">{{ formattedDate(inquiry.proqDate) }}</p> -->
+                    </div>
+                  </div>
+                  <!-- <div class="text-md-center flex-shrink-0 me-4 me-xl-5"><img class="d-block avatar avatar-xl p-2 mb-2" v-bind:src="review.reImageUrl"><span class="text-uppercase text-muted text-sm">{{review.reDate}}</span></div> -->
+                  <!-- <div>
+                    <h6 class="mt-2 mb-1">{{inquiry.member.mem_name}}</h6><p class="text-muted text-sm">{{ inquiry.proqTitle }}</p>
+                    <p class="text-muted text-sm">{{ inquiry.proqContent }}</p>
+                    <p class="text-muted text-sm">{{ inquiry.proqDate }}</p>
+                    <p class="text-muted text-sm">{{ inquiry.proqState }}</p>
+                  </div> -->
+                  
+                  
+                  <div class="row">
+                    <div class="col-md-2">
+                      <h5 class="mt-2 mb-1 text-primary">{{ inquiry.proqState }}</h5>
+                    </div>
+                    <div class="col-md-5">
+                      <h5 class="mt-2 mb-1">{{ inquiry.proqTitle }}</h5>
+                    </div>
+                    <div class="col-md-2">
+                      <h5 class="mt-2 mb-1">{{inquiry.member.mem_name}}</h5>
+                    </div>
+                    <!-- <div class="col-md-4">
+                      <p class="text-muted text-sm">{{ inquiry.proqContent }}</p>
+                    </div> -->
+                    <div class="col-md-3">
+                      <h5 class="mt-2 mb-1 text-muted text-sm">{{ inquiry.proqDate }}</h5>
+                      <!-- <p class="text-muted text-sm">{{ formattedDate(inquiry.proqDate) }}</p> -->
+                    </div>
+                  </div>
+                </div>
+              <!-- </section> -->
+              
+              <!-- <div class="d-flex d-block d-sm-flex review">
+                <div class="text-md-center flex-shrink-0 me-4 me-xl-5"><img class="d-block avatar avatar-xl p-2 mb-2" src="img/avatar/avatar-2.jpg" alt="Luke Skywalker"><span class="text-uppercase text-muted text-sm">Dec 2018</span></div>
+                <div>
+                  <h6 class="mt-2 mb-1">Luke Skywalker</h6>
+                  <div class="mb-2"><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-gray-200"></i>
+                  </div>
+                  <p class="text-muted text-sm">The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. &quot;What's happened to me?&quot; he thought. It wasn't a dream.     </p>
+                </div>
+              </div> -->
 <!--               <div class="d-flex d-block d-sm-flex review">
                 <div class="text-md-center flex-shrink-0 me-4 me-xl-5"><img class="d-block avatar avatar-xl p-2 mb-2" src="img/avatar/avatar-3.jpg" alt="Princess Leia"><span class="text-uppercase text-muted text-sm">Dec 2018</span></div>
                 <div>
@@ -533,6 +780,41 @@
   import { useRoute, useRouter } from 'vue-router';
   
   export default {
+
+
+  //   methods: {
+  //   formattedDate(proqDate) {
+  //     return new Date(proqDate).toLocaleString('ko-KR', {
+  //       timeZone: 'Asia/Seoul',
+  //       hour12: false,
+  //     })
+  //   },
+  // },
+
+  //   filters: {
+  //   formatDate(value) {
+  //     const date = new Date(value);
+  //     const year = date.getFullYear();
+  //     const month = (date.getMonth() + 1).toString().padStart(2, '0');
+  //     const day = date.getDate().toString().padStart(2, '0');
+  //     return `${year}/${month}/${day}`;
+  //   },
+  // },
+
+  filters: {
+    formatDate(proqDate) {
+      return new Date(proqDate);
+    },
+  },
+
+  // filters: {
+  //   formatDate: function (value) {
+  //       if (value) {
+  //           return moment(value).format('YYYY/MM/DD')
+  //       }
+  //   },
+  // },
+
   setup() {
     const route = useRoute();
     const router = useRouter();
@@ -540,7 +822,10 @@
     //const detailProduct = ref([]);
     const review = ref('');
     const reviews = ref([]);
+    const inquiry = ref('');
+    const inquirys = ref([]);
     const reviewTotal = ref(0);
+    const inquiryTotal = ref(0);
     const detailProduct = ref({
       productName: '',
       productModel: '',
@@ -573,10 +858,6 @@
       //   console.log(detailProduct.value.productName);
       // }, 0);
     }
-    
-    onMounted(() => {
-      getProductDetail();
-    }); 
 
     const getReviewList = async() => {
       console.log("리뷰 받아와??");
@@ -585,9 +866,28 @@
       reviews.value = res.data;
       reviewTotal.value = reviews.value.length;
     }
+
+    const avgStar = ref(0);
+
+    const getReviewStar = async() => {
+      const avg = await axios.get('/product/' +productNo+ '/reviewStar');
+      console.log(avg.data);
+      avgStar.value = avg.data;
+    } 
+
+    const getInquiryList = async() => {
+      console.log("문의 받아와??");
+      const res = await axios.get('/product/' +productNo+ '/proQna');
+      console.log(res.data);
+      inquirys.value = res.data;
+      inquiryTotal.value = inquirys.value.length;
+    }
     
     onMounted(() => {
+      getProductDetail();
       getReviewList();
+      getReviewStar();
+      getInquiryList();
     });
 
     // const orderTypeSelect = document.getElementById('orderType');
@@ -604,7 +904,7 @@
     // const orderTypeSelect = document.getElementById('orderType');
     // const contractLengthSelect = document.getElementById('contractLength');
 
-    // const updateProductPrice = () => {
+    // const updateProductPrice = () => {e
     //   const rentalPriceLabel = document.querySelector('.h5[name="orderPrice"]');
     //   const purchasePriceLabel = document.querySelector('.h5[name="rentalPrice"]');
 
@@ -649,6 +949,10 @@
     review,
     reviews,
     reviewTotal,
+    avgStar,
+    inquiry,
+    inquirys,
+    inquiryTotal,
   }
 
   }
