@@ -2,7 +2,7 @@
       <body class="hold-transition sidebar-mini">
         <div class="wrapper">
              <Sidebar />
-            <AdminProductList :products="state.products"
+            <AdminOrderList :products="state.products"
             @delete-product="deleteProduct"/>  
         </div>
     </body>

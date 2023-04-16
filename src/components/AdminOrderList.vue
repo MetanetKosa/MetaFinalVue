@@ -3,67 +3,17 @@
             <section class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
-                    <div class="container-fluid">
-                    <form action="enhanced-results.html">
-                        <div class="row">
-                            <div class="col-md-10 offset-md-1">
-                                <div class="row">
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <label>기능명</label>
-                                            <select class="select2" style="width: 100%;">
-                                                <option>냉온정수기</option>
-                                                <option>냉정수기</option>
-                                                <option>냉온절수기 + 얼음</option> 
-                                                <option>냉정절수기 + 얼음</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-3">
-                                        <div class="form-group">
-                                            <label>Sort Order:</label>
-                                            <select class="select2" style="width: 100%;">
-                                                <option selected>오름차순</option>
-                                                <option>내림차순</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-3">
-                                        <div class="form-group">
-                                            <label>Order By:</label>
-                                            <select class="select2" style="width: 100%;">
-                                                <option selected>제품명</option>
-                                                <option>등록일</option>
-                                                <option>판매량</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="input-group input-group-lg">
-                                        <input type="search" class="form-control form-control-lg" placeholder="제품 검색">
-                                        <div class="input-group-append">
-                                            <button type="submit" class="btn btn-lg btn-default">
-                                                <i class="fa fa-search"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                     </div>
-                        <div class="col-sm-6">
-                            <h1>제품 목록</h1>
-                        </div>
-                        <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-right">
+                    <div class="col-sm-6">
+                        <h1>구매 목록</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">제품 목록</li>
-                            </ol>
-                        </div>
-                        </div>
-                    </div><!-- /.container-fluid -->
+                            <li class="breadcrumb-item active">구매 목록</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
                     </section>
 
             <!-- Main content -->
