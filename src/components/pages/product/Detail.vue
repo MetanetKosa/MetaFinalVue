@@ -100,7 +100,7 @@
         </div>
       </div>
 
-      <div class="py-6 bg-gray-100"> 
+      <div class="py-6 bg-gray-100 text-left"> 
         <div class="container">
           <!-- 상세 탭 -->
           <div class="vip_tabBar">
@@ -499,14 +499,14 @@
                   <button class="btn btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#leaveQuestion" aria-expanded="false" aria-controls="leaveQuestion">문의하기</button>
                   <div class="collapse mt-4" id="leaveQuestion">
                     <!-- <h5 class="mb-4">문의하실 제목과 내용을 작성하신 후 [작성하기] 버튼을 클릭하세요 :)</h5> -->
-                    <form class="form" id="contact-form" method="get" action="#">
+                    <form @submit.prevent="submitInquiry" class="form" name="inquiry-register" id="inquiry-form">
                       <div class="mb-4">
                         <label class="form-label" for="questiontitle">문의 제목</label>
-                        <input class="form-control" name="question" id="question" placeholder="Enter question title" required="required"/>
+                        <input class="form-control" v-model="qna.proqTitle" name="questionTitle" type="text" id="questionTitle" placeholder="문의 제목" required="required"/>
                       </div>
                       <div class="mb-4">
                         <label class="form-label" for="questionContent">문의 내용</label>
-                        <textarea class="form-control" rows="4" name="question" id="question" placeholder="Enter your question" required="required"></textarea>
+                        <textarea class="form-control" v-model="qna.proqContent" rows="4" name="questionContent" type="text" id="questionContent" placeholder="문의 내용" required="required"></textarea>
                       </div>
                       <div class="row" style="text-align: left;">
                         <div class="col-sm-6">
@@ -524,12 +524,11 @@
                           </div>
                         </div>
                       </div>
-                      <button class="btn btn-primary" type="submit">문의 작성하기</button>
+                      <button @click="submitInquiry" class="btn btn-primary">문의 작성하기</button>
                     </form>
                   </div>
-                </div>
 
-                <!-- <section class="question-section"> -->
+                  <!-- <section class="question-section"> -->
                 <div class="text-block collapse mt-4 questions" :value="inquiry.proqNo" :key="inquiry.proqNo" v-for="inquiry in inquirys">
                   <div class="row">
                     <div class="col-md-2">
@@ -598,10 +597,8 @@
                   </div>
                 </div>
               <!-- </section> -->
-                
+                </div>
               </div> 
-              
-              
             </div>
 
           <h5 class="mb-0">Similar places</h5>
@@ -791,73 +788,7 @@
           </div>
         </div>
       </div>
-      <!-- Footer-->
-      <footer class="position-relative z-index-10 d-print-none">
-        <!-- Main block - menus, subscribe form-->
-        <div class="py-6 bg-gray-200 text-muted"> 
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-4 mb-5 mb-lg-0">
-                <div class="fw-bold text-uppercase text-dark mb-3">Directory</div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
-                <ul class="list-inline">
-                  <li class="list-inline-item"><a class="text-muted text-primary-hover" href="#" target="_blank" title="twitter"><i class="fab fa-twitter"></i></a></li>
-                  <li class="list-inline-item"><a class="text-muted text-primary-hover" href="#" target="_blank" title="facebook"><i class="fab fa-facebook"></i></a></li>
-                  <li class="list-inline-item"><a class="text-muted text-primary-hover" href="#" target="_blank" title="instagram"><i class="fab fa-instagram"></i></a></li>
-                  <li class="list-inline-item"><a class="text-muted text-primary-hover" href="#" target="_blank" title="pinterest"><i class="fab fa-pinterest"></i></a></li>
-                  <li class="list-inline-item"><a class="text-muted text-primary-hover" href="#" target="_blank" title="vimeo"><i class="fab fa-vimeo"></i></a></li>
-                </ul>
-              </div>
-              <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
-                <h6 class="text-uppercase text-dark mb-3">Rentals</h6>
-                <ul class="list-unstyled">
-                  <li><a class="text-muted" href="/../../../../html/index.html">Rooms</a></li>
-                  <li><a class="text-muted" href="/../../../../html/category-rooms.html">Map on top</a></li>
-                  <li><a class="text-muted" href="/../../../../html/category-2-rooms.html">Side map</a></li>
-                  <li><a class="text-muted" href="/../../../../html/category-3-rooms.html">No map</a></li>
-                  <li><a class="text-muted" href="/../../../../html/detail-rooms.html">Room detail</a></li>
-                </ul>
-              </div>
-              <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
-                <h6 class="text-uppercase text-dark mb-3">Pages</h6>
-                <ul class="list-unstyled">
-                  <li><a class="text-muted" href="/../../../../html/compare.html">Comparison                                   </a></li>
-                  <li><a class="text-muted" href="/../../../../html/team.html">Team                                   </a></li>
-                  <li><a class="text-muted" href="/../../../../html/contact.html">Contact                                   </a></li>
-                </ul>
-              </div>
-              <div class="col-lg-4">
-                <h6 class="text-uppercase text-dark mb-3">Daily Offers & Discounts</h6>
-                <p class="mb-3"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. At itaque temporibus.</p>
-                <form action="#" id="newsletter-form">
-                  <div class="input-group mb-3">
-                    <input class="form-control bg-transparent border-dark border-end-0" type="email" placeholder="Your Email Address" aria-label="Your Email Address">
-                    <button class="btn btn-outline-dark border-start-0" type="submit"> <i class="fa fa-paper-plane text-lg"></i></button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Copyright section of the footer-->
-        <div class="py-4 fw-light bg-gray-800 text-gray-300">
-          <div class="container">
-            <div class="row align-items-center">
-              <div class="col-md-6 text-center text-md-start">
-                <p class="text-sm mb-md-0">&copy; 2021, Your company.  All rights reserved.</p>
-              </div>
-              <div class="col-md-6">
-                <ul class="list-inline mb-0 mt-2 mt-md-0 text-center text-md-end">
-                  <li class="list-inline-item"><img class="w-2rem" src="/../../../../html/img/visa.svg" alt="..."></li>
-                  <li class="list-inline-item"><img class="w-2rem" src="/../../../../html/img/mastercard.svg" alt="..."></li>
-                  <li class="list-inline-item"><img class="w-2rem" src="/../../../../html/img/paypal.svg" alt="..."></li>
-                  <li class="list-inline-item"><img class="w-2rem" src="/../../../../html/img/western-union.svg" alt="..."></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
+  
       </body>
   </template>
   
@@ -913,6 +844,7 @@
     const inquirys = ref([]);
     const reviewTotal = ref(0);
     const inquiryTotal = ref(0);
+    const qna = ref([]);
     const detailProduct = ref({
       productName: '',
       productModel: '',
@@ -968,6 +900,27 @@
       console.log(res.data);
       inquirys.value = res.data;
       inquiryTotal.value = inquirys.value.length;
+    }
+
+    const submitInquiry = async() => {
+      console.log(qna.value);
+      console.log(productNo);
+      const data = {
+        proqTitle : qna.value.proqTitle,
+        proqContent: qna.value.proqContent
+      }
+      console.log("data" + data.proqTitle);
+      try{
+        const res = await axios.post('/product/' +productNo+ '/qnaInsert', data);
+        if(res != null) {
+          alert("문의가 등록되었습니다");
+          //router.push(route.path)
+          window.location.reload();  //현재 페이지 reload
+        } 
+      } catch(error) {
+        console.error(error);
+        alert("문의 등록에 실패하였습니다.")
+      }
     }
     
     onMounted(() => {
@@ -1040,6 +993,8 @@
     inquiry,
     inquirys,
     inquiryTotal,
+    qna,
+    submitInquiry,
   }
 
   }

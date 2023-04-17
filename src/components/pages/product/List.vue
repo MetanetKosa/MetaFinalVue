@@ -3,7 +3,8 @@
     <div class="container">
     <div class="container-fluid pt-5 pb-3 border-bottom px-lg-5">
       <div class="row">
-        <section class="py-6 bg-gray-100"> 
+
+      <section class="py-6 bg-gray-100"> 
        <div class="container">
          <div class="text-center pb-lg-4">
            <p class="subtitle text-secondary">Best Items 5</p>
@@ -42,84 +43,6 @@
                  </div>
                </div>
              </div>
-             <div class="swiper-slide h-auto px-2">
-               <!-- venue item-->
-               <div class="w-100 h-100 hover-animate" data-marker-id="59c0c8e322f3375db4d89128">
-                 <div class="card h-100 border-0 shadow">
-                   <div class="card-img-top overflow-hidden dark-overlay bg-cover" style="background-image: url(/../html/img/photo/restaurant-1436018626274-89acd1d6ec9d.jpg); min-height: 200px;"><a class="tile-link" href="detail.html"></a>
-                     <div class="card-img-overlay-bottom z-index-20">
-                       <h4 class="text-white text-shadow">Plutorque</h4>
-                       <p class="mb-2 text-xs"><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i>
-                       </p>
-                     </div>
-                     <div class="card-img-overlay-top d-flex justify-content-between align-items-center">
-                       <div class="badge badge-transparent badge-pill px-3 py-2">Restaurant</div><a class="card-fav-icon position-relative z-index-40" href="javascript: void();"> 
-                         <svg class="svg-icon text-white">
-                           <use xlink:href="#heart-1"> </use>
-                         </svg></a>
-                     </div>
-                   </div>
-                   <div class="card-body">
-                     <p class="text-sm text-muted mb-3"> Proident irure eiusmod velit veniam consectetur id minim irure et nostrud mollit magna velit. Commodo amet proident aliq...</p>
-                     <p class="text-sm text-muted text-uppercase mb-1">By <a href="#" class="text-dark">Matt Damon</a></p>
-                     <p class="text-sm mb-0"><a class="me-1" href="#">Restaurant,</a><a class="me-1" href="#">Fusion</a>
-                     </p>
-                   </div>
-                 </div>
-               </div>
-             </div>
-             <div class="swiper-slide h-auto px-2">
-               <!-- venue item-->
-               <div class="w-100 h-100 hover-animate" data-marker-id="59c0c8e39aa2eed0626e485d">
-                 <div class="card h-100 border-0 shadow">
-                   <div class="card-img-top overflow-hidden dark-overlay bg-cover" style="background-image: url(/../html/img/photo/restaurant-1504087697492-238a6bf49ce8.jpg); min-height: 200px;"><a class="tile-link" href="detail.html"></a>
-                     <div class="card-img-overlay-bottom z-index-20">
-                       <h4 class="text-white text-shadow">Prosure</h4>
-                       <p class="mb-2 text-xs"><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i>
-                       </p>
-                     </div>
-                     <div class="card-img-overlay-top d-flex justify-content-between align-items-center">
-                       <div class="badge badge-transparent badge-pill px-3 py-2">Restaurant</div><a class="card-fav-icon position-relative z-index-40" href="javascript: void();"> 
-                         <svg class="svg-icon text-white">
-                           <use xlink:href="#heart-1"> </use>
-                         </svg></a>
-                     </div>
-                   </div>
-                   <div class="card-body">
-                     <p class="text-sm text-muted mb-3"> Cillum sunt reprehenderit ea non irure veniam dolore commodo labore fugiat est consequat velit. Cupidatat nisi qui ad si...</p>
-                     <p class="text-sm text-muted text-uppercase mb-1">By <a href="#" class="text-dark">Matt Damon</a></p>
-                     <p class="text-sm mb-0"><a class="me-1" href="#">Nisi,</a><a class="me-1" href="#">Ex,</a><a class="me-1" href="#">Eiusmod</a>
-                     </p>
-                   </div>
-                 </div>
-               </div>
-             </div>
-             <div class="swiper-slide h-auto px-2">
-               <!-- venue item-->
-               <div class="w-100 h-100 hover-animate" data-marker-id="59c0c8e39aa2edasd626e485d">
-                 <div class="card h-100 border-0 shadow">
-                   <div class="card-img-top overflow-hidden dark-overlay bg-cover" style="background-image: url(/../html/img/photo/restaurant-1505275350441-83dcda8eeef5.jpg); min-height: 200px;"><a class="tile-link" href="detail.html"></a>
-                     <div class="card-img-overlay-bottom z-index-20">
-                       <h4 class="text-white text-shadow">Take That</h4>
-                       <p class="mb-2 text-xs"><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300">                    </i>
-                       </p>
-                     </div>
-                     <div class="card-img-overlay-top d-flex justify-content-between align-items-center">
-                       <div class="badge badge-transparent badge-pill px-3 py-2">Café</div><a class="card-fav-icon position-relative z-index-40" href="javascript: void();"> 
-                         <svg class="svg-icon text-white">
-                           <use xlink:href="#heart-1"> </use>
-                         </svg></a>
-                     </div>
-                   </div>
-                   <div class="card-body">
-                     <p class="text-sm text-muted mb-3"> Cillum sunt reprehenderit ea non irure veniam dolore commodo labore fugiat est consequat velit. Cupidatat nisi qui ad si...</p>
-                     <p class="text-sm text-muted text-uppercase mb-1">By <a href="#" class="text-dark">Matt Damon</a></p>
-                     <p class="text-sm mb-0"><a class="me-1" href="#">Nisi,</a><a class="me-1" href="#">Ex,</a><a class="me-1" href="#">Eiusmod</a>
-                     </p>
-                   </div>
-                 </div>
-               </div>
-             </div>
            </div>
            <!-- If we need pagination-->
            <div class="swiper-pagination"></div>
@@ -128,8 +51,6 @@
        </div>
      </section>
       </div>
-    </div>
-    <div class="container-fluid py-5 px-lg-5">
       <div class="row">
         <!-- 왼쪽 사이드 바 필터 -->
         <div class="col-lg-3 pt-3">
@@ -424,6 +345,7 @@
         <div class="col-lg-9">
           <div class="d-flex justify-content-between align-items-center flex-column flex-md-row mb-4">
             <div class="me-3">
+              <p class="mb-3 mb-md-0" v-if="searchKeyword"><strong>[<span class="h5 text-primary">{{searchKeyword}}</span>]</strong> &nbsp;키워드 검색 결과</p>
               <p class="mb-3 mb-md-0"><strong><span class="h5 text-primary">{{productTotal}}</span></strong> &nbsp;results found</p>
             </div>
             <div>
@@ -511,6 +433,26 @@ export default {
     const products = ref([]);
     const bestProduct = ref('');
     const bestProducts = ref([]);
+    const searchKeyword = ref('');
+
+    // if(route.query.searchKeyword) {
+    //   searchKeyword.value = route.query.searchKeyword;
+    //   const getProductList = async() => {
+    //     console.log("검색 상품 받아와??");
+    //     const res = await axios.get('/product/search/' +searchKeyword.value);
+    //     products.value = res.data;
+    //     productTotal.value = products.value.length;
+    //   } ; getProductList();
+    // } else {
+    //   const getProductList = async() => {
+    //     console.log("상품 받아와??");
+    //     const res = await axios.get('/product/products');
+    //     console.log(res.data);
+    //     products.value = res.data;
+    //     productTotal.value = products.value.length;
+    //   } ; getProductList();
+    // }
+
 
     const getProductList = async() => {
       console.log("상품 받아와??");
@@ -555,6 +497,7 @@ export default {
     bestProduct,
     bestProducts,
     moveToProductDetailPage,
+    searchKeyword,
   }
 
   }

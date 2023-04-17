@@ -1,9 +1,6 @@
-<!-- <style src="../../../../public/html/css/style.sea.css"></style> -->
+<style src="../../../../public/html/css/style.sea.css"></style>
 
 <template>
-  <head>
-    <link rel="stylesheet" href="../../../../public/html/css/style.default.css">
-  </head>
     <body>
     <div class="container">
     <div class="container-fluid pt-5 pb-3 border-bottom px-lg-5">
@@ -464,7 +461,7 @@
                     <div class="card-body d-flex align-items-center">
                       <div class="w-100">
                         <br>
-                        <h3 class="mb-5" style="text-align: center;"><a class="text-decoration-none text-dark" href="detail-rooms.html">{{ searchProduct.productName }}</a></h3>
+                        <h3 class="mb-5" style="text-align: center;">{{ searchProduct.productName }}</h3>
                         <!-- <div class="d-flex card-subtitle mb-3">
                           <p class="flex-grow-1 mb-0 text-muted text-sm">Private room</p>
                           <p class="flex-shrink-1 mb-0 card-stars text-xs text-end"><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i>

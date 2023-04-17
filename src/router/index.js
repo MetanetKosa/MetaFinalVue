@@ -18,7 +18,8 @@ import MyPage from '@/components/pages/mypage/MyPage.vue';
 
 const router = createRouter({
     history: createWebHistory(),
-    routes: [{
+    routes: [
+        {
             path: '/',
             name: 'Home',
             component: Home
@@ -69,7 +70,7 @@ const router = createRouter({
             component: Rental3
         },
         {
-            path: '/product/detail/productNo=:pno',
+            path: '/product/detail/:pno',
             name: 'ProductDetail',
             component: Detail
         },
@@ -79,7 +80,7 @@ const router = createRouter({
             component: List
         },
         {
-            path: '/search/keyword=:searchKeyword',
+            path: '/search/:searchKeyword',
             name: 'SearchList',
             component: SearchList
         },
