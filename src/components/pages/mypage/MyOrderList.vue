@@ -78,8 +78,8 @@
                     <div v-if="state.products[index]"> 
                       <h6>상품명: {{ state.products[index].productName }}</h6>
                     <div v-if="order.orderState === '주문 완료'">
-                    <button id="orderCancelButton" @click="orderCancel(order.orderNo)">
-                      주문 취소
+                    <button class="btn btn-secondary btn-sm" id="orderCancelButton" @click="orderCancel(order.orderNo)">
+                      주문취소
                     </button>
                   </div>
                   </div>
@@ -95,13 +95,7 @@
           <div v-if="showModal" class="modal">
                     <div class="modal-content">
                         <span class="close" @click="showModal = false">&times;</span>
-                        <h3>별점</h3>
-                        <h3>사용후기</h3>
-                        <textarea></textarea>
-                        <h6>리뷰 작성 시 유의사항
-타인에게 불쾌감을 유발할 수 있는 언어 및 이미지가 포함된 리뷰는 사용자의 신고 또는 관리자 권한에 의해 노출이 제한될 수 있습니다.
-부적절한 내용 등으로 작성자에 대한 신고가 반복 접수되는 경우는 서비스 이용이 제한될 수 있습니다.</h6>
-                        <p>모달 내용입니다.</p>
+                        <h3>삭제가 완료되었습니다.</h3>
                     </div>
                   </div>
   </body>
@@ -155,15 +149,20 @@
   },
   methods: {
     async orderCancel(orderNo){
-      const res = await axios.delete(`mypage/myorder/${orderNo}`);
-      this.deleteOrderResponseHandler(res);
+      try{
+        const res = await axios.delete(`mypage/myorder/${orderNo}`);
+        console.dir(res.status);
+        this.deleteOrderResponseHandler(res);
+      }catch(err){
+        console.error(err);
+      }
       },
       deleteOrderResponseHandler(res){
-        if(res.data.success){
+        if(res.status === 200){ // 응답이 정상이라면 Modal 나옴
           this.showModal = true;
         }else{
           this.showModal = false;
-          console.log("실패하였어요.");
+          console.log("실패하였어요.", res.data.error);
         }
     // orderCancel(orderNo){
     //   axios.delete(`mypage/myorder/${orderNo}`)
