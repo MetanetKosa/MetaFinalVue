@@ -9,9 +9,10 @@
 
                 <!-- 이미지 URL -->
                 <div class="col-lg-12 col-6 px-1 mb-2"><img class="img-fluid" v-bind:src="detailProduct.imgUrl"></div>
-                <div class="col-lg-4 col-6 px-1 mb-2"><a href="/../../../../html/img/photo/photo-1512917774080-9991f1c4c750.jpg" data-fancybox="gallery" title="Outside"><img class="img-fluid" src="/../../../../html/img/photo/photo-1512917774080-9991f1c4c750.jpg" alt="..."></a></div>
+                <!-- <div class="col-lg-4 col-6 px-1 mb-2"><a href="/../../../../html/img/photo/photo-1512917774080-9991f1c4c750.jpg" data-fancybox="gallery" title="Outside"><img class="img-fluid" src="/../../../../html/img/photo/photo-1512917774080-9991f1c4c750.jpg" alt="..."></a></div>
                 <div class="col-lg-4 col-6 px-1 mb-2"><a href="/../../../../html/img/photo/photo-1494526585095-c41746248156.jpg" data-fancybox="gallery" title="Rear entrance"><img class="img-fluid" src="/../../../../html/img/photo/photo-1494526585095-c41746248156.jpg" alt="..."></a></div>
                 <div class="col-lg-4 col-6 px-1 mb-2"><a href="/../../../../html/img/photo/photo-1494526585095-c41746248156.jpg" data-fancybox="gallery" title="Rear entrance"><img class="img-fluid" src="/../../../../html/img/photo/photo-1494526585095-c41746248156.jpg" alt="..."></a></div>
+                 -->
                 <!-- <div class="col-lg-4 col-6 px-1 mb-2"><a href="img/photo/photo-1484154218962-a197022b5858.jpg" data-fancybox="gallery" title="Kitchen"><img class="img-fluid" src="img/photo/photo-1484154218962-a197022b5858.jpg" alt="..."></a></div> -->
                 <!-- <div class="col-lg-4 col-6 px-1 mb-2"><a href="img/photo/photo-1522771739844-6a9f6d5f14af.jpg" data-fancybox="gallery" title="Bedroom"><img class="img-fluid" src="img/photo/photo-1522771739844-6a9f6d5f14af.jpg" alt="..."></a></div>
                 <div class="col-lg-4 col-6 px-1 mb-2"><a href="img/photo/photo-1488805990569-3c9e1d76d51c.jpg" data-fancybox="gallery" title="Bedroom"><img class="img-fluid" src="img/photo/photo-1488805990569-3c9e1d76d51c.jpg" alt="..."></a></div> -->
@@ -24,12 +25,31 @@
           <!-- 상품 상세 -->
           <div class="col-lg-5">
             <div class="p-4 shadow ms-lg-4 rounded sticky-top" style="top: 200px;">
-              <p  class="text-primary">New 프로모션 진행중</p>
+              <p class="text-primary" style="text-align: center;">New 프로모션 진행중</p>
               <br>
               <p class><span class="text h1">{{detailProduct.productName}}</span></p>
-              <br>
-              <p  class="text-muted">모델명 | {{detailProduct.productModel}}</p>
-              <p  class="text-muted"> 기능  | {{detailProduct.productFunction}}</p>
+              <br><br>
+              <div class="row" style="text-align: left;">
+                <div class="col-sm-6">
+                  <div class="mb-4">
+                    <label class="form-label" for="model">모델명 |</label>
+                    &nbsp;&nbsp;<label>{{detailProduct.productModel}}</label>
+                  </div>
+                  <div class="mb-4">
+                    <label class="form-label" for="function">기&nbsp;&nbsp;&nbsp;능 |</label>
+                    &nbsp;&nbsp;<span>{{detailProduct.productFunction}}</span>
+                  </div>
+                  <div class="mb-4">
+                    <label class="form-label" for="company">제조사 |</label>
+                    &nbsp;&nbsp;<span>{{detailProduct.productCompany}}</span>
+                  </div>
+                  <div class="mb-4">
+                    <label><i class="fa fa-xs fa-star text-primary"></i>&nbsp;{{ avgStar }}&nbsp;({{reviewTotal}}+)</label>
+                  </div>
+                </div>
+              </div>
+              <!-- <p  class="text-muted">모델명 | {{detailProduct.productModel}}</p>
+              <p  class="text-muted"> 기능  | {{detailProduct.productFunction}}</p> -->
               <hr class="my-4">
               <form class="form" id="booking-form" method="get" action="#" autocomplete="off">
                 <div class="mb-4">
@@ -79,6 +99,7 @@
           </div>
         </div>
       </div>
+
       <div class="py-6 bg-gray-100"> 
         <div class="container">
           <!-- 상세 탭 -->
@@ -112,7 +133,6 @@
                     </a>
                   </li>
                 </ul>
-
               </div>
             </div>
 
@@ -183,7 +203,15 @@
 
             <!-- 스펙 -->
             <div class="text-block">
-              <h2 data-bs-toggle="collapse" data-bs-target="#Details" aria-expanded="false" aria-controls="Details">+ Product Details</h2>
+              <div class="row" data-bs-toggle="collapse" data-bs-target="#Details" aria-expanded="false" aria-controls="Details">
+                <div class="col-md-11">
+                  <h2>상품 스펙</h2>
+                </div>
+                <div class="col-md-1">
+                  <h2>+</h2>
+                </div>
+              </div>
+              <!-- <h2 data-bs-toggle="collapse" data-bs-target="#Details" aria-expanded="false" aria-controls="Details">+ Product Details</h2> -->
             
 
               <!-- ============== -->
@@ -235,67 +263,129 @@
 
             <!-- 가격 -->
             <div class="text-block">
-              <h2 data-bs-toggle="collapse" data-bs-target="#Price" aria-expanded="false" aria-controls="Price">+ Price Details</h2>
+              <div class="row" data-bs-toggle="collapse" data-bs-target="#Price" aria-expanded="false" aria-controls="Price">
+                <div class="col-md-11">
+                  <h2>가격 혜택</h2>
+                </div>
+                <div class="col-md-1">
+                  <h2>+</h2>
+                </div>
+              </div>
+              <!-- <h2 data-bs-toggle="collapse" data-bs-target="#Price" aria-expanded="false" aria-controls="Price">+ Price Details</h2> -->
              
 
               <!-- ============== -->
               <!-- <section class="question-section"> -->
                 
                 <div class="collapse mt-4 Price" id="Price">
-                  <h4 class="text-primary mb-4">가격 혜택</h4>
+                  <h4 class="text-primary mb-4">렌탈료</h4>
                   <table border="1" style="border-collapse: collapse; width: 100%;">
-                    <colgroup>
+                    <!-- <colgroup>
                       <col style="width: 16%;">
                       <col style="width: 30%;">
                       <col style="width: 20%;">
                       <col style="width: 34%;">
-                    </colgroup>
+                    </colgroup> -->
                     <tr>
                       <td class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">모델명</td>
-                      <td h5 class="mt-2 mb-1" style="text-align: center; border: 1px solid black; padding: 10px;">{{detailProduct.productModel}}</td>
-                      <td class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">주요 기능</td>
-                      <td h5 class="mt-2 mb-1" style="text-align: center; border: 1px solid black; padding: 10px;">{{detailProduct.productFunction}}</td>
+                      <td h5 class="mt-2 mb-1" style="text-align: center; border: 1px solid black; padding: 10px;">관리방식</td>
+                      <td class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">약정기간</td>
+                      <td h5 class="mt-2 mb-1" style="text-align: center; border: 1px solid black; padding: 10px;">렌탈료</td>
+                      <td class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">신상품 재렌탈</td>
+                      <td h5 class="mt-2 mb-1" style="text-align: center; border: 1px solid black; padding: 10px;">일시불액</td>
                     </tr>
                     <tr>
-                      <td class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">색상</td>
-                      <td style="text-align: center; border: 1px solid black; padding: 10px;">{{detailProduct.productColor}}</td>
-                      <td class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">크기 (가로x세로x높이)</td>
-                      <td style="text-align: center; border: 1px solid black; padding: 10px;">{{detailProduct.productSize}}</td>
+                      <td rowspan="2" class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">{{detailProduct.productModel}} &nbsp;({{detailProduct.productColor }})</td>
+                      <td rowspan="2" style="text-align: center; border: 1px solid black; padding: 10px;">방문관리</td>
+                      <td class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">3년 약정</td>
+                      <td style="text-align: center; border: 1px solid black; padding: 10px;">{{(detailProduct.productRentalPrice).toLocaleString()}}원</td>
+                      <td class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">{{(detailProduct.productRentalPrice - 4700).toLocaleString()}}원</td>
+                      <td rowspan="2" style="text-align: center; border: 1px solid black; padding: 10px;">{{detailProduct.productPrice.toLocaleString()}}원</td>
                     </tr>
                     <tr>
-                      <td class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">무게</td>
-                      <td style="text-align: center; border: 1px solid black; padding: 10px;">{{detailProduct.productWeight}}</td>
-                      <td class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">직수 방식</td>
-                      <td style="text-align: center; border: 1px solid black; padding: 10px;">{{detailProduct.productMethod}}</td>
-                    </tr>
-                    <tr>
-                      <td class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">설치 형태</td>
-                      <td style="text-align: center; border: 1px solid black; padding: 10px;">{{detailProduct.productType}}</td>
-                      <td class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">출시 년월</td>
-                      <td style="text-align: center; border: 1px solid black; padding: 10px;">{{ detailProduct.productRdate }}</td>
-                    </tr>
-                    <tr>
-                      <td class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">제조사</td>
-                      <td style="text-align: center; border: 1px solid black; padding: 10px;">{{detailProduct.productCompany}}</td>
-                      <td class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">제조 국가</td>
-                      <td style="text-align: center; border: 1px solid black; padding: 10px;">made in KOREA</td>
+                      <td class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">6년 약정</td>
+                      <td style="text-align: center; border: 1px solid black; padding: 10px;">{{(detailProduct.productRentalPrice - 4000).toLocaleString()}}원</td>
+                      <td class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">{{(detailProduct.productRentalPrice - 4000 - 4300).toLocaleString()}}원</td>
                     </tr>
                   </table>
+                  <br>
+                  <h4 class="text-primary mb-4">렌탈료 총액</h4>
+                  <table border="1" style="border-collapse: collapse; width: 100%;">
+                    <!-- <colgroup>
+                      <col style="width: 16%;">
+                      <col style="width: 30%;">
+                      <col style="width: 20%;">
+                      <col style="width: 34%;">
+                    </colgroup> -->
+                    <tr>
+                      <td class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">모델명</td>
+                      <td h5 class="mt-2 mb-1" style="text-align: center; border: 1px solid black; padding: 10px;">관리방식</td>
+                      <td class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">약정기간</td>
+                      <td h5 class="mt-2 mb-1" style="text-align: center; border: 1px solid black; padding: 10px;">총액</td>
+                    </tr>
+                    <tr>
+                      <td rowspan="3" class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">{{detailProduct.productModel}} &nbsp;({{detailProduct.productColor }})</td>
+                      <td rowspan="3" style="text-align: center; border: 1px solid black; padding: 10px;">방문관리</td>
+                      <td class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">3년 (의무사용기간)</td>
+                      <td style="text-align: center; border: 1px solid black; padding: 10px;">{{(detailProduct.productRentalPrice*36+100000).toLocaleString()}}원</td>
+                    </tr>
+                    <tr>
+                      <td style="text-align: center; border: 1px solid black; padding: 10px;">5년 (소유권 이전)</td>
+                      <td class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">{{((detailProduct.productRentalPrice-2000)*60).toLocaleString()}}원</td>
+                    </tr>
+                    <tr>
+                      <td style="text-align: center; border: 1px solid black; padding: 10px;">6년 (의무사용기간/ 소유권 이전)</td>
+                      <td class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">{{((detailProduct.productRentalPrice-4000)*72).toLocaleString()}}원</td>
+                    </tr>
+                  </table>
+                  <br>
+                  <!-- <h4 class="text-primary mb-4">소유권 이전 및 재렌탈 안내</h4>
+                  <table border="1" style="border-collapse: collapse; width: 100%;">
+                    <tr>
+                      <td class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">모델명</td>
+                      <td h5 class="mt-2 mb-1" style="text-align: center; border: 1px solid black; padding: 10px;">관리방식</td>
+                      <td class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">약정기간</td>
+                      <td h5 class="mt-2 mb-1" style="text-align: center; border: 1px solid black; padding: 10px;">렌탈료</td>
+                      <td class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">신상품 재렌탈</td>
+                      <td h5 class="mt-2 mb-1" style="text-align: center; border: 1px solid black; padding: 10px;">일시불액</td>
+                    </tr>
+                    <tr>
+                      <td rowspan="2" class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">{{detailProduct.productModel}} &nbsp;({{detailProduct.productColor }})</td>
+                      <td rowspan="2" style="text-align: center; border: 1px solid black; padding: 10px;">방문관리</td>
+                      <td class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">3년 약정</td>
+                      <td style="text-align: center; border: 1px solid black; padding: 10px;">{{(detailProduct.productRentalPrice).toLocaleString()}}원</td>
+                      <td class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">{{(detailProduct.productRentalPrice - 4700).toLocaleString()}}원</td>
+                      <td rowspan="2" style="text-align: center; border: 1px solid black; padding: 10px;">{{detailProduct.productPrice.toLocaleString()}}원</td>
+                    </tr>
+                    <tr>
+                      <td class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">6년 약정</td>
+                      <td style="text-align: center; border: 1px solid black; padding: 10px;">{{(detailProduct.productRentalPrice - 4000).toLocaleString()}}원</td>
+                      <td class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">{{(detailProduct.productRentalPrice - 4000 - 4300).toLocaleString()}}원</td>
+                    </tr>
+                  </table> -->
                 </div>
               <!-- </section> -->
-              
             </div>
 
             
   
             <!-- 리뷰 -->
             <div class="text-block">
-              <h2 data-bs-toggle="collapse" data-bs-target="#Reviews" aria-expanded="false" aria-controls="Reviews">+ Reviews (<i class="fa fa-xs fa-star text-primary"></i>&nbsp;{{ avgStar }})</h2>
+              <div class="row" data-bs-toggle="collapse" data-bs-target="#Reviews" aria-expanded="false" aria-controls="Reviews">
+                <div class="col-md-11">
+                  <h2>리뷰 (<span class="h2 text-primary">{{reviewTotal}}</span>)</h2>
+                </div>
+                <div class="col-md-1">
+                  <h2>+</h2>
+                </div>
+              </div>
+              <!-- <h2 data-bs-toggle="collapse" data-bs-target="#Reviews" aria-expanded="false" aria-controls="Reviews">+ Reviews (<i class="fa fa-xs fa-star text-primary"></i>&nbsp;{{ avgStar }})</h2>--> 
                
-              <p class="mb-3 mb-md-0"><strong><span class="h5 text-primary">{{reviewTotal}}</span></strong> &nbsp;개의 리뷰가 있습니다</p>
-<!--                        <h3 class="mb-4">리뷰 평점 <i class="fa fa-xs fa-star text-primary"></i>&nbsp;{{ avgStar }}</h3> -->
+              <!-- <p class="mb-3 mb-md-0" style="text-align: center;"><strong><span class="h5 text-primary">{{reviewTotal}}</span></strong> &nbsp;개의 리뷰가 있습니다</p> 
+              <h3 class="mb-4" style="text-align: center;">리뷰 평점 <i class="fa fa-xs fa-star text-primary"></i>&nbsp;{{ avgStar }}</h3> 
               <br>
-              <button class="btn btn-outline-primary" type="button">리뷰 남기기</button>
+              <button class="btn btn-outline-primary" type="button" style="text-align: center;">리뷰 남기기</button> -->
+
               <!-- 리뷰 작성 ============== -->
               <!-- <div>
                 <button class="btn btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#leaveReview" aria-expanded="false" aria-controls="leaveReview">Leave a review</button>
@@ -337,7 +427,15 @@
 
               <!-- ============== -->
               <!-- <section class="review-section"> -->
-                <div class="collapse mt-4 review" id="Reviews" :value="review.reviewNo" :key="review.reviewNo" v-for="review in reviews">
+              <div class="collapse mt-4 review" id="Reviews">
+                <div style="text-align: center;">
+                <br>
+                <h3 class="mb-4">사용자 리뷰 평점</h3> 
+                <h3><i class="fa fa-xs fa-star text-primary"></i>&nbsp;{{ avgStar }}</h3><br>
+                <button class="btn btn-outline-primary" type="button">리뷰 남기기</button>
+                </div>
+
+                <div class="text-block" :value="review.reviewNo" :key="review.reviewNo" v-for="review in reviews">
                   <div class="text-md-center flex-shrink-0 me-4 me-xl-5"><img class="d-block avatar avatar-xl p-2 mb-2" v-bind:src="review.reImageUrl"><span class="text-uppercase text-muted text-sm">{{review.reDate}}</span></div>
 
                   <div>
@@ -347,6 +445,7 @@
                     <p class="text-muted text-sm">{{ review.reContent }}</p>
                   </div>
                 </div>
+              </div>
               <!-- </section> -->
               
               <!-- <div class="d-flex d-block d-sm-flex review">
@@ -381,63 +480,57 @@
 
             <!-- 문의 -->
             <div class="text-block">
-              <h2 data-bs-toggle="collapse" data-bs-target="#Questions" aria-expanded="false" aria-controls="Questions">+ Questions</h2>
-               
-            <p class="mb-3 mb-md-0"><strong><span class="h5 text-primary">{{inquiryTotal}}</span></strong> &nbsp;개의 문의가 있습니다</p>
-
+              <div class="row" data-bs-toggle="collapse" data-bs-target="#Questions" aria-expanded="false" aria-controls="Questions">
+                <div class="col-md-11">
+                  <h2>상품 문의 (<span class="h2 text-primary">{{inquiryTotal}}</span>)</h2>
+                </div>
+                <div class="col-md-1">
+                  <h2>+</h2>
+                </div>
+              </div>
+              <!-- <h2 data-bs-toggle="collapse" data-bs-target="#Questions" aria-expanded="false" aria-controls="Questions">+ Questions</h2> -->
+              <!-- <p class="mb-3 mb-md-0"><strong><span class="h5 text-primary">{{inquiryTotal}}</span></strong> &nbsp;개의 문의가 있습니다</p> -->
+            
+              <!-- ============== -->
               <!-- 문의 작성 ============== -->
-              <br>
-              <div>
-                <button class="btn btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#leaveQuestion" aria-expanded="false" aria-controls="leaveQuestion">문의하기</button>
-                <div class="collapse mt-4" id="leaveQuestion">
-                  <h5 class="mb-4">문의하실 제목과 내용을 작성하신 후 [작성하기] 버튼을 클릭하세요 :)</h5>
-                  <form class="form" id="contact-form" method="get" action="#">
-                    <div class="mb-4">
-                      <label class="form-label" for="questiontitle">문의 제목</label>
-                      <input class="form-control" name="question" id="question" placeholder="Enter question title" required="required"/>
-                    </div>
-                    <div class="mb-4">
-                      <label class="form-label" for="questionContent">문의 내용</label>
-                      <textarea class="form-control" rows="4" name="question" id="question" placeholder="Enter your question" required="required"></textarea>
-                    </div>
-                    <div class="row">
-                      <div class="col-sm-6">
-                        <div class="mb-4">
-                          <label class="form-label" for="name">작성자 |</label>
-                          &nbsp;&nbsp;&nbsp;<label>정소희</label>
-                        </div>
-                        <div class="mb-4">
-                          <label class="form-label" for="email">이메일 |</label>
-                          &nbsp;&nbsp;&nbsp;<span>ssohee98@naver.com</span>
-                        </div>
-                        <div class="mb-4">
-                          <label class="form-label" for="phone">휴대폰 |</label>
-                          &nbsp;&nbsp;&nbsp;<span>010-2685-2139</span>
+              <div class="collapse mt-4 question" id="Questions">
+                <div style="text-align: center; width: 60%; margin: 0 auto;">
+                  <br>
+                  <button class="btn btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#leaveQuestion" aria-expanded="false" aria-controls="leaveQuestion">문의하기</button>
+                  <div class="collapse mt-4" id="leaveQuestion">
+                    <!-- <h5 class="mb-4">문의하실 제목과 내용을 작성하신 후 [작성하기] 버튼을 클릭하세요 :)</h5> -->
+                    <form class="form" id="contact-form" method="get" action="#">
+                      <div class="mb-4">
+                        <label class="form-label" for="questiontitle">문의 제목</label>
+                        <input class="form-control" name="question" id="question" placeholder="Enter question title" required="required"/>
+                      </div>
+                      <div class="mb-4">
+                        <label class="form-label" for="questionContent">문의 내용</label>
+                        <textarea class="form-control" rows="4" name="question" id="question" placeholder="Enter your question" required="required"></textarea>
+                      </div>
+                      <div class="row" style="text-align: left;">
+                        <div class="col-sm-6">
+                          <div class="mb-4">
+                            <label class="form-label" for="name">작성자 |</label>
+                            &nbsp;&nbsp;&nbsp;<label>정소희</label>
+                          </div>
+                          <div class="mb-4">
+                            <label class="form-label" for="email">이메일 |</label>
+                            &nbsp;&nbsp;&nbsp;<span>ssohee98@naver.com</span>
+                          </div>
+                          <div class="mb-4">
+                            <label class="form-label" for="phone">휴대폰 |</label>
+                            &nbsp;&nbsp;&nbsp;<span>010-2685-2139</span>
+                          </div>
                         </div>
                       </div>
-                      <!-- <div class="col-sm-6">
-                        <div class="mb-4">
-                          <label class="form-label" for="rating">Your rating *</label>
-                          <select class="form-select focus-shadow-0" name="rating" id="rating">
-                            <option value="5">&#9733;&#9733;&#9733;&#9733;&#9733; (5/5)</option>
-                            <option value="4">&#9733;&#9733;&#9733;&#9733;&#9734; (4/5)</option>
-                            <option value="3">&#9733;&#9733;&#9733;&#9734;&#9734; (3/5)</option>
-                            <option value="2">&#9733;&#9733;&#9734;&#9734;&#9734; (2/5)</option>
-                            <option value="1">&#9733;&#9734;&#9734;&#9734;&#9734; (1/5)</option>
-                          </select>
-                        </div>
-                      </div> -->
-                    </div>
-                    
-                    <button class="btn btn-primary" type="submit">문의 작성하기</button>
-                  </form>
+                      <button class="btn btn-primary" type="submit">문의 작성하기</button>
+                    </form>
+                  </div>
                 </div>
-              </div> 
 
-              <!-- ============== -->
-              <!-- <section class="question-section"> -->
-                
-                <div class="collapse mt-4 review" id="Questions" :value="inquiry.proqNo" :key="inquiry.proqNo" v-for="inquiry in inquirys">
+                <!-- <section class="question-section"> -->
+                <div class="text-block collapse mt-4 questions" :value="inquiry.proqNo" :key="inquiry.proqNo" v-for="inquiry in inquirys">
                   <div class="row">
                     <div class="col-md-2">
                       <p class="text-muted text-sm">문의 상태</p>
@@ -482,9 +575,33 @@
                       <h5 class="mt-2 mb-1 text-muted text-sm">{{ inquiry.proqDate }}</h5>
                       <!-- <p class="text-muted text-sm">{{ formattedDate(inquiry.proqDate) }}</p> -->
                     </div>
+                    <br>
+                    <!-- <h5 style="text-align: center" data-bs-toggle="collapse" data-bs-target="#QuestionDetail" aria-expanded="false" aria-controls="QuestionDetail">+ 더보기</h5>
+                      <div class="collapse mt-4 questionDetail" id="QuestionDetail">
+                        <div class="row">
+                          <div class="col-md-4">
+                            <p class="text-muted text-sm">문의 상세 내용</p>
+                          </div>
+                          <div class="col-md-8">
+                            <h5 class="mt-2 mb-1">{{ inquiry.proqContent }}</h5>
+                          </div>
+                        </div>
+                      </div> -->
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <p class="text-muted text-sm">문의 상세 내용</p>
+                    </div>
+                    <div class="col-md-8">
+                      <h5 class="mt-2 mb-1">{{ inquiry.proqContent }}</h5>
+                    </div>
                   </div>
                 </div>
               <!-- </section> -->
+                
+              </div> 
+              
+              
             </div>
 
           <h5 class="mb-0">Similar places</h5>
