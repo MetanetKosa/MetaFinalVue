@@ -2,8 +2,8 @@
       <body class="hold-transition sidebar-mini">
         <div class="wrapper">
              <Sidebar />
-            <AdminOrderList :products="state.products"
-            @delete-product="deleteProduct"/>  
+            <AdminOrderList :orders ="state.orders"
+            @order-detail ="orderDetail" />  
         </div>
     </body>
 </template>
@@ -12,44 +12,25 @@
 import axios from "axios";
 import {reactive} from "vue";
 import Sidebar from '@/components/pages/admin/Sidebar.vue';
-import {useRouter, useRoute} from 'vue-router';
-import AdminProductList from '@/components/AdminProductList.vue';
+import AdminOrderList from '@/components/AdminOrderList.vue';
 export default {
   components: {
     Sidebar,
-    AdminProductList
+    AdminOrderList
   },
    setup(){
     const state = reactive({
-      products: []
+      orders:[]
     })
-     const route = useRoute();
-    const router = useRouter();
 
-    const productNo = route.params.id;
-
-    axios.get("/admin/products").then(({data}) =>{
-      state.products = data;
+    axios.get("/admin/orders").then(({data}) => {
+      state.orders = data;
       console.log(data);
     });
 
-
-     const deleteProduct = async(productNo) => {
-        console.log(productNo);
-        try{
-            await axios.delete(`/admin/product/${productNo}` );
-            state.products = state.products.filter(product => product.product_no !== productNo);
-           
-
-        }catch(err){
-            console.log(err);
-        }
-       }
-        
     return {
-      state,
-      deleteProduct
-      }
+      state
+    }
   }
 }
 </script>
