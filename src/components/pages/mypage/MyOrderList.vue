@@ -61,14 +61,14 @@
             <div class="text-block">
               <h1>주문내역</h1>
               <div class="p-4 shadow ms-lg-4 rounded" style="background-color:gainsboro;">
-                <div class="d-flex p-3 row text-block" v-for="(order, index) in state.myOrders" :key="index">
+                <div class="d-flex p-3 row text-block" v-for="(order, index) in state.myOrders" :key="index" style="position: relative;">
                   <div class="col-2">
                     <img class="img-fluid" src="/../../../../html/img/photo/sample1.PNG">
                   </div>
-                  <div class="col-10">
+                  <div class="col-10" id="orderContent">
                     <h6>{{ order.orderNo }}</h6>
                     <h6>{{ order.productNo }}</h6>
-                    <h6>주문수단{{ order.orderPay }}</h6>
+                    <h6>주문상태{{ order.orderState }}</h6>
                     <h6>주문타입{{ order.orderType }}</h6>
                     <div v-if="state.products[index]">
                       <h6>제품번호 : {{ state.products[index].productModel }}</h6>
@@ -77,7 +77,12 @@
                     <input type="hidden" v-model="productNo">
                     <div v-if="state.products[index]"> 
                       <h6>상품명: {{ state.products[index].productName }}</h6>
-                    </div>
+                    <div v-if="order.orderState === '주문 완료'">
+                    <button id="orderCancelButton">
+                      주문 취소
+                    </button>
+                  </div>
+                  </div>
                   </div>
                 </div>
               </div>
@@ -139,5 +144,13 @@
   </script>
   
   <style>
+  #orderCancelButton{
+    position: absolute;
+    top: 0%;
+    right: 0%;
+  }
   
+  #orderContent{
+    position: relative;
+  }
   </style>
