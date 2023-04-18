@@ -1,26 +1,70 @@
 <template>
-      <!-- <body class="hold-transition sidebar-mini">
-        <div class="wrapper">
-         <Sidebar /> -->
-
-        <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
             <section class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1>제품 목록</h1>
-                </div>
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">제품 목록</li>
-                    </ol>
-                </div>
-                </div>
-            </div><!-- /.container-fluid -->
-            </section>
+                    <div class="container-fluid">
+                    <form action="enhanced-results.html">
+                        <div class="row">
+                            <div class="col-md-10 offset-md-1">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label>기능명</label>
+                                            <select class="select2" style="width: 100%;">
+                                                <option>냉온정수기</option>
+                                                <option>냉정수기</option>
+                                                <option>냉온절수기 + 얼음</option> 
+                                                <option>냉정절수기 + 얼음</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="form-group">
+                                            <label>Sort Order:</label>
+                                            <select class="select2" style="width: 100%;">
+                                                <option selected>오름차순</option>
+                                                <option>내림차순</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="form-group">
+                                            <label>Order By:</label>
+                                            <select class="select2" style="width: 100%;">
+                                                <option selected>제품명</option>
+                                                <option>등록일</option>
+                                                <option>판매량</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-group input-group-lg">
+                                        <input type="search" class="form-control form-control-lg" placeholder="제품 검색">
+                                        <div class="input-group-append">
+                                            <button type="submit" class="btn btn-lg btn-default">
+                                                <i class="fa fa-search"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                     </div>
+                        <div class="col-sm-6">
+                            <h1>제품 목록</h1>
+                        </div>
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active">제품 목록</li>
+                            </ol>
+                        </div>
+                        </div>
+                    </div><!-- /.container-fluid -->
+                    </section>
 
             <!-- Main content -->
             <section class="content">
@@ -29,9 +73,9 @@
             <div class="card">
                 <div class="card-header">
                 <h3 class="card-title">제품 목록</h3>
-
-                <div class="card-tools">
-                </div>
+                    <div class="card-tools">
+                        <router-link class="btn btn-block btn-secondary" :to="{name: 'AdminRegister'}">제품등록</router-link>
+                    </div>
                 </div>
                 <div class="card-body p-0">
                 <table class="table table-striped projects">
@@ -52,7 +96,7 @@
                             <th style="width: 8%" class="text-center">
                                 등록일
                             </th>
-                            <th style="width: 20%">
+                            <th style="width: 20%" >
                             </th>
                         </tr>
                     </thead>
@@ -65,7 +109,7 @@
                                 <li class="list-inline-item">
                                         <img alt="Avatar" class="table-avatar" src="../../public/html/dist/img/avatar.png">
                                     </li>
-                                <a @click="moveToPage(product.product_no)">
+                                <a >
                                     {{product.product_name}}
                                 </a>
                             </td>
@@ -80,47 +124,42 @@
                                 </ul>
                             </td>
                             <td class="project_progress">
-                                <a>1/1</a>
-                              
+                                <a>1/1</a>                             
                             </td>
                             <td class="project-state">
                                 <span>{{product.regDate}}</span>
                             </td>
                             <td class="project-actions text-right">
-                                <!-- <a class="btn btn-primary btn-sm" href="#">
-                                    <i class="fas fa-folder">
-                                    </i>
-                                    View
-                                </a> -->
-                                <a class="btn btn-info btn-sm" href="#">
-                                    <i class="fas fa-pencil-alt">
-                                    </i>
-                                    Edit
-                                </a>
-                                <a class="btn btn-danger btn-sm" href="#">
-                                    <i class="fas fa-trash">
-                                    </i>
-                                    Delete
-                                </a>
+                                <button type="button" class="btn btn-default"  @click="updateProduct(product.product_no)" >
+                                    수정
+                                </button>
+                                <button type="button" class="btn btn-danger" @click.stop="deleteProduct(product.product_no)" >
+                                    삭제
+                                </button>
                             </td>
                         </tr>
                     </tbody>
                 </table>
                 </div>
-                <!-- /.card-body -->
+                 <div class="card-footer">
+                    <nav aria-label="Contacts Page Navigation">
+                        <ul class="pagination justify-content-center m-0">
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">4</a></li>
+                        <li class="page-item"><a class="page-link" href="#">5</a></li>
+                        <li class="page-item"><a class="page-link" href="#">6</a></li>
+                        <li class="page-item"><a class="page-link" href="#">7</a></li>
+                        <li class="page-item"><a class="page-link" href="#">8</a></li>
+                        </ul>
+                    </nav>
+                </div>
             </div>
-            <!-- /.card -->
-
             </section>
-            <!-- /.content -->
         </div>
-        <!-- /.content-wrapper -->
-
-        <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark">
         </aside>
-        <!-- </div>
-    </body> -->
 </template>
 
 <script>
@@ -137,22 +176,20 @@ export default {
                    product_method:''};
         }
     },
-    setup(props){
-         const router = useRouter();
+      emits: ['delete-product','update-product'],
+    setup(props,  {emit}){
+         const deleteProduct = (productNo) => {
+            emit('delete-product', productNo);
+            }
 
-        const moveToPage = (productNo) => {
-            console.log(productNo);
-            router.push({
-                name:'AdminProductDetail',
-                params:{
-                    id: productNo
-                }
-            })
-           
-        }
-        return {
-        moveToPage,
-        }
+            const updateProduct = (productNo) => {
+            emit('update-product', productNo);
+            }
+
+            return{
+                deleteProduct,
+                updateProduct,
+            }
     }
 }
    
