@@ -100,26 +100,26 @@
                             </th>
                         </tr>
                     </thead>
-                    <tbody v-for="(product) in products" :key="product.product_no">
+                    <tbody v-for="(product) in products" :key="product.productNo">
                         <tr>
                             <td>
-                               {{product.product_no}}
+                               {{product.productNo}}
                             </td>
                             <td>
                                 <li class="list-inline-item">
                                         <img alt="Avatar" class="table-avatar" src="../../public/html/dist/img/avatar.png">
                                     </li>
                                 <a >
-                                    {{product.product_name}}
+                                    {{product.productName}}
                                 </a>
                             </td>
                             <td>
                                 <ul class="list-inline">
                                     <a>
-                                    {{product.product_type}}
+                                    {{product.productType}}
                                     </a>
                                     <a>
-                                    / {{product.product_method}}
+                                    / {{product.productMethod}}
                                     </a>
                                 </ul>
                             </td>
@@ -130,10 +130,10 @@
                                 <span>{{product.regDate}}</span>
                             </td>
                             <td class="project-actions text-right">
-                                <button type="button" class="btn btn-default"  @click="updateProduct(product.product_no)" >
+                                <button type="button" class="btn btn-default"  @click="updateProduct(product.productNo)" >
                                     수정
                                 </button>
-                                <button type="button" class="btn btn-danger" @click.stop="deleteProduct(product.product_no)" >
+                                <button type="button" class="btn btn-danger" @click.stop="deleteProduct(product.productNo)" >
                                     삭제
                                 </button>
                             </td>
@@ -169,11 +169,11 @@ export default {
     props: {
         products: Object,
         default: () => {
-            return {product_no:'',
-                    product_name:'',
+            return {productNo:'',
+                    productName:'',
                    regDate:'',
-                   product_type:'',
-                   product_method:''};
+                   productType:'',
+                   productMethod:''};
         }
     },
       emits: ['delete-product','update-product'],
