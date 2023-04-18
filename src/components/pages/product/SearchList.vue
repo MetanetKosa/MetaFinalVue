@@ -1,4 +1,4 @@
-<style src="../../../../public/html/css/style.sea.css"></style>
+
 
 <template>
     <body>
