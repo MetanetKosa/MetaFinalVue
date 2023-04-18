@@ -68,7 +68,7 @@
                         <!-- place item-->
                             <div class="col-sm-6 col-lg-4 mb-30px hover-animate" v-for="(product, index) in state.myProducts" :key="index" data-marker-id="59c0c8e33b1527bfe2abaf92">
                                 <div class="card h-100 border-0 shadow">
-                                    <div class="card-img-top overflow-hidden gradient-overlay"> <img class="img-fluid" src="../../../../public/html/img/photo/photo-1484154218962-a197022b5858.jpg" alt="Modern, Well-Appointed Room"/><a class="tile-link" href="detail-rooms.html"></a>
+                                    <div class="card-img-top overflow-hidden gradient-overlay"> <img class="img-fluid" src="../../../../public/html/img/photo/photo-1484154218962-a197022b5858.jpg" alt="Modern, Well-Appointed Room"/><a class="tile-link" @click="moveToMyOrder(product.orderNo)"></a>
                                         <div class="card-img-overlay-bottom z-index-20">
                                         </div>
                                         <div class="card-img-overlay-top text-end"></div>
@@ -172,27 +172,39 @@
 <script>
 import axios from "axios";
 import {reactive} from "vue";
+import { useRoute, useRouter } from 'vue-router';
 
 export default {
 
    setup(){
+    const route = useRoute();
+    const router = useRouter();
     const state = reactive({
-      myProducts: []
-    })
+      myProducts: [],
+    });
 
+    const moveToMyOrder = (orderNo) => {
+      console.log("orderNo : " + orderNo);
+      router.push({
+        name: 'MyProduct',
+        params: {
+            orderNo: orderNo
+        }
+      });
+    };
 
 
     // axios.get("/mypage/myproduct/" + route.params.memNo).then(({data}) =>{ /.
     
     let  memNo = 1;
          // memNo 임의 설정 1
-    axios.get(`/mypage/myorder/myproduct/${memNo}`).then(({data}) =>{
+    axios.get(`/mypage/myorder/myproducts/${memNo}`).then(({data}) =>{
       state.myProducts = data;
       console.log(" 데이터값 " + data);
     }).catch((error) => {
         console.error("API 요청 실패", error);
     });
-    return {state};
+    return {state, moveToMyOrder};
   }
 }
 

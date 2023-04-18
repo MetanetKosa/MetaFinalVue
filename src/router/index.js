@@ -87,7 +87,7 @@ const router = createRouter({
             component: SearchList
         },
         {
-            path: '/myproduct',
+            path: '/myproduct/:orderNo',
             name: 'MyProduct',
             component: MyProduct
         },
