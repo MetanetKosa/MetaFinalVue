@@ -110,7 +110,7 @@
               </div>
               <div class="col-md-7">
                 <ul class="list-unstyled text-muted">
-                  <li class="mb-2"><span class="text-sm">2022.08.18 ~ 2028.08.18</span></li>
+                  <li class="mb-2"><span class="text-sm">{{ myProduct.productName }}</span></li>
                   <li class="mb-2"><span class="text-sm">2022.08.18 ~ 2028.08.18</span></li>
                   <li class="mb-2"><span class="text-sm">2028.08.18</span></li>
                   <li class="mb-2"><span class="text-sm">서울시 송파구</span></li>
@@ -153,13 +153,42 @@
 </template>
 
 <script>
- export default {
-    data() {
-      return {
-        showModal: false,
-      };
-    },
-  };
+  import axios from "axios";
+  import {reactive} from "vue";
+  import { useRoute, useRouter } from 'vue-router';
+
+  export default {
+  data() {
+    return {
+      showModal: false,
+    };
+  },
+
+  
+  setup() {
+    const route = useRoute();
+    const router = useRouter();
+    const orderNo = route.params.orderNo;
+    const state = reactive({
+      myProduct: {},
+    });
+    console.log("orderNo 확인 : " + state.orderNo);
+    
+    
+
+    let memNo = 1; // memNo 임의 설정 1
+    axios
+      .get(`/mypage/myorder/myproduct/${orderNo}`)
+      .then(({ data }) => {
+        state.myProduct = data;
+        console.log(" 데이터값 " + data);
+      })
+      .catch((error) => {
+        console.error("API 요청 실패", error);
+      });
+  },
+};
+
 </script>
 
 <style>
