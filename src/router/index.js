@@ -5,11 +5,11 @@ import Signup from '@/components/pages/member/Signup.vue';
 import AdminRegister from '@/components/pages/admin/AdminRegister.vue';
 import AdminList from '@/components/pages/admin/AdminList.vue';
 import AdminMember from '@/components/pages/admin/AdminMember.vue';
-import RentalPay from '@/components/pages/order/RentalPay.vue';
-import BuyPay from '@/components/pages/order/BuyPay.vue';
-import Rental2 from '@/components/pages/order/Rental2.vue';
+import Rental from '@/components/pages/order/Rental.vue';
 import RentalResult from '@/components/pages/order/RentalResult.vue';
-import BuyResult from '@/components/pages/order/BuyResult.vue';
+import Order from '@/components/pages/order/Order.vue';
+import OrderResult from '@/components/pages/order/OrderResult.vue';
+import Rental2 from '@/components/pages/order/Rental2.vue';
 import Detail from '@/components/pages/product/Detail.vue';
 import List from '@/components/pages/product/List.vue';
 import SearchList from '@/components/pages/product/SearchList.vue';
@@ -59,29 +59,30 @@ const router = createRouter({
             component: AdminMember
         },
         {
-            path: '/RentalPay',
-            name: 'RentalPay',
-            component: RentalPay
+            path: '/rental',
+            name: 'Rental',
+            component: Rental
         },
         {
-            path: '/BuyPay',
-            name: 'BuyPay',
-            component: BuyPay
+            path: '/retal/check',
+            name: 'RentalResult',
+            component: RentalResult
+        },
+        {
+            // path: '/order/productNo=:pno',
+            path: '/order',
+            name: 'Order',
+            component: Order
+        },
+        {
+            path: '/order/check',
+            name: 'OrderResult',
+            component: OrderResult
         },
         {
             path: '/rental2',
             name: 'Rental2',
             component: Rental2
-        },
-        {
-            path: '/RentalResult',
-            name: 'RentalResult',
-            component: RentalResult
-        },
-        {
-            path: '/BuyResult',
-            name: 'BuyResult',
-            component: BuyResult
         },
         {
             path: '/product/detail/:pno',

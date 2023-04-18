@@ -64,8 +64,8 @@
                 <div class="mb-4" v-if="showContractLength">
                   <label class="form-label" for="contractLength">약정기간 *</label>
                   <select class="form-control" name="contractLength" id="contractLength" v-model="contractLength">
-                    <option value="1">3년</option>
-                    <option value="2">6년</option>
+                    <option value="3">3년</option>
+                    <option value="6">6년</option>
                   </select>
                 </div>
                 <!-- <hr class="my-4"> -->
@@ -83,7 +83,7 @@
                 <hr class="my-4">
                 <div class="mb-4" style="text-align: center;" id="order" v-if="isAllOptionsSelected">
                   <label>[{{ orderType === '1' ? '렌탈' : '구매' }}] &nbsp;</label>
-                  <label v-if="showContractLength">| &nbsp; [기간 : {{ contractLength === '1' ? '3년' : '6년' }}] &nbsp;</label>
+                  <label v-if="showContractLength">| &nbsp; [기간 : {{ contractLength === '3' ? '3년' : '6년' }}] &nbsp;</label>
                   <span>옵션을 선택 하셨습니다</span>
                 </div>
                 <div v-if="showOrderButton" class="d-grid mb-4">
@@ -836,7 +836,7 @@
   data() {
     return {
       orderType: '2', // 구매타입 default는 렌탈
-      contractLength: '1', // 약정기간 default는 3년
+      contractLength: '3', // 약정기간 default는 3년
       };
     },
 
@@ -866,9 +866,9 @@
       const rentalPrice = this.detailProduct.productRentalPrice;
       const contractLength = Number(this.contractLength);
 
-      if (contractLength === 1) { //3년
+      if (contractLength === 3) { //3년
         return `월 ~ ${rentalPrice.toLocaleString()}원`;
-      } else if (contractLength === 2) { //6년
+      } else if (contractLength === 6) { //6년
         return `월 ~ ${(rentalPrice - 4000).toLocaleString()}원`;
       } else {
         return '';
@@ -966,24 +966,43 @@
       }
     }
 
+    // const orderPurchase = async() => {
+    //   router.push({
+    //     name: 'Order',
+    //     params: {
+    //       pno: productNo
+    //     }
+    //   })
+    // }
+
     const orderPurchase = async() => {
       router.push({
-        name: 'purchase',
-        params: {
-          id: productFunction
+        name: 'Order',
+        query: {
+          pno: productNo
         }
       })
     }
 
+    // const orderRental = async() => {
+    //   router.push({
+    //     name: 'Rental',
+    //     params: {
+    //       pno: productNo,
+    //       length: contractLength
+    //     }
+    //   })
+
+    // }
+
     const orderRental = async() => {
       router.push({
-        name: 'rental',
-        params: {
-          id: productNo,
-          length: contractLength
+        name: 'Rental',
+        query: {
+          pno: productNo,
+          length: contractLength.value
         }
       })
-
     }
     
     onMounted(() => {

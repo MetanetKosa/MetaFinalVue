@@ -7,7 +7,7 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-7">
-              <h1 class="h2 my-3 text-bold"> 계약자 정보 <span class="text-muted float-end">Step 1</span>      </h1>
+              <h1 class="h2 my-3 text-bold"> 배송 정보 <span class="text-muted float-end">Step 1</span>      </h1>
               <button class="btn btn-link btn-collapse ps-0 h2 text-muted" type="button" data-bs-toggle="collapse" data-bs-target="#contractInformation" aria-expanded="false" aria-controls="addNewCard" data-expanded-text="닫기" data-collapsed-text="카드">입력</button>
 
               <div class="text-block">
@@ -93,7 +93,7 @@
                 <div class="d-flex">
                   <div>
                     <h5>배송메모</h5>
-                    <p class="text-sm text-muted">메송메모를 입력해주세요</p>
+                    <p class="text-sm text-muted">배송메모를 입력해주세요</p>
                   </div>
                 </div>
                 <textarea class="form-control" name="hello" rows="4"></textarea>
@@ -211,9 +211,13 @@
               </div>
 
             <div class="text-block">
-              <h6>Cancellation policy</h6>
-              <p class="text-sm text-muted">계약자 명의의 납부 정보를 등록하셔야 합니다. 계약자와 납부자가 상이한 경우, 계약자는 미납, 연체 등에 더욱 주의하셔야 합니다.</p>
-              <p class="text-sm text-muted">카카오페이/네이버페이로 제휴카드 등록 후 렌탈료 납부시에도 카드혜택은 동일하게 적용됩니다.(단, NEW코웨이 우리카드는 네이버페이 간편결제 등록시 제휴혜택이 제공되지 않습니다.</p>
+              <h5>Cancel policy</h5>
+              <br>
+              <p class="text-sm text-muted">계약자 명의의 납부 정보를 등록하셔야 합니다.</p>
+              <p class="text-sm text-muted">계약자와 납부자가 상이한 경우, 계약자는 미납, 연체 등에 더욱 주의하셔야 합니다.</p>
+              <br>
+              <p class="text-sm text-muted">카카오페이/네이버페이로 제휴카드 등록 후 렌탈료 납부시에도 카드혜택은 동일하게 적용됩니다.</p>
+              <p class="text-sm text-muted">(단, MetaWater 우리카드는 네이버페이 간편결제 등록시 제휴혜택이 제공되지 않습니다.</p>
             </div>
           </div>
           
@@ -223,18 +227,21 @@
                 <div class="col text-center text-sm-end"><a class="btn btn-primary px-3" href="user-booking-3.html"> 다음<i class="fa-chevron-right fa ms-2"></i></a></div>
           </div>
           </div>
+
             <div class="text-block">
               </div>
             </div>
+
             <div class="col-lg-5 ps-xl-5">
               <div class="card border-0 shadow">
                 <div class="card-body p-4">
                   <div class="text pb-3">
                     <div class="d-flex align-items-center">
                       <div>
-                        <h6>아이콘 얼음정수기</h6>
-                        <h6 class="text-muted">품명</h6>
-                        <p class="text-sm mb-0">렌탈 * 방문관리6년 * 약정냉정수기+얼음아이스 * 화이트</p>
+                        <div class="col-lg-12 col-6 px-1 mb-2"><img class="img-fluid" v-bind:src="product.imgUrl"></div>
+                        <h4><strong>{{product.productName}}</strong></h4><br>
+                        <h4 class="text-sm">모델명 {{ product.productModel }}</h4>
+                        <h4 class="text-sm"><strong>구매</strong> | {{ product.productFunction}} | {{ product.productColor }}</h4>
                       </div>
                       <div class="flex-shrink-0" href="detail-rooms.html"><img class="ms-3 rounded" src="img/photo/photo-1512917774080-9991f1c4c750.jpg" alt="" width="100"></div>
                     </div>
@@ -243,8 +250,8 @@
                     <table class="w-100">
                       <tfoot>
                         <tr class="border-top">
-                          <th class="pt-3">렌탈료</th>
-                          <td class="fw-bold text-end pt-3">49999원</td>
+                          <th class="pt-3"><h4>구매금액</h4></th>
+                          <td class="fw-bold text-end pt-3 text-primary h4 pr-2">{{ product.productPrice.toLocaleString() }} 원</td>
                         </tr>
                       </tfoot>
                     </table>
@@ -253,13 +260,14 @@
                 <div class="card-footer bg-primary-light py-4 border-0">
                   <div class="d-flex align-items-center">
                     <div>
-                      <h6 class="text-primary">Flexible – free cancellation</h6>
-                      <p class="text-sm text-primary opacity-8 mb-0">Cancel within 48 hours of booking to get a full refund. <a href="#" class="text-reset ms-3">More details</a></p>
+                      <h6 class="text-primary">배송 전 [주문완료] 상태까지 취소가 가능합니다.</h6>
+                      <p class="text-sm text-primary opacity-8 mb-0">You can cancel up to the [Order Complete] status before shipping.</p>
                     </div>
                   </div>
                 </div>
               </div>
           </div>
+
           </div>
         </div>
       </section>
@@ -267,7 +275,46 @@
 </template>
 
 <script>
+import axios from 'axios';
+import { ref, onMounted, mounted } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
+
 export default {
+  setup() {
+    const route = useRoute();
+    const router = useRouter();
+    const product = ref({
+      productName: '',
+      productModel: '',
+      productFunction: '',
+      productPrice: 0,
+      productRentalPrice: 0,
+    });
+
+    // const productNo = route.params.pno;
+    const productNo = route.query.pno;
+    console.log("productNo : " +productNo);
+
+    const getProduct = async() => {
+      console.log("해당 상품 받아와??");
+      console.log("상품 번호: "+productNo);
+      const res = await axios.get('/product/' +productNo);
+      product.value = {...res.data};
+      
+      console.log(product.value);
+    }
+
+    onMounted(() => {
+      getProduct();
+    });
+
+  return {
+    route,
+    router,
+    product,
+  }
+
+  }
 
 }
 </script>
