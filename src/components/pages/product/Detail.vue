@@ -86,8 +86,9 @@
                   <label v-if="showContractLength">| &nbsp; [기간 : {{ contractLength === '1' ? '3년' : '6년' }}] &nbsp;</label>
                   <span>옵션을 선택 하셨습니다</span>
                 </div>
-                <div class="d-grid mb-4">
-                  <button class="btn btn-primary" type="submit">주문하기</button>
+                <div v-if="showOrderButton" class="d-grid mb-4">
+                  <button v-if="orderType === '1'" class="btn btn-primary" @click="orderRental">렌탈하기</button>
+                  <button v-else class="btn btn-primary" @click="orderPurchase">구매하기</button>
                 </div>
               </form>
             </div>
@@ -405,8 +406,42 @@
                 <br>
                 <h3 class="mb-4">사용자 리뷰 평점</h3> 
                 <h3><i class="fa fa-xs fa-star text-primary"></i>&nbsp;{{ avgStar }}</h3><br>
-                <button class="btn btn-outline-primary" type="button">리뷰 남기기</button>
+                <button class="btn btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#leaveReview">리뷰 남기기</button>
+                <div class="collapse mt-4" id="leaveReview">
+                  <h5 class="mb-4">Leave a review</h5>
+                  <form class="form" id="contact-form" method="get" action="#">
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <div class="mb-4">
+                          <label class="form-label" for="name">Your name *</label>
+                          <input class="form-control" type="text" name="name" id="name" placeholder="Enter your name" required="required">
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="mb-4">
+                          <label class="form-label" for="rating">Your rating *</label>
+                          <select class="form-select focus-shadow-0" name="rating" id="rating">
+                            <option value="5">&#9733;&#9733;&#9733;&#9733;&#9733; (5/5)</option>
+                            <option value="4">&#9733;&#9733;&#9733;&#9733;&#9734; (4/5)</option>
+                            <option value="3">&#9733;&#9733;&#9733;&#9734;&#9734; (3/5)</option>
+                            <option value="2">&#9733;&#9733;&#9734;&#9734;&#9734; (2/5)</option>
+                            <option value="1">&#9733;&#9734;&#9734;&#9734;&#9734; (1/5)</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mb-4">
+                      <label class="form-label" for="email">Your email *</label>
+                      <input class="form-control" type="email" name="email" id="email" placeholder="Enter your  email" required="required">
+                    </div>
+                    <div class="mb-4">
+                      <label class="form-label" for="review">Review text *</label>
+                      <textarea class="form-control" rows="4" name="review" id="review" placeholder="Enter your review" required="required"></textarea>
+                    </div>
+                    <button class="btn btn-primary" type="submit">Post review</button>
+                  </form>
                 </div>
+              </div>
 
                 <div class="text-block" :value="review.reviewNo" :key="review.reviewNo" v-for="review in reviews">
                   <div class="text-md-center flex-shrink-0 me-4 me-xl-5"><img class="d-block avatar avatar-xl p-2 mb-2" v-bind:src="review.reImageUrl"><span class="text-uppercase text-muted text-sm">{{review.reDate}}</span></div>
@@ -470,16 +505,16 @@
                 <div class="mb-5 pb-3" style="text-align: center;">
                   <button class="btn btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#leaveQuestion" aria-expanded="false" aria-controls="leaveQuestion" >문의하기</button>
                 </div>
-                <div class="collapse mt-4" id="leaveQuestion" style="text-align: left; width: 60%; margin: 0 auto;">
+                <div class="collapse mt-4" id="leaveQuestion" style="text-align: center; width: 50%; margin: 0 auto;">
                     <!-- <h5 class="mb-4">문의하실 제목과 내용을 작성하신 후 [작성하기] 버튼을 클릭하세요 :)</h5> -->
                     <div>
                     <form @submit.prevent="submitInquiry" class="form" name="inquiry-register" id="inquiry-form">
                       <div class="mb-4">
-                        <label class="form-label" for="questiontitle"><strong>문의 제목</strong></label>
+                        <label class="form-label" for="questiontitle" style="font-weight: bold; font-size: 16px;">문의 제목</label>
                         <input class="form-control" v-model="qna.proqTitle" name="questionTitle" type="text" id="questionTitle" placeholder="문의 제목" required="required"/>
                       </div>
                       <div class="mb-4">
-                        <label class="form-label" for="questionContent"><strong>문의 내용</strong></label>
+                        <label class="form-label" for="questionContent" style="font-weight: bold; font-size: 16px;">문의 내용</label>
                         <textarea class="form-control" v-model="qna.proqContent" rows="4" name="questionContent" type="text" id="questionContent" placeholder="문의 내용" required="required"></textarea>
                       </div>
                       <div class="row" style="text-align: left;">
@@ -498,10 +533,13 @@
                           </div>
                         </div>
                       </div>
-                      <button type="submit" class="btn btn-primary">문의 작성하기</button>
+                      <div class="mb-5 pb-3" style="text-align: center;">
+                        <button type="submit" class="btn btn-primary">문의 작성하기</button>
+                      </div>
                     </form>
                   </div>
                 </div>
+                <br>
                 <div class="text-block" :value="inquiry.proqNo" :key="inquiry.proqNo" v-for="inquiry in inquirys">
                   <div class="row">
                     <div class="col-md-2">
@@ -804,6 +842,9 @@
 
   //v-if 로 orderType, contractLength 선택에 따라 다른 값 보여주기
   computed: {
+    showOrderButton() {
+      return this.orderType === '1' || this.orderType === '2'
+    },
     showPurchasePrice() {
       //타입을 구매로 선택하면 구매금액만 보여주기
       return this.orderType === '2'; 
@@ -924,6 +965,26 @@
         alert("문의 등록에 실패하였습니다.")
       }
     }
+
+    const orderPurchase = async() => {
+      router.push({
+        name: 'purchase',
+        params: {
+          id: productFunction
+        }
+      })
+    }
+
+    const orderRental = async() => {
+      router.push({
+        name: 'rental',
+        params: {
+          id: productNo,
+          length: contractLength
+        }
+      })
+
+    }
     
     onMounted(() => {
       getProductDetail();
@@ -945,6 +1006,8 @@
     inquiryTotal,
     qna,
     submitInquiry,
+    orderRental,
+    orderPurchase,
   }
 
   }
