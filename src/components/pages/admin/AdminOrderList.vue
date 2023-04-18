@@ -3,7 +3,8 @@
         <div class="wrapper">
              <Sidebar />
             <AdminOrderList :orders ="state.orders"
-            @order-detail ="orderDetail" />  
+            @order-detail ="orderDetail"
+            :rentals="state.rentals" />  
         </div>
     </body>
 </template>
@@ -20,11 +21,17 @@ export default {
   },
    setup(){
     const state = reactive({
-      orders:[]
+      orders:[],
+      rentals:[]
     })
 
     axios.get("/admin/orders").then(({data}) => {
       state.orders = data;
+      console.log(data);
+    });
+
+     axios.get("/admin/orders/rental").then(({data}) => {
+      state.rentals = data;
       console.log(data);
     });
 
