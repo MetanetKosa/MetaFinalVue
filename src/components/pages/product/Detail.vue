@@ -6,7 +6,7 @@
           <div class="col-lg-7">
             <div class="text-block">
               <div class="row gallery mb-3 ms-n1 me-n1">
-                <div class="col-lg-12 col-6 px-1 mb-2"><a href="/../../../../html/img/photo/sample1.PNG" data-fancybox="gallery" title="Our street"><img class="img-fluid" src="/../../../../html/img/photo/sample1.PNG" alt="..."></a></div>
+                <div class="col-lg-12 col-6 px-1 mb-2"><a href="/../../../../html/img/photo/sample1.PNG" data-fancybox="gallery" title="Our street"><img class="img-fluid" v-bind:src="detailProduct.imgUrl" alt="..."></a></div>
                 <div class="col-lg-4 col-6 px-1 mb-2"><a href="/../../../../html/img/photo/photo-1512917774080-9991f1c4c750.jpg" data-fancybox="gallery" title="Outside"><img class="img-fluid" src="/../../../../html/img/photo/photo-1512917774080-9991f1c4c750.jpg" alt="..."></a></div>
                 <div class="col-lg-4 col-6 px-1 mb-2"><a href="/../../../../html/img/photo/photo-1494526585095-c41746248156.jpg" data-fancybox="gallery" title="Rear entrance"><img class="img-fluid" src="/../../../../html/img/photo/photo-1494526585095-c41746248156.jpg" alt="..."></a></div>
                 <div class="col-lg-4 col-6 px-1 mb-2"><a href="/../../../../html/img/photo/photo-1494526585095-c41746248156.jpg" data-fancybox="gallery" title="Rear entrance"><img class="img-fluid" src="/../../../../html/img/photo/photo-1494526585095-c41746248156.jpg" alt="..."></a></div>
@@ -158,39 +158,50 @@
             </div>
           </div>
           <div class="col-lg-5">
-            <div class="p-4 shadow ms-lg-4 rounded sticky-top" style="top: 100px;">
+            <div class="p-4 shadow ms-lg-4 rounded sticky-top" style="top: 200px;">
               <p  class="text-primary">New 프로모션 진행중</p>
-              <p class><span class="text h1">정수기 이름</span> per night</p>
-              <p  class="text-muted">품번</p>
+              <br>
+              <p class><span class="text h1">{{detailProduct.productName}}</span></p>
+              <br>
+              <p  class="text-muted">{{detailProduct.productModel}}</p>
   
               <hr class="my-4">
               <form class="form" id="booking-form" method="get" action="#" autocomplete="off">
                 <div class="mb-4">
-                  <label class="form-label" for="bookingDate">Your stay *</label>
-                  <div class="datepicker-container datepicker-container-right">
-                    <input class="form-control" type="text" name="bookingDate" id="bookingDate" placeholder="Choose your dates" required="required">
-                  </div>
-                </div>
-                <div class="mb-4">
-                  <label class="form-label" for="guests">Guests *</label>
+                  <label class="form-label" for="guests">렌탈/구매 *</label>
                   <select class="form-control" name="guests" id="guests">
-                    <option value="1">1 Guest</option>
-                    <option value="2">2 Guests</option>
-                    <option value="3">3 Guests</option>
-                    <option value="4">4 Guests</option>
-                    <option value="5">5 Guests</option>
+                    <option value="1">렌탈</option>
+                    <option value="2">구매</option>
                   </select>
                 </div>
+                <div class="mb-4">
+                  <label class="form-label" for="guests">약정기간 *</label>
+                  <select class="form-control" name="guests" id="guests">
+                    <option value="1">3년</option>
+                    <option value="2">6년</option>
+                  </select>
+                </div>
+                <hr class="my-4">
+                <div class="mb-4" style="text-align: right;">
+                  <label class="form-label h5">구매금액</label> &nbsp;&nbsp;
+                  <strong class="text-primary h3">{{detailProduct.productPrice}}원</strong>
+                </div>
+                <div class="mb-4" style="text-align: right;">
+                  <label class="form-label h5">렌탈금액</label> &nbsp;&nbsp;
+                  <strong class="text-primary h3"> 월 {{detailProduct.productRentalPrice}}원</strong>
+                </div>
                 <div class="d-grid mb-4">
-                  <button class="btn btn-primary" type="submit">Book your stay</button>
+                  <button class="btn btn-primary" type="submit">주문하기</button>
                 </div>
               </form>
+<!-- 
               <p class="text-muted text-sm text-center">Some additional text can be also placed here.</p>
               <hr class="my-4">
               <div class="text-center">
                 <p> <a class="text-secondary text-sm" href="#"> <i class="fa fa-heart"></i> Bookmark This Listing</a></p>
                 <p class="text-muted text-sm">79 people bookmarked this place </p>
               </div>
+               -->
             </div>
           </div>
         </div>
@@ -208,7 +219,7 @@
                 <!-- place item-->
                 <div class="w-100 h-100 hover-animate" data-marker-id="59c0c8e33b1527bfe2abaf92">
                   <div class="card h-100 border-0 shadow">
-                    <div class="card-img-top overflow-hidden gradient-overlay"> <img class="img-fluid" src="/../../../../html/img/photo/sample1.PNG" alt="Modern, Well-Appointed Room"/><a class="tile-link" href="detail-rooms.html"></a>
+                    <div class="card-img-top overflow-hidden gradient-overlay center"> <img class="img-fluid" src="/../../../../html/img/photo/sample1.PNG" alt="Modern, Well-Appointed Room"/><a class="tile-link" href="detail-rooms.html"></a>
                       <div class="card-img-overlay-bottom z-index-20">
                         <div class="d-flex text-white text-sm align-items-center"><img class="avatar avatar-border-white flex-shrink-0 me-2" src="/../../../../html/img/avatar/avatar-0.jpg" alt="Pamela"/>
                           <div>Pamela</div>
@@ -455,9 +466,48 @@
   </template>
   
   <script>
+  import axios from 'axios';
+  import { ref, onMounted } from 'vue';
+  import { useRoute, useRouter } from 'vue-router';
+
   export default {
-  
+  setup() {
+    const route = useRoute();
+    const router = useRouter();
+    const detailProduct = ref(null);
+    const productNo = route.params.pno;
+    console.log("detail page : "+productNo);
+
+    const getProductDetail = async() => {
+      console.log("해당 상품 받아와??");
+      console.log("상품 번호: "+productNo);
+      const res = await axios.get('/product/products/' +productNo);
+      console.log(res.data);
+      detailProduct.value = {...res.data};
+
+      
+      console.log("11111");
+      console.log(detailProduct.value);
+
+      // setTimeout(() => {
+      //   console.log(detailProduct.value.imgUrl);
+      //   console.log(detailProduct.value.productName);
+      // }, 0);
+    }
+    
+    onMounted(() => {
+      getProductDetail();
+    });
+    
+    
+  return {
+    route,
+    router,
+    detailProduct,
   }
+
+  }
+}
   </script>
   
   <style>

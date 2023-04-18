@@ -30,14 +30,15 @@
                                   <router-link class="dropdown-item" :to="{name: 'AdminRegister'}">관리자 등록 페이지</router-link>
                                   <router-link class="dropdown-item" :to="{name: 'AdminList'}">관리자 목록 페이지</router-link>
                                   <router-link class="dropdown-item" :to="{name: 'AdminMember'}">관리자 회원관리 페이지</router-link>
+                                  <router-link class="dropdown-item" :to="{name: 'AdminOrder'}">주문관리 페이지</router-link>
                                   <router-link class="dropdown-item" :to="{name: 'Rental1'}">rental1</router-link>
                                   <router-link class="dropdown-item" :to="{name: 'Rental2'}">rental2</router-link>
                                   <router-link class="dropdown-item" :to="{name: 'Rental3'}">rental3</router-link>
-                                  <router-link class="dropdown-item" :to="{name: 'Detail'}">상품상세페이지</router-link>
-                                  <router-link class="dropdown-item" :to="{name: 'List'}">상품목록페이지</router-link>
+                                  <!-- <router-link class="dropdown-item" :to="{name: 'ProductDetail'}">상품상세페이지</router-link> -->
+                                  <router-link class="dropdown-item" :to="{name: 'ProductList'}">상품목록페이지</router-link>
                                   <router-link class="dropdown-item" :to="{name: 'MyProduct'}">마이페이지 첫화면</router-link>
                                   <router-link class="dropdown-item" :to="{name: 'MyPage'}">마이페이지</router-link>
-                                  <router-link class="dropdown-item" :to="{name: 'AdminOrder'}">주문관리 페이지</router-link>
+                                  <router-link class="dropdown-item" :to="{name: 'MyOrderList'}">마이페이지</router-link>
                               </div>
                           </li>
                           <li class="nav-item mt-3 mt-lg-0 ms-lg-3 d-lg-none d-xl-inline-block"></li>

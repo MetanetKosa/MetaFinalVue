@@ -13,10 +13,13 @@ import List from '@/components/pages/product/List.vue';
 import AdminOrder from '@/components/pages/admin/AdminOrderList.vue'
 import MyProduct from '@/components/pages/mypage/MyProduct.vue';
 import MyPage from '@/components/pages/mypage/MyPage.vue';
+import MyOrderList from '@/components/pages/mypage/MyOrderList.vue';
+import MyPayList from '@/components/pages/mypage/MyPayList.vue';
 
 
 const router = createRouter({
     history: createWebHistory(),
+    mode: history,
     routes: [{
             path: '/',
             name: 'Home',
@@ -68,13 +71,13 @@ const router = createRouter({
             component: Rental3
         },
         {
-            path: '/detail',
-            name: 'Detail',
+            path: '/detail/:pno',
+            name: 'ProductDetail',
             component: Detail
         },
         {
             path: '/list',
-            name: 'List',
+            name: 'ProductList',
             component: List
         },
         {
@@ -83,9 +86,19 @@ const router = createRouter({
             component: MyProduct
         },
         {
-            path: '/mypage',
+            path: '/mypage/myproduct',
             name: 'MyPage',
             component: MyPage
+        },
+        {
+            path: '/myorder',
+            name: 'MyOrderList',
+            component: MyOrderList
+        },
+        {
+            path: '/mylist',
+            name: 'MyPayList',
+            component: MyPayList
         },
 
     ]
