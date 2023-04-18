@@ -10,7 +10,8 @@ import Rental2 from '@/components/pages/order/Rental2.vue';
 import Rental3 from '@/components/pages/order/Rental3.vue';
 import Detail from '@/components/pages/product/Detail.vue';
 import List from '@/components/pages/product/List.vue';
-import AdminOrder from '@/components/pages/admin/AdminOrderList.vue'
+import SearchList from '@/components/pages/product/SearchList.vue';
+import AdminOrder from '@/components/pages/admin/AdminOrderList.vue';
 import MyProduct from '@/components/pages/mypage/MyProduct.vue';
 import MyPage from '@/components/pages/mypage/MyPage.vue';
 import MyOrderList from '@/components/pages/mypage/MyOrderList.vue';
@@ -71,14 +72,19 @@ const router = createRouter({
             component: Rental3
         },
         {
-            path: '/detail/:pno',
+            path: '/product/detail/:pno',
             name: 'ProductDetail',
             component: Detail
         },
         {
-            path: '/list',
+            path: '/productlist',
             name: 'ProductList',
             component: List
+        },
+        {
+            path: '/search/:searchKeyword',
+            name: 'SearchList',
+            component: SearchList
         },
         {
             path: '/myproduct',
