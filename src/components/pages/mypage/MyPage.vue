@@ -186,7 +186,7 @@ export default {
     
     let  memNo = 1;
          // memNo 임의 설정 1
-    axios.get(`/mypage/myproduct/${memNo}`).then(({data}) =>{
+    axios.get(`/mypage/myorder/myproduct/${memNo}`).then(({data}) =>{
       state.myProducts = data;
       console.log(" 데이터값 " + data);
     }).catch((error) => {
