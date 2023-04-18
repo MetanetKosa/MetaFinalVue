@@ -75,11 +75,11 @@ export default {
             console.log("memId확인" + state.form.memId);
             console.log("memPw확인" + state.form.memPw);
             const data = {
-                memId: state.form.memId,
-                memPw: state.form.memPw
+                username: state.form.memId,
+                password: state.form.memPw
             };
-            console.log("data memId 확인: " + data.memId);
-            console.log("data memPw 확인: " + data.memPw);
+            console.log("data username 확인: " + data.username);
+            console.log("data password 확인: " + data.password);
 
             // const args = JSON.parse(JSON.stringify(state.form));
             axios.post("/auth/login", data).then(() => {
