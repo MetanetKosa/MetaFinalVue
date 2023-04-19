@@ -64,7 +64,7 @@ const router = createRouter({
             component: Rental
         },
         {
-            path: '/retal/check',
+            path: '/rental/check',
             name: 'RentalResult',
             component: RentalResult
         },

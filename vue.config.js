@@ -9,21 +9,26 @@ module.exports = defineConfig({
       //   changeOrigin: true,
       //   logLevel: 'debug',
       // },
+      '/order': {
+        target: 'http://localhost:8082',
+        changeOrigin: true,
+        logLevel: 'debug',
+        },
       '/product': {
         target: 'http://localhost:8082',
         changeOrigin: true,
         logLevel: 'debug',
         },
-        '/upload': {
-          target: 'http://localhost:8082',
-          changeOrigin: true,
-          logLevel: 'debug',
-          },
-          '/admin': {
-          target: 'http://localhost:8082',
-          changeOrigin: true,
-          logLevel: 'debug',
-          }
+      '/upload': {
+        target: 'http://localhost:8082',
+        changeOrigin: true,
+        logLevel: 'debug',
+        },
+        '/admin': {
+        target: 'http://localhost:8082',
+        changeOrigin: true,
+        logLevel: 'debug',
+        }
     }
   }
 })

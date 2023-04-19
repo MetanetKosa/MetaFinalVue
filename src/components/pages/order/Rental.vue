@@ -7,9 +7,9 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-7">
-              <form>
+              <form @submit.prevent="submitRental" class="form" name="rental" id="rental-form">
               <h1 class="h2 my-3 text-bold"> 배송 정보 <span class="text-muted float-end">Step 1</span>      </h1>
-              <button class="btn btn-link btn-collapse ps-0 h2 text-muted" type="button" data-bs-toggle="collapse" data-bs-target="#contractInformation" aria-expanded="false" aria-controls="addNewCard" data-expanded-text="닫기" data-collapsed-text="카드">입력</button>
+              <button class="btn btn-link btn-collapse ps-0 h2 text-muted" type="button" data-bs-toggle="collapse" data-bs-target="#contractInformation" aria-expanded="false" aria-controls="addNewCard" data-expanded-text="닫기" data-collapsed-text="배송지 입력">배송지 입력</button>
 
               <div class="text-block"></div>
               <div class="col-lg-12 ms-auto collapse" id="contractInformation">
@@ -20,12 +20,12 @@
                 <!-- Country-->
                 <div class="mb-4">
                   <label class="form-label" for="form_country">수취인 이름</label>
-                  <input class="form-control" name="name" id="form_street">
+                  <input class="form-control" v-model="rental.orderName" name="name" id="form_street">
                 </div>
                 <!-- Street-->
                 <div class="mb-4">
                   <label class="form-label" for="form_street">수취인 연락처</label>
-                  <input class="form-control" name="name" id="form_street">
+                  <input class="form-control" v-model="rental.orderPhone" name="name" id="form_street">
                 </div>
                 
                 <div class="address">
@@ -34,7 +34,7 @@
                   <div class="col-md-6">
                     <div class="mb-4">
                       <label class="form-label" for="form_city">우편번호</label>
-                      <input class="form-control" type="text" id="postcode" placeholder="우편번호" v-model="orderAddNumber">
+                      <input class="form-control" v-model="rental.orderAddNumber" type="text" id="postcode" placeholder="우편번호">
                     </div>
                   </div>
                   <div class="col-md-6">
@@ -47,13 +47,13 @@
                   <div class="col-md-6">
                     <div class="mb-4">
                       <label class="form-label" for="form_state">주소</label>
-                      <input class="form-control" type="text" id="Address" placeholder="도로명주소" v-model="orderAddress">
+                      <input class="form-control" v-model="rental.orderAddress" type="text" id="Address" placeholder="도로명주소">
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="mb-4">
                       <label class="form-label" for="form_zip">상세주소</label>
-                      <input class="form-control" type="text" id="detailAddress" placeholder="상세주소" v-model="orderAddDetail">
+                      <input class="form-control" v-model="rental.orderAddDetail" type="text" id="detailAddress" placeholder="상세주소">
                     </div>
                   </div>
                 </div>
@@ -74,6 +74,20 @@
                       </div>
                     </li>
                   </ul>
+                  <div class="mb-4 col-md-6">
+                    <label class="form-label" for="card-name">방문 시간 선택</label>
+                    <select class="selectpicker form-control mb-3" v-model="rental.deliveryTime" name="deliveryDate" id="deliveryDate" data-style="btn-selectpicker">
+                      <option>선택</option>
+                      <option>오전 10~11시</option>
+                      <option>오전 11~112시</option>
+                      <option>오후 01~02시</option>
+                      <option>오후 02~03시</option>
+                      <option>오후 03~04시</option>
+                      <option>오후 04~05시</option>
+                      <option>오후 05~06시</option>
+                      <option>오후 06~07시</option>
+                    </select>
+                  </div>
                   <p class="text-sm text-muted mb-0">선택하신 설치 일시와 실제 설치 확정일시가 재고 상황 등으로 변동될 수 있습니다.</p>
                   <p class="text-sm text-muted mb-0">주문완료 후 알림톡으로 실제 설치 확정일시를 안내 드립니다. 설치일시 조정이 필요하신 경우 고객센터(1588-5200)로 연락 부탁드립니다.</p>
                   <p class="text-sm text-muted mb-0">방문하기 전에 담당 방문 기사가 고객님께 연락을 드립니다.</p>
@@ -95,11 +109,11 @@
 
               <!--step2-->
               <h1 class="h2 my-3 text-bold"> 렌탈료 납부 정보 <span class="text-muted float-end">Step 2</span>      </h1>
-              <button class="btn btn-link btn-collapse ps-0 h2 text-muted" type="button" data-bs-toggle="collapse" data-bs-target="#payInformation" aria-expanded="false" aria-controls="addNewCard" data-expanded-text="닫기" data-collapsed-text="카드">입력</button>
+              <button class="btn btn-link btn-collapse ps-0 h2 text-muted" type="button" data-bs-toggle="collapse" data-bs-target="#payInformation" aria-expanded="false" aria-controls="addNewCard" data-expanded-text="닫기" data-collapsed-text="결제수단 입력">결제수단 입력</button>
               <div class="col-lg-12 ms-auto collapse" id="payInformation">
                 <div class="text-block">
                   <div class="text-block mb-4">
-                  <form action="#">
+                  <!-- <form action="#"> -->
                     <div class="d-flex justify-content-between align-items-end mb-4">
                       <h5 class="mb-0">결제 수단 선택</h5>
                       <div class="text-muted"><i class="fab fa-cc-amex fa-2x me-2"> </i><i class="fab fa-cc-visa fa-2x me-2"> </i><i class="fab fa-cc-mastercard fa-2x"></i></div>
@@ -110,16 +124,16 @@
                       
                       <div class="mb-4 col-md-6">
                         <label class="form-label" for="card-name">카드선택</label>
-                        <select class="selectpicker form-control mb-3" name="payment" id="form_payment" data-style="btn-selectpicker">
-                          <option value="">선택</option>
-                          <option value="">BC카드</option>
-                          <option value="">삼성카드</option>
-                          <option value="">국민카드</option>
-                          <option value="">롯데카드</option>
-                          <option value="">비자(하나카드포함)</option>
-                          <option value="">현대카드</option>
-                          <option value="">신한카드</option>
-                          <option value="">NH카드</option>
+                        <select class="selectpicker form-control mb-3" v-model="rental.orderPay" name="payment" id="form_payment" data-style="btn-selectpicker">
+                          <option>선택</option>
+                          <option>BC카드</option>
+                          <option>삼성카드</option>
+                          <option>국민카드</option>
+                          <option>롯데카드</option>
+                          <option>비자(하나카드포함)</option>
+                          <option>현대카드</option>
+                          <option>신한카드</option>
+                          <option>NH카드</option>
                         </select>
                       </div>
                       <div class="mb-4 col-md-6">
@@ -141,9 +155,9 @@
 
                       
                     </div>
-                  </form>
+                  <!-- </form> -->
 
-                  <form action="#">
+                  <!-- <form action="#"> -->
                     <button class="btn btn-link btn-collapse ps-0 text-muted" type="button" data-bs-toggle="collapse" data-bs-target="#addBankCard" aria-expanded="false" aria-controls="addBankCard" data-expanded-text="닫기" data-collapsed-text="계좌">계좌</button>
                     <div class="row collapse" id="addBankCard">
                       
@@ -186,7 +200,7 @@
                         <input class="form-control" type="text" name="zip" placeholder="" id="zip">
                       </div>
                     </div>
-                  </form>
+                  <!-- </form> -->
 
                   <!-- <form action="#">
                     <button class="btn btn-link btn-collapse ps-0 text-muted" type="button" data-bs-toggle="collapse" data-bs-target="#addKakao" aria-expanded="false" aria-controls="addKakao" data-expanded-text="닫기" data-collapsed-text="카카오페이">카카오페이</button>
@@ -202,22 +216,22 @@
                   </div>
               
                   <div class="mb-4 col-md-6">
-                        <label class="form-label text-block" for="zip">정기 결제일</label>
-                        <ul class="list-unstyled">
-                          <li>
-                            <div class="form-check">
-                              <input class="form-check-input" type="radio" id="purpose_0" name="purpose">
-                              <label class="form-check-label" for="purpose_0">10일    </label>
-                            </div>
-                          </li>
-                          <li>
-                            <div class="form-check">
-                              <input class="form-check-input" type="radio" id="purpose_1" name="purpose">
-                              <label class="form-check-label" for="purpose_1">20일</label>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
+                    <label class="form-label text-block" for="zip">정기 결제일</label>
+                    <ul class="list-unstyled">
+                      <li>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" id="purpose_0" name="purpose" value="10일"  v-model="rental.rentalPayDate">
+                          <label class="form-check-label" for="purpose_0">10일</label>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" id="purpose_1" name="purpose" value="20일"  v-model="rental.rentalPayDate">
+                          <label class="form-check-label" for="purpose_1">20일</label>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
                 <div class="text-block">
                   <h6>Cancel policy</h6>
@@ -229,9 +243,8 @@
               <div class="row form-block flex-column flex-sm-row">
                     <!-- <div class="col text-center text-sm-start"><a class="btn btn-link text-muted" href="user-booking-1.html"> <i class="fa-chevron-left fa me-2"></i>이전</a>
                     </div> -->
-                <div class="col text-center text-sm-end"><button class="btn btn-primary px-3" type="submit" href="user-booking-3.html"> 다음<i class="fa-chevron-right fa ms-2"></i></button></div>
+                <div class="col text-center text-sm-end"><button class="btn btn-primary px-3" type="submit">다음<i class="fa-chevron-right fa ms-2"></i></button></div>
               </div>
-            <div class="text-block"></div>
             </form>
             </div>
 
@@ -257,6 +270,7 @@
                           <!-- <td class="fw-bold text-end pt-3 text-primary h5 pr-2">{{ product.productRentalPrice.toLocaleString() }} 원</td> -->
                           <!-- <td class="fw-bold text-end pt-3 text-primary h4 pr-2">월 &nbsp;&nbsp;{{ (rentalLength === '3') ? product.productRentalPrice.toLocaleString() : (product.productRentalPrice - 4000).toLocaleString() }} 원</td> -->
                           <td class="fw-bold text-end pt-3 text-primary h4 pr-2">월 &nbsp;&nbsp;{{ (length === '3') ? product.productRentalPrice.toLocaleString() : ((length === '6') ? (product.productRentalPrice - 4000).toLocaleString() : '')}} 원</td>
+                          <!-- <input type="hidden" v-model="rental.rentalPrice" :value="(length === '3') ? product.productRentalPrice : ((length === '6') ? (product.productRentalPrice - 4000) : '')">  -->
                         </tr>
                       </tfoot>
                     </table>
@@ -283,61 +297,6 @@
 import axios from 'axios';
 import { ref, onMounted, mounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-
-// function sample4_execDaumPostcode() {
-// new daum.Postcode({
-//     oncomplete: function(data) {
-//       // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-
-//       // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
-//       // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-//       var roadAddr = data.roadAddress; // 도로명 주소 변수
-//       var extraRoadAddr = ''; // 참고 항목 변수
-
-//       // 법정동명이 있을 경우 추가한다. (법정리는 제외)
-//       // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-//       if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-//           extraRoadAddr += data.bname;
-//       }
-//       // 건물명이 있고, 공동주택일 경우 추가한다.
-//       if(data.buildingName !== '' && data.apartment === 'Y'){
-//           extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-//       }
-//       // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-//       if(extraRoadAddr !== ''){
-//           extraRoadAddr = ' (' + extraRoadAddr + ')';
-//       }
-
-//       // 우편번호와 주소 정보를 해당 필드에 넣는다.
-//       document.getElementById('sample4_postcode').value = data.zonecode;
-//       document.getElementById("sample4_roadAddress").value = roadAddr;
-//       document.getElementById("sample4_jibunAddress").value = data.jibunAddress;
-      
-//       // 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
-//       if(roadAddr !== ''){
-//           document.getElementById("sample4_extraAddress").value = extraRoadAddr;
-//       } else {
-//           document.getElementById("sample4_extraAddress").value = '';
-//       }
-
-//       var guideTextBox = document.getElementById("guide");
-//       // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
-//       if(data.autoRoadAddress) {
-//           var expRoadAddr = data.autoRoadAddress + extraRoadAddr;
-//           guideTextBox.innerHTML = '(예상 도로명 주소 : ' + expRoadAddr + ')';
-//           guideTextBox.style.display = 'block';
-
-//       } else if(data.autoJibunAddress) {
-//           var expJibunAddr = data.autoJibunAddress;
-//           guideTextBox.innerHTML = '(예상 지번 주소 : ' + expJibunAddr + ')';
-//           guideTextBox.style.display = 'block';
-//       } else {
-//           guideTextBox.innerHTML = '';
-//           guideTextBox.style.display = 'none';
-//       }
-//     }
-//   }).open();
-// }
 
 export default {
   computed: {
@@ -401,6 +360,7 @@ export default {
       productPrice: 0,
       productRentalPrice: 0,
     });
+    const rental = ref([]);
 
     const productNo = route.query.pno;
     console.log("productNo : " +productNo);
@@ -414,8 +374,62 @@ export default {
       console.log("상품 번호: "+productNo);
       const res = await axios.get('/product/' +productNo);
       product.value = {...res.data};
+
+      const rp = (rentalLength === 3) ? product.value.productRentalPrice : ((rentalLength === 6) ? (product.value.productRentalPrice - 4000) : '')
+      console.log("렌탈금액 : " +rp);
       
       console.log(product.value);
+
+      return rp;
+    }
+    
+
+    const submitRental = async() => {
+      console.log(rental.value);
+
+      console.log(length);
+
+      const rp = await getProduct();
+
+      const data = {
+        //productNo : productNo,
+        //memberNo : 1,
+        deliveryTime : rental.value.deliveryTime,
+        orderAddNumber : rental.value.orderAddNumber,
+        orderAddress : rental.value.orderAddress,
+        orderAddDetail : rental.value.orderAddDetail,
+        orderName : rental.value.orderName,
+        orderPhone : rental.value.orderPhone,
+        orderPay : rental.value.orderPay,
+        rentalPrice : rp,
+        rentalTerm : length,
+        rentalPayDate : rental.value.rentalPayDate
+      }
+
+      console.log(data);
+      console.log(rental.value);
+
+      try{
+        //const res = await axios.post('/'+productNo+'/'+memberNo+'/rental', data);
+        const res = await axios.post('/order/rental/'+productNo+'/1', data);
+        console.log(res);
+        //console.log(res.orderNo);
+        if(res != null) {
+          alert("주문이 정상적으로 완료되었습니다.");
+          const orderNo = await axios.get('/order/getOrderNo');
+          //console.log(orderNo.data);
+          router.push({
+            name: 'RentalResult',
+            query: {
+              ono: orderNo.data
+            }
+          })
+          //window.location.reload();  //현재 페이지 reload
+        } 
+      } catch(error) {
+        console.error(error);
+        alert("주문에 실패하였습니다.")
+      }
     }
 
     onMounted(() => {
@@ -427,6 +441,8 @@ export default {
       router,
       product,
       length,
+      rental,
+      submitRental,
     }
   }
 }
