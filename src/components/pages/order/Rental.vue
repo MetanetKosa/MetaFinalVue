@@ -59,9 +59,33 @@
                 </div>
                 </div>
                 <div class="text-block">
-                  <h5>설치 희망일</h5>
+                  <label class="form-label" for="card-name">설치 희망일</label>
                   <ul class="list-unstyled">
-                    <li>
+                    <!-- DatePicker -->
+                  <div class="container">
+                    <div class="my-2" style="width: 100%">
+                      <div class="date">
+                        <font-awesome-icon
+                          icon="fa-solid fa-calendar-days"
+                          transform="down-2.5 right-20"
+                          style="z-index: 1; cursor: default"
+                          @click="clickCalIcon('dp1')"
+                        />
+                        <Datepicker
+                          v-model="rental.deliveryDate"
+                          :ref="inputs.dp1"
+                          class="datepicker"
+                          :locale="locale"
+                          :weekStartsOn="0"
+                          :inputFormat="inputFormat"
+                          :clearable="true"
+                          @change="getCalValue('dp1')"
+                        />
+                        <!-- <button type="button" @click="getCalValue('dp1')">Get Value</button> -->
+                      </div>
+                    </div>
+                  </div>
+                    <!-- <li>
                       <div class="form-check">
                         <input class="form-check-input" type="radio" id="purpose_0" name="purpose">
                         <label class="form-check-label" for="purpose_0">Personal travel      </label>
@@ -72,14 +96,14 @@
                         <input class="form-check-input" type="radio" id="purpose_1" name="purpose">
                         <label class="form-check-label" for="purpose_1">Business travel      </label>
                       </div>
-                    </li>
+                    </li> -->
                   </ul>
                   <div class="mb-4 col-md-6">
                     <label class="form-label" for="card-name">방문 시간 선택</label>
                     <select class="selectpicker form-control mb-3" v-model="rental.deliveryTime" name="deliveryDate" id="deliveryDate" data-style="btn-selectpicker">
                       <option>선택</option>
                       <option>오전 10~11시</option>
-                      <option>오전 11~112시</option>
+                      <option>오전 11~12시</option>
                       <option>오후 01~02시</option>
                       <option>오후 02~03시</option>
                       <option>오후 03~04시</option>
@@ -295,10 +319,18 @@
 
 <script>
 import axios from 'axios';
-import { ref, onMounted, mounted } from 'vue';
+import { ref, onMounted, reactive, mounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
+// vue3-datepicker
+import Datepicker from 'vue3-datepicker';
+import { ko } from 'date-fns/locale';
+import { defineRefs } from './helper.js';
 
 export default {
+  components:{
+    Datepicker,
+  },
+
   computed: {
     rentalLength() {
       return parseInt(this.$route.query.length);
@@ -351,6 +383,40 @@ export default {
   },
 
   setup() {
+    // &&& DatePicker 부분 &&&
+    // :weekStartsOn="0" 'Sunday' is first
+    const picked = ref(new Date());
+    const locale = reactive(ko); // 한글 달력
+    const inputFormat = ref('yyyy-MM-dd');
+
+    // refs
+    // const datepicker1 = ref(null);
+    // dynamic refs
+    
+    const inputs = defineRefs(['dp1']);
+
+   
+    // FontAwesome 아이콘 클릭 시, datepicker 나타남
+    const clickCalIcon = (refId) => {
+      const dp = inputs[refId].value;
+      // console.log(dp);
+      dp.inputRef.focus();
+    };
+
+    //Get Value 버튼 클릭 시, input 데이터(YYYY-MM-DD 나타남)
+    const getCalValue = (refId) => {
+      console.log("뭔지모르겠는값 : " + refId);
+      // console.log(datepicker1.value.input);
+      // ref="datepicker1"
+
+      const dp = inputs[refId].value;
+      // console.log(dp);
+      console.log("해당 날짜 값: " + dp.input);
+      
+      alert(dp.input);
+    };
+    // &&& DatePicker 부분 끝 &&&
+
     const route = useRoute();
     const router = useRouter();
     const product = ref({
@@ -394,6 +460,7 @@ export default {
       const data = {
         //productNo : productNo,
         //memberNo : 1,
+        deliveryDate : rental.value.deliveryDate,
         deliveryTime : rental.value.deliveryTime,
         orderAddNumber : rental.value.orderAddNumber,
         orderAddress : rental.value.orderAddress,
@@ -443,6 +510,16 @@ export default {
       length,
       rental,
       submitRental,
+
+      //&&& DatePicker &&&
+      picked,
+      locale,
+      inputFormat,
+      inputs,
+      clickCalIcon,
+      getCalValue,
+      selectedDate: new Date(),
+      //&&& DatePicker 끝 &&&
     }
   }
 }

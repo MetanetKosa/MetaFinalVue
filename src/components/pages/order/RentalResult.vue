@@ -84,7 +84,7 @@
                   <div class="col-sm-8">
                     <p class="col-sm">자동이체일</p>
                   </div>
-                  <div class="col-sm-4">매월 {{detailOrder.rentalPayDate}}</div>
+                  <div class="col-sm-4">매월 {{new Date(detailOrder.rentalPayDate).toLocaleDateString()}}</div>
                   <div class="col-sm-8">
                     <p class="col-sm">계약기간</p>
                   </div>

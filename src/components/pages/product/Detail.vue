@@ -239,7 +239,7 @@
                       <td class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">설치 형태*</td>
                       <td style="text-align: center; border: 1px solid black; padding: 10px;">{{detailProduct.productType}}</td>
                       <td class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">출시 년월</td>
-                      <td style="text-align: center; border: 1px solid black; padding: 10px;">{{ detailProduct.productRdate }}</td>
+                      <td style="text-align: center; border: 1px solid black; padding: 10px;">{{new Date(detailProduct.productRdate).toLocaleDateString() }}</td>
                     </tr>
                     <tr>
                       <td class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">제조사</td>
