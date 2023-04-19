@@ -10,36 +10,6 @@
          </div>
        </div>
      </section>
-     <div class="container">
-       <div class="search-bar rounded p-3 p-lg-4 position-relative mt-n5 z-index-20">
-         <form action="#">
-           <div class="row">
-             <div class="col-lg-4 d-flex align-items-center form-group">
-               <input class="form-control border-0 shadow-0" type="search" name="search" placeholder="What are you searching for?">
-             </div>
-             <div class="col-md-6 col-lg-3 d-flex align-items-center form-group">
-               <div class="input-label-absolute input-label-absolute-right w-100">
-                 <label class="label-absolute" for="location"><i class="fa fa-crosshairs"></i>
-                   <div class="sr-only">City</div>
-                 </label>
-                 <input class="form-control border-0 shadow-0" type="text" name="location" placeholder="Location" id="location">
-               </div>
-             </div>
-             <div class="col-md-6 col-lg-3 d-flex align-items-center form-group no-divider">
-               <select class="selectpicker" title="Categories" data-style="btn-form-control">
-                 <option value="small">Restaurants</option>
-                 <option value="medium">Hotels</option>
-                 <option value="large">Cafes</option>
-                 <option value="x-large">Garages</option>
-               </select>
-             </div>
-             <div class="col-lg-2 form-group d-grid mb-0">
-               <button class="btn btn-primary h-100" type="submit">Search </button>
-             </div>
-           </div>
-         </form>
-       </div>
-     </div>
      <!-- Our picks section-->
      <section class="py-6">
        <div class="container">
@@ -87,60 +57,6 @@
                <div class="d-flex align-items-center h-100 text-white justify-content-center py-6 py-lg-7">
                  <h3 class="text-shadow text-uppercase mb-0">Fresno</h3>
                </div>
-             </div>
-           </div>
-         </div>
-       </div>
-     </section>
-     <section class="pt-4 pb-6">
-       <div class="container">
-         <div class="pb-lg-4">
-           <p class="subtitle text-secondary">One-of-a-kind directory app</p>
-           <h2 class="mb-5">Discover great local businesses around you</h2>
-         </div>
-         <div class="row">
-           <div class="col-sm-6 col-lg-3 mb-3 mb-lg-0">
-             <div class="px-0 pe-lg-3">
-               <div class="icon-rounded mb-3 bg-secondary-light">
-                 <svg class="svg-icon w-2rem h-2rem text-secondary">
-                   <use xlink:href="#love-pin-1"> </use>
-                 </svg>
-               </div>
-               <h3 class="h6 text-uppercase">Find the perfect place</h3>
-               <p class="text-muted text-sm">One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed in</p>
-             </div>
-           </div>
-           <div class="col-sm-6 col-lg-3 mb-3 mb-lg-0">
-             <div class="px-0 pe-lg-3">
-               <div class="icon-rounded mb-3 bg-primary-light">
-                 <svg class="svg-icon w-2rem h-2rem text-primary">
-                   <use xlink:href="#pay-by-card-1"> </use>
-                 </svg>
-               </div>
-               <h3 class="h6 text-uppercase">Book your seats</h3>
-               <p class="text-muted text-sm">The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pit</p>
-             </div>
-           </div>
-           <div class="col-sm-6 col-lg-3 mb-3 mb-lg-0">
-             <div class="px-0 pe-lg-3">
-               <div class="icon-rounded mb-3 bg-secondary-light">
-                 <svg class="svg-icon w-2rem h-2rem text-secondary">
-                   <use xlink:href="#food-1"> </use>
-                 </svg>
-               </div>
-               <h3 class="h6 text-uppercase">Enjoy your evening</h3>
-               <p class="text-muted text-sm">His room, a proper human room although a little too small, lay peacefully between its four familiar </p>
-             </div>
-           </div>
-           <div class="col-sm-6 col-lg-3 mb-3 mb-lg-0">
-             <div class="px-0 pe-lg-3">
-               <div class="icon-rounded mb-3 bg-primary-light">
-                 <svg class="svg-icon w-2rem h-2rem text-primary">
-                   <use xlink:href="#pay-1"> </use>
-                 </svg>
-               </div>
-               <h3 class="h6 text-uppercase">Earn points</h3>
-               <p class="text-muted text-sm">Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of </p>
              </div>
            </div>
          </div>
@@ -280,37 +196,6 @@
          </div>
        </div>
      </section>
-     <!-- Brands Section-->
-     <section class="py-6">
-       <div class="container">
-         <h5 class="text-center text-uppercase letter-spacing-3 mb-5">Our brands</h5>
-         <!-- Brands Slider-->
-         <div class="swiper-container brands-slider">
-           <div class="swiper-wrapper pb-5">
-             <!-- item-->
-             <div class="swiper-slide h-auto d-flex align-items-center justify-content-center"><img class="img-fluid w-6rem opacity-7" src="/../html/img/brand/brand-1.svg" alt="Brand 1"></div>
-             <!-- item-->
-             <div class="swiper-slide h-auto d-flex align-items-center justify-content-center"><img class="img-fluid w-6rem opacity-7" src="/../html/img/brand/brand-2.svg" alt="Brand 2"></div>
-             <!-- item-->
-             <div class="swiper-slide h-auto d-flex align-items-center justify-content-center"><img class="img-fluid w-6rem opacity-7" src="/../html/img/brand/brand-3.svg" alt="Brand 3"></div>
-             <!-- item-->
-             <div class="swiper-slide h-auto d-flex align-items-center justify-content-center"><img class="img-fluid w-6rem opacity-7" src="/../html/img/brand/brand-4.svg" alt="Brand 4"></div>
-             <!-- item-->
-             <div class="swiper-slide h-auto d-flex align-items-center justify-content-center"><img class="img-fluid w-6rem opacity-7" src="/../html/img/brand/brand-5.svg" alt="Brand 5"></div>
-             <!-- item-->
-             <div class="swiper-slide h-auto d-flex align-items-center justify-content-center"><img class="img-fluid w-6rem opacity-7" src="/../html/img/brand/brand-6.svg" alt="Brand 6"></div>
-             <!-- item-->
-             <div class="swiper-slide h-auto d-flex align-items-center justify-content-center"><img class="img-fluid w-6rem opacity-7" src="/../html/img/brand/brand-1.svg" alt="Brand 1"></div>
-             <!-- item-->
-             <div class="swiper-slide h-auto d-flex align-items-center justify-content-center"><img class="img-fluid w-6rem opacity-7" src="/../html/img/brand/brand-2.svg" alt="Brand 2"></div>
-             <!-- item-->
-             <div class="swiper-slide h-auto d-flex align-items-center justify-content-center"><img class="img-fluid w-6rem opacity-7" src="/../html/img/brand/brand-3.svg" alt="Brand 3"></div>
-             <!-- item-->
-             <div class="swiper-slide h-auto d-flex align-items-center justify-content-center"><img class="img-fluid w-6rem opacity-7" src="/../html/img/brand/brand-4.svg" alt="Brand 4"></div>
-           </div>
-         </div>
-       </div>
-     </section>
      <!-- Divider Section-->
      <section class="py-6 bg-gray-100">
        <div class="container">
@@ -329,101 +214,6 @@
          </div>
        </div>
      </section>
-     <!-- Instagram-->
-     <section>
-       <div class="container-fluid px-0">
-         <div class="swiper-container instagram-slider">
-           <div class="swiper-wrapper">
-             <div class="swiper-slide overflow-hidden"><a href="#"><img class="img-fluid hover-scale" src="/../html/img/instagram/instagram-1.jpg" alt=" "></a></div>
-             <div class="swiper-slide overflow-hidden"><a href="#"><img class="img-fluid hover-scale" src="/../html/img/instagram/instagram-2.jpg" alt=" "></a></div>
-             <div class="swiper-slide overflow-hidden"><a href="#"><img class="img-fluid hover-scale" src="/../html/img/instagram/instagram-3.jpg" alt=" "></a></div>
-             <div class="swiper-slide overflow-hidden"><a href="#"><img class="img-fluid hover-scale" src="/../html/img/instagram/instagram-4.jpg" alt=" "></a></div>
-             <div class="swiper-slide overflow-hidden"><a href="#"><img class="img-fluid hover-scale" src="/../html/img/instagram/instagram-5.jpg" alt=" "></a></div>
-             <div class="swiper-slide overflow-hidden"><a href="#"><img class="img-fluid hover-scale" src="/../html/img/instagram/instagram-6.jpg" alt=" "></a></div>
-             <div class="swiper-slide overflow-hidden"><a href="#"><img class="img-fluid hover-scale" src="/../html/img/instagram/instagram-7.jpg" alt=" "></a></div>
-             <div class="swiper-slide overflow-hidden"><a href="#"><img class="img-fluid hover-scale" src="/../html/img/instagram/instagram-8.jpg" alt=" "></a></div>
-             <div class="swiper-slide overflow-hidden"><a href="#"><img class="img-fluid hover-scale" src="/../html/img/instagram/instagram-9.jpg" alt=" "></a></div>
-             <div class="swiper-slide overflow-hidden"><a href="#"><img class="img-fluid hover-scale" src="/../html/img/instagram/instagram-10.jpg" alt=" "></a></div>
-             <div class="swiper-slide overflow-hidden"><a href="#"><img class="img-fluid hover-scale" src="/../html/img/instagram/instagram-11.jpg" alt=" "></a></div>
-             <div class="swiper-slide overflow-hidden"><a href="#"><img class="img-fluid hover-scale" src="/../html/img/instagram/instagram-12.jpg" alt=" "></a></div>
-             <div class="swiper-slide overflow-hidden"><a href="#"><img class="img-fluid hover-scale" src="/../html/img/instagram/instagram-13.jpg" alt=" "></a></div>
-             <div class="swiper-slide overflow-hidden"><a href="#"><img class="img-fluid hover-scale" src="/../html/img/instagram/instagram-14.jpg" alt=" "></a></div>
-             <div class="swiper-slide overflow-hidden"><a href="#"><img class="img-fluid hover-scale" src="/../html/img/instagram/instagram-10.jpg" alt=" "></a></div>
-             <div class="swiper-slide overflow-hidden"><a href="#"><img class="img-fluid hover-scale" src="/../html/img/instagram/instagram-11.jpg" alt=" "></a></div>
-             <div class="swiper-slide overflow-hidden"><a href="#"><img class="img-fluid hover-scale" src="/../html/img/instagram/instagram-12.jpg" alt=" "></a></div>
-             <div class="swiper-slide overflow-hidden"><a href="#"><img class="img-fluid hover-scale" src="/../html/img/instagram/instagram-13.jpg" alt=" "></a></div>
-             <div class="swiper-slide overflow-hidden"><a href="#"><img class="img-fluid hover-scale" src="/../html/img/instagram/instagram-14.jpg" alt=" "></a></div>
-           </div>
-         </div>
-       </div>
-     </section>
-     <!-- Footer-->
-     <footer class="position-relative z-index-10 d-print-none">
-       <!-- Main block - menus, subscribe form-->
-       <div class="py-6 bg-gray-200 text-muted"> 
-         <div class="container">
-           <div class="row">
-             <div class="col-lg-4 mb-5 mb-lg-0">
-               <div class="fw-bold text-uppercase text-dark mb-3">Directory</div>
-               <p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
-               <ul class="list-inline">
-                 <li class="list-inline-item"><a class="text-muted text-primary-hover" href="#" target="_blank" title="twitter"><i class="fab fa-twitter"></i></a></li>
-                 <li class="list-inline-item"><a class="text-muted text-primary-hover" href="#" target="_blank" title="facebook"><i class="fab fa-facebook"></i></a></li>
-                 <li class="list-inline-item"><a class="text-muted text-primary-hover" href="#" target="_blank" title="instagram"><i class="fab fa-instagram"></i></a></li>
-                 <li class="list-inline-item"><a class="text-muted text-primary-hover" href="#" target="_blank" title="pinterest"><i class="fab fa-pinterest"></i></a></li>
-                 <li class="list-inline-item"><a class="text-muted text-primary-hover" href="#" target="_blank" title="vimeo"><i class="fab fa-vimeo"></i></a></li>
-               </ul>
-             </div>
-             <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
-               <h6 class="text-uppercase text-dark mb-3">Rentals</h6>
-               <ul class="list-unstyled">
-                 <li><a class="text-muted" href="index.html">Rooms</a></li>
-                 <li><a class="text-muted" href="category-rooms.html">Map on top</a></li>
-                 <li><a class="text-muted" href="category-2-rooms.html">Side map</a></li>
-                 <li><a class="text-muted" href="category-3-rooms.html">No map</a></li>
-                 <li><a class="text-muted" href="detail-rooms.html">Room detail</a></li>
-               </ul>
-             </div>
-             <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
-               <h6 class="text-uppercase text-dark mb-3">Pages</h6>
-               <ul class="list-unstyled">
-                 <li><a class="text-muted" href="compare.html">Comparison                                   </a></li>
-                 <li><a class="text-muted" href="team.html">Team                                   </a></li>
-                 <li><a class="text-muted" href="contact.html">Contact                                   </a></li>
-               </ul>
-             </div>
-             <div class="col-lg-4">
-               <h6 class="text-uppercase text-dark mb-3">Daily Offers & Discounts</h6>
-               <p class="mb-3"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. At itaque temporibus.</p>
-               <form action="#" id="newsletter-form">
-                 <div class="input-group mb-3">
-                   <input class="form-control bg-transparent border-dark border-end-0" type="email" placeholder="Your Email Address" aria-label="Your Email Address">
-                   <button class="btn btn-outline-dark border-start-0" type="submit"> <i class="fa fa-paper-plane text-lg"></i></button>
-                 </div>
-               </form>
-             </div>
-           </div>
-         </div>
-       </div>
-       <!-- Copyright section of the footer-->
-       <div class="py-4 fw-light bg-gray-800 text-gray-300">
-         <div class="container">
-           <div class="row align-items-center">
-             <div class="col-md-6 text-center text-md-start">
-               <p class="text-sm mb-md-0">&copy; 2021, Your company.  All rights reserved.</p>
-             </div>
-             <div class="col-md-6">
-               <ul class="list-inline mb-0 mt-2 mt-md-0 text-center text-md-end">
-                 <li class="list-inline-item"><img class="w-2rem" src="/../html/img/visa.svg" alt="..."></li>
-                 <li class="list-inline-item"><img class="w-2rem" src="/../html/img/mastercard.svg" alt="..."></li>
-                 <li class="list-inline-item"><img class="w-2rem" src="/../html/img/paypal.svg" alt="..."></li>
-                 <li class="list-inline-item"><img class="w-2rem" src="/../html/img/western-union.svg" alt="..."></li>
-               </ul>
-             </div>
-           </div>
-         </div>
-       </div>
-     </footer>
  </body>
  </template>
  
