@@ -109,8 +109,8 @@
                 </ul>
               </div>
               <div class="col-md-7">
-                <ul class="list-unstyled text-muted">
-                  <li class="mb-2"><span class="text-sm">{{ myProduct.productName }}</span></li>
+                <ul class="list-unstyled text-muted">  
+                  <li class="mb-2"><span class="text-sm">이름 : {{ myProduct.productName }}</span></li>
                   <li class="mb-2"><span class="text-sm">2022.08.18 ~ 2028.08.18</span></li>
                   <li class="mb-2"><span class="text-sm">2028.08.18</span></li>
                   <li class="mb-2"><span class="text-sm">서울시 송파구</span></li>
@@ -154,43 +154,43 @@
 
 <script>
   import axios from "axios";
-  import {reactive} from "vue";
+  import { reactive } from "vue";
   import { useRoute, useRouter } from 'vue-router';
+  import {ref} from '@vue/reactivity';
 
   export default {
-  data() {
-    return {
-      showModal: false,
-    };
-  },
-
+    data() {
+      return {
+        showModal: false,
+      };
+    },
   
-  setup() {
-    const route = useRoute();
-    const router = useRouter();
-    const orderNo = route.params.orderNo;
-    const state = reactive({
-      myProduct: {},
-    });
-    console.log("orderNo 확인 : " + state.orderNo);
-    
+    setup() {
+      const route = useRoute();
+      const router = useRouter();
+      const orderNo = route.params.orderNo;
+      const myProduct = ref(null);
+
+      console.log("orderNo 확인 : " + orderNo);
+      
+      const getMyProductDetail = async() => {
+        const res = await axios
+        .get(`/mypage/myorder/myproduct/${orderNo}`);
+        myProduct.value = {...res.data};
+        console.log(myProduct.value);
+      }
+      let memNo = 1; // memNo 임의 설정 1
     
 
-    let memNo = 1; // memNo 임의 설정 1
-    axios
-      .get(`/mypage/myorder/myproduct/${orderNo}`)
-      .then(({ data }) => {
-        state.myProduct = data;
-        console.log(" 데이터값 " + data);
-      })
-      .catch((error) => {
-        console.error("API 요청 실패", error);
-      });
-  },
-};
+        getMyProductDetail();
 
+        return{
+          myProduct,
+          getMyProductDetail,
+        }
+    }
+  };
 </script>
-
 <style>
    /* 모달 스타일링 */
    .modal {
