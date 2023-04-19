@@ -1,16 +1,16 @@
 <template>
     <body>
-     <section class="d-flex align-items-center dark-overlay bg-cover" style="background-image: url(/../html/img/photo/photo-1525610553991-2bede1a236e2.jpg);">
+     <section class="d-flex align-items-center bg-cover" style="background-image: url(/../html/img/main3.png);">
        <div class="container py-6 py-lg-7 text-white overlay-content text-center"> 
          <div class="row">
            <div class="col-xl-10 mx-auto">
-             <h1 class="display-3 fw-bold text-shadow">Discover Directory</h1>
-             <p class="text-lg text-shadow">Uncover the best places to eat, drink, and shop nearest to you.</p>
+             <h1 class="display-3 fw-bold text-shadow">MetaWater Shop</h1>
+             <p class="text-lg text-shadow">The Best nutrient is Clean Water. Find purifier will satisfy you</p>
            </div>
          </div>
        </div>
      </section>
-     <div class="container">
+     <!-- <div class="container">
        <div class="search-bar rounded p-3 p-lg-4 position-relative mt-n5 z-index-20">
          <form action="#">
            <div class="row">
@@ -39,9 +39,9 @@
            </div>
          </form>
        </div>
-     </div>
+     </div> -->
      <!-- Our picks section-->
-     <section class="py-6">
+     <!-- <section class="py-6">
        <div class="container">
          <div class="row mb-5">
            <div class="col-md-8">
@@ -145,7 +145,7 @@
            </div>
          </div>
        </div>
-     </section>
+     </section> -->
      <section class="py-6 bg-gray-100"> 
        <div class="container">
          <div class="text-center pb-lg-4">
@@ -271,7 +271,7 @@
        </div>
      </section>
      <!-- Divider Section-->
-     <section class="py-6 py-lg-7 position-relative dark-overlay"><img class="bg-image" src="/../html/img/photo/photo-1507915135761-41a0a222c709.jpg" alt="">
+     <section class="py-6 py-lg-7 position-relative dark-overlay"><img class="bg-image" src="/../html/img/main2.png" alt="">
        <div class="container">
          <div class="overlay-content text-white py-lg-5 text-center">
            <p class="subtitle text-white letter-spacing-4 mb-4">Find the best spots</p>
@@ -280,150 +280,8 @@
          </div>
        </div>
      </section>
-     <!-- Brands Section-->
-     <section class="py-6">
-       <div class="container">
-         <h5 class="text-center text-uppercase letter-spacing-3 mb-5">Our brands</h5>
-         <!-- Brands Slider-->
-         <div class="swiper-container brands-slider">
-           <div class="swiper-wrapper pb-5">
-             <!-- item-->
-             <div class="swiper-slide h-auto d-flex align-items-center justify-content-center"><img class="img-fluid w-6rem opacity-7" src="/../html/img/brand/brand-1.svg" alt="Brand 1"></div>
-             <!-- item-->
-             <div class="swiper-slide h-auto d-flex align-items-center justify-content-center"><img class="img-fluid w-6rem opacity-7" src="/../html/img/brand/brand-2.svg" alt="Brand 2"></div>
-             <!-- item-->
-             <div class="swiper-slide h-auto d-flex align-items-center justify-content-center"><img class="img-fluid w-6rem opacity-7" src="/../html/img/brand/brand-3.svg" alt="Brand 3"></div>
-             <!-- item-->
-             <div class="swiper-slide h-auto d-flex align-items-center justify-content-center"><img class="img-fluid w-6rem opacity-7" src="/../html/img/brand/brand-4.svg" alt="Brand 4"></div>
-             <!-- item-->
-             <div class="swiper-slide h-auto d-flex align-items-center justify-content-center"><img class="img-fluid w-6rem opacity-7" src="/../html/img/brand/brand-5.svg" alt="Brand 5"></div>
-             <!-- item-->
-             <div class="swiper-slide h-auto d-flex align-items-center justify-content-center"><img class="img-fluid w-6rem opacity-7" src="/../html/img/brand/brand-6.svg" alt="Brand 6"></div>
-             <!-- item-->
-             <div class="swiper-slide h-auto d-flex align-items-center justify-content-center"><img class="img-fluid w-6rem opacity-7" src="/../html/img/brand/brand-1.svg" alt="Brand 1"></div>
-             <!-- item-->
-             <div class="swiper-slide h-auto d-flex align-items-center justify-content-center"><img class="img-fluid w-6rem opacity-7" src="/../html/img/brand/brand-2.svg" alt="Brand 2"></div>
-             <!-- item-->
-             <div class="swiper-slide h-auto d-flex align-items-center justify-content-center"><img class="img-fluid w-6rem opacity-7" src="/../html/img/brand/brand-3.svg" alt="Brand 3"></div>
-             <!-- item-->
-             <div class="swiper-slide h-auto d-flex align-items-center justify-content-center"><img class="img-fluid w-6rem opacity-7" src="/../html/img/brand/brand-4.svg" alt="Brand 4"></div>
-           </div>
-         </div>
-       </div>
-     </section>
-     <!-- Divider Section-->
-     <section class="py-6 bg-gray-100">
-       <div class="container">
-         <div class="row">
-           <div class="col-lg-6 mb-5 mb-lg-0 text-center text-lg-start">
-             <p class="subtitle text-secondary">Start using Directory today</p>
-             <p class="text-lg">Directory is the best way to find & discover great local businesses</p>
-             <p class="text-muted mb-0">One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed in</p>
-           </div>
-           <div class="col-lg-6 d-flex align-items-center justify-content-center">
-             <div class="text-center">
-               <p class="mb-2"><a class="btn btn-lg btn-primary" href="#">Create Your Account</a></p>
-               <p class="text-muted text-small">It's free!</p>
-             </div>
-           </div>
-         </div>
-       </div>
-     </section>
-     <!-- Instagram-->
-     <section>
-       <div class="container-fluid px-0">
-         <div class="swiper-container instagram-slider">
-           <div class="swiper-wrapper">
-             <div class="swiper-slide overflow-hidden"><a href="#"><img class="img-fluid hover-scale" src="/../html/img/instagram/instagram-1.jpg" alt=" "></a></div>
-             <div class="swiper-slide overflow-hidden"><a href="#"><img class="img-fluid hover-scale" src="/../html/img/instagram/instagram-2.jpg" alt=" "></a></div>
-             <div class="swiper-slide overflow-hidden"><a href="#"><img class="img-fluid hover-scale" src="/../html/img/instagram/instagram-3.jpg" alt=" "></a></div>
-             <div class="swiper-slide overflow-hidden"><a href="#"><img class="img-fluid hover-scale" src="/../html/img/instagram/instagram-4.jpg" alt=" "></a></div>
-             <div class="swiper-slide overflow-hidden"><a href="#"><img class="img-fluid hover-scale" src="/../html/img/instagram/instagram-5.jpg" alt=" "></a></div>
-             <div class="swiper-slide overflow-hidden"><a href="#"><img class="img-fluid hover-scale" src="/../html/img/instagram/instagram-6.jpg" alt=" "></a></div>
-             <div class="swiper-slide overflow-hidden"><a href="#"><img class="img-fluid hover-scale" src="/../html/img/instagram/instagram-7.jpg" alt=" "></a></div>
-             <div class="swiper-slide overflow-hidden"><a href="#"><img class="img-fluid hover-scale" src="/../html/img/instagram/instagram-8.jpg" alt=" "></a></div>
-             <div class="swiper-slide overflow-hidden"><a href="#"><img class="img-fluid hover-scale" src="/../html/img/instagram/instagram-9.jpg" alt=" "></a></div>
-             <div class="swiper-slide overflow-hidden"><a href="#"><img class="img-fluid hover-scale" src="/../html/img/instagram/instagram-10.jpg" alt=" "></a></div>
-             <div class="swiper-slide overflow-hidden"><a href="#"><img class="img-fluid hover-scale" src="/../html/img/instagram/instagram-11.jpg" alt=" "></a></div>
-             <div class="swiper-slide overflow-hidden"><a href="#"><img class="img-fluid hover-scale" src="/../html/img/instagram/instagram-12.jpg" alt=" "></a></div>
-             <div class="swiper-slide overflow-hidden"><a href="#"><img class="img-fluid hover-scale" src="/../html/img/instagram/instagram-13.jpg" alt=" "></a></div>
-             <div class="swiper-slide overflow-hidden"><a href="#"><img class="img-fluid hover-scale" src="/../html/img/instagram/instagram-14.jpg" alt=" "></a></div>
-             <div class="swiper-slide overflow-hidden"><a href="#"><img class="img-fluid hover-scale" src="/../html/img/instagram/instagram-10.jpg" alt=" "></a></div>
-             <div class="swiper-slide overflow-hidden"><a href="#"><img class="img-fluid hover-scale" src="/../html/img/instagram/instagram-11.jpg" alt=" "></a></div>
-             <div class="swiper-slide overflow-hidden"><a href="#"><img class="img-fluid hover-scale" src="/../html/img/instagram/instagram-12.jpg" alt=" "></a></div>
-             <div class="swiper-slide overflow-hidden"><a href="#"><img class="img-fluid hover-scale" src="/../html/img/instagram/instagram-13.jpg" alt=" "></a></div>
-             <div class="swiper-slide overflow-hidden"><a href="#"><img class="img-fluid hover-scale" src="/../html/img/instagram/instagram-14.jpg" alt=" "></a></div>
-           </div>
-         </div>
-       </div>
-     </section>
-     <!-- Footer-->
-     <footer class="position-relative z-index-10 d-print-none">
-       <!-- Main block - menus, subscribe form-->
-       <div class="py-6 bg-gray-200 text-muted"> 
-         <div class="container">
-           <div class="row">
-             <div class="col-lg-4 mb-5 mb-lg-0">
-               <div class="fw-bold text-uppercase text-dark mb-3">Directory</div>
-               <p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
-               <ul class="list-inline">
-                 <li class="list-inline-item"><a class="text-muted text-primary-hover" href="#" target="_blank" title="twitter"><i class="fab fa-twitter"></i></a></li>
-                 <li class="list-inline-item"><a class="text-muted text-primary-hover" href="#" target="_blank" title="facebook"><i class="fab fa-facebook"></i></a></li>
-                 <li class="list-inline-item"><a class="text-muted text-primary-hover" href="#" target="_blank" title="instagram"><i class="fab fa-instagram"></i></a></li>
-                 <li class="list-inline-item"><a class="text-muted text-primary-hover" href="#" target="_blank" title="pinterest"><i class="fab fa-pinterest"></i></a></li>
-                 <li class="list-inline-item"><a class="text-muted text-primary-hover" href="#" target="_blank" title="vimeo"><i class="fab fa-vimeo"></i></a></li>
-               </ul>
-             </div>
-             <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
-               <h6 class="text-uppercase text-dark mb-3">Rentals</h6>
-               <ul class="list-unstyled">
-                 <li><a class="text-muted" href="index.html">Rooms</a></li>
-                 <li><a class="text-muted" href="category-rooms.html">Map on top</a></li>
-                 <li><a class="text-muted" href="category-2-rooms.html">Side map</a></li>
-                 <li><a class="text-muted" href="category-3-rooms.html">No map</a></li>
-                 <li><a class="text-muted" href="detail-rooms.html">Room detail</a></li>
-               </ul>
-             </div>
-             <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
-               <h6 class="text-uppercase text-dark mb-3">Pages</h6>
-               <ul class="list-unstyled">
-                 <li><a class="text-muted" href="compare.html">Comparison                                   </a></li>
-                 <li><a class="text-muted" href="team.html">Team                                   </a></li>
-                 <li><a class="text-muted" href="contact.html">Contact                                   </a></li>
-               </ul>
-             </div>
-             <div class="col-lg-4">
-               <h6 class="text-uppercase text-dark mb-3">Daily Offers & Discounts</h6>
-               <p class="mb-3"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. At itaque temporibus.</p>
-               <form action="#" id="newsletter-form">
-                 <div class="input-group mb-3">
-                   <input class="form-control bg-transparent border-dark border-end-0" type="email" placeholder="Your Email Address" aria-label="Your Email Address">
-                   <button class="btn btn-outline-dark border-start-0" type="submit"> <i class="fa fa-paper-plane text-lg"></i></button>
-                 </div>
-               </form>
-             </div>
-           </div>
-         </div>
-       </div>
-       <!-- Copyright section of the footer-->
-       <div class="py-4 fw-light bg-gray-800 text-gray-300">
-         <div class="container">
-           <div class="row align-items-center">
-             <div class="col-md-6 text-center text-md-start">
-               <p class="text-sm mb-md-0">&copy; 2021, Your company.  All rights reserved.</p>
-             </div>
-             <div class="col-md-6">
-               <ul class="list-inline mb-0 mt-2 mt-md-0 text-center text-md-end">
-                 <li class="list-inline-item"><img class="w-2rem" src="/../html/img/visa.svg" alt="..."></li>
-                 <li class="list-inline-item"><img class="w-2rem" src="/../html/img/mastercard.svg" alt="..."></li>
-                 <li class="list-inline-item"><img class="w-2rem" src="/../html/img/paypal.svg" alt="..."></li>
-                 <li class="list-inline-item"><img class="w-2rem" src="/../html/img/western-union.svg" alt="..."></li>
-               </ul>
-             </div>
-           </div>
-         </div>
-       </div>
-     </footer>
+
+
  </body>
  </template>
  

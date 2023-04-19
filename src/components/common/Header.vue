@@ -2,10 +2,13 @@
 <header class="header">
         <!-- Navbar-->
         <nav class="navbar navbar-expand-lg fixed-top shadow navbar-light bg-white">
-            <div class="container">
-                <div class="d-flex align-items-center"><router-link class="navbar-brand py-1" :to="{name: 'Home'}"><img src="img/logo.svg" alt="Directory logo"></router-link>
+            <div class="container-fluid" style="width: 1400px;">
+                <div class="d-flex align-items-center"><router-link class="navbar-brand py-1" :to="{name: 'Home'}"><img src="../../../public/html/img/metawater-logo.png" alt="Metawater logo" style="width:150px;"></router-link>
                     <ul class="navbar-nav ms-auto">
-                        <li class="header-menu nav-item dropdown"><a class="nav-link" id="homeDropdownMenuLink" href="/../public/html/index.html" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <li class="header-menu nav-item">
+                            <router-link class="nav-link" :to="{name: 'ProductList'}">제품</router-link>
+                        </li>
+                        <!-- <li class="header-menu nav-item dropdown"><a class="nav-link" id="homeDropdownMenuLink" href="/../public/html/index.html" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             제품&nbsp;<i class="fas fa-angle-down"></i></a>
                             <div class="dropdown-menu" aria-labelledby="homeDropdownMenuLink">
                                 <h6 class="dropdown-header fw-normal">정수기</h6>
@@ -13,7 +16,7 @@
                                 <a class="dropdown-item" href="/../public/index-2.html">얼음/탄산 정수기</a>
                                 <a class="dropdown-item" href="index-3.html">스탠드 정수기<span class="badge badge-info-light ms-1 mt-n1">New</span></a>
                             </div>
-                        </li>
+                        </li> -->
                         <li class="header-menu nav-item"><a class="nav-link" href="/detail">Detail</a>
                         </li>
                         <li class="header-menu nav-item dropdown">
