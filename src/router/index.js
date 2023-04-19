@@ -4,18 +4,23 @@ import Login from '@/components/pages/member/Login.vue';
 import Signup from '@/components/pages/member/Signup.vue';
 import AdminRegister from '@/components/pages/admin/AdminRegister.vue';
 import AdminList from '@/components/pages/admin/AdminList.vue';
-import AdminDetail from '@/components/pages/admin/AdminDetail.vue';
 import AdminMember from '@/components/pages/admin/AdminMember.vue';
 import Rental1 from '@/components/pages/order/Rental1.vue';
 import Rental2 from '@/components/pages/order/Rental2.vue';
 import Rental3 from '@/components/pages/order/Rental3.vue';
 import Detail from '@/components/pages/product/Detail.vue';
+import List from '@/components/pages/product/List.vue';
+import SearchList from '@/components/pages/product/SearchList.vue';
+import AdminOrder from '@/components/pages/admin/AdminOrderList.vue';
 import MyProduct from '@/components/pages/mypage/MyProduct.vue';
 import MyPage from '@/components/pages/mypage/MyPage.vue';
+import MyOrderList from '@/components/pages/mypage/MyOrderList.vue';
+import MyPayList from '@/components/pages/mypage/MyPayList.vue';
 
 
 const router = createRouter({
     history: createWebHistory(),
+    mode: history,
     routes: [{
             path: '/',
             name: 'Home',
@@ -37,14 +42,14 @@ const router = createRouter({
             component: AdminRegister
         },
         {
+            path: '/adminorder',
+            name: 'AdminOrder',
+            component: AdminOrder
+        },
+        {
             path: '/adminlist',
             name: 'AdminList',
             component: AdminList
-        },
-        {
-            path: '/admindetail',
-            name: 'AdminDetail',
-            component: AdminDetail
         },
         {
             path: '/adminmember',
@@ -67,9 +72,19 @@ const router = createRouter({
             component: Rental3
         },
         {
-            path: '/detail',
-            name: 'Detail',
+            path: '/product/detail/:pno',
+            name: 'ProductDetail',
             component: Detail
+        },
+        {
+            path: '/productlist',
+            name: 'ProductList',
+            component: List
+        },
+        {
+            path: '/search/:searchKeyword',
+            name: 'SearchList',
+            component: SearchList
         },
         {
             path: '/myproduct',
@@ -77,9 +92,19 @@ const router = createRouter({
             component: MyProduct
         },
         {
-            path: '/mypage',
+            path: '/mypage/myproduct',
             name: 'MyPage',
             component: MyPage
+        },
+        {
+            path: '/myorder',
+            name: 'MyOrderList',
+            component: MyOrderList
+        },
+        {
+            path: '/mylist',
+            name: 'MyPayList',
+            component: MyPayList
         },
 
     ]

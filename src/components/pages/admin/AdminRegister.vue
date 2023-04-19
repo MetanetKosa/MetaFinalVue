@@ -2,781 +2,346 @@
     <body class="hold-transition sidebar-mini">
         <div class="wrapper">
 
-        <!-- Main Sidebar Container -->
-        <aside class="main-sidebar sidebar-dark-primary elevation-4">
-            <!-- Brand Logo -->
-            <a href="../../../../public/html/index3.html" class="brand-link">
-            <img src="../../../../public/html/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-            <span class="brand-text font-weight-light">AdminLTE 3</span>
-            </a>
+        <Sidebar />
 
-            <!-- Sidebar -->
-            <div class="sidebar">
-            <!-- Sidebar user (optional) -->
-            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                <div class="image">
-                <img src="../../../../public/html/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-                </div>
-                <div class="info">
-                <a href="#" class="d-block">Alexander Pierce</a>
-                </div>
-            </div>
-
-            <!-- SidebarSearch Form -->
-            <div class="form-inline">
-                <div class="input-group" data-widget="sidebar-search">
-                <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-                <div class="input-group-append">
-                    <button class="btn btn-sidebar">
-                    <i class="fas fa-search fa-fw"></i>
-                    </button>
-                </div>
-                </div>
-            </div>
-
-            <!-- Sidebar Menu -->
-            <nav class="mt-2">
-                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <!-- Add icons to the links using the .nav-icon class
-                    with font-awesome or any other icon font library -->
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-tachometer-alt"></i>
-                    <p>
-                        Dashboard
-                        <i class="right fas fa-angle-left"></i>
-                    </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                        <a href="../../../../public/html/index.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Dashboard v1</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../../../../public/html/index2.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Dashboard v2</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../../../../public/html/index3.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Dashboard v3</p>
-                        </a>
-                    </li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a href="../widgets.html" class="nav-link">
-                    <i class="nav-icon fas fa-th"></i>
-                    <p>
-                        Widgets
-                        <span class="right badge badge-danger">New</span>
-                    </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-copy"></i>
-                    <p>
-                        Layout Options
-                        <i class="fas fa-angle-left right"></i>
-                        <span class="badge badge-info right">6</span>
-                    </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                        <a href="../layout/top-nav.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Top Navigation</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../layout/top-nav-sidebar.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Top Navigation + Sidebar</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../layout/boxed.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Boxed</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../layout/fixed-sidebar.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Fixed Sidebar</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../layout/fixed-sidebar-custom.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Fixed Sidebar <small>+ Custom Area</small></p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../layout/fixed-topnav.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Fixed Navbar</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../layout/fixed-footer.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Fixed Footer</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../layout/collapsed-sidebar.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Collapsed Sidebar</p>
-                        </a>
-                    </li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-chart-pie"></i>
-                    <p>
-                        Charts
-                        <i class="right fas fa-angle-left"></i>
-                    </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                        <a href="../charts/chartjs.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>ChartJS</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../charts/flot.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Flot</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../charts/inline.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Inline</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../charts/uplot.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>uPlot</p>
-                        </a>
-                    </li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-tree"></i>
-                    <p>
-                        UI Elements
-                        <i class="fas fa-angle-left right"></i>
-                    </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                        <a href="../UI/general.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>General</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../UI/icons.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Icons</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../UI/buttons.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Buttons</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../UI/sliders.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Sliders</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../UI/modals.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Modals & Alerts</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../UI/navbar.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Navbar & Tabs</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../UI/timeline.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Timeline</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../UI/ribbons.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Ribbons</p>
-                        </a>
-                    </li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-edit"></i>
-                    <p>
-                        Forms
-                        <i class="fas fa-angle-left right"></i>
-                    </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                        <a href="../forms/general.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>General Elements</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../forms/advanced.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Advanced Elements</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../forms/editors.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Editors</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../forms/validation.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Validation</p>
-                        </a>
-                    </li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-table"></i>
-                    <p>
-                        Tables
-                        <i class="fas fa-angle-left right"></i>
-                    </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                        <a href="../tables/simple.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Simple Tables</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../tables/data.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>DataTables</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../tables/jsgrid.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>jsGrid</p>
-                        </a>
-                    </li>
-                    </ul>
-                </li>
-                <li class="nav-header">EXAMPLES</li>
-                <li class="nav-item">
-                    <a href="../calendar.html" class="nav-link">
-                    <i class="nav-icon far fa-calendar-alt"></i>
-                    <p>
-                        Calendar
-                        <span class="badge badge-info right">2</span>
-                    </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="../gallery.html" class="nav-link">
-                    <i class="nav-icon far fa-image"></i>
-                    <p>
-                        Gallery
-                    </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="../kanban.html" class="nav-link">
-                    <i class="nav-icon fas fa-columns"></i>
-                    <p>
-                        Kanban Board
-                    </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                    <i class="nav-icon far fa-envelope"></i>
-                    <p>
-                        Mailbox
-                        <i class="fas fa-angle-left right"></i>
-                    </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                        <a href="../mailbox/mailbox.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Inbox</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../mailbox/compose.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Compose</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../mailbox/read-mail.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Read</p>
-                        </a>
-                    </li>
-                    </ul>
-                </li>
-                <li class="nav-item menu-open">
-                    <a href="#" class="nav-link active">
-                    <i class="nav-icon fas fa-book"></i>
-                    <p>
-                        Pages
-                        <i class="fas fa-angle-left right"></i>
-                    </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                        <a href="../examples/invoice.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Invoice</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../examples/profile.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Profile</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../examples/e-commerce.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>E-commerce</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../examples/projects.html" class="nav-link active">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Projects</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../examples/project-add.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Project Add</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../examples/project-edit.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Project Edit</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../examples/project-detail.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Project Detail</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../examples/contacts.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Contacts</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../examples/faq.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>FAQ</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../examples/contact-us.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Contact us</p>
-                        </a>
-                    </li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                    <i class="nav-icon far fa-plus-square"></i>
-                    <p>
-                        Extras
-                        <i class="fas fa-angle-left right"></i>
-                    </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>
-                            Login & Register v1
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="../examples/login.html" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Login v1</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="../examples/register.html" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Register v1</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="../examples/forgot-password.html" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Forgot Password v1</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="../examples/recover-password.html" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Recover Password v1</p>
-                            </a>
-                        </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>
-                            Login & Register v2
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="../examples/login-v2.html" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Login v2</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="../examples/register-v2.html" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Register v2</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="../examples/forgot-password-v2.html" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Forgot Password v2</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="../examples/recover-password-v2.html" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Recover Password v2</p>
-                            </a>
-                        </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../examples/lockscreen.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Lockscreen</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../examples/legacy-user-menu.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Legacy User Menu</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../examples/language-menu.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Language Menu</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../examples/404.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Error 404</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../examples/500.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Error 500</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../examples/pace.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Pace</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../examples/blank.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Blank Page</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../../../../public/html/starter.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Starter Page</p>
-                        </a>
-                    </li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-search"></i>
-                    <p>
-                        Search
-                        <i class="fas fa-angle-left right"></i>
-                    </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                        <a href="../search/simple.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Simple Search</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../search/enhanced.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Enhanced</p>
-                        </a>
-                    </li>
-                    </ul>
-                </li>
-                </ul>
-            </nav>
-            <!-- /.sidebar-menu -->
-            </div>
-            <!-- /.sidebar -->
-        </aside>
-
-        <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
             <section class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Advanced Form</h1>
+                    <h1>제품 등록</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">Advanced Form</li>
+                    <li class="breadcrumb-item active">제품 등록</li>
                     </ol>
                 </div>
                 </div>
-            </div><!-- /.container-fluid -->
+            </div>
             </section>
 
-            <!-- Main content -->
             <section class="content">
             <div class="container-fluid">
-                <!-- SELECT2 EXAMPLE -->
                 <div class="card card-default">
-                <div class="card-header">
-                    <h3 class="card-title">상품 등록</h3>
-
-                    <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                        <i class="fas fa-minus"></i>
-                    </button>
-                    <button type="button" class="btn btn-tool" data-card-widget="remove">
-                        <i class="fas fa-times"></i>
-                    </button>
+                     <div class="card-header">
+                        <h3 class="card-title">제품 정보</h3>
                     </div>
-                </div>
-                <!-- /.card-header -->
-                <div class="card-body">
-                    <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">모델명</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control">
-                        </div>  
-                        </div>
-                        <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">제품형태</label>
-                            <div class="col-sm-10">
-                            <select class="form-control select2"  style="width: 100%;">
-                                <option>빌트인</option>
-                                <option>데스크탑</option>
-                                <option>스탠드</option>
-                            </select>
+                    <div class="card-body">
+                    <form  @submit.prevent ="onSave" role="form" >
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">제품명</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" v-model= "state.form.product_name">
+                                    </div>  
+                                </div>
+                                <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">기능</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control select2" v-model= "state.form.product_function">
+                                            <option>냉온정수기</option>
+                                            <option>냉정수기</option>
+                                            <option>냉온정수기+얼음</option>
+                                            <option>냉정수기+얼음</option>
+                                            <option>정수전용</option>
+                                        </select>
+                                    </div>
+                               </div> 
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">월 렌탈료</label>
+                                    <div class="col-sm-10">
+                                         <input type="text" class="form-control" v-model= "state.form.product_rentalPrice">
+                                    </div>  
+                                </div>        
                             </div>
-                        </div> 
-                        <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">기능</label>
-                            <div class="col-sm-10">
-                            <select class="form-control select2"  style="width: 100%;">
-                                <option>냉온정수기</option>
-                                <option>냉정수기</option>
-                                <option>온정수기</option>
-                                <option>정수전용</option>
-                                <option>얼음</option>
-                                <option>탄산</option>
-                            </select>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">모델명</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control"  v-model= "state.form. product_model" >
+                                    </div>  
+                                </div>
+                                <div class="form-group row">
+                                 <label class="col-sm-2 col-form-label">설치형태</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control select2" v-model= "state.form.product_type" style="width: 100%;">
+                                            <option value="빌트인">빌트인</option>
+                                            <option value="데스크탑">데스크탑</option>
+                                            <option value="스탠드">스탠드</option>
+                                         </select>
+                                    </div>
+                                 </div> 
+                                 <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">구매가</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" v-model= "state.form.product_price">
+                                    </div>
+                                </div>                            
                             </div>
-                        </div> 
-                        <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">가격</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control">
-                        </div>  
-                        </div>
-                        <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">크기</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control">
-                        </div>  
-                        </div>            
-                        <!-- /.form-group -->
-                    </div>
-                    <!-- /.col -->
-                    <div class="col-md-6">
-                        <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">제품명</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control">
-                        </div>                 
-                        </div>
-                        <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">출시년월</label>
-                        <div class="col-sm-10">
-                            <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                                <input type="text" class="form-control datetimepicker-input" data-target="#reservationdate"/>
-                                <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
-                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                            <div class="card-header">
+                                <h3 class="card-title">스펙</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label">제조사</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" v-model= "state.form.product_company">
+                                            </div>  
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label">정수방식</label>
+                                            <div class="col-sm-10">
+                                                <select class="form-control select2" v-model= "state.form.product_method">
+                                                    <option value="직수형">직수형</option>
+                                                    <option value="탱크형">탱크형</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label">무게</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" v-model= "state.form.product_weight">
+                                            </div>  
+                                        </div>             
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label">출시년월</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label">색상</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" v-model= "state.form.product_color">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label">크기</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" v-model= "state.form.product_size">
+                                            </div>  
+                                        </div>                                            
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        </div>
-                        <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">정수방식</label>
-                            <div class="col-sm-10">
-                            <select class="form-control select2"  style="width: 100%;">
-                                <option>직수형</option>
-                                <option>탱크형</option>
-                            </select>
+                             <div class="card-header">
+                                <h3 class="card-title">제품 이미지</h3>
                             </div>
-                        </div> 
-                        <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">재고</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control">
-                        </div>                 
-                        </div>
-                        <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">색상</label>
-                        <div class="col-sm-10">
-                            <select class="select2" multiple="multiple" data-placeholder="Select a State" style="width: 100%;">
-                            <option>Alabama</option>
-                            <option>Alaska</option>
-                            <option>California</option>
-                            <option>Delaware</option>
-                            <option>Tennessee</option>
-                            <option>Texas</option>
-                            <option>Washington</option>
-                            </select>
-                        </div>                  
-                        </div>              
-                    </div>
-                    <!-- /.col -->
-                    <div class="col-md-12">
-                        <div class="form-group">
-                        <label for="exampleInputFile">제품 이미지</label>
-                        <div class="input-group">
-                            <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="exampleInputFile">
-                            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                            </div>
-                            <div class="input-group-append">
-                            <span class="input-group-text">Upload</span>
-                            </div>
-                        </div>
-                        </div>
-                    </div> 
-                    <div class="col-md-12">
-                        <div class="form-group">
-                        <label for="exampleInputFile">제품 사용 설명서</label>
-                        <div class="input-group">
-                            <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="exampleInputFile">
-                            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                            </div>
-                            <div class="input-group-append">
-                            <span class="input-group-text">Upload</span>
-                            </div>
-                        </div>
-                        </div>
-                    </div>          
-                    <div class="col-md-12">
-                        <div class="card card-outline card-info">
-                        <div class="card-body">
-                            <textarea id="summernote">
-                            </textarea>
-                            </div>
-                        </div>
-                    </div>
-                        <!-- ./row -->        
-                    </div>
-                    <!-- /.row -->
-                    <button class="btn btn-primary" onclick="stepper.previous()">Previous</button>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-                <!-- /.card-body -->
-                </div>
-                <!-- /.card -->
-            </div>
-            <!-- /.container-fluid -->
-            </section>
-            <!-- /.content -->
-        </div>
-        <!-- /.content-wrapper -->
+                            <div class="card-body">
+                                <div id="actions" class="row">
+                                    <div class="col-lg-6">
+                                        <div class="btn-group w-100">
+                                            <label for="mainImageInput" ref="mainInput" class="btn btn-default col fileinput-button" >
+                                                대표 이미지 등록
+                                            </label>
+                                            <input id="mainImageInput" type="file" class="sr-only" @change="handleMainChange" >
+                                            <label for="addImageInput" class="btn btn-default col fileinput-button" multiple>
+                                                <span>추가 이미지 등록</span>
+                                            </label>
+                                            <input id="addImageInput" type="file" class="sr-only" @change="handleAddChange" multiple>
+                                            <label for="detailImageInput" class="btn btn-default col fileinput-button">
+                                                <span>상세 이미지 등록</span>
+                                            </label>
+                                            <input id="detailImageInput" type="file" class="sr-only" @change="handleDetailChange">
+                                        </div>                                       
+                                    </div>
+                                    <div class="col-lg-6 d-flex align-items-center">
+                                        <div class="fileupload-process w-100">
+                                            <a>대표이미지1, 추가이미지3, 상세이미지1</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer bg-white">
+                                    <ul class="mailbox-attachments d-flex align-items-stretch clearfix">
+                                         <li>
+                                            <span class="mailbox-attachment-icon"><i class="far fa-file-pdf"></i></span>
 
-        <!-- Control Sidebar -->
+                                            <div class="mailbox-attachment-info">
+                                                <a href="#" class="mailbox-attachment-name"> Sep2014-report.pdf</a>
+                                                    <span class="mailbox-attachment-size clearfix mt-1">                                           
+                                                    <a href="#" class="btn btn-default btn-sm float-right"><i class="fas fa-cloud-download-alt"></i></a>
+                                                    </span>
+                                            </div>
+                                        </li>                                    
+                                     </ul>
+                                </div>
+                            </div>                    
+                        <div class="card-header">
+                            <h3 class="card-title">사용설명서</h3>
+                        </div>
+                        <div class="card-body">                                
+                            <div class="form-group">
+                                <div class="btn btn-default btn-file">
+                                    <i class="fas fa-paperclip"></i> 설명서 등록
+                                    <input type="file" @change="handleFileChange" accept="application/pdf">
+                                </div>
+                                    <p class="help-block">{{ state.form.product_guide }}</p>
+                            </div>
+                        </div>
+                        
+                        <div class="card-header">
+                            <h3 class="card-title">상세 정보</h3>
+                        </div>
+                        <div class="card-body">                                
+                            <div class="form-group">
+                                <textarea class="form-control" id="inputExperience" placeholder="상세정보 입력하세요" v-model= "state.form.product_detail"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="float-right">
+                        <button class="btn btn-primary" :to="{name: 'AdminRegister'}">취소</button>
+                        <button  @click="submit()" class="btn btn-primary">등록</button>
+                    </div>
+                    </form>
+                    </div>
+                </div>
+            </div>
+            </section>
+        </div>
         <aside class="control-sidebar control-sidebar-dark">
-            <!-- Control sidebar content goes here -->
         </aside>
-        <!-- /.control-sidebar -->
         </div>
     </body>
-<!-- ./wrapper -->
 </template>
 
 <script>
+import axios from "axios";
+import Sidebar from '@/components/pages/admin/Sidebar.vue';
+import {reactive} from "vue";
+import {useRouter} from 'vue-router';
+
 export default {
+    components: {
+    Sidebar
+  },
+
+    setup(){
+ 
+      const router = useRouter();
+      const state = reactive({
+      products: [],
+      form: {
+
+        product_name: "",
+        product_size: "",
+        product_weight: "",
+        product_detail: "",
+        product_guide: "",
+        product_type: "",
+        product_method: "",
+       product_company: "",
+        img_url:"",
+        product_sales:"",
+        product_function:"",
+        product_model:"",
+        product_rentalPrice: "",
+        product_price : "",
+        product_color :"",
+        product_guide:"",
+        detail_url:"",
+       attachList: []
+      },
+       files:[],
+    })
+    const submit = () => {
+      const args = JSON.parse(JSON.stringify(state.form));
+      axios.post('/product/productInsert', args).then(() => {
+        console.log("등록되었습니다");
+        router.push({path: "/adminlist"});
+      })
+    }
+
+    //이미지 업로드 처리
+    const handleImageUpload = (event, fileType) => {
+        const formData = new FormData();
+          if (event.target.files) {
+            if (fileType !== "files") {
+            const file = event.target.files[0];
+            formData.append("file", file);
+            }
+             else {
+            const files = event.target.files;
+                for (const file of files) {
+                    formData.append("files", file);
+                }
+            }
+          }
+        axios.post(`/upload/${fileType}`, formData, {
+            headers: {'Content-Type': 'multipart/form-data'}
+        })
+        .then((response) => {
+            console.log("이미지가 등록되었습니다.");
+            if(fileType == "files"){
+                response.data.forEach((file) => {
+                const { uuid, folderPath, fileName } = file;
+                state.form.attachList.push({
+                    uuid,
+                    folderPath,
+                    fileName,
+                 });
+             });
+            }
+            showUploadedImages(response);
+            
+        })
+        .catch(error => {
+            console.log(error);
+            console.log("이미지 업로드에 실패하였습니다.");
+        });
+    };
+
+        const  showUploadedImages = (response) => {
+
+        };
+
+
+
+
+
+
+        // 설명서 처리
+        const handleFileChange = (event) => {
+        const file = event.target.files[0];
+        state.form.product_guide = file.name;
+        handleImageUpload(event, "guide");
+        };
+
+        // 대표 이미지 처리
+        const handleMainChange = (event) => {
+        const file = event.target.files[0];
+        state.form.img_url = file.name;
+        handleImageUpload(event, "file");
+        };
+
+        // 추가 이미지 처리
+        const handleAddChange = (event) => {
+        state.files = [...state.files, ...event.target.files];
+        handleImageUpload(event, "files");
+        };
+
+        // 상세 이미지 처리
+        const handleDetailChange = (event) => {
+        const file = event.target.files[0];
+        state.form.detail_url = file.name;
+        handleImageUpload(event, "file");
+        };
+
+    return {
+        state, 
+        submit,
+        handleFileChange,
+        handleMainChange,
+        handleAddChange,
+         handleDetailChange
+        }
+  
+    }
 }
 </script>
 
