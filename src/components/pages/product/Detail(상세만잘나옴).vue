@@ -36,60 +36,65 @@
                     &nbsp;&nbsp;<label>{{detailProduct.productModel}}</label>
                   </div>
                   <div class="mb-4">
-                    <label class="form-label" for="color">색&nbsp;&nbsp;&nbsp;상 |</label>
-                    &nbsp;&nbsp;<label>{{detailProduct.productColor}}</label>
-                  </div>
-                  <div class="mb-4">
                     <label class="form-label" for="function">기&nbsp;&nbsp;&nbsp;능 |</label>
-                    &nbsp;&nbsp;<label>{{detailProduct.productFunction}}</label>
+                    &nbsp;&nbsp;<span>{{detailProduct.productFunction}}</span>
                   </div>
                   <div class="mb-4">
                     <label class="form-label" for="company">제조사 |</label>
-                    &nbsp;&nbsp;<label>{{detailProduct.productCompany}}</label>
+                    &nbsp;&nbsp;<span>{{detailProduct.productCompany}}</span>
                   </div>
                   <div class="mb-4">
                     <label><i class="fa fa-xs fa-star text-primary"></i>&nbsp;{{ avgStar }}&nbsp;({{reviewTotal}}+)</label>
                   </div>
                 </div>
               </div>
+              <!-- <p  class="text-muted">모델명 | {{detailProduct.productModel}}</p>
+              <p  class="text-muted"> 기능  | {{detailProduct.productFunction}}</p> -->
               <hr class="my-4">
-              <form class="form" id="order-form" method="get" action="#" autocomplete="off">
+              <form class="form" id="booking-form" method="get" action="#" autocomplete="off">
                 <div class="mb-4">
                   <label class="form-label" for="orderType">렌탈/구매 *</label>
-                  <select class="form-control" name="orderType" id="orderType" v-model="orderType">
+                  <select class="form-control" name="orderType" id="orderType">
                     <option value="1">렌탈</option>
                     <option value="2">구매</option>
                   </select>
                 </div>
-                <div class="mb-4" v-if="showContractLength">
+                <div class="mb-4">
                   <label class="form-label" for="contractLength">약정기간 *</label>
-                  <select class="form-control" name="contractLength" id="contractLength" v-model="contractLength">
+                  <select class="form-control" name="contractLength" id="contractLength">
                     <option value="1">3년</option>
                     <option value="2">6년</option>
                   </select>
                 </div>
-                <!-- <hr class="my-4"> -->
-                <br>
-                <div class="mb-4" style="text-align: right;" id="purchasePrice" v-if="showPurchasePrice">
+                <hr class="my-4">
+                <div class="mb-4" style="text-align: right;" id="purchasePrice">
                   <label class="form-label h5">구매금액</label> &nbsp;&nbsp;
                   <strong class="text-primary h3">{{ detailProduct.productPrice.toLocaleString() }}원</strong>
                 </div>
-                <div class="mb-4" style="text-align: right;" id="rentalPrice" v-if="showRentalPrice">
+                <div class="mb-4" style="text-align: right;" id="rentalPrice">
                   <label class="form-label h5" name="orderPrice">렌탈금액</label> &nbsp;&nbsp;
-                  <strong class="text-primary h3">{{ rentalPrice }}</strong>
+                  <strong class="text-primary h3"> 월 {{ detailProduct.productRentalPrice.toLocaleString() }}원</strong>
                 </div>
-
-                <!-- 선택 옵션 -->
-                <hr class="my-4">
-                <div class="mb-4" style="text-align: center;" id="order" v-if="isAllOptionsSelected">
-                  <label>[{{ orderType === '1' ? '렌탈' : '구매' }}] &nbsp;</label>
-                  <label v-if="showContractLength">| &nbsp; [기간 : {{ contractLength === '1' ? '3년' : '6년' }}] &nbsp;</label>
-                  <span>옵션을 선택 하셨습니다</span>
+                <!-- <div class="mb-4" style="text-align: right;" name="rentalPrice">
+                  <label class="form-label h5">구매금액</label> &nbsp;&nbsp;
+                  <strong class="text-primary h3">{{ detailProduct.productPrice.toLocaleString() }}원</strong>
                 </div>
+                <div class="mb-4" style="text-align: right;">
+                  <label class="form-label h5" name="orderPrice">렌탈금액</label> &nbsp;&nbsp;
+                  <strong class="text-primary h3"> 월 {{ detailProduct.productRentalPrice.toLocaleString() }}원</strong>
+                </div> -->
                 <div class="d-grid mb-4">
                   <button class="btn btn-primary" type="submit">주문하기</button>
                 </div>
               </form>
+<!-- 
+              <p class="text-muted text-sm text-center">Some additional text can be also placed here.</p>
+              <hr class="my-4">
+              <div class="text-center">
+                <p> <a class="text-secondary text-sm" href="#"> <i class="fa fa-heart"></i> Bookmark This Listing</a></p>
+                <p class="text-muted text-sm">79 people bookmarked this place </p>
+              </div>
+               -->
             </div>
           </div>
         </div>
@@ -98,7 +103,7 @@
       <div class="py-6 bg-gray-100 text-left"> 
         <div class="container">
           <!-- 상세 탭 -->
-          <!-- <div class="vip_tabBar">
+          <div class="vip_tabBar">
               <div class="tabType anchor vip">
                 <ul>
                   <li class="on">
@@ -129,10 +134,12 @@
                   </li>
                 </ul>
               </div>
-            </div> -->
+            </div>
+
+
 
             <!-- 상품 상세정보 -->
-            <!-- <div class="text-block">
+            <div class="text-block">
               <p class="text-primary"><i class="fa-map-marker-alt fa me-1"></i> Brooklyn, New York</p>
               <h1>정수기 이름</h1>
               <p class="text-muted text-uppercase mb-4">Entire Apartment </p>
@@ -192,7 +199,7 @@
                 <li class="list-inline-item mb-2"><span class="badge rounded-pill bg-light p-3 text-muted fw-normal">Desk for work</span></li>
                 <li class="list-inline-item mb-2"><span class="badge rounded-pill bg-light p-3 text-muted fw-normal">Washing machine</span></li>
               </ul>
-            </div> -->
+            </div>
 
             <!-- 스펙 -->
             <div class="text-block">
@@ -204,9 +211,12 @@
                   <h2>+</h2>
                 </div>
               </div>
+              <!-- <h2 data-bs-toggle="collapse" data-bs-target="#Details" aria-expanded="false" aria-controls="Details">+ Product Details</h2> -->
+            
 
               <!-- ============== -->
-              <!-- <section class="item-section"> -->
+              <!-- <section class="question-section"> -->
+                
                 <div class="collapse mt-4 Details" id="Details">
                   <h4 class="text-primary mb-4">상품 스펙</h4>
                   <table border="1" style="border-collapse: collapse; width: 100%;">
@@ -261,56 +271,71 @@
                   <h2>+</h2>
                 </div>
               </div>
+              <!-- <h2 data-bs-toggle="collapse" data-bs-target="#Price" aria-expanded="false" aria-controls="Price">+ Price Details</h2> -->
+             
 
-              <!-- <section class="price-section"> -->
+              <!-- ============== -->
+              <!-- <section class="question-section"> -->
+                
                 <div class="collapse mt-4 Price" id="Price">
                   <h4 class="text-primary mb-4">렌탈료</h4>
                   <table border="1" style="border-collapse: collapse; width: 100%;">
+                    <!-- <colgroup>
+                      <col style="width: 16%;">
+                      <col style="width: 30%;">
+                      <col style="width: 20%;">
+                      <col style="width: 34%;">
+                    </colgroup> -->
                     <tr>
                       <td class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">모델명</td>
-                      <td h5 class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">관리방식</td>
+                      <td h5 class="mt-2 mb-1" style="text-align: center; border: 1px solid black; padding: 10px;">관리방식</td>
                       <td class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">약정기간</td>
-                      <td h5 class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">렌탈료</td>
+                      <td h5 class="mt-2 mb-1" style="text-align: center; border: 1px solid black; padding: 10px;">렌탈료</td>
                       <td class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">신상품 재렌탈</td>
-                      <td h5 class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">일시불액</td>
+                      <td h5 class="mt-2 mb-1" style="text-align: center; border: 1px solid black; padding: 10px;">일시불액</td>
                     </tr>
                     <tr>
-                      <td rowspan="2" class="mt-2 mb-1" style="text-align: center; border: 1px solid black; padding: 10px;">{{detailProduct.productModel}} &nbsp;({{detailProduct.productColor }})</td>
+                      <td rowspan="2" class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">{{detailProduct.productModel}} &nbsp;({{detailProduct.productColor }})</td>
                       <td rowspan="2" style="text-align: center; border: 1px solid black; padding: 10px;">방문관리</td>
-                      <td class="mt-2 mb-1" style="text-align: center; border: 1px solid black; padding: 10px;">3년 약정</td>
+                      <td class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">3년 약정</td>
                       <td style="text-align: center; border: 1px solid black; padding: 10px;">{{(detailProduct.productRentalPrice).toLocaleString()}}원</td>
-                      <td class="mt-2 mb-" style="text-align: center; border: 1px solid black; padding: 10px;">{{(detailProduct.productRentalPrice - 4700).toLocaleString()}}원</td>
+                      <td class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">{{(detailProduct.productRentalPrice - 4700).toLocaleString()}}원</td>
                       <td rowspan="2" style="text-align: center; border: 1px solid black; padding: 10px;">{{detailProduct.productPrice.toLocaleString()}}원</td>
                     </tr>
                     <tr>
-                      <td class="mt-2 mb-1" style="text-align: center; border: 1px solid black; padding: 10px;">6년 약정</td>
+                      <td class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">6년 약정</td>
                       <td style="text-align: center; border: 1px solid black; padding: 10px;">{{(detailProduct.productRentalPrice - 4000).toLocaleString()}}원</td>
-                      <td class="mt-2 mb-1" style="text-align: center; border: 1px solid black; padding: 10px;">{{(detailProduct.productRentalPrice - 4000 - 4300).toLocaleString()}}원</td>
+                      <td class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">{{(detailProduct.productRentalPrice - 4000 - 4300).toLocaleString()}}원</td>
                     </tr>
                   </table>
-                  <br><br>
-
+                  <br>
                   <h4 class="text-primary mb-4">렌탈료 총액</h4>
                   <table border="1" style="border-collapse: collapse; width: 100%;">
+                    <!-- <colgroup>
+                      <col style="width: 16%;">
+                      <col style="width: 30%;">
+                      <col style="width: 20%;">
+                      <col style="width: 34%;">
+                    </colgroup> -->
                     <tr>
                       <td class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">모델명</td>
-                      <td h5 class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">관리방식</td>
+                      <td h5 class="mt-2 mb-1" style="text-align: center; border: 1px solid black; padding: 10px;">관리방식</td>
                       <td class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">약정기간</td>
-                      <td h5 class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">총액</td>
+                      <td h5 class="mt-2 mb-1" style="text-align: center; border: 1px solid black; padding: 10px;">총액</td>
                     </tr>
                     <tr>
-                      <td rowspan="3" class="mt-2 mb-1" style="text-align: center; border: 1px solid black; padding: 10px;">{{detailProduct.productModel}} &nbsp;({{detailProduct.productColor }})</td>
+                      <td rowspan="3" class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">{{detailProduct.productModel}} &nbsp;({{detailProduct.productColor }})</td>
                       <td rowspan="3" style="text-align: center; border: 1px solid black; padding: 10px;">방문관리</td>
-                      <td class="mt-2 mb-1" style="text-align: center; border: 1px solid black; padding: 10px;">3년 (의무사용기간)</td>
+                      <td class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">3년 (의무사용기간)</td>
                       <td style="text-align: center; border: 1px solid black; padding: 10px;">{{(detailProduct.productRentalPrice*36+100000).toLocaleString()}}원</td>
                     </tr>
                     <tr>
                       <td style="text-align: center; border: 1px solid black; padding: 10px;">5년 (소유권 이전)</td>
-                      <td class="mt-2 mb-1" style="text-align: center; border: 1px solid black; padding: 10px;">{{((detailProduct.productRentalPrice-2000)*60).toLocaleString()}}원</td>
+                      <td class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">{{((detailProduct.productRentalPrice-2000)*60).toLocaleString()}}원</td>
                     </tr>
                     <tr>
                       <td style="text-align: center; border: 1px solid black; padding: 10px;">6년 (의무사용기간/ 소유권 이전)</td>
-                      <td class="mt-2 mb-1" style="text-align: center; border: 1px solid black; padding: 10px;">{{((detailProduct.productRentalPrice-4000)*72).toLocaleString()}}원</td>
+                      <td class="mt-2 mb-1 text-muted text-sm" style="text-align: center; border: 1px solid black; padding: 10px;">{{((detailProduct.productRentalPrice-4000)*72).toLocaleString()}}원</td>
                     </tr>
                   </table>
                   <br>
@@ -339,7 +364,9 @@
                     </tr>
                   </table> -->
                 </div>
+              <!-- </section> -->
             </div>
+
             
   
             <!-- 리뷰 -->
@@ -419,6 +446,7 @@
                   </div>
                 </div>
               </div>
+              <!-- </section> -->
               
               <!-- <div class="d-flex d-block d-sm-flex review">
                 <div class="text-md-center flex-shrink-0 me-4 me-xl-5"><img class="d-block avatar avatar-xl p-2 mb-2" src="img/avatar/avatar-2.jpg" alt="Luke Skywalker"><span class="text-uppercase text-muted text-sm">Dec 2018</span></div>
@@ -465,21 +493,19 @@
             
               <!-- ============== -->
               <!-- 문의 작성 ============== -->
-              <div class="collapse mt-4 question" id="Questions" >
-                <br>
-                <div class="mb-5 pb-3" style="text-align: center;">
-                  <button class="btn btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#leaveQuestion" aria-expanded="false" aria-controls="leaveQuestion" >문의하기</button>
-                </div>
-                <div class="collapse mt-4" id="leaveQuestion" style="text-align: left; width: 60%; margin: 0 auto;">
+              <div class="collapse mt-4 question" id="Questions">
+                <div style="text-align: center; width: 60%; margin: 0 auto;">
+                  <br>
+                  <button class="btn btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#leaveQuestion" aria-expanded="false" aria-controls="leaveQuestion">문의하기</button>
+                  <div class="collapse mt-4" id="leaveQuestion" style="text-align: center; width: 60%; margin: 0 auto;">
                     <!-- <h5 class="mb-4">문의하실 제목과 내용을 작성하신 후 [작성하기] 버튼을 클릭하세요 :)</h5> -->
-                    <div>
                     <form @submit.prevent="submitInquiry" class="form" name="inquiry-register" id="inquiry-form">
                       <div class="mb-4">
-                        <label class="form-label" for="questiontitle"><strong>문의 제목</strong></label>
+                        <label class="form-label" for="questiontitle">문의 제목</label>
                         <input class="form-control" v-model="qna.proqTitle" name="questionTitle" type="text" id="questionTitle" placeholder="문의 제목" required="required"/>
                       </div>
                       <div class="mb-4">
-                        <label class="form-label" for="questionContent"><strong>문의 내용</strong></label>
+                        <label class="form-label" for="questionContent">문의 내용</label>
                         <textarea class="form-control" v-model="qna.proqContent" rows="4" name="questionContent" type="text" id="questionContent" placeholder="문의 내용" required="required"></textarea>
                       </div>
                       <div class="row" style="text-align: left;">
@@ -498,11 +524,12 @@
                           </div>
                         </div>
                       </div>
-                      <button type="submit" class="btn btn-primary">문의 작성하기</button>
+                      <button @click="submitInquiry" class="btn btn-primary">문의 작성하기</button>
                     </form>
                   </div>
-                </div>
-                <div class="text-block" :value="inquiry.proqNo" :key="inquiry.proqNo" v-for="inquiry in inquirys">
+
+                  <!-- <section class="question-section"> -->
+                <div class="text-block collapse mt-4 questions" :value="inquiry.proqNo" :key="inquiry.proqNo" v-for="inquiry in inquirys">
                   <div class="row">
                     <div class="col-md-2">
                       <p class="text-muted text-sm">문의 상태</p>
@@ -521,7 +548,15 @@
                       <!-- <p class="text-muted text-sm">{{ formattedDate(inquiry.proqDate) }}</p> -->
                     </div>
                   </div>
-      
+                  <!-- <div class="text-md-center flex-shrink-0 me-4 me-xl-5"><img class="d-block avatar avatar-xl p-2 mb-2" v-bind:src="review.reImageUrl"><span class="text-uppercase text-muted text-sm">{{review.reDate}}</span></div> -->
+                  <!-- <div>
+                    <h6 class="mt-2 mb-1">{{inquiry.member.mem_name}}</h6><p class="text-muted text-sm">{{ inquiry.proqTitle }}</p>
+                    <p class="text-muted text-sm">{{ inquiry.proqContent }}</p>
+                    <p class="text-muted text-sm">{{ inquiry.proqDate }}</p>
+                    <p class="text-muted text-sm">{{ inquiry.proqState }}</p>
+                  </div> -->
+                  
+                  
                   <div class="row">
                     <div class="col-md-2">
                       <h5 class="mt-2 mb-1 text-primary">{{ inquiry.proqState }}</h5>
@@ -530,7 +565,7 @@
                       <h5 class="mt-2 mb-1">{{ inquiry.proqTitle }}</h5>
                     </div>
                     <div class="col-md-2">
-                      <h6 class="mt-2 mb-1">{{inquiry.member.mem_name}}</h6>
+                      <h5 class="mt-2 mb-1">{{inquiry.member.mem_name}}</h5>
                     </div>
                     <!-- <div class="col-md-4">
                       <p class="text-muted text-sm">{{ inquiry.proqContent }}</p>
@@ -539,7 +574,7 @@
                       <h5 class="mt-2 mb-1 text-muted text-sm">{{ inquiry.proqDate }}</h5>
                       <!-- <p class="text-muted text-sm">{{ formattedDate(inquiry.proqDate) }}</p> -->
                     </div>
-                    <br><br>
+                    <br>
                     <!-- <h5 style="text-align: center" data-bs-toggle="collapse" data-bs-target="#QuestionDetail" aria-expanded="false" aria-controls="QuestionDetail">+ 더보기</h5>
                       <div class="collapse mt-4 questionDetail" id="QuestionDetail">
                         <div class="row">
@@ -551,16 +586,90 @@
                           </div>
                         </div>
                       </div> -->
-  
-                      <div class="col-md-2">
-                        <p class="text-muted text-sm">문의 상세 내용</p>
-                      </div>
-                      <div class="col-md-10">
-                        <h6 class="mt-2 mb-1">{{ inquiry.proqContent }}</h6>
-                      </div>
                   </div>
-              </div>
-            </div> 
+                  <div class="row">
+                    <div class="col-md-4">
+                      <p class="text-muted text-sm">문의 상세 내용</p>
+                    </div>
+                    <div class="col-md-8">
+                      <h5 class="mt-2 mb-1">{{ inquiry.proqContent }}</h5>
+                    </div>
+                  </div>
+                </div>
+              <!-- </section> -->
+                </div>
+              </div> 
+            </div>
+
+            <h5>문의상세</h5>
+            <div class="text-block" :value="inquiry.proqNo" :key="inquiry.proqNo" v-for="inquiry in inquirys">
+           
+                  <div class="row">
+                    <div class="col-md-2">
+                      <p class="text-muted text-sm">문의 상태</p>
+                    </div>
+                    <div class="col-md-5">
+                      <p class="text-muted text-sm">문의 제목</p>
+                    </div>
+                    <div class="col-md-2">
+                      <p class="text-muted text-sm">작성자</p>
+                    </div>
+                    <!-- <div class="col-md-4">
+                      <p class="text-muted text-sm">{{ inquiry.proqContent }}</p>
+                    </div> -->
+                    <div class="col-md-3">
+                      <p class="text-muted text-sm">문의 일시</p>
+                      <!-- <p class="text-muted text-sm">{{ formattedDate(inquiry.proqDate) }}</p> -->
+                    </div>
+                  </div>
+                  <!-- <div class="text-md-center flex-shrink-0 me-4 me-xl-5"><img class="d-block avatar avatar-xl p-2 mb-2" v-bind:src="review.reImageUrl"><span class="text-uppercase text-muted text-sm">{{review.reDate}}</span></div> -->
+                  <!-- <div>
+                    <h6 class="mt-2 mb-1">{{inquiry.member.mem_name}}</h6><p class="text-muted text-sm">{{ inquiry.proqTitle }}</p>
+                    <p class="text-muted text-sm">{{ inquiry.proqContent }}</p>
+                    <p class="text-muted text-sm">{{ inquiry.proqDate }}</p>
+                    <p class="text-muted text-sm">{{ inquiry.proqState }}</p>
+                  </div> -->
+                  
+                  
+                  <div class="row">
+                    <div class="col-md-2">
+                      <h5 class="mt-2 mb-1 text-primary">{{ inquiry.proqState }}</h5>
+                    </div>
+                    <div class="col-md-5">
+                      <h5 class="mt-2 mb-1">{{ inquiry.proqTitle }}</h5>
+                    </div>
+                    <div class="col-md-2">
+                      <h5 class="mt-2 mb-1">{{inquiry.member.mem_name}}</h5>
+                    </div>
+                    <!-- <div class="col-md-4">
+                      <p class="text-muted text-sm">{{ inquiry.proqContent }}</p>
+                    </div> -->
+                    <div class="col-md-3">
+                      <h5 class="mt-2 mb-1 text-muted text-sm">{{ inquiry.proqDate }}</h5>
+                      <!-- <p class="text-muted text-sm">{{ formattedDate(inquiry.proqDate) }}</p> -->
+                    </div>
+                    <br>
+                    <!-- <h5 style="text-align: center" data-bs-toggle="collapse" data-bs-target="#QuestionDetail" aria-expanded="false" aria-controls="QuestionDetail">+ 더보기</h5>
+                      <div class="collapse mt-4 questionDetail" id="QuestionDetail">
+                        <div class="row">
+                          <div class="col-md-4">
+                            <p class="text-muted text-sm">문의 상세 내용</p>
+                          </div>
+                          <div class="col-md-8">
+                            <h5 class="mt-2 mb-1">{{ inquiry.proqContent }}</h5>
+                          </div>
+                        </div>
+                      </div> -->
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <p class="text-muted text-sm">문의 상세 내용</p>
+                    </div>
+                    <div class="col-md-8">
+                      <h5 class="mt-2 mb-1">{{ inquiry.proqContent }}</h5>
+                    </div>
+                  </div>
+             
           </div>
 
           <h5 class="mb-0">Similar places</h5>
@@ -795,49 +904,6 @@
   //   },
   // },
 
-  data() {
-    return {
-      orderType: '2', // 구매타입 default는 렌탈
-      contractLength: '1', // 약정기간 default는 3년
-      };
-    },
-
-  //v-if 로 orderType, contractLength 선택에 따라 다른 값 보여주기
-  computed: {
-    showPurchasePrice() {
-      //타입을 구매로 선택하면 구매금액만 보여주기
-      return this.orderType === '2'; 
-    },
-    showContractLength() {
-      //타입을 렌탈로 선택하면 약정기간 선택란 보여주기
-      return this.orderType === '1'; 
-    },
-    showRentalPrice() {
-      //타입으로 렌탈을 선택하고 약정기간까지 선택하면 해당 렌탈금액 보여주기
-      return this.orderType === '1' && this.contractLength !== ''; 
-    },
-    rentalPrice() {
-      //약정기간을 선택하지 않으면 가격은 default
-      if (this.contractLength === '') {
-        return '';
-      }
-
-      const rentalPrice = this.detailProduct.productRentalPrice;
-      const contractLength = Number(this.contractLength);
-
-      if (contractLength === 1) { //3년
-        return `월 ~ ${rentalPrice.toLocaleString()}원`;
-      } else if (contractLength === 2) { //6년
-        return `월 ~ ${(rentalPrice - 4000).toLocaleString()}원`;
-      } else {
-        return '';
-      }
-    },
-    isAllOptionsSelected() {
-      return this.orderType && this.contractLength
-    },
-  },
-
   setup() {
     const route = useRoute();
     const router = useRouter();
@@ -876,6 +942,11 @@
       
       console.log("11111");
       console.log(detailProduct.value);
+
+      // setTimeout(() => {
+      //   console.log(detailProduct.value.imgUrl);
+      //   console.log(detailProduct.value.productName);
+      // }, 0);
     }
 
     const getReviewList = async() => {
@@ -911,7 +982,6 @@
         proqContent: qna.value.proqContent
       }
       console.log("data" + data.proqTitle);
-      //if(data=null) alert("문의를 작성해주세요");
       try{
         const res = await axios.post('/product/' +productNo+ '/qnaInsert', data);
         if(res != null) {
@@ -931,6 +1001,58 @@
       getReviewStar();
       getInquiryList();
     });
+
+    // const orderTypeSelect = document.getElementById('orderType');
+    // const contractLengthDiv = document.querySelector('.mb-4[label="약정기간 *"]');
+
+    // orderTypeSelect.addEventListener('change', function() {
+    //   if (this.value === '2') { // 구매가 선택된 경우
+    //     contractLengthDiv.style.display = 'none';
+    //   } else {
+    //     contractLengthDiv.style.display = ''; // 다른 경우 (렌탈이 선택된 경우)는 기본값으로 표시
+    //   }
+    // });
+
+    // const orderTypeSelect = document.getElementById('orderType');
+    // const contractLengthSelect = document.getElementById('contractLength');
+
+    // const updateProductPrice = () => {e
+    //   const rentalPriceLabel = document.querySelector('.h5[name="orderPrice"]');
+    //   const purchasePriceLabel = document.querySelector('.h5[name="rentalPrice"]');
+
+    //   const orderType = orderTypeSelect.value;
+    //   const contractLength = contractLengthSelect.value;
+    //   let productPrice;
+
+    //   if (orderType === '1') { // 렌탈
+    //     if (contractLength === '1') {
+    //       productPrice = detailProduct.productRentalPrice;
+    //     } else if (contractLength === '2') {
+    //       productPrice = detailProduct.productRentalPrice + 4000;
+    //     }
+    //     if (rentalPriceLabel) {
+    //       rentalPriceLabel.textContent = `월 ${productPrice}원`;
+    //       rentalPriceLabel.style.display = 'block';
+    //     }
+    //     if (purchasePriceLabel) {
+    //       purchasePriceLabel.style.display = 'none';
+    //     }
+    //   } else if (orderType === '2') { // 구매
+    //     productPrice = detailProduct.productPrice;
+    //     if (purchasePriceLabel) {
+    //       purchasePriceLabel.textContent = `${productPrice}원`;
+    //       purchasePriceLabel.style.display = 'block';
+    //     }
+    //     if (rentalPriceLabel) {
+    //       rentalPriceLabel.style.display = 'none';
+    //     }
+    //   }
+    // };
+
+    // onMounted(() => {
+    //   orderTypeSelect.addEventListener('change', updateProductPrice);
+    //   contractLengthSelect.addEventListener('change', updateProductPrice);
+    // });
     
   return {
     route,
