@@ -9,7 +9,6 @@ import Rental from '@/components/pages/order/Rental.vue';
 import RentalResult from '@/components/pages/order/RentalResult.vue';
 import Order from '@/components/pages/order/Order.vue';
 import OrderResult from '@/components/pages/order/OrderResult.vue';
-import Rental2 from '@/components/pages/order/Rental2.vue';
 import Detail from '@/components/pages/product/Detail.vue';
 import List from '@/components/pages/product/List.vue';
 import SearchList from '@/components/pages/product/SearchList.vue';
@@ -64,7 +63,7 @@ const router = createRouter({
             component: Rental
         },
         {
-            path: '/rental/check',
+            path: '/retal/check',
             name: 'RentalResult',
             component: RentalResult
         },
@@ -78,11 +77,6 @@ const router = createRouter({
             path: '/order/check',
             name: 'OrderResult',
             component: OrderResult
-        },
-        {
-            path: '/rental2',
-            name: 'Rental2',
-            component: Rental2
         },
         {
             path: '/product/detail/:pno',

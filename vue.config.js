@@ -1,8 +1,20 @@
 const { defineConfig } = require('@vue/cli-service')
+
 module.exports = defineConfig({
+  configureWebpack: {
+    output: {
+      publicPath: '/'
+    }
+  },
+
+  // publicPath: '/',
+  // outputDir: 'dist',
+  // assetsDir: 'static',
+
   transpileDependencies: true,
   lintOnSave : false,
    devServer: {
+    historyApiFallback: true,
     proxy: {
       // '/auth' :{
       //   target: "http://localhost:8082",
@@ -12,11 +24,13 @@ module.exports = defineConfig({
       '/order': {
         target: 'http://localhost:8082',
         changeOrigin: true,
+        ws: true,
         logLevel: 'debug',
         },
       '/product': {
         target: 'http://localhost:8082',
         changeOrigin: true,
+        ws: true,
         logLevel: 'debug',
         },
       '/upload': {
@@ -27,6 +41,7 @@ module.exports = defineConfig({
         '/admin': {
         target: 'http://localhost:8082',
         changeOrigin: true,
+        ws: true,
         logLevel: 'debug',
         }
     }

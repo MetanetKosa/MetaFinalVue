@@ -20,12 +20,12 @@
                 <!-- Country-->
                 <div class="mb-4">
                   <label class="form-label" for="form_country">수취인 이름</label>
-                  <input class="form-control" v-model="rental.orderName" name="name" id="form_street">
+                  <input class="form-control" v-model="rental.orderName" name="name" id="form_street" autocomplete="off">
                 </div>
                 <!-- Street-->
                 <div class="mb-4">
                   <label class="form-label" for="form_street">수취인 연락처</label>
-                  <input class="form-control" v-model="rental.orderPhone" name="name" id="form_street">
+                  <input class="form-control" v-model="rental.orderPhone" name="name" id="form_street" autocomplete="off">
                 </div>
                 
                 <div class="address">
@@ -34,7 +34,7 @@
                   <div class="col-md-6">
                     <div class="mb-4">
                       <label class="form-label" for="form_city">우편번호</label>
-                      <input class="form-control" v-model="rental.orderAddNumber" type="text" id="postcode" placeholder="우편번호">
+                      <input class="form-control" v-model="rental.orderAddNumber" type="text" id="postcode" placeholder="우편번호" autocomplete="off">
                     </div>
                   </div>
                   <div class="col-md-6">
@@ -47,13 +47,13 @@
                   <div class="col-md-6">
                     <div class="mb-4">
                       <label class="form-label" for="form_state">주소</label>
-                      <input class="form-control" v-model="rental.orderAddress" type="text" id="Address" placeholder="도로명주소">
+                      <input class="form-control" v-model="rental.orderAddress" type="text" id="Address" placeholder="도로명주소" autocomplete="off">
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="mb-4">
                       <label class="form-label" for="form_zip">상세주소</label>
-                      <input class="form-control" v-model="rental.orderAddDetail" type="text" id="detailAddress" placeholder="상세주소">
+                      <input class="form-control" v-model="rental.orderAddDetail" type="text" id="detailAddress" placeholder="상세주소" autocomplete="off">
                     </div>
                   </div>
                 </div>
@@ -124,7 +124,7 @@
                       <p class="text-sm text-muted">배송메모를 입력해주세요</p>
                     </div>
                   </div>
-                  <textarea class="form-control" name="hello" rows="4"></textarea>
+                  <textarea class="form-control" name="hello" rows="2"></textarea>
                 </div>
               </div>
               </div>
@@ -426,7 +426,7 @@ export default {
       productPrice: 0,
       productRentalPrice: 0,
     });
-    
+
     const rental = ref([]);
 
     const productNo = route.query.pno;
