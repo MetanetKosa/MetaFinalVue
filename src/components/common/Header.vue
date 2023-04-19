@@ -105,7 +105,10 @@ export default {
 
         const pageState = ref(false);
         const token = sessionStorage.getItem("token");
-        console.log("로그인 후 토큰이 잘 가져와 지나요?" + token);
+        console.log("로그인 후 토큰이 잘 가져와 지나요? : " + token);
+        const id = sessionStorage.getItem("id");
+        
+        console.log("로그인 후 id가 잘 가져와 지나요? : " + id);
 
         const checkToken = () => {
             if(token == null){

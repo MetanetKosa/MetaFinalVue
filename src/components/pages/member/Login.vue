@@ -82,10 +82,14 @@ export default {
             const args = JSON.parse(JSON.stringify(data));
             const res = await axios.post('/auth/login',args)
                 .then((response) =>{
-                    // alert('로그인 성공');
                     console.log("token 생성 성공" + response.headers.token)
                     sessionStorage.setItem("token", response.headers.token);
                     sessionStorage.setItem("id", id.value);
+                     const memberData = async() =>{
+                        const res =  axios.post('/auth/members',id);
+                        console.log("모든 회원 데이터 " + memberData);
+                    }
+                    
                         Swal.fire({
                             title: 'Success!',
                             text: '로그인을 성공하였습니다.',
@@ -96,48 +100,21 @@ export default {
                                     window.location.href = '/'
                                      // SweetAlert(Swal)의 OK 버튼을 클릭하면 메인 페이지로 이동합니다.
                                      //router.push('/');
-                                    
                                 });
-                        if(response.headers.token == null){
-                            Swal.fire({
-                                icon: 'error',
-                                title: '로그인을 실패하였습니다'
+                                token.value = result.headers.token;
+                                console.log('아니 여기서 아이디 입력이 제대로 안 되었는데 왜 안 가져오는 거??');
+                        if(token.value == ''){
+                           Swal.fire({
+                            icon: 'error',
+                                title: 'Error!',
+                                html: '아이디 또는 비밀번호를 잘못 입력했습니다.<br>입력하신 내용을 다시 확인해주세요',
                             })
                         }
-                        token.value = result.headers.token;
+                        
                 })
-                // .catch((error) => {
-                //     console.log(error);
-                // })
-            // if(res != null){
-            //     alert('로그인 성공');
-            // }
-            // .then((result)=>{
-            //             console.log('성공');
-            //             console.log("sessionStorage setItem "+result.headers.token.value);
-
-            //         sessionStorage.setItem("token",result.headers.token);
-            //         sessionStorage.setItem("id",id.value);
-            //             Swal.fire({
-            //             icon: 'success',
-            //             title: '로그인 성공'     
-            //             }).then(() => {
-            //                 router.push({ name: '/', params: { id: id.value } });
-            //                 location.reload();
-            //                 window.location.href = '/'
-            //             });            
-            //             if(result.headers.token == null){
-            //             Swal.fire({
-            //                 icon: 'error',
-            //                 title: '로그인 실패'
-            //             })
-            //         }
-            //         token.value = result.headers.token;
-            //         }).catch((result) => {
-            //         console.log(result);
-            //         });
-           
-                
+                .catch((error) => {
+                    console.log(error);
+                })      
         }
 
         return{
@@ -146,90 +123,6 @@ export default {
             login
         }
   }
-  // console.log("data login memId "+ data.memId);
-                // console.log("data login memPw "+ data.memPw);
-                // const loginResult = async () =>{
-                //     const args = JSON.parse(JSON.stringify(data));
-                //     console.log("JSON login memId "+ data.memId);
-                //     console.log("JSON login memPw "+ data.memPw);
-                //     const res = await axios.post('/auth/login',args);
-                //     if(res != null){
-                //         alert('로그인 성공');
-                //     }
-                    // .then((result)=>{
-                    //     console.log('성공');
-                    //     console.log("sessionStorage setItem "+result.headers.token.value);
-
-                    // sessionStorage.setItem("token",result.headers.token);
-                    // sessionStorage.setItem("id",id.value);
-                    //     Swal.fire({
-                    //     icon: 'success',
-                    //     title: '로그인 성공'     
-                    //     }).then(() => {
-                    //         router.push({ name: '/', params: { id: id.value } });
-                    //         location.reload();
-                    //         window.location.href = '/'
-                    //     });            
-                    //     if(result.headers.token == null){
-                    //     Swal.fire({
-                    //         icon: 'error',
-                    //         title: '로그인 실패'
-                    //     })
-                    // }
-                    // token.value = result.headers.token;
-                    // }).catch((result) => {
-                    // console.log(result);
-                    // });
-                
-            // }
-
-            // loginResult();
-  
-    // setup(){
-    //     const router = useRouter();
-    //     const state = reactive({
-    //         login: [],
-    //         form: {
-    //             memId: "",
-    //             memPw: ""
-    //         },
-    //     });
-
-    //     const token = ref(''); //토큰
-
-    //     const login = async() => {
-    //         try{
-
-  
-    //             sessionStorage.setItem('token',res.headers.token);
-    //             sessionStorage.setItem('memId',memId.value.memId)
-    //             // const args = JSON.parse(JSON.stringify(state.form));
-    //             // axios.post("/auth/login", args).then(() => {
-    //             //     alert("로그인");
-    //             //     router.push({path: "/login"})
-    //             // })
-    //             // alert(res.data.memId + "환영합니다");
-    //             Swal.fire({
-    //                 title: '알림',
-    //                 text: '환영합니다!',
-    //                 icon: 'success',
-    //             });
-    //         }catch (error){
-    //             console.log(error);
-
-    //             Swal.fire({
-    //                 icon:'error',
-    //                 title: '잘못된 로그인'
-    //             });
-    //         }
-    //     }
-
-    //     return{
-    //         state,
-    //         login,
-    //         res
-    //     }
-    // }
 }
 </script>
 
