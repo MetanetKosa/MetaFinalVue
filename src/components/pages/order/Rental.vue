@@ -7,7 +7,7 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-7">
-              <form @submit.prevent="submitRental" class="form" name="rental" id="rental-form">
+              <form @submit.prevent="submitRental" @onclick.prevent class="form" name="rental" id="rental-form">
               <h1 class="h2 my-3 text-bold"> 배송 정보 <span class="text-muted float-end">Step 1</span>      </h1>
               <button class="btn btn-link btn-collapse ps-0 h2 text-muted" type="button" data-bs-toggle="collapse" data-bs-target="#contractInformation" aria-expanded="false" aria-controls="addNewCard" data-expanded-text="닫기" data-collapsed-text="배송지 입력">배송지 입력</button>
 
@@ -37,9 +37,9 @@
                       <input class="form-control" v-model="rental.orderAddNumber" type="text" id="postcode" placeholder="우편번호" autocomplete="off">
                     </div>
                   </div>
-                  <div class="col-md-6">
-                    <div class="mb-4">
-                      <button @onclick="openPostcode">주소 검색</button>
+                  <div class="col-md-6" style="display: flex; align-items: center;">
+                    <div class="mb-4" style="margin: auto;">
+                      <button class="btn btn-primary px-3" @click.prevent="openPostcode()">주소 검색</button>
                     </div>
                   </div>
                 <!-- ZIP Code-->
@@ -283,7 +283,6 @@
                         <h4 class="text-sm">모델명 {{ product.productModel }}</h4>
                         <h4 class="text-sm"><strong>렌탈 | 약정기간 {{rentalLength}} 년</strong> | {{ product.productFunction}} | {{ product.productColor }}</h4>
                       </div>
-                      <div class="flex-shrink-0" href="detail-rooms.html"><img class="ms-3 rounded" src="img/photo/photo-1512917774080-9991f1c4c750.jpg" alt="" width="100"></div>
                     </div>
                   </div>
                   <div class="text-block pt-3 pb-0">
@@ -340,9 +339,10 @@ export default {
   name: 'address',
   data() {
     return {
-      orderAddNumber: '',
-      orderAddress: '',
-      orderAddDetail: ''
+      rental: {
+        orderAddNumber: '',
+        orderAddress: ''
+      }
     }
   },
   methods: {
@@ -375,8 +375,8 @@ export default {
           }
 
           // 우편번호와 주소 정보를 해당 필드에 넣는다.
-          this.orderAddNumber = data.zonecode; //5자리 새우편번호 사용
-          this.orderAddress = fullRoadAddr;
+          this.rental.orderAddNumber = data.zonecode; //5자리 새우편번호 사용
+          this.rental.orderAddress = fullRoadAddr;
         }
       }).open();
     }
@@ -483,7 +483,7 @@ export default {
         console.log(res);
         //console.log(res.orderNo);
         if(res != null) {
-          alert("주문이 정상적으로 완료되었습니다.");
+          //alert("주문이 정상적으로 완료되었습니다.");
           const orderNo = await axios.get('/order/getOrderNo');
           //console.log(orderNo.data);
           router.push({
@@ -496,7 +496,7 @@ export default {
         } 
       } catch(error) {
         console.error(error);
-        alert("주문에 실패하였습니다.")
+        alert("정보를 모두 입력해주세요.")
       }
     }
 

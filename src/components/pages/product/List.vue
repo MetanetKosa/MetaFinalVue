@@ -478,7 +478,7 @@ setup() {
     console.log("param : " + p);
     router.push({
       name: 'ProductDetail',
-      params: {
+      query: {
         pno: p
       }
     });

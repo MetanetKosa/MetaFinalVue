@@ -79,8 +79,13 @@ const router = createRouter({
             name: 'OrderResult',
             component: OrderResult
         },
+        // {
+        //     path: '/product/detail/:pno',
+        //     name: 'ProductDetail',
+        //     component: Detail
+        // },
         {
-            path: '/product/detail/:pno',
+            path: '/product/detail',
             name: 'ProductDetail',
             component: Detail
         },
@@ -89,8 +94,13 @@ const router = createRouter({
             name: 'ProductList',
             component: List
         },
+        // {
+        //     path: '/search/:searchKeyword',
+        //     name: 'SearchList',
+        //     component: SearchList
+        // },
         {
-            path: '/search/:searchKeyword',
+            path: '/search',
             name: 'SearchList',
             component: SearchList
         },

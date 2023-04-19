@@ -55,20 +55,20 @@
 
                     <!-- 검색 -->
                     <li class="mx-5 nav-item" id="headerSearch">
-                    <form class="form-inline d-none d-sm-flex" action="#" id="search">
+                    <!-- <form class="form-inline d-none d-sm-flex" action="#" id="search">
                         <div class="input-label-absolute input-label-absolute-left input-expand ms-lg-2 ms-xl-3">
                         <input class="form-control form-control-sm border-0 shadow-0 bg-gray-200" id="searchKeyword" placeholder="아이콘 정수기" aria-label="searchKeyword" type="text" v-model="searchKeyword">
                         <button class="btn btn-secondary btn-sm" @click="moveToSearchPage(searchKeyword)">search</button>
                         <label class="label-absolute" for="search_search"><i class="bi bi-search"></i><span class="sr-only"></span></label>
                         </div>
-                    </form> 
-                    <!-- <form class="form-inline d-none d-sm-flex" id="search">
+                    </form>  -->
+                    <form class="form-inline d-none d-sm-flex" id="search">
                         <div class="input-label-absolute input-label-absolute-left input-expand ms-lg-2 ms-xl-3">
                         <input class="form-control form-control-sm border-0 shadow-0 bg-gray-200" id="searchKeyword" placeholder="아이콘 정수기" aria-label="searchKeyword" type="text" v-model="searchKeyword">
                         <button class="btn btn-secondary btn-sm" @click="search">search</button>
                         <label class="label-absolute" for="search_search"><i class="bi bi-search"></i><span class="sr-only"></span></label>
                         </div>
-                    </form>-->
+                    </form>
                     </li>
 
                         <li class="nav-item"><router-link class="nav-link" :to="{name: 'Signup'}">Sign up</router-link></li>
@@ -100,34 +100,34 @@ export default {
         const searchKeyword = ref('');
         //let searchKeyword = ref(null);
 
-        const moveToSearchPage = (s) => {
-            if (!s) {
-                alert("검색어를 입력하세요.");
-                return;
-            }
+        // const moveToSearchPage = (s) => {
+        //     if (!s) {
+        //         alert("검색어를 입력하세요.");
+        //         return;
+        //     }
             
-            console.log("param : " + s);
-            router.push({
-                name: 'SearchList',
-                params: {
-                searchKeyword: s
-                }
-            });
-        }
-
-        // const search = () => {
+        //     console.log("param : " + s);
         //     router.push({
-        //         name: 'ProductList',
-        //         query: {
-        //             searchKeyword: searchKeyword.value
+        //         name: 'SearchList',
+        //         params: {
+        //         searchKeyword: s
         //         }
-        //     })
+        //     });
         // }
 
+        const search = () => {
+            router.push({
+                name: 'SearchList',
+                query: {
+                    searchKeyword: searchKeyword.value
+                }
+            })
+        }
+
         return {
-            moveToSearchPage,
+            //moveToSearchPage,
             searchKeyword,
-            //search,
+            search,
         }
 
     },

@@ -37,9 +37,9 @@
                     <input class="form-control" v-model="order.orderAddNumber" type="text" id="postcode" placeholder="우편번호">
                   </div>
                 </div>
-                <div class="col-md-6">
-                  <div class="mb-4">
-                    <button @onclick="openPostcode">주소 검색</button>
+                <div class="col-md-6" style="display: flex; align-items: center;">
+                  <div class="mb-4" style="margin: auto;">
+                    <button class="btn btn-primary px-3" @click.prevent="openPostcode()">주소 검색</button>
                   </div>
                 </div>
               <!-- ZIP Code-->
@@ -283,7 +283,6 @@
                       <h4 class="text-sm">모델명 {{ product.productModel }}</h4>
                       <h4 class="text-sm"><strong>구매 </strong> | {{ product.productFunction}} | {{ product.productColor }}</h4>
                     </div>
-                    <div class="flex-shrink-0" href="detail-rooms.html"><img class="ms-3 rounded" src="img/photo/photo-1512917774080-9991f1c4c750.jpg" alt="" width="100"></div>
                   </div>
                 </div>
                 <div class="text-block pt-3 pb-0">
@@ -334,9 +333,10 @@ components:{
 name: 'address',
 data() {
   return {
-    orderAddNumber: '',
-    orderAddress: '',
-    orderAddDetail: ''
+    order: {
+      orderAddNumber: '',
+      orderAddress: ''
+    }
   }
 },
 methods: {
@@ -369,8 +369,8 @@ methods: {
         }
 
         // 우편번호와 주소 정보를 해당 필드에 넣는다.
-        this.orderAddNumber = data.zonecode; //5자리 새우편번호 사용
-        this.orderAddress = fullRoadAddr;
+        this.order.orderAddNumber = data.zonecode; //5자리 새우편번호 사용
+        this.order.orderAddress = fullRoadAddr;
       }
     }).open();
   }
@@ -450,7 +450,7 @@ setup() {
       orderName : order.value.orderName,
       orderPhone : order.value.orderPhone,
       orderPay : order.value.orderPay,
-      orderPrice : order.value.orderPrice
+      orderPrice : product.value.productPrice
     }
 
     console.log(data);
@@ -462,7 +462,7 @@ setup() {
       console.log(res);
       //console.log(res.orderNo);
       if(res != null) {
-        alert("주문이 정상적으로 완료되었습니다.");
+        //alert("주문이 정상적으로 완료되었습니다.");
         const orderNo = await axios.get('/order/getOrderNo');
         //console.log(orderNo.data);
         router.push({
@@ -475,7 +475,7 @@ setup() {
       } 
     } catch(error) {
       console.error(error);
-      alert("주문에 실패하였습니다.")
+      alert("정보를 모두 입력해주세요.")
     }
   }
 

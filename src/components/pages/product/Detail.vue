@@ -898,7 +898,8 @@
       productPrice: 0,
       productRentalPrice: 0,
     });
-    const productNo = route.params.pno;
+    
+    const productNo = route.query.pno;
     console.log("detail page : "+productNo);
 
     const getProductDetail = async() => {

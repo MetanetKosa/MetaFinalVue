@@ -153,7 +153,7 @@
               <div class="row form-block flex-column flex-sm-row">
                 <!-- <div class="col text-center text-sm-start"><a class="btn btn-link text-muted" href="user-booking-1.html"> <i class="fa-chevron-left fa me-2"></i>이전</a>
                 </div> -->
-                <div class="col text-center text-sm-end"><a class="btn btn-primary px-3" href="user-booking-3.html"> 확인</a></div>
+                <div class="col text-center text-sm-end"><button class="btn btn-primary px-3" @click="order()">주문<i class="fa-chevron-right fa ms-2"></i></button></div>
           </div>
         <!-- </div> -->
         </div>
@@ -260,10 +260,19 @@ export default {
       getOrderDetail();
     });
 
+    const order = () => {
+      alert("주문이 완료되었습니다 :)");
+      router.push({
+        name: 'Home'
+      })
+
+    }
+
   return {
     route,
     router,
     detailOrder,
+    order,
   }
   
   }

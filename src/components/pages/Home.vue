@@ -1,6 +1,6 @@
 <template>
     <body>
-     <section class="d-flex align-items-center bg-cover" style="background-image: url(/../html/img/main3.png);">
+     <section class="d-flex align-items-center bg-cover" style="background-image: url(/../html/img/main3.jpg);">
        <div class="container py-6 py-lg-7 text-white overlay-content text-center"> 
          <div class="row">
            <div class="col-xl-10 mx-auto">
@@ -271,7 +271,7 @@
        </div>
      </section>
      <!-- Divider Section-->
-     <section class="py-6 py-lg-7 position-relative dark-overlay"><img class="bg-image" src="/../html/img/main2.png" alt="">
+     <section class="py-6 py-lg-7 position-relative dark-overlay"><img class="bg-image" src="/../html/img/main2.jpg" alt="">
        <div class="container">
          <div class="overlay-content text-white py-lg-5 text-center">
            <p class="subtitle text-white letter-spacing-4 mb-4">Find the best spots</p>
