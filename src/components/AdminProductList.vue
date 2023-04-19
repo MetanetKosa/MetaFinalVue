@@ -107,7 +107,7 @@
                             </td>
                             <td>
                                 <li class="list-inline-item">
-                                        <img alt="Avatar" class="table-avatar" src="../../public/html/dist/img/avatar.png">
+                                        <img :src="imgSrc(product.imgUrl)" />
                                     </li>
                                 <a >
                                     {{product.productName}}
@@ -163,13 +163,17 @@
 </template>
 
 <script>
+import axios from "axios";
+import {reactive} from "vue";
 import {useRoute, useRouter} from 'vue-router';
 
 export default {
     props: {
         products: Object,
         default: () => {
-            return {productNo:'',
+            return {
+                imgUrl:'',
+                productNo:'',
                     productName:'',
                    regDate:'',
                    productType:'',
@@ -178,6 +182,7 @@ export default {
     },
       emits: ['delete-product','update-product'],
     setup(props,  {emit}){
+      
          const deleteProduct = (productNo) => {
             emit('delete-product', productNo);
             }
@@ -186,7 +191,35 @@ export default {
             emit('update-product', productNo);
             }
 
+
+           
+             const imgSrc = async (path) => {
+                try {
+                        const response = await axios.get(`/upload/display?fileName=${path}`, {
+                        responseType: 'blob'
+                        });
+                        const reader = new FileReader();
+                        reader.readAsDataURL(response.data);
+                        return new Promise((resolve, reject) => {
+                        reader.onload = () => {
+                        resolve(reader.result);                         
+                        };
+                        reader.onerror = () => {
+                            reject(reader.error);
+                        };
+                        });
+                    } catch (error) {
+                        console.error(error);
+                        throw error;
+                    }
+                    };
+      
+         
+
+
+
             return{
+                imgSrc,
                 deleteProduct,
                 updateProduct,
             }

@@ -157,17 +157,19 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card-footer bg-white">
+                                <div class="card-footer bg-white" >
                                     <ul class="mailbox-attachments d-flex align-items-stretch clearfix">
                                          <li>
-                                            <!-- <span class="mailbox-attachment-icon"><i class="far fa-file-pdf"></i></span> -->
-                                            <img :src="imgSrc"/>
-                                            <!-- <div class="mailbox-attachment-info">
-                                                <a href="#" class="mailbox-attachment-name"> Sep2014-report.pdf</a>
+                                            <span class="mailbox-attachment-icon">
+                                                <img :src="state.imgSrc" />
+                                            </span>
+                                            <div class="mailbox-attachment-info">
+                                                <a href="#" class="mailbox-attachment-name"></a>
                                                     <span class="mailbox-attachment-size clearfix mt-1">                                           
                                                     <a href="#" class="btn btn-default btn-sm float-right"><i class="fas fa-cloud-download-alt"></i></a>
                                                     </span>
-                                            </div> -->
+                                                    <button @click="removeFile()"></button>
+                                            </div>
                                         </li>                                    
                                      </ul>
                                 </div>
@@ -217,6 +219,7 @@ import {reactive} from "vue";
 import {useRouter} from 'vue-router';
 
 export default {
+
     components: {
     Sidebar
   },
@@ -247,8 +250,9 @@ export default {
         detailUrl:"",
        attachList: []
       },
-        imageSrc: '/upload/display?fileName=/2023/04/18/3f3b4228-a668-4fdd-bd2a-909a8ce258b3_Relational_2.png',
        files:[],
+       imgSrc:"",
+
     })
     const submit = () => {
       const args = JSON.parse(JSON.stringify(state.form));
@@ -288,7 +292,18 @@ export default {
                  });
              });
             }
-            showUploadedImages(response);
+            if(state.form.imgUrl == response.data.fileName){
+                   state.form.imgUrl = response.data.folderPath +"/" + response.data.uuid+"_" + response.data.fileName; 
+            }
+            if( state.form.detailUrl == response.data.fileName){
+                state.form.detailUrl = response.data.folderPath +"/" + response.data.uuid+"_" + response.data.fileName; 
+            }
+             if( state.form.productGuide == response.data.fileName){
+                state.form.detailUrl = response.data.folderPath +"/" + response.data.uuid+"_" + response.data.fileName; 
+            }
+            
+          
+               showUploadedImages(response);
             
         })
         .catch(error => {
@@ -298,33 +313,22 @@ export default {
     };
 
         const  showUploadedImages = (response) => {
-            console.log(response);
-             console.log(response.data.imageURL);
-             // 이미지 파일 이름
-            const fileName =response.data.imageURL;
-
-            // // HTTP 요청 보내기
-            // axios.get('/upload/display', { params: { fileName } })
-            // .then(response => {
-            //     // HTTP 응답에서 바이너리 데이터 추출
-            //     console.log(response)
-            //     const imageBlob = new Blob([response.data], { type: response.headers['content-type'] });
-
-            //     // 바이너리 데이터를 URL 객체로 변환하여 이미지 URL 설정
-            //    const imgSrc = URL.createObjectURL(imageBlob);
-            //      this.imgSrc = imgSrc;
-                
-            // })
-            // .catch(error => {
-            //     console.error(error);
-            // });i
+            const fileCallPath = response.data.folderPath+"/s_"+response.data.uuid+"_"+response.data.fileName;
+             axios.get('/upload/display', { 
+                responseType: 'blob',
+                params: {  fileName: fileCallPath } })
+              .then(response => {
+                const reader = new FileReader();
+                reader.readAsDataURL(response.data);
+                reader.onload = () =>{
+                    state.imgSrc = reader.result;
+                    console.log(state.imgSrc);
+                };
+            })
+            .catch(error => {
+                console.error(error);
+            });
         }
-
-
-
-
-
-
 
         // 설명서 처리
         const handleFileChange = (event) => {
@@ -343,16 +347,24 @@ export default {
         // 추가 이미지 처리
         const handleAddChange = (event) => {
         state.files = [...state.files, ...event.target.files];
-        handleImageUpload(event, "files");
+        // for(let i = 0; i< files.length; i++){
+        //     const file = event.target.files[i]
+        //     handleImageUpload(event, "file");
+        // }
+        // state.files = files;
+         handleImageUpload(event, "files");
         };
 
         // 상세 이미지 처리
         const handleDetailChange = (event) => {
         const file = event.target.files[0];
         state.form.detailUrl = file.name;
-        handleImageUpload(event, "file");
+         handleImageUpload(event, "file");
         };
+        
+        const removeFile = () => {
 
+        }
        
     return {
         state, 

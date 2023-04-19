@@ -3,7 +3,6 @@
         <div class="wrapper">
              <Sidebar />
             <AdminOrderList :orders ="state.orders"
-            @order-detail ="orderDetail"
             :rentals="state.rentals" />  
         </div>
     </body>
