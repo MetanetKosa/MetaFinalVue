@@ -76,7 +76,8 @@
               <button class="btn btn-primary mx-1 py-2"><i class="fas fa-wrench"></i>&nbsp;A/S 신청&nbsp;<i class="fas fa-angle-right"></i></button>
               <button class="btn btn-primary mx-1"><i class="fas fa-won-sign"></i>&nbsp;납부 방법 변경&nbsp;<i class="fas fa-angle-right"></i></button>
               <button class="btn btn-primary mx-1"><i class="fas fa-info"></i>&nbsp;제품 사용 신청서&nbsp;<i class="fas fa-angle-right"></i></button>
-              <button class="btn mx-1 text-muted">해지신청<i class="fas fa-angle-right"></i></button>
+              <button class="btn mx-1 text-muted" @click="showReturnModal = true">반납신청<i class="fas fa-angle-right"></i></button>
+              <button class="btn mx-1 text-muted" @click="showCancelModal = true">해지신청<i class="fas fa-angle-right"></i></button>
               <button class="btn mx-1 text-muted" @click="showModal = true">문의 남기기</button>
                   <div v-if="showModal" class="modal">
                     <div class="modal-content">
@@ -88,6 +89,29 @@
 타인에게 불쾌감을 유발할 수 있는 언어 및 이미지가 포함된 리뷰는 사용자의 신고 또는 관리자 권한에 의해 노출이 제한될 수 있습니다.
 부적절한 내용 등으로 작성자에 대한 신고가 반복 접수되는 경우는 서비스 이용이 제한될 수 있습니다.</h6>
                         <p>모달 내용입니다.</p>
+                    </div>
+                  </div>
+
+                  <!-- 해지 신청 눌렀을 때 모달 -->
+                  <div v-if="showCancelModal" class="modal">
+                    <div class="cancel-modal-content">
+                        <span class="close" @click="showCancelModal = false">&times;</span>
+                        <h3>정말 해지하시게요?</h3>
+                        <h5>지금 해지하신다면 위약금</h5><h3>금액</h3><h5>원</h5>
+                        
+                        <p>모달 내용입니다.</p>
+                        <button class="btn btn-primary" @click="continueCancel = true, showCancelModal = false">그래도 해지하기</button>
+                    </div>
+                  </div>
+
+                  <!-- 그래도 해지하기 모달 -->
+                  <div v-if="continueCancel" class="continue-cancel-modal">
+                    <div class="continue-cancel-modal-content">
+                        <span class="close" @click="continueCancel = false">&times;</span>
+                        <h5>수거 일자 선택</h5>
+                        
+                        <p>모달 내용입니다.</p>
+                        <button class="btn btn-primary" @click="continueCancel = true">해지 신청</button>
                     </div>
                   </div>
             </div>
@@ -162,6 +186,8 @@
     data() {
       return {
         showModal: false,
+        showCancelModal: false,
+        continueCancel: false,
       };
     },
   
@@ -210,7 +236,7 @@
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 60%;
+    width: 40%;
     position: relative; /* close 버튼과의 위치 조정을 위해 */
   }
   
@@ -229,5 +255,48 @@
     color: #000;
     text-decoration: none;
     cursor: pointer;
+  }
+
+  .cancel-modal {
+    display: block;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  /* 해지 신청 페이지 */
+  .cancel-modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%;
+    position: relative; /* close 버튼과의 위치 조정을 위해 */
+  }
+
+  .continue-cancel-modal {
+    display: block;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+
+  }
+  /* 그래도!해지 신청 페이지 */
+  .continue-cancel-modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 40%;
+    position: relative; /* close 버튼과의 위치 조정을 위해 */
   }
 </style>
