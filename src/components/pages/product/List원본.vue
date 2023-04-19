@@ -3,6 +3,7 @@
     <div class="container">
     <div class="container-fluid pt-5 pb-3 border-bottom px-lg-5">
       <div class="row">
+
       <section class="py-6 bg-gray-100"> 
        <div class="container">
          <div class="text-center pb-lg-4">
@@ -16,7 +17,7 @@
            <!-- Additional required wrapper-->
            <div class="swiper-wrapper pb-5">
              <!-- Slides-->
-             <div class="swiper-slide h-auto px-2" style="width:216px;" :value="bestProduct.productNo" :key="bestProduct.productNo" v-for="bestProduct in bestProducts">
+             <div class="swiper-slide h-auto px-2" :value="bestProduct.productNo" :key="bestProduct.productNo" v-for="bestProduct in bestProducts">
                <!-- venue item-->
                <div class="w-100 h-100 hover-animate" data-marker-id="59c0c8e33b1527bfe2abaf92">
                  <div class="card h-100 border-0 shadow">
@@ -46,6 +47,7 @@
            <!-- If we need pagination-->
            <div class="swiper-pagination"></div>
          </div>
+         <div class="text-center mt-5"><a class="btn btn-outline-primary" href="category-2.html">See all places</a></div>
        </div>
      </section>
       </div>

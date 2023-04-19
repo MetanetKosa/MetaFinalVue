@@ -102,14 +102,14 @@
                     <label class="form-label" for="card-name">방문 시간 선택</label>
                     <select class="selectpicker form-control mb-3" v-model="rental.deliveryTime" name="deliveryDate" id="deliveryDate" data-style="btn-selectpicker">
                       <option>선택</option>
-                      <option>오전 10~11시</option>
-                      <option>오전 11~12시</option>
-                      <option>오후 01~02시</option>
-                      <option>오후 02~03시</option>
-                      <option>오후 03~04시</option>
-                      <option>오후 04~05시</option>
-                      <option>오후 05~06시</option>
-                      <option>오후 06~07시</option>
+                      <option>오전 10 ~ 11시</option>
+                      <option>오전 11 ~ 12시</option>
+                      <option>오후 01 ~ 02시</option>
+                      <option>오후 02 ~ 03시</option>
+                      <option>오후 03 ~ 04시</option>
+                      <option>오후 04 ~ 05시</option>
+                      <option>오후 05 ~ 06시</option>
+                      <option>오후 06 ~ 07시</option>
                     </select>
                   </div>
                   <p class="text-sm text-muted mb-0">선택하신 설치 일시와 실제 설치 확정일시가 재고 상황 등으로 변동될 수 있습니다.</p>
@@ -426,6 +426,7 @@ export default {
       productPrice: 0,
       productRentalPrice: 0,
     });
+    
     const rental = ref([]);
 
     const productNo = route.query.pno;
