@@ -66,8 +66,8 @@
                   <img class="img-fluid" src="/../../../../html/img/photo/sample1.PNG">
                 </div>
                 <div class="col-10">
-                  <h6>품번</h6>
-                  <h6>품명</h6>
+                  <h6>{{ myProduct.productModel }}</h6>
+                  <h5>{{ myProduct.productName }}</h5>
                 </div>
               </div>
             </div>
