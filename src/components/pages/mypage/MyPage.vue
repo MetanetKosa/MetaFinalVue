@@ -200,7 +200,7 @@ export default {
          // memNo 임의 설정 1
     axios.get(`/mypage/myorder/myproducts/${memNo}`).then(({data}) =>{
       state.myProducts = data;
-      console.log(" 데이터값 " + data);
+      console.log(" 사용중인 제품 데이터 : " + data);
     }).catch((error) => {
         console.error("API 요청 실패", error);
     });

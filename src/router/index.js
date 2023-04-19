@@ -7,7 +7,6 @@ import AdminList from '@/components/pages/admin/AdminList.vue';
 import AdminMember from '@/components/pages/admin/AdminMember.vue';
 import RentalPay from '@/components/pages/order/RentalPay.vue';
 import BuyPay from '@/components/pages/order/BuyPay.vue';
-import Rental2 from '@/components/pages/order/Rental2.vue';
 import RentalResult from '@/components/pages/order/RentalResult.vue';
 import BuyResult from '@/components/pages/order/BuyResult.vue';
 import Detail from '@/components/pages/product/Detail.vue';
@@ -68,11 +67,7 @@ const router = createRouter({
             name: 'BuyPay',
             component: BuyPay
         },
-        {
-            path: '/rental2',
-            name: 'Rental2',
-            component: Rental2
-        },
+
         {
             path: '/RentalResult',
             name: 'RentalResult',

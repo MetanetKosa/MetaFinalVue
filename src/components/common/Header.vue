@@ -34,7 +34,6 @@
                                 <router-link class="dropdown-item" :to="{name: 'RentalResult'}">렌탈 결과창</router-link>
                                 <router-link class="dropdown-item" :to="{name: 'BuyPay'}">주문 결제창</router-link>
                                 <router-link class="dropdown-item" :to="{name: 'BuyResult'}">주문 결과창</router-link>
-                                <router-link class="dropdown-item" :to="{name: 'Rental2'}">rental2</router-link>
                                 <!-- <router-link class="dropdown-item" :to="{name: 'ProductDetail'}">상품상세페이지</router-link> -->
                                 <router-link class="dropdown-item" :to="{name: 'ProductList'}">상품목록페이지</router-link>
                                 <!-- <router-link class="dropdown-item" :to="{name: 'MyProduct'}">마이페이지 첫화면</router-link> -->
