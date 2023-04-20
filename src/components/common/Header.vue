@@ -27,19 +27,20 @@
                         <li class="header-menu nav-item dropdown">
                             <a class="nav-link" id="docsDropdownMenuLink" href="index.html" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">테스트&nbsp;<i class="fas fa-angle-down"></i></a>
                             <div class="dropdown-menu" aria-labelledby="homeDropdownMenuLink">
-                                <router-link class="dropdown-item" :to="{name: 'AdminRegister'}">관리자 등록 페이지</router-link>
-                                <router-link class="dropdown-item" :to="{name: 'AdminList'}">관리자 목록 페이지</router-link>
-                                <router-link class="dropdown-item" :to="{name: 'AdminMember'}">관리자 회원관리 페이지</router-link>
-                                <router-link class="dropdown-item" :to="{name: 'RentalPay'}">렌탈 결제창</router-link>
-                                <router-link class="dropdown-item" :to="{name: 'RentalResult'}">렌탈 결과창</router-link>
-                                <router-link class="dropdown-item" :to="{name: 'BuyPay'}">주문 결제창</router-link>
-                                <router-link class="dropdown-item" :to="{name: 'BuyResult'}">주문 결과창</router-link>
+
+                                <router-link class="dropdown-item" v-if="pageAdmin" :to="{name: 'AdminRegister'}">관리자 등록 페이지</router-link>
+                                <router-link class="dropdown-item" v-if="pageAdmin" :to="{name: 'AdminList'}">관리자 목록 페이지</router-link>
+                                <router-link class="dropdown-item" v-if="pageAdmin" :to="{name: 'AdminMember'}">관리자 회원관리 페이지</router-link>
+                                <router-link class="dropdown-item" v-if="pageState"  :to="{name: 'RentalPay'}">렌탈 결제창</router-link>
+                                <router-link class="dropdown-item" v-if="pageState" :to="{name: 'RentalResult'}">렌탈 결제창</router-link>
+                                <router-link class="dropdown-item" v-if="pageState" :to="{name: 'BuyPay'}">주문 결제창</router-link>
+                                <router-link class="dropdown-item" v-if="pageState" :to="{name: 'BuyResult'}">주문 결과창</router-link>
                                 <!-- <router-link class="dropdown-item" :to="{name: 'ProductDetail'}">상품상세페이지</router-link> -->
-                                <router-link class="dropdown-item" :to="{name: 'ProductList'}">상품목록페이지</router-link>
-                                <!-- <router-link class="dropdown-item" :to="{name: 'MyProduct'}">마이페이지 첫화면</router-link> -->
-                                <router-link class="dropdown-item" :to="{name: 'MyPage'}">마이페이지</router-link>
-                                <router-link class="dropdown-item" :to="{name: 'MyOrderList'}">마이페이지</router-link>
-                                <router-link class="dropdown-item" :to="{name: 'AdminOrder'}">주문관리 페이지</router-link>
+                                <router-link class="dropdown-item" v-if="!pageState" :to="{name: 'ProductList'}" >상품목록페이지</router-link>
+                                <!-- <router-link class="dropdown-item" v-if="pageState" :to="{name: 'MyProduct'}">마이페이지 첫화면</router-link> -->
+                                <router-link class="dropdown-item" v-if="pageState" :to="{name: 'MyPage'}">마이페이지</router-link>
+                                <router-link class="dropdown-item" v-if="pageState" :to="{name: 'MyOrderList'}">마이페이지</router-link>
+                                <router-link class="dropdown-item" v-if="pageAdmin" :to="{name: 'AdminOrder'}">주문관리 페이지</router-link>
                             </div>
                         </li>
                         <li class="nav-item mt-3 mt-lg-0 ms-lg-3 d-lg-none d-xl-inline-block"></li>
@@ -68,18 +69,26 @@
                         </div>
                     </form>-->
                     </li>
-
-                        <li class="nav-item"><router-link class="nav-link" :to="{name: 'Signup'}">Sign up</router-link></li>
-                        <li class="nav-item dropdown">
+                        <li class="nav-item"><router-link class="nav-link" v-if="!pageDefault" :to="{name: 'Signup'}">회원가입</router-link></li>
+                        <li class="nav-item"><router-link class="nav-link" v-if="!pageDefault" :to="{name: 'Login'}" >로그인</router-link></li>
+                        <li class="nav-item dropdown" v-if="pageState">
                             <a class="nav-link dropdown" href="index.html" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="personIcon"><i class="fas fa-user-alt fa-lg"></i></a>
                             <div class="dropdown-menu" aria-labelledby="homeDropdownMenuLink">
-                                <a class="dropdown-item" href="/mypage">사용중인 제품</a>
-                                <a class="dropdown-item" href="/../public/index-2.html">주문내역</a>
-                                <router-link class="dropdown-item" :to="{name: 'Login'}">로그인</router-link>
+                                <a class="dropdown-item" v-if="!pageState" href="/mypage">사용중인 제품</a>
+                                <a class="dropdown-item" v-if="!pageState" href="/../public/index-2.html">주문내역</a>
+                                <router-link class="dropdown-item" v-if="!pageState" :to="{name: 'Login'}" >로그인</router-link>
+                                <router-link class="dropdown-item" v-if="pageState" :to="{name: ''}" @click.prevent="logout()">로그아웃</router-link>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown" v-if="pageAdmin">
+                            <a class="nav-link dropdown" href="index.html" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="personIcon"><i class="fas fa-user-alt fa-lg"></i></a>
+                            <div class="dropdown-menu" aria-labelledby="homeDropdownMenuLink">
+                                <router-link class="dropdown-item" v-if="pageAdmin" :to="{name: ''}" @click.prevent="logout()">로그아웃</router-link>
                             </div>
                         </li>
                         <li class="nav-item"><a class="nav-link dropdown" href="/" id="mybell"><i class="fas fa-bell fa-lg"></i></a></li>
                         <li class="nav-item mt-3 mt-lg-0 ms-lg-3 d-lg-none d-xl-inline-block" id="headerEmpty"></li>
+                        <!-- <input type="hidden" v-model="auth"/> -->
                     </ul>
                 </div>
             </div>
@@ -89,14 +98,94 @@
 </template>
 
 <script>
-import { ref, onMounted } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
+import axios from 'axios';  
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+import Swal from 'sweetalert2';
+// import jwt_decode from 'vue-jwt-decode';
 
 export default {
+    name: "Header",
     setup() {
         const router = useRouter();
         const searchKeyword = ref('');
         //let searchKeyword = ref(null);
+        //로그인 후 로그인 상태 확인!1
+        const authState = ref({
+            memNo:'',
+            memId:'',
+            memName:'',
+            memPhone:'',
+            memEmail:'',
+            auth:'',
+            status:''
+        });
+
+
+        const pageAdmin = ref(false);
+        const pageState = ref(false);
+        const pageDefault = ref(false);
+
+        const token = sessionStorage.getItem("token");
+        console.log("로그인 후 토큰생성 확인? : " + token);
+        const id = sessionStorage.getItem("id");
+        console.log("로그인 후 id생성 확인 sessionStorage.getItem? : " + id);
+
+        const checkToken = () => {
+            if(token == null){
+                console.log('token == null일 때 로그인 전');
+            }else{
+                pageState.value = true;
+                pageDefault.value = true;
+                console.log('-------------------------------------------------')
+                console.log('로그인 후');
+
+                    const checkAuth = () =>{
+                        console.log("결과확인 id "+ id);
+                        axios.get(`/auth/members/${id}`).then((response) => {
+                            console.log("받아온 데이터"+ (response.data.auth));
+                            authState.value = Object.assign({}, response.data);
+                            console.log("authState 복사한 데이터: ", authState.value.auth);
+                            //관리자만 확인 가능
+                            if(authState.value.auth == 'ROLE_ADMIN'){
+                                pageAdmin.value = true;
+                                pageState.value = false;
+                                pageDefault.value = true;
+                            }else{
+                                pageAdmin.value == true;
+                            }
+                           
+                        });
+                    }
+                    checkAuth();
+
+            
+                
+                // if(id.auth == "ROLE_ADMIN"){
+
+                // }else{
+                //     pageState.value= true;
+                // }
+            }
+        }
+        checkToken();
+
+        //로그아웃
+        const logout  = () =>{
+            sessionStorage.clear();
+            Swal.fire({
+                title:'Success!',
+                text: '로그아웃 되었습니다.',
+                icon: 'success',
+                showConfirmButton: false,
+                timer: 1500
+                // confirmButtonText: 'OK'
+            }).then(()=>{
+                router.push('/')
+                location.reload();
+;            })
+        }
+
 
         const moveToSearchPage = (s) => {
             if (!s) {
@@ -113,24 +202,45 @@ export default {
             });
         }
 
-        // const search = () => {
-        //     router.push({
-        //         name: 'ProductList',
-        //         query: {
-        //             searchKeyword: searchKeyword.value
-        //         }
-        //     })
-        // }
-
         return {
             moveToSearchPage,
             searchKeyword,
             //search,
+            pageState,
+            token,
+            logout,
+            authState,
+            pageAdmin,
+            pageDefault
+            // decodeToken,
+            // userSub,
+            // userRoles,
+            // userId,
+            // userAud,
+            // tokenId
         }
-
     },
 
     name: 'Header'
+         // const {payload} = useJwt(token);
+        // const tokenId = payload.id;
+        //  const decodeToken = token ? jwt_decode(token) : null;
+        //     const userSub = token.userId?.sub; //고유식별자
+        //     const userRoles =  token.userRoles?.userRoles; 
+        //     const userId =  token.userAud?.userAud;
+        //     const userAud =  token.userSub?.userSub;//사용할 수 있는 대상자
+
+        //     console.log("토큰 userSub: " + userSub );
+        //     console.log("토큰 userRoles: " + userRoles);
+        //     console.log("토큰 userId : " + userId);
+        //     console.log("토큰 userAud : " + userAud);
+        //     console.log("토큰 tokenId tokenId : " + tokenId );
+    
+        // const state = ref({});
+        // axios.get(`/auth/members/${id}`).then(({data}) =>{
+        //     state.value = data;
+        //     console.log("모든 회원 데이터 " + data);
+        // })
 }
 </script>
 
