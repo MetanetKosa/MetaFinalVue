@@ -5,9 +5,10 @@ import Signup from '@/components/pages/member/Signup.vue';
 import AdminRegister from '@/components/pages/admin/AdminRegister.vue';
 import AdminList from '@/components/pages/admin/AdminList.vue';
 import AdminMember from '@/components/pages/admin/AdminMember.vue';
-import Rental1 from '@/components/pages/order/Rental1.vue';
-import Rental2 from '@/components/pages/order/Rental2.vue';
-import Rental3 from '@/components/pages/order/Rental3.vue';
+import RentalPay from '@/components/pages/order/RentalPay.vue';
+import BuyPay from '@/components/pages/order/BuyPay.vue';
+import RentalResult from '@/components/pages/order/RentalResult.vue';
+import BuyResult from '@/components/pages/order/BuyResult.vue';
 import Detail from '@/components/pages/product/Detail.vue';
 import List from '@/components/pages/product/List.vue';
 import SearchList from '@/components/pages/product/SearchList.vue';
@@ -57,19 +58,25 @@ const router = createRouter({
             component: AdminMember
         },
         {
-            path: '/rental1',
-            name: 'Rental1',
-            component: Rental1
+            path: '/RentalPay',
+            name: 'RentalPay',
+            component: RentalPay
         },
         {
-            path: '/rental2',
-            name: 'Rental2',
-            component: Rental2
+            path: '/BuyPay',
+            name: 'BuyPay',
+            component: BuyPay
+        },
+
+        {
+            path: '/RentalResult',
+            name: 'RentalResult',
+            component: RentalResult
         },
         {
-            path: '/rental3',
-            name: 'Rental3',
-            component: Rental3
+            path: '/BuyResult',
+            name: 'BuyResult',
+            component: BuyResult
         },
         {
             path: '/product/detail/:pno',
@@ -87,7 +94,7 @@ const router = createRouter({
             component: SearchList
         },
         {
-            path: '/myproduct',
+            path: '/myproduct/:orderNo',
             name: 'MyProduct',
             component: MyProduct
         },
