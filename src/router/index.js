@@ -1,14 +1,14 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHashHistory } from 'vue-router';
 import Home from '@/components/pages/Home.vue';
 import Login from '@/components/pages/member/Login.vue';
 import Signup from '@/components/pages/member/Signup.vue';
 import AdminRegister from '@/components/pages/admin/AdminRegister.vue';
 import AdminList from '@/components/pages/admin/AdminList.vue';
 import AdminMember from '@/components/pages/admin/AdminMember.vue';
-import RentalPay from '@/components/pages/order/RentalPay.vue';
-import BuyPay from '@/components/pages/order/BuyPay.vue';
+import Rental from '@/components/pages/order/Rental.vue';
 import RentalResult from '@/components/pages/order/RentalResult.vue';
-import BuyResult from '@/components/pages/order/BuyResult.vue';
+import Order from '@/components/pages/order/Order.vue';
+import OrderResult from '@/components/pages/order/OrderResult.vue';
 import Detail from '@/components/pages/product/Detail.vue';
 import List from '@/components/pages/product/List.vue';
 import SearchList from '@/components/pages/product/SearchList.vue';
@@ -21,9 +21,10 @@ import MyAccount from '@/components/pages/mypage/MyAccount.vue';
 
 
 const router = createRouter({
-    history: createWebHistory(),
-    mode: history,
-    routes: [{
+    history: createWebHashHistory(),
+    // mode: history,
+    routes: [
+        {
             path: '/',
             name: 'Home',
             component: Home
@@ -59,28 +60,33 @@ const router = createRouter({
             component: AdminMember
         },
         {
-            path: '/RentalPay',
-            name: 'RentalPay',
-            component: RentalPay
+            path: '/rental',
+            name: 'Rental',
+            component: Rental
         },
         {
-            path: '/BuyPay',
-            name: 'BuyPay',
-            component: BuyPay
-        },
-
-        {
-            path: '/RentalResult',
+            path: '/retal/check',
             name: 'RentalResult',
             component: RentalResult
         },
         {
-            path: '/BuyResult',
-            name: 'BuyResult',
-            component: BuyResult
+            // path: '/order/productNo=:pno',
+            path: '/order',
+            name: 'Order',
+            component: Order
         },
         {
-            path: '/product/detail/:pno',
+            path: '/order/check',
+            name: 'OrderResult',
+            component: OrderResult
+        },
+        // {
+        //     path: '/product/detail/:pno',
+        //     name: 'ProductDetail',
+        //     component: Detail
+        // },
+        {
+            path: '/product/detail',
             name: 'ProductDetail',
             component: Detail
         },
@@ -89,8 +95,13 @@ const router = createRouter({
             name: 'ProductList',
             component: List
         },
+        // {
+        //     path: '/search/:searchKeyword',
+        //     name: 'SearchList',
+        //     component: SearchList
+        // },
         {
-            path: '/search/:searchKeyword',
+            path: '/search',
             name: 'SearchList',
             component: SearchList
         },

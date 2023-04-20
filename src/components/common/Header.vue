@@ -2,10 +2,13 @@
 <header class="header">
         <!-- Navbar-->
         <nav class="navbar navbar-expand-lg fixed-top shadow navbar-light bg-white">
-            <div class="container">
-                <div class="d-flex align-items-center"><router-link class="navbar-brand py-1" :to="{name: 'Home'}"><img src="img/logo.svg" alt="Directory logo"></router-link>
+            <div class="container-fluid" style="width: 1400px;">
+                <div class="d-flex align-items-center"><router-link class="navbar-brand py-1" :to="{name: 'Home'}"><img src="../../../public/html/img/metawater-logo.png" alt="Metawater logo" style="width:150px;"></router-link>
                     <ul class="navbar-nav ms-auto">
-                        <li class="header-menu nav-item dropdown"><a class="nav-link" id="homeDropdownMenuLink" href="/../public/html/index.html" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <li class="header-menu nav-item">
+                            <router-link class="nav-link" :to="{name: 'ProductList'}">제품</router-link>
+                        </li>
+                        <!-- <li class="header-menu nav-item dropdown"><a class="nav-link" id="homeDropdownMenuLink" href="/../public/html/index.html" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             제품&nbsp;<i class="fas fa-angle-down"></i></a>
                             <div class="dropdown-menu" aria-labelledby="homeDropdownMenuLink">
                                 <h6 class="dropdown-header fw-normal">정수기</h6>
@@ -13,7 +16,7 @@
                                 <a class="dropdown-item" href="/../public/index-2.html">얼음/탄산 정수기</a>
                                 <a class="dropdown-item" href="index-3.html">스탠드 정수기<span class="badge badge-info-light ms-1 mt-n1">New</span></a>
                             </div>
-                        </li>
+                        </li> -->
                         <li class="header-menu nav-item"><a class="nav-link" href="/detail">Detail</a>
                         </li>
                         <li class="header-menu nav-item dropdown">
@@ -25,7 +28,7 @@
                             </div>
                         </li>
                         <li class="header-menu nav-item dropdown">
-                            <a class="nav-link" id="docsDropdownMenuLink" href="index.html" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">테스트&nbsp;<i class="fas fa-angle-down"></i></a>
+                            <a class="nav-link" id="docsDropdownMenuLink" href="index.html" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">관리자&nbsp;<i class="fas fa-angle-down"></i></a>
                             <div class="dropdown-menu" aria-labelledby="homeDropdownMenuLink">
 
                                 <router-link class="dropdown-item" v-if="pageAdmin" :to="{name: 'AdminRegister'}">관리자 등록 페이지</router-link>
@@ -42,6 +45,15 @@
                                 <router-link class="dropdown-item" v-if="pageState" :to="{name: 'MyOrderList'}">마이페이지</router-link>
                                 <router-link class="dropdown-item" v-if="pageState" :to="{name: 'MyAccount'}">회원정보관리</router-link>
                                 <router-link class="dropdown-item" v-if="pageAdmin" :to="{name: 'AdminOrder'}">주문관리 페이지</router-link>
+                                <!-- <router-link class="dropdown-item" :to="{name: 'Rental'}">렌탈 결제창</router-link> -->
+                                <!-- <router-link class="dropdown-item" :to="{name: 'RentalResult'}">렌탈 결과창</router-link> -->
+                                <!-- <router-link class="dropdown-item" :to="{name: 'Order'}">주문 결제창</router-link> -->
+                                <!-- <router-link class="dropdown-item" :to="{name: 'OrderResult'}">주문 결과창</router-link> -->
+                                <!-- <router-link class="dropdown-item" :to="{name: 'ProductDetail'}">상품상세페이지</router-link> -->
+                                <!-- <router-link class="dropdown-item" :to="{name: 'ProductList'}">상품목록페이지</router-link> -->
+                                <!-- <router-link class="dropdown-item" :to="{name: 'MyProduct'}">마이페이지 첫화면</router-link> -->
+                                <router-link class="dropdown-item" :to="{name: 'MyPage'}">마이페이지</router-link>
+                                <router-link class="dropdown-item" :to="{name: 'MyOrderList'}">내 주문내역</router-link>
                             </div>
                         </li>
                         <li class="nav-item mt-3 mt-lg-0 ms-lg-3 d-lg-none d-xl-inline-block"></li>
@@ -55,20 +67,20 @@
 
                     <!-- 검색 -->
                     <li class="mx-5 nav-item" id="headerSearch">
-                    <form class="form-inline d-none d-sm-flex" action="#" id="search">
+                    <!-- <form class="form-inline d-none d-sm-flex" action="#" id="search">
                         <div class="input-label-absolute input-label-absolute-left input-expand ms-lg-2 ms-xl-3">
                         <input class="form-control form-control-sm border-0 shadow-0 bg-gray-200" id="searchKeyword" placeholder="아이콘 정수기" aria-label="searchKeyword" type="text" v-model="searchKeyword">
                         <button class="btn btn-secondary btn-sm" @click="moveToSearchPage(searchKeyword)">search</button>
                         <label class="label-absolute" for="search_search"><i class="bi bi-search"></i><span class="sr-only"></span></label>
                         </div>
-                    </form> 
-                    <!-- <form class="form-inline d-none d-sm-flex" id="search">
+                    </form>  -->
+                    <form class="form-inline d-none d-sm-flex" id="search">
                         <div class="input-label-absolute input-label-absolute-left input-expand ms-lg-2 ms-xl-3">
-                        <input class="form-control form-control-sm border-0 shadow-0 bg-gray-200" id="searchKeyword" placeholder="아이콘 정수기" aria-label="searchKeyword" type="text" v-model="searchKeyword">
+                        <input class="form-control form-control-sm border-0 shadow-0 bg-gray-200" id="searchKeyword" placeholder="아이콘 정수기" aria-label="searchKeyword" type="text" v-model="searchKeyword" autocomplete="off">
                         <button class="btn btn-secondary btn-sm" @click="search">search</button>
                         <label class="label-absolute" for="search_search"><i class="bi bi-search"></i><span class="sr-only"></span></label>
                         </div>
-                    </form>-->
+                    </form>
                     </li>
                         <li class="nav-item"><router-link class="nav-link" v-if="!pageDefault" :to="{name: 'Signup'}">회원가입</router-link></li>
                         <li class="nav-item"><router-link class="nav-link" v-if="!pageDefault" :to="{name: 'Login'}" >로그인</router-link></li>
@@ -191,25 +203,36 @@ export default {
         }
 
 
-        const moveToSearchPage = (s) => {
-            if (!s) {
-                alert("검색어를 입력하세요.");
-                return;
-            }
+        // const moveToSearchPage = (s) => {
+        //     if (!s) {
+        //         alert("검색어를 입력하세요.");
+        //         return;
+        //     }
             
-            console.log("param : " + s);
+        //     console.log("param : " + s);
+        //     router.push({
+        //         name: 'SearchList',
+        //         params: {
+        //         searchKeyword: s
+        //         }
+        //     });
+        // }
+
+        const search = () => {
             router.push({
-                name: 'SearchList',
-                params: {
-                searchKeyword: s
+                name: 'ProductList',
+                query: {
+                    searchKeyword: searchKeyword.value
                 }
-            });
+            }, () => {
+                location.reload();
+            })
         }
 
         return {
-            moveToSearchPage,
+            //moveToSearchPage,
             searchKeyword,
-            //search,
+            search,
             pageState,
             token,
             logout,
@@ -222,6 +245,7 @@ export default {
             // userId,
             // userAud,
             // tokenId
+            // search,
         }
     },
 
