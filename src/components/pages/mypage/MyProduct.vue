@@ -116,58 +116,119 @@
                   </div>
             </div>
           </div>
-          <div class="text-block">
-            <h4>계약정보</h4>
-            <p class="subtitle text-sm text-primary mb-4 p-0 mt-0">렌탈요금제</p>
+
+          <!-- 렌탈인 경우 -->
+          <div v-if="myProduct.rentalTerm != null">
+            <div class="text-block pt-4">
+              <div class="d-flex"><h4 class="mb-0">계약정보</h4>
+              <p class="subtitle text-sm text-primary mb-0 pl-2 mt-1">렌탈요금제</p></div>
+              
+              <div class="row"> 
+                <div class="col-md-10"> </div>
+                <div class="col-md-2">
+                  <a class="list-unstyled text-muted" @click="showCancelModal = true" style="cursor: pointer;">해지신청&nbsp&nbsp&nbsp
+                    <i class="fas fa-angle-right"></i>
+                  </a>
+                </div>
+                <div class="col-md-1">
+                </div>
+                <div class="col-md-4">
+                  <ul class="list-unstyled text-muted">
+                    <li class="mb-2"><span class="text-sm">약정기간</span></li>
+                    <li class="mb-2"><span class="text-sm">의무사용기간</span></li>
+                    <li class="mb-2"><span class="text-sm">소유권 도래일</span></li>
+                    <li><span class="text-sm">설치주소</span></li>
+                    <li class="mb-2"><span class="text-sm">&nbsp;</span></li>
+                    <li class="mb-2"><span class="text-sm">설치처 연락처</span></li>
+                    <li class="mb-2"><span class="text-sm">설치일</span></li>
+                  </ul>
+                </div>
+                <div class="col-md-7">
+                  <ul class="list-unstyled text-muted">  
+                    <li class="mb-2"><span class="text-sm">{{ myProduct.deliveryDate }} ~ </span></li>
+                    <li class="mb-2"><span class="text-sm">{{ myProduct.deliveryDate }} ~ </span></li>
+                    <li class="mb-2"><span class="text-sm">{{ myProduct.deliveryDate }} + {{ myProduct.rentalTerm }}</span></li>
+                    <li><span class="text-sm">{{ myProduct.orderAddress}}&nbsp;{{ myProduct.orderAddDetail}}</span></li>
+                    <li class="mb-2"><span class="text-sm">{{ myProduct.orderAddNumber}}</span></li>
+                    <li class="mb-2"><span class="text-sm">{{ myProduct.orderPhone}}</span></li>
+                    <li class="mb-2"><span class="text-sm">{{ myProduct.deliveryDate}}</span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="text-block">
+              <h4 class="mb-4">납부정보</h4>
+              <div class="row"> 
+                <div class="col-md-1">
+                </div>
+                <div class="col-md-4">
+                  <ul class="list-unstyled text-muted">
+                    <li class="mb-2"><span class="text-sm">결제수단</span></li>
+                    <li class="mb-2"><span class="text-sm">청구일자</span></li>
+                    <li class="mb-2"><span class="text-sm">청구금액</span></li>
+                  </ul>
+                </div>
+                <div class="col-md-7">
+                  <ul class="list-unstyled text-muted">
+                    <li class="mb-2"><span class="text-sm">{{ myProduct.orderPay}}</span></li>
+                    <li class="mb-2"><span class="text-sm">매월 {{ myProduct.rentalPayDate}}일</span></li>
+                    <li class="mb-2"><span class="text-sm">{{ myProduct.rentalPrice}}원</span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <!-- 구매인 경우 -->
+        <div v-if="myProduct.rentalTerm == null">
+          <div class="text-block pt-4">
+            <div class="d-flex"><h4>구매정보</h4></div>
+            
             <div class="row"> 
               <div class="col-md-1">
               </div>
               <div class="col-md-4">
                 <ul class="list-unstyled text-muted">
-                  <li class="mb-2"><span class="text-sm">약정기간</span></li>
-                  <li class="mb-2"><span class="text-sm">의무사용기간</span></li>
-                  <li class="mb-2"><span class="text-sm">소유권 도래일</span></li>
-                  <li class="mb-2"><span class="text-sm">설치주소</span></li>
+                  <li class="mb-2"><span class="text-sm">구매 날짜</span></li>
+                  <li><span class="text-sm">설치주소</span></li>
+                  <li class="mb-2"><span class="text-sm">&nbsp;</span></li>
                   <li class="mb-2"><span class="text-sm">설치처 연락처</span></li>
                   <li class="mb-2"><span class="text-sm">설치일</span></li>
                 </ul>
               </div>
               <div class="col-md-7">
                 <ul class="list-unstyled text-muted">  
-                  <li class="mb-2"><span class="text-sm">이름 : {{ myProduct.productName }}</span></li>
-                  <li class="mb-2"><span class="text-sm">2022.08.18 ~ 2028.08.18</span></li>
-                  <li class="mb-2"><span class="text-sm">2028.08.18</span></li>
-                  <li class="mb-2"><span class="text-sm">서울시 송파구</span></li>
-                  <li class="mb-2"><span class="text-sm">010-1234-1234</span></li>
-                  <li class="mb-2"><span class="text-sm">2022.08.18</span></li>
+                  <li class="mb-2"><span class="text-sm">{{ myProduct.deliveryDate }} ~ </span></li>
+                  <li><span class="text-sm">{{ myProduct.orderAddress}}&nbsp;{{ myProduct.orderAddDetail}}</span></li>
+                  <li class="mb-2"><span class="text-sm">{{ myProduct.orderAddNumber}}</span></li>
+                  <li class="mb-2"><span class="text-sm">{{ myProduct.orderPhone}}</span></li>
+                  <li class="mb-2"><span class="text-sm">{{ myProduct.deliveryDate}}</span></li>
                 </ul>
               </div>
             </div>
           </div>
           <div class="text-block">
-            <h4 class="mb-4">납부정보</h4>
+            <h4 class="mb-4">결제정보</h4>
             <div class="row"> 
               <div class="col-md-1">
               </div>
               <div class="col-md-4">
                 <ul class="list-unstyled text-muted">
                   <li class="mb-2"><span class="text-sm">결제수단</span></li>
-                  <li class="mb-2"><span class="text-sm">청구일자</span></li>
-                  <li class="mb-2"><span class="text-sm">청구금액</span></li>
+                  <li class="mb-2"><span class="text-sm">구매일자</span></li>
+                  <li class="mb-2"><span class="text-sm">구매금액</span></li>
                 </ul>
               </div>
               <div class="col-md-7">
                 <ul class="list-unstyled text-muted">
-                  <li class="mb-2"><span class="text-sm">2022.08.18 ~ 2028.08.18</span></li>
-                  <li class="mb-2"><span class="text-sm">2022.08.18 ~ 2028.08.18</span></li>
-                  <li class="mb-2"><span class="text-sm">2028.08.18</span></li>
-                  <li class="mb-2"><span class="text-sm">서울시 송파구</span></li>
-                  <li class="mb-2"><span class="text-sm">010-1234-1234</span></li>
-                  <li class="mb-2"><span class="text-sm">2022.08.18</span></li>
+                  <li class="mb-2"><span class="text-sm">{{ myProduct.orderPay}}</span></li>
+                  <li class="mb-2"><span class="text-sm">매월 {{ myProduct.orderDate}}일</span></li>
+                  <li class="mb-2"><span class="text-sm">{{ myProduct.Price}}원</span></li>
                 </ul>
               </div>
             </div>
           </div>
+        </div>
               </div>
             </div>
           </div>
@@ -196,7 +257,6 @@
       const router = useRouter();
       const orderNo = route.params.orderNo;
       const myProduct = ref(null);
-
       console.log("orderNo 확인 : " + orderNo);
       
       const getMyProductDetail = async() => {
