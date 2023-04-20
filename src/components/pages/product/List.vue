@@ -17,23 +17,11 @@
          <div class="swiper-wrapper pb-5">
            <!-- Slides-->
            <div class="swiper-slide h-auto px-2" style="width:216px;" :value="bestProduct.productNo" :key="bestProduct.productNo" v-for="bestProduct in bestProducts">
-             <!-- venue item-->
+             <!-- best item-->
              <div class="w-100 h-100 hover-animate" data-marker-id="59c0c8e33b1527bfe2abaf92">
                <div class="card h-100 border-0 shadow" @click="moveToProductDetailPage(bestProduct.productNo)">
-                 <!-- <div class="card-img-top overflow-hidden dark-overlay bg-cover" style="background-image: url({{ bestProduct.imgUrl }}); min-height: 200px;"><a class="tile-link" href="detail.html"></a> -->
                   <div class="card-img-top overflow-hidden bg-cover"><img class="img-fluid" v-bind:src="bestProduct.imgUrl" > 
                   <hr>
-                  <!-- <div class="card-img-overlay-bottom z-index-20">
-                     <h4 class="text-white text-shadow">Blue Hill</h4>
-                     <p class="mb-2 text-xs"><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300">                    </i>
-                     </p>
-                   </div> 
-                   <div class="card-img-overlay-top d-flex justify-content-between align-items-center">
-                     <div class="badge badge-transparent badge-pill px-3 py-2">Restaurants</div><a class="card-fav-icon position-relative z-index-40" href="javascript: void();"> 
-                       <svg class="svg-icon text-white">
-                         <use xlink:href="#heart-1"> </use>
-                       </svg></a>
-                   </div> -->
                  </div>
                  <div class="card-body">
                    <p class="text-sm text-muted text-uppercase mb-1" style="text-align: center;"><span class="text-primary"><strong>{{ bestProduct.productName }}</strong></span></p>
@@ -45,8 +33,6 @@
              </div>
            </div>
          </div>
-         <!-- If we need pagination-->
-         <div class="swiper-pagination"></div>
        </div>
      </div>
    </section>
@@ -113,21 +99,11 @@
                     <hr>
                     <div class="card-img-overlay-bottom z-index-20">
                     </div>
-                    <!-- <div class="card-img-overlay-top text-end"><a class="card-fav-icon position-relative z-index-40" href="javascript: void();"> 
-                        <svg class="svg-icon text-white">
-                          <use xlink:href="#heart-1"> </use>
-                        </svg></a>
-                    </div> -->
                   </div>
                   <div class="card-body d-flex align-items-center">
                     <div class="w-100">
                       <br>
-                      <h3 class="mb-5" style="text-align: center;"><a class="text-decoration-none text-dark" href="detail-rooms.html">{{ product.productName }}</a></h3>
-                      <!-- <div class="d-flex card-subtitle mb-3">
-                        <p class="flex-grow-1 mb-0 text-muted text-sm">Private room</p>
-                        <p class="flex-shrink-1 mb-0 card-stars text-xs text-end"><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i>
-                        </p>
-                      </div> -->
+                      <h3 class="mb-5" style="text-align: center;">{{ product.productName }}</h3>
                       <p class="card-text text-muted">기능&nbsp;&nbsp;&nbsp;&nbsp;<span class="h5 text-primary">{{ product.productFunction }}</span></p>
                       <p class="card-text text-muted">색상&nbsp;&nbsp;&nbsp;&nbsp;<span class="h5 text-primary">{{ product.productColor }}</span></p>
                       <br>

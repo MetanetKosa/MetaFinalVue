@@ -52,7 +52,7 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-md-6 text-center text-md-start">
-                        <p class="text-sm mb-md-0">&copy;All rights reserved.  April 2023 metamong</p>
+                        <p class="text-sm mb-md-0">&copy;All rights reserved.  April 2023 Team Metamong with Metanet</p>
                     </div>
                     <div class="col-md-6">
                         <ul class="list-inline mb-0 mt-2 mt-md-0 text-center text-md-end">

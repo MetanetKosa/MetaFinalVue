@@ -194,12 +194,15 @@
 import axios from 'axios';
 import { ref, onMounted, mounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
+import Swal from 'sweetalert2';
 
 
 export default {
 setup() {
   const route = useRoute();
   const router = useRouter();
+  const Swal = require('sweetalert2');
+
   const detailOrder = ref({
     orderNo: '',
     productNo: '',
@@ -247,7 +250,11 @@ setup() {
   });
 
   const order = () => {
-    alert("주문이 완료되었습니다 :)");
+    //alert("주문이 완료되었습니다 :)");
+    Swal.fire({
+      icon: 'success',
+      title: '주문이 완료되었습니다.'
+    })
     router.push({
       name: 'Home'
     })

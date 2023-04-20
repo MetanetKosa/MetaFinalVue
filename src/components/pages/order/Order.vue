@@ -320,6 +320,8 @@
 import axios from 'axios';
 import { ref, onMounted, reactive, mounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
+import Swal from 'sweetalert2';
+
 // vue3-datepicker
 import Datepicker from 'vue3-datepicker';
 import { ko } from 'date-fns/locale';
@@ -382,6 +384,7 @@ setup() {
   const picked = ref(new Date());
   const locale = reactive(ko); // 한글 달력
   const inputFormat = ref('yyyy-MM-dd');
+  const Swal = require('sweetalert2');
 
   // refs
   // const datepicker1 = ref(null);
@@ -458,7 +461,7 @@ setup() {
 
     try{
       //const res = await axios.post('/'+productNo+'/'+memberNo+'/rental', data);
-      const res = await axios.post('/order/'+productNo+'/1', data);
+      const res = await axios.post('/order/'+productNo+'/4', data);
       console.log(res);
       //console.log(res.orderNo);
       if(res != null) {
@@ -475,7 +478,11 @@ setup() {
       } 
     } catch(error) {
       console.error(error);
-      alert("정보를 모두 입력해주세요.")
+      //alert("정보를 모두 입력해주세요.")
+      Swal.fire({
+        icon: 'error',
+        title: '주문 정보를 모두 입력하세요',
+      })
     }
   }
 
