@@ -37,13 +37,12 @@
                       <input class="form-control" v-model="rental.orderAddNumber" type="text" id="postcode" placeholder="우편번호" autocomplete="off">
                     </div>
                   </div>
-                  <div class="col-md-6" style="display: flex; align-items: center;">
+                  <div class="col-md-6" style="display: flex; align-items: center; justify-content: flex-start;">
                     <div class="mb-4" style="margin: auto;">
-                      <button class="btn btn-primary px-3" @click.prevent="openPostcode()">주소 검색</button>
+                      <button class="btn btn-outline-primary px-3" @click.prevent="openPostcode()">주소 검색</button>
                     </div>
                   </div>
-                <!-- ZIP Code-->
-                <div class="row">
+                  <!-- ZIP Code-->
                   <div class="col-md-6">
                     <div class="mb-4">
                       <label class="form-label" for="form_state">주소</label>
@@ -58,6 +57,7 @@
                   </div>
                 </div>
                 </div>
+
                 <div class="text-block">
                   <label class="form-label" for="card-name">설치 희망일</label>
                   <ul class="list-unstyled">
@@ -75,6 +75,8 @@
                           v-model="rental.deliveryDate"
                           :ref="inputs.dp1"
                           class="datepicker"
+                          placeholder="날짜 선택"
+                          style="text-align: center;"
                           :locale="locale"
                           :weekStartsOn="0"
                           :inputFormat="inputFormat"
@@ -98,6 +100,7 @@
                       </div>
                     </li> -->
                   </ul>
+                  <br>
                   <div class="mb-4 col-md-6">
                     <label class="form-label" for="card-name">방문 시간 선택</label>
                     <select class="selectpicker form-control mb-3" v-model="rental.deliveryTime" name="deliveryDate" id="deliveryDate" data-style="btn-selectpicker">
@@ -126,7 +129,6 @@
                   </div>
                   <textarea class="form-control" name="hello" rows="2"></textarea>
                 </div>
-              </div>
               </div>
 
               
@@ -432,6 +434,7 @@ export default {
 
     const rental = ref([]);
 
+    //상세페이지에서 쿼리로 받아온 상품번호/계약기간
     const productNo = route.query.pno;
     console.log("productNo : " +productNo);
     const length = route.query.length;
@@ -445,6 +448,7 @@ export default {
       const res = await axios.get('/product/' +productNo);
       product.value = {...res.data};
 
+      //계약기간에 따라서 달라지는 렌탈금액
       const rp = (rentalLength === 3) ? product.value.productRentalPrice : ((rentalLength === 6) ? (product.value.productRentalPrice - 4000) : '')
       console.log("렌탈금액 : " +rp);
       

@@ -9,16 +9,6 @@
           <div class="col-lg-7">
             <h1 class="h2 mb-5 text-bold"> 주문 확인 <span class="text-muted float-end">Step 3</span>      </h1>
             <div class="text-block"> 
-              
-              <!-- <h5 class="text-bold">계약자 정보</h5>
-              <br>
-              <div class="row mb-4" style="text-align: left;">
-                <div class="col-sm-8 mx-3">
-                  <p class="my-0">{{detailOrder.member.memName}}</p>
-                  <p class="my-0">{{detailOrder.member.memPhone}}</p>
-                </div>
-              </div> -->
-
               <div class="row">
                 <div class="col-sm-12">
                   <h5 class="text-bold">계약자 정보</h5>
@@ -38,7 +28,7 @@
                 </div>
               </div>
 
-<!-- =============== -->
+              <!-- =============== -->
               <hr>
               <div class="row">
                 <div class="col-sm-12">

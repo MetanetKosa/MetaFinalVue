@@ -652,6 +652,7 @@
       }
     }
 
+    //구매 페이지로 선택한 상품번호 갖고 이동
     const orderPurchase = async() => {
       router.push({
         name: 'Order',
@@ -661,6 +662,7 @@
       })
     }
 
+    //렌탈 페이지로 선택한 상품번호/계약기간 갖고 이동
     const orderRental = async() => {
       router.push({
         name: 'Rental',
@@ -671,6 +673,7 @@
       })
     }
     
+    //상품 상세 페이지 렌더링시 상품정보/리뷰/리뷰평점/문의 바로 가져오기
     onMounted(() => {
       getProductDetail();
       getReviewList();
