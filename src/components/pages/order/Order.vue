@@ -20,12 +20,12 @@
               <!-- Country-->
               <div class="mb-4">
                 <label class="form-label" for="form_country">수취인 이름</label>
-                <input class="form-control" v-model="order.orderName" name="name" id="form_street">
+                <input class="form-control" v-model="order.orderName" name="name" id="form_street" autocomplete="off">
               </div>
               <!-- Street-->
               <div class="mb-4">
                 <label class="form-label" for="form_street">수취인 연락처</label>
-                <input class="form-control" v-model="order.orderPhone" name="name" id="form_street">
+                <input class="form-control" v-model="order.orderPhone" name="name" id="form_street" autocomplete="off">
               </div>
               
               <div class="address">
@@ -34,7 +34,7 @@
                 <div class="col-md-6">
                   <div class="mb-4">
                     <label class="form-label" for="form_city">우편번호</label>
-                    <input class="form-control" v-model="order.orderAddNumber" type="text" id="postcode" placeholder="우편번호">
+                    <input class="form-control" v-model="order.orderAddNumber" type="text" id="postcode" placeholder="우편번호" autocomplete="off">
                   </div>
                 </div>
                 <div class="col-md-6" style="display: flex; align-items: center;">
@@ -47,13 +47,13 @@
                 <div class="col-md-6">
                   <div class="mb-4">
                     <label class="form-label" for="form_state">주소</label>
-                    <input class="form-control" v-model="order.orderAddress" type="text" id="Address" placeholder="도로명주소">
+                    <input class="form-control" v-model="order.orderAddress" type="text" id="Address" placeholder="도로명주소" autocomplete="off">
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="mb-4">
                     <label class="form-label" for="form_zip">상세주소</label>
-                    <input class="form-control" v-model="order.orderAddDetail" type="text" id="detailAddress" placeholder="상세주소">
+                    <input class="form-control" v-model="order.orderAddDetail" type="text" id="detailAddress" placeholder="상세주소" autocomplete="off">
                   </div>
                 </div>
               </div>
@@ -162,19 +162,19 @@
                     </div>
                     <div class="mb-4 col-md-6">
                       <label class="form-label" for="card-number">카드번호</label>
-                      <input class="form-control" type="text" name="card-number" placeholder="Card number" id="card-number">
+                      <input class="form-control" type="text" name="card-number" placeholder="Card number" id="card-number" autocomplete="off">
                     </div>
                     <div class="mb-4 col-md-6">
                       <label class="form-label" for="expiry-date">카드 유효기간</label>
-                      <input class="form-control" type="text" name="expiry-date" placeholder="MM/YY" id="expiry-date">
+                      <input class="form-control" type="text" name="expiry-date" placeholder="MM/YY" id="expiry-date" autocomplete="off">
                     </div>
                     <div class="mb-4 col-md-6">
                       <label class="form-label" for="cvv">카드소유주</label>
-                      <input class="form-control" type="text" name="cvv" placeholder="" id="cvv">
+                      <input class="form-control" type="text" name="cvv" placeholder="" id="cvv" autocomplete="off">
                     </div>
                     <div class="mb-4 col-md-6">
                       <label class="form-label" for="zip">생년월일</label>
-                      <input class="form-control" type="text" name="zip" placeholder="" id="zip">
+                      <input class="form-control" type="text" name="zip" placeholder="" id="zip" autocomplete="off">
                     </div>
 
                     

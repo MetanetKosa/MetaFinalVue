@@ -28,20 +28,20 @@
                             </div>
                         </li>
                         <li class="header-menu nav-item dropdown">
-                            <a class="nav-link" id="docsDropdownMenuLink" href="index.html" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">테스트&nbsp;<i class="fas fa-angle-down"></i></a>
+                            <a class="nav-link" id="docsDropdownMenuLink" href="index.html" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">관리자&nbsp;<i class="fas fa-angle-down"></i></a>
                             <div class="dropdown-menu" aria-labelledby="homeDropdownMenuLink">
                                 <router-link class="dropdown-item" :to="{name: 'AdminRegister'}">관리자 등록 페이지</router-link>
-                                <router-link class="dropdown-item" :to="{name: 'AdminList'}">관리자 목록 페이지</router-link>\
+                                <router-link class="dropdown-item" :to="{name: 'AdminList'}">관리자 목록 페이지</router-link>
                                 <router-link class="dropdown-item" :to="{name: 'AdminMember'}">관리자 회원관리 페이지</router-link>
                                 <!-- <router-link class="dropdown-item" :to="{name: 'Rental'}">렌탈 결제창</router-link> -->
-                                <router-link class="dropdown-item" :to="{name: 'RentalResult'}">렌탈 결과창</router-link>
+                                <!-- <router-link class="dropdown-item" :to="{name: 'RentalResult'}">렌탈 결과창</router-link> -->
                                 <!-- <router-link class="dropdown-item" :to="{name: 'Order'}">주문 결제창</router-link> -->
-                                <router-link class="dropdown-item" :to="{name: 'OrderResult'}">주문 결과창</router-link>
+                                <!-- <router-link class="dropdown-item" :to="{name: 'OrderResult'}">주문 결과창</router-link> -->
                                 <!-- <router-link class="dropdown-item" :to="{name: 'ProductDetail'}">상품상세페이지</router-link> -->
-                                <router-link class="dropdown-item" :to="{name: 'ProductList'}">상품목록페이지</router-link>
+                                <!-- <router-link class="dropdown-item" :to="{name: 'ProductList'}">상품목록페이지</router-link> -->
                                 <!-- <router-link class="dropdown-item" :to="{name: 'MyProduct'}">마이페이지 첫화면</router-link> -->
                                 <router-link class="dropdown-item" :to="{name: 'MyPage'}">마이페이지</router-link>
-                                <router-link class="dropdown-item" :to="{name: 'MyOrderList'}">마이페이지</router-link>
+                                <router-link class="dropdown-item" :to="{name: 'MyOrderList'}">내 주문내역</router-link>
                             </div>
                         </li>
                         <li class="nav-item mt-3 mt-lg-0 ms-lg-3 d-lg-none d-xl-inline-block"></li>
@@ -64,7 +64,7 @@
                     </form>  -->
                     <form class="form-inline d-none d-sm-flex" id="search">
                         <div class="input-label-absolute input-label-absolute-left input-expand ms-lg-2 ms-xl-3">
-                        <input class="form-control form-control-sm border-0 shadow-0 bg-gray-200" id="searchKeyword" placeholder="아이콘 정수기" aria-label="searchKeyword" type="text" v-model="searchKeyword">
+                        <input class="form-control form-control-sm border-0 shadow-0 bg-gray-200" id="searchKeyword" placeholder="아이콘 정수기" aria-label="searchKeyword" type="text" v-model="searchKeyword" autocomplete="off">
                         <button class="btn btn-secondary btn-sm" @click="search">search</button>
                         <label class="label-absolute" for="search_search"><i class="bi bi-search"></i><span class="sr-only"></span></label>
                         </div>
