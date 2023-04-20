@@ -17,6 +17,7 @@ import MyProduct from '@/components/pages/mypage/MyProduct.vue';
 import MyPage from '@/components/pages/mypage/MyPage.vue';
 import MyOrderList from '@/components/pages/mypage/MyOrderList.vue';
 import MyPayList from '@/components/pages/mypage/MyPayList.vue';
+import MyAccount from '@/components/pages/mypage/MyAccount.vue';
 
 
 const router = createRouter({
@@ -97,6 +98,11 @@ const router = createRouter({
             path: '/myproduct/:orderNo',
             name: 'MyProduct',
             component: MyProduct
+        },
+        {
+            path: '/mypage/myaccount',
+            name: 'MyAccount',
+            component: MyAccount
         },
         {
             path: '/mypage/myproduct',

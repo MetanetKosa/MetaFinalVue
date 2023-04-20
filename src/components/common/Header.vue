@@ -40,6 +40,7 @@
                                 <!-- <router-link class="dropdown-item" v-if="pageState" :to="{name: 'MyProduct'}">마이페이지 첫화면</router-link> -->
                                 <router-link class="dropdown-item" v-if="pageState" :to="{name: 'MyPage'}">마이페이지</router-link>
                                 <router-link class="dropdown-item" v-if="pageState" :to="{name: 'MyOrderList'}">마이페이지</router-link>
+                                <router-link class="dropdown-item" v-if="pageState" :to="{name: 'MyAccount'}">회원정보관리</router-link>
                                 <router-link class="dropdown-item" v-if="pageAdmin" :to="{name: 'AdminOrder'}">주문관리 페이지</router-link>
                             </div>
                         </li>
@@ -144,6 +145,9 @@ export default {
                         console.log("결과확인 id "+ id);
                         axios.get(`/auth/members/${id}`).then((response) => {
                             console.log("받아온 데이터"+ (response.data.auth));
+                            sessionStorage.setItem("memNo",response.data.memNo);
+                            const memNo = sessionStorage.getItem("memNo");
+                            console.log("memNo 데이터 확인 : " ,memNo );
                             authState.value = Object.assign({}, response.data);
                             console.log("authState 복사한 데이터: ", authState.value.auth);
                             //관리자만 확인 가능
