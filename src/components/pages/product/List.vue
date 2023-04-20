@@ -19,7 +19,7 @@
            <div class="swiper-slide h-auto px-2" style="width:216px;" :value="bestProduct.productNo" :key="bestProduct.productNo" v-for="bestProduct in bestProducts">
              <!-- venue item-->
              <div class="w-100 h-100 hover-animate" data-marker-id="59c0c8e33b1527bfe2abaf92">
-               <div class="card h-100 border-0 shadow">
+               <div class="card h-100 border-0 shadow" @click="moveToProductDetailPage(bestProduct.productNo)">
                  <!-- <div class="card-img-top overflow-hidden dark-overlay bg-cover" style="background-image: url({{ bestProduct.imgUrl }}); min-height: 200px;"><a class="tile-link" href="detail.html"></a> -->
                   <div class="card-img-top overflow-hidden bg-cover"><img class="img-fluid" v-bind:src="bestProduct.imgUrl" > 
                   <hr>
@@ -63,7 +63,7 @@
           </div>
           <div class="mb-4">
             <label class="form-label" for="form_guests">기능</label>
-            <select class="selectpicker form-control" name="guests" id="form_guests" data-style="btn-selectpicker" title=" ">
+            <select class="selectpicker form-control" name="guests" id="form_guests" multiple data-style="btn-selectpicker" title=" ">
               <option value="guests_0">냉정수기</option>
               <option value="guests_1">냉온정수기</option>
               <option value="guests_2">얼음</option>
@@ -80,272 +80,15 @@
             </select>
           </div>
 
-          <!-- ========================================== -->
-          <!-- more filter 버튼 눌렀을때 나오는 -->
-          <div class="pb-4">
-            <div class="collapse" id="moreFilters">
-              <div class="filter-block">
-                <h6 class="mb-3">Location</h6>
-                <div class="mb-4">
-                  <label class="form-label" for="form_neighbourhood">Neighbourhood</label>
-                  <select class="selectpicker form-control" name="neighbourhood" id="form_neighbourhood" multiple data-style="btn-selectpicker" data-live-search="true" data-selected-text-format="count &gt; 1" title="">
-                    <option value="neighbourhood_0">Battery Park City    </option>
-                    <option value="neighbourhood_1">Bowery    </option>
-                    <option value="neighbourhood_2">Carnegie Hill    </option>
-                    <option value="neighbourhood_3">Central Park    </option>
-                    <option value="neighbourhood_4">Chelsea    </option>
-                    <option value="neighbourhood_5">Chinatown    </option>
-                    <option value="neighbourhood_6">Civic Center    </option>
-                    <option value="neighbourhood_7">East Harlem    </option>
-                    <option value="neighbourhood_8">Financial District    </option>
-                    <option value="neighbourhood_9">Flatiron    </option>
-                    <option value="neighbourhood_10">Garment District    </option>
-                    <option value="neighbourhood_11">Gramercy Park    </option>
-                    <option value="neighbourhood_12">Greenwich Village    </option>
-                    <option value="neighbourhood_13">East Village    </option>
-                    <option value="neighbourhood_14">West Village    </option>
-                    <option value="neighbourhood_15">Hamilton Heights    </option>
-                    <option value="neighbourhood_16">Harlem    </option>
-                    <option value="neighbourhood_17">Hell's Kitchen / Clinton    </option>
-                    <option value="neighbourhood_18">Inwood    </option>
-                    <option value="neighbourhood_19">Kips Bay    </option>
-                    <option value="neighbourhood_20">Lenox Hill    </option>
-                    <option value="neighbourhood_21">Little Italy    </option>
-                    <option value="neighbourhood_22">Lower Eastside    </option>
-                    <option value="neighbourhood_23">Madison Square    </option>
-                    <option value="neighbourhood_24">Manhattan Valley    </option>
-                    <option value="neighbourhood_25">Meatpacking District    </option>
-                    <option value="neighbourhood_26">Midtown    </option>
-                    <option value="neighbourhood_27">Morningside Heights    </option>
-                    <option value="neighbourhood_28">Murray Hill    </option>
-                    <option value="neighbourhood_29">NoHo    </option>
-                    <option value="neighbourhood_30">NoLita    </option>
-                    <option value="neighbourhood_31">Roosevelt Island    </option>
-                    <option value="neighbourhood_32">SoHo    </option>
-                    <option value="neighbourhood_33">Stuyvesant Town (Stuyvesant Square)    </option>
-                    <option value="neighbourhood_34">Sutton Place    </option>
-                    <option value="neighbourhood_35">Times Square    </option>
-                    <option value="neighbourhood_36">Tribeca    </option>
-                    <option value="neighbourhood_37">Turtle Bay    </option>
-                    <option value="neighbourhood_38">Upper Eastside    </option>
-                    <option value="neighbourhood_39">Upper Westside    </option>
-                    <option value="neighbourhood_40">Washington Heights    </option>
-                    <option value="neighbourhood_41">Yorkville    </option>
-                  </select>
-                </div>
-                <div class="mb-0">
-                  <label class="form-label">Neighbourhood Tag</label>
-                  <ul class="list-inline mt-xl-1 mb-0">
-                    <li class="list-inline-item">
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="type_0" name="type[]">
-                        <label class="form-check-label" for="type_0">Hipster                                            </label>
-                      </div>
-                    </li>
-                    <li class="list-inline-item">
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="type_1" name="type[]">
-                        <label class="form-check-label" for="type_1">Business                                            </label>
-                      </div>
-                    </li>
-                    <li class="list-inline-item">
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="type_2" name="type[]">
-                        <label class="form-check-label" for="type_2">Family                                            </label>
-                      </div>
-                    </li>
-                    <li class="list-inline-item">
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="type_3" name="type[]">
-                        <label class="form-check-label" for="type_3">Green                                            </label>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div class="filter-block">
-                <h6 class="mb-3">Rooms and beds</h6>
-                <div class="mb-2">
-                  <label class="form-label">Beds</label>
-                  <div class="d-flex align-items-center">
-                    <div class="btn btn-items btn-items-decrease">-</div>
-                    <input class="form-control input-items input-items-greaterthan" type="text" value="1+" disabled>
-                    <div class="btn btn-items btn-items-increase">+</div>
-                  </div>
-                </div>
-                <div class="mb-2">
-                  <label class="form-label">Bedrooms</label>
-                  <div class="d-flex align-items-center">
-                    <div class="btn btn-items btn-items-decrease">-</div>
-                    <input class="form-control input-items input-items-greaterthan" type="text" value="1+" disabled>
-                    <div class="btn btn-items btn-items-increase">+</div>
-                  </div>
-                </div>
-                <div class="mb-0">
-                  <label class="form-label">Bathrooms</label>
-                  <div class="d-flex align-items-center">
-                    <div class="btn btn-items btn-items-decrease">-</div>
-                    <input class="form-control input-items input-items-greaterthan" type="text" value="1+" disabled>
-                    <div class="btn btn-items btn-items-increase">+</div>
-                  </div>
-                </div>
-              </div>
-              <div class="filter-block"> 
-                <h6 class="mb-3">Trip type</h6>
-                <div class="mb-0">
-                  <div class="form-check form-switch mb-2">
-                    <input class="form-check-input" id="forfamilies" type="checkbox" name="forfamilies" aria-describedby="forfamiliesHelp">
-                    <label class="form-check-label" for="forfamilies"> <span class="text-sm">For Families</span></label>
-                  </div><small class="text-muted form-text" id="forfamiliesHelp">Explore entire homes with 5-star reviews from families and essentials like a kitchen and TV</small>
-                </div>
-                <div class="mb-0">
-                  <div class="form-check form-switch mb-2">
-                    <input class="form-check-input" id="forwork" type="checkbox" name="forwork" aria-describedby="forworkHelp">
-                    <label class="form-check-label" for="forwork"> <span class="text-sm">For work</span></label>
-                  </div><small class="text-muted form-text" id="forworkHelp">Explore top-rated homes with essentials like a workspace, wifi, and self check-in                                        </small>
-                </div>
-              </div>
-              <div class="filter-block"> 
-                <h6 class="mb-3">Amenities</h6>
-                <ul class="list-unstyled mb-0">
-                  <li>
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="amenities_0" name="amenities[]">
-                      <label class="form-check-label" for="amenities_0">Kitchen                               </label>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="amenities_1" name="amenities[]">
-                      <label class="form-check-label" for="amenities_1">Shampoo                               </label>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="amenities_2" name="amenities[]">
-                      <label class="form-check-label" for="amenities_2">Heating                               </label>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="amenities_3" name="amenities[]">
-                      <label class="form-check-label" for="amenities_3">Air conditioning                               </label>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="amenities_4" name="amenities[]">
-                      <label class="form-check-label" for="amenities_4">Washer                               </label>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="amenities_5" name="amenities[]">
-                      <label class="form-check-label" for="amenities_5">Dryer                               </label>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="amenities_6" name="amenities[]">
-                      <label class="form-check-label" for="amenities_6">Wifi                               </label>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="amenities_7" name="amenities[]">
-                      <label class="form-check-label" for="amenities_7">Breakfast                               </label>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="amenities_8" name="amenities[]">
-                      <label class="form-check-label" for="amenities_8">Indoor fireplace                               </label>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="amenities_9" name="amenities[]">
-                      <label class="form-check-label" for="amenities_9">Buzzer/wireless intercom                               </label>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="amenities_10" name="amenities[]">
-                      <label class="form-check-label" for="amenities_10">Doorman                               </label>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="amenities_11" name="amenities[]">
-                      <label class="form-check-label" for="amenities_11">Hangers                               </label>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="amenities_12" name="amenities[]">
-                      <label class="form-check-label" for="amenities_12">Iron                               </label>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="amenities_13" name="amenities[]">
-                      <label class="form-check-label" for="amenities_13">Hair dryer                               </label>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="amenities_14" name="amenities[]">
-                      <label class="form-check-label" for="amenities_14">Laptop friendly workspace                               </label>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-              <div class="filter-block"> 
-                <h6 class="mb-3">Facilities</h6>
-                <ul class="list-unstyled mb-0">
-                  <li>
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="facilities_0" name="facilities[]">
-                      <label class="form-check-label" for="facilities_0">Free parking on premises             </label>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="facilities_1" name="facilities[]">
-                      <label class="form-check-label" for="facilities_1">Gym             </label>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="facilities_2" name="facilities[]">
-                      <label class="form-check-label" for="facilities_2">Hot tub             </label>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="facilities_3" name="facilities[]">
-                      <label class="form-check-label" for="facilities_3">Pool             </label>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <!-- ========================================== -->
-
-            <!-- more filter 버튼 -->
-            <div class="mb-4">
-              <button class="btn btn-link btn-collapse ps-0 text-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#moreFilters" aria-expanded="false" aria-controls="moreFilters" data-expanded-text="Less filters" data-collapsed-text="More filters">More filters</button>
-            </div>
             <div class="mb-4">
               <button class="btn btn-primary" type="submit"><i class="fas fa-filter me-1"></i>Filter</button>
             </div>
-          </div>
         </form>
       </div>
       <div class="col-lg-9">
         <div class="d-flex justify-content-between align-items-center flex-column flex-md-row mb-4">
           <div class="me-3">
-            <p class="mb-3 mb-md-0" v-if="searchKeyword"><strong>[<span class="h5 text-primary">{{searchKeyword}}</span>]</strong> &nbsp;키워드 검색 결과</p>
+            <p class="mb-3 mb-md-0" v-if="searchKeyword"><strong><span class="h5 text-primary">[{{searchKeyword}}]</span></strong> &nbsp;키워드 검색 결과</p>
             <p class="mb-3 mb-md-0"><strong><span class="h5 text-primary">{{productTotal}}</span></strong> &nbsp;results found</p>
           </div>
           <div>
@@ -399,7 +142,7 @@
           </section>
           
         <!-- Pagination -->
-        <nav aria-label="Page navigation example">
+        <!-- <nav aria-label="Page navigation example">
           <ul class="pagination pagination-template d-flex justify-content-center">
             <li class="page-item"><a class="page-link" href="#"> <i class="fa fa-angle-left"></i></a></li>
             <li class="page-item active"><a class="page-link" href="#">1</a></li>
@@ -407,7 +150,7 @@
             <li class="page-item"><a class="page-link" href="#">3</a></li>
             <li class="page-item"><a class="page-link" href="#"> <i class="fa fa-angle-right"></i></a></li>
           </ul>
-        </nav>
+        </nav> -->
       </div>
     </div>
   </div>
@@ -420,20 +163,49 @@
 
 <script>
 import axios from 'axios';
-import { ref, onMounted } from 'vue';
+import { ref, watch, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 
 export default {
-setup() {
+setup(props) {
   //let productList = ref(null);
-  const productTotal = ref(0);
+  //const productTotal = ref(0);
   const route = useRoute();
   const router = useRouter();
   const product = ref('');
-  const products = ref([]);
+  //const products = ref([]);
   const bestProduct = ref('');
   const bestProducts = ref([]);
-  const searchKeyword = ref('');
+  //const searchKeyword = ref('');
+  
+  const searchKeyword = ref(route.query.searchKeyword || '');
+    const products = ref([]);
+    const productTotal = ref(0);
+
+    const getProductList = async() => {
+      console.log("검색 상품 받아와??");
+      const res = await axios.get('/product/search/' +searchKeyword.value);
+      products.value = res.data;
+      productTotal.value = products.value.length;
+      console.log(res.data);
+    };
+
+    watch(searchKeyword, () => {
+      getProductList();
+    });
+
+    if (searchKeyword.value) {
+      getProductList();
+    } else {
+      const getProductList = async() => {
+        console.log("상품 받아와??");
+        const res = await axios.get('/product/products');
+        console.log(res.data);
+        products.value = res.data;
+        productTotal.value = products.value.length;
+      };
+      getProductList();
+    }
 
   // if(route.query.searchKeyword) {
   //   searchKeyword.value = route.query.searchKeyword;
@@ -441,8 +213,9 @@ setup() {
   //     console.log("검색 상품 받아와??");
   //     const res = await axios.get('/product/search/' +searchKeyword.value);
   //     products.value = res.data;
-  //     productTotal.value = products.value.lrength;
-  //   } ; getProductList();
+  //     productTotal.value = products.value.rength;
+  //     console.log(res.data);
+  //   }; getProductList();
   // } else {
   //   const getProductList = async() => {
   //     console.log("상품 받아와??");
@@ -450,20 +223,19 @@ setup() {
   //     console.log(res.data);
   //     products.value = res.data;
   //     productTotal.value = products.value.length;
-  //   } ; getProductList();
+  //   }; getProductList();
   // }
 
-
-  const getProductList = async() => {
-    console.log("상품 받아와??");
-    const res = await axios.get('/product/products');
-    console.log(res.data);
-    products.value = res.data;
-    productTotal.value = products.value.length;
-  }
+  // const getProductList = async() => {
+  //   console.log("상품 받아와??");
+  //   const res = await axios.get('/product/products');
+  //   console.log(res.data);
+  //   products.value = res.data;
+  //   productTotal.value = products.value.length;
+  // }
   
   onMounted(() => {
-    getProductList();
+    //getProductList();
     getBestProductList();
   });
 

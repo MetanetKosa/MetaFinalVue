@@ -26,7 +26,7 @@
            <div class="swiper-slide h-auto px-2" style="width:216px;" :value="bestProduct.productNo" :key="bestProduct.productNo" v-for="bestProduct in bestProducts">
              <!-- venue item-->
              <div class="w-100 h-100 hover-animate" data-marker-id="59c0c8e33b1527bfe2abaf92">
-               <div class="card h-100 border-0 shadow">
+               <div class="card h-100 border-0 shadow" @click="moveToProductDetailPage(bestProduct.productNo)">
                  <!-- <div class="card-img-top overflow-hidden dark-overlay bg-cover" style="background-image: url({{ bestProduct.imgUrl }}); min-height: 200px;"><a class="tile-link" href="detail.html"></a> -->
                   <div class="card-img-top overflow-hidden bg-cover"><img class="img-fluid" v-bind:src="bestProduct.imgUrl" > 
                   <hr>

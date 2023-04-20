@@ -117,10 +117,12 @@ export default {
 
         const search = () => {
             router.push({
-                name: 'SearchList',
+                name: 'ProductList',
                 query: {
                     searchKeyword: searchKeyword.value
                 }
+            }, () => {
+                location.reload();
             })
         }
 
