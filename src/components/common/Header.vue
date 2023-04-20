@@ -67,9 +67,8 @@
                         </div>
                     </form>-->
                     </li>
-
                         <li class="nav-item"><router-link class="nav-link" v-if="!pageState" :to="{name: 'Signup'}">회원가입</router-link></li>
-                        <li class="nav-item"><router-link class="nav-link" v-if="!pageState" :to="{name: 'Login'}">로그인</router-link></li>
+                        <li class="nav-item"><router-link class="nav-link" v-if="!pageState" :to="{name: 'Login'}" >로그인</router-link></li>
                         <li class="nav-item dropdown" v-if="pageState">
                             <a class="nav-link dropdown" href="index.html" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="personIcon"><i class="fas fa-user-alt fa-lg"></i></a>
                             <div class="dropdown-menu" aria-labelledby="homeDropdownMenuLink">
@@ -81,6 +80,7 @@
                         </li>
                         <li class="nav-item"><a class="nav-link dropdown" href="/" id="mybell"><i class="fas fa-bell fa-lg"></i></a></li>
                         <li class="nav-item mt-3 mt-lg-0 ms-lg-3 d-lg-none d-xl-inline-block" id="headerEmpty"></li>
+                        <!-- <input type="hidden" v-model="auth"/> -->
                     </ul>
                 </div>
             </div>
@@ -90,11 +90,10 @@
 </template>
 
 <script>
-// import { ref, onMounted } from 'vue';
-// import { useRoute, useRouter } from 'vue-router';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import Swal from 'sweetalert2';
+// import jwt_decode from 'vue-jwt-decode';
 
 export default {
     name: "Header",
@@ -105,10 +104,31 @@ export default {
 
         const pageState = ref(false);
         const token = sessionStorage.getItem("token");
-        console.log("로그인 후 토큰이 잘 가져와 지나요? : " + token);
+        console.log("로그인 후 토큰생성 확인? : " + token);
         const id = sessionStorage.getItem("id");
         
-        console.log("로그인 후 id가 잘 가져와 지나요? : " + id);
+        console.log("로그인 후 id생성 확인? : " + id);
+        console.log("---------------------------------")
+
+        // const {payload} = useJwt(token);
+        // const tokenId = payload.id;
+        //  const decodeToken = token ? jwt_decode(token) : null;
+        //     const userSub = token.userId?.sub; //고유식별자
+        //     const userRoles =  token.userRoles?.userRoles; 
+        //     const userId =  token.userAud?.userAud;
+        //     const userAud =  token.userSub?.userSub;//사용할 수 있는 대상자
+
+        //     console.log("토큰 userSub: " + userSub );
+        //     console.log("토큰 userRoles: " + userRoles);
+        //     console.log("토큰 userId : " + userId);
+        //     console.log("토큰 userAud : " + userAud);
+        //     console.log("토큰 tokenId tokenId : " + tokenId );
+    
+        // const state = ref({});
+        // axios.get(`/auth/members/${id}`).then(({data}) =>{
+        //     state.value = data;
+        //     console.log("모든 회원 데이터 " + data);
+        // })
 
         const checkToken = () => {
             if(token == null){
@@ -116,6 +136,11 @@ export default {
             }else{
                 console.log('로그인 후');
                 pageState.value= true;
+                // if(id.auth == "ROLE_ADMIN"){
+
+                // }else{
+                //     pageState.value= true;
+                // }
             }
         }
         checkToken();
@@ -127,16 +152,13 @@ export default {
                 title:'Success!',
                 text: '로그아웃 되었습니다.',
                 icon: 'success',
-                confirmButtonText: 'OK'
+                showConfirmButton: false,
+                timer: 1500
+                // confirmButtonText: 'OK'
             }).then(()=>{
                 router.push('/')
                 location.reload();
 ;            })
-        }
-
-        //로그인
-        const login = () => {
-            router.push({name: 'Login'});
         }
 
 
@@ -155,24 +177,20 @@ export default {
             });
         }
 
-        // const search = () => {
-        //     router.push({
-        //         name: 'ProductList',
-        //         query: {
-        //             searchKeyword: searchKeyword.value
-        //         }
-        //     })
-        // }
-
         return {
             moveToSearchPage,
             searchKeyword,
             //search,
             pageState,
             token,
-            logout
+            logout,
+            // decodeToken,
+            // userSub,
+            // userRoles,
+            // userId,
+            // userAud,
+            // tokenId
         }
-
     },
 
     name: 'Header'
