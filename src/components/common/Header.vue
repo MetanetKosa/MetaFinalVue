@@ -29,7 +29,6 @@
                             <div class="dropdown-menu" aria-labelledby="homeDropdownMenuLink">
                                 <router-link class="dropdown-item" :to="{name: 'AdminRegister'}">관리자 등록 페이지</router-link>
                                 <router-link class="dropdown-item" :to="{name: 'AdminList'}">관리자 목록 페이지</router-link>
-                                <router-link class="dropdown-item" :to="{name: 'AdminMember'}">관리자 회원관리 페이지</router-link>
                                 <router-link class="dropdown-item" :to="{name: 'Rental1'}">rental1</router-link>
                                 <router-link class="dropdown-item" :to="{name: 'Rental2'}">rental2</router-link>
                                 <router-link class="dropdown-item" :to="{name: 'Rental3'}">rental3</router-link>

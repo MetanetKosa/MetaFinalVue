@@ -32,15 +32,15 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">제품명</label>
+                                    <label class="col-sm-2 col-form-label" >제품명</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" v-model= "state.form.productName">
+                                        <input type="text" class="form-control" v-model= "productName">
                                     </div>  
                                 </div>
                                 <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">기능</label>
                                     <div class="col-sm-10">
-                                        <select class="form-control select2" v-model= "state.form.productFunction">
+                                        <select class="form-control select2" v-model= "productFunction">
                                             <option>냉온정수기</option>
                                             <option>냉정수기</option>
                                             <option>냉온정수기+얼음</option>
@@ -52,7 +52,7 @@
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">월 렌탈료</label>
                                     <div class="col-sm-10">
-                                         <input type="text" class="form-control" v-model= "state.form.productRentalPrice">
+                                         <input type="text" class="form-control" v-model= "productRentalPrice">
                                     </div>  
                                 </div>        
                             </div>
@@ -60,13 +60,13 @@
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">모델명</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control"  v-model= "state.form. productModel" >
+                                        <input type="text" class="form-control"  v-model= "productModel" >
                                     </div>  
                                 </div>
                                 <div class="form-group row">
                                  <label class="col-sm-2 col-form-label">설치형태</label>
                                     <div class="col-sm-10">
-                                        <select class="form-control select2" v-model= "state.form.productType" style="width: 100%;">
+                                        <select class="form-control select2" v-model= "productType" style="width: 100%;">
                                             <option value="빌트인">빌트인</option>
                                             <option value="데스크탑">데스크탑</option>
                                             <option value="스탠드">스탠드</option>
@@ -76,7 +76,7 @@
                                  <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">구매가</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" v-model= "state.form.productPrice">
+                                        <input type="text" class="form-control" v-model="product.productPrice">
                                     </div>
                                 </div>                            
                             </div>
@@ -89,13 +89,13 @@
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">제조사</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" v-model= "state.form.productCompany">
+                                                <input type="text" class="form-control" v-model= "product.productCompany">
                                             </div>  
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">정수방식</label>
                                             <div class="col-sm-10">
-                                                <select class="form-control select2" v-model= "state.form.productMethod">
+                                                <select class="form-control select2" v-model= "product.productMethod">
                                                     <option value="직수형">직수형</option>
                                                     <option value="탱크형">탱크형</option>
                                                 </select>
@@ -104,7 +104,7 @@
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">무게</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" v-model= "state.form.productWeight">
+                                                <input type="text" class="form-control" v-model= "product.productWeight">
                                             </div>  
                                         </div>             
                                     </div>
@@ -118,13 +118,13 @@
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">색상</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" v-model= "state.form.productColor">
+                                                <input type="text" class="form-control" v-model= "product.productColor">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">크기</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" v-model= "state.form.productSize">
+                                                <input type="text" class="form-control" v-model= "product.productSize">
                                             </div>  
                                         </div>                                            
                                     </div>
@@ -153,39 +153,16 @@
                                     </div>
                                     <div class="col-lg-6 d-flex align-items-center">
                                         <div class="fileupload-process w-100">
+                                            <a>대표이미지1, 추가이미지3, 상세이미지1</a>
                                         </div>
                                     </div>
                                 </div>
-                                  <div class="table table-striped files" id="previews">
-                                    <div id="template" class="row mt-2">
-                                        <div class="col-auto">
-                                            <span class="preview"><img src="data:," alt="" data-dz-thumbnail /></span>
-                                        </div>
-                                        <div class="col d-flex align-items-center">
-                                            <p class="mb-0">
-                                            <span class="lead" data-dz-name></span>
-                                            (<span data-dz-size></span>)
-                                            </p>
-                                            <strong class="error text-danger" data-dz-errormessage></strong>
-                                        </div>
-                                        <div class="col-auto d-flex align-items-center">
-                                            <div class="btn-group">
-                                                <button data-dz-remove class="btn btn-warning cancel">
-                                                <i class="fas fa-times-circle"></i>
-                                                <span>Cancel</span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                 
-
-                                <!-- <div class="card-footer bg-white" >
+                                <div class="card-footer bg-white" >
                                     <ul class="mailbox-attachments d-flex align-items-stretch clearfix">
                                          <li>
                                             <span class="mailbox-attachment-icon">
             
-                                                <img :src="state.imgSrc" />
+                                                <!-- <img :src="state.imgSrc" /> -->
                                             </span>
                                             <div class="mailbox-attachment-info">
                                                 <a href="#" class="mailbox-attachment-name"></a>
@@ -196,7 +173,7 @@
                                             </div>
                                         </li>                                    
                                      </ul>
-                                </div> -->
+                                </div>
                             </div>                    
                         <div class="card-header">
                             <h3 class="card-title">사용설명서</h3>
@@ -207,7 +184,7 @@
                                     <i class="fas fa-paperclip"></i> 설명서 등록
                                     <input type="file" @change="handleFileChange" accept="application/pdf">
                                 </div>
-                                    <p class="help-block">{{ state.form.productGuide }}</p>
+                                    <h6 class="help-block">{{product.productGuide}}</h6>
                             </div>
                         </div>
                         
@@ -216,13 +193,13 @@
                         </div>
                         <div class="card-body">                                
                             <div class="form-group">
-                                <textarea class="form-control" id="inputExperience" placeholder="상세정보 입력하세요" v-model= "state.form.productDetail"></textarea>
+                                <textarea class="form-control" id="inputExperience" placeholder="상세정보 입력하세요" v-model= "product.productDetail"></textarea>
                             </div>
                         </div>
                     </div>
                     <div class="float-right">
                         <button class="btn btn-primary" :to="{name: 'AdminRegister'}">취소</button>
-                        <button  @click="submit()" class="btn btn-primary">등록</button>
+                        <button :disabled = "!todoUpdated" class="btn btn-primary">수정</button>
                     </div>
                     </form>
                     </div>
@@ -239,10 +216,9 @@
 <script>
 import axios from "axios";
 import Sidebar from '@/components/pages/admin/Sidebar.vue';
-import {reactive,ref} from "vue";
-import {useRouter} from 'vue-router';
-import {onMounted } from 'vue';
-import Dropzone from 'dropzone';
+import {useRoute,useRouter} from 'vue-router';
+import _ from 'lodash';
+import {ref, computed} from '@vue/reactivity';
 
 export default {
 
@@ -250,178 +226,143 @@ export default {
     Sidebar
   },
 
-    setup(){
-        const myDropzone = ref(null)
-        const files = ref([])
+    // setup(){
+    //     const route = useRoute();
+    //   const router = useRouter();
+    // const productNo =  route.params.id;
+    //  const originalProduct = ref(null);
+    //  const productName=ref('');
+    //  const productSize=ref('');
+    //  const productWeight=ref('');
+    //  const productDetail=ref('');
+    //  const productType=ref('');
+    //  const productMethod=ref('');
+    //  const productCompany=ref('');
 
- 
-      const router = useRouter();
-      const state = reactive({
-      products: [],
-      form: {
+    // const onSave = async() => {
+    //     const res = await axios.patch(`/admin/product/${productNo}`,{
+    //     productName: productName.value,
+    //        productSize: productSize.value,
+    //        productWeight: productWeight.value,
+    //        productDetail: productDetail.value,
+    //     //    productGuide: product.value.productGuide,
+    //        productType: product.value.productType,
+    //        productMethod: product.value.productMethod,
+    //        productCompany: product.value.productCompany,
+    //     //    imgUrl: product.value.imgUrl,
+    //     //    detailUrl: product.value.detailUrl,
+    //     //    productFunction: product.value.productFunction,
+    //     //    productModel: product.value.productModel,
+    //     //    prouctRentalPrice: product.value.productRentalPrice,
+    //     //    productPrice: product.value.productPrice,
+    //     //    productColor: product.value.productColor,
+    //     });
+    // originalProduct.value = {...res.data};
+    //     router.push({path: "/adminlist"});
+    // }
+    // const todoUpdated = computed(() => {
+    //         return !_.isEqual(product.value, originalProduct.value);
+    // });
 
-        productName: "",
-        productSize: "",
-        productWeight: "",
-        productDetail: "",
-        productGuide: "",
-        productType: "",
-        productMethod: "",
-       productCompany: "",
-        imgUrl:"",
-        productSales:"",
-        productFunction:"",
-        productModel:"",
-        productRentalPrice: "",
-        productPrice : "",
-        productColor :"",
-        productGuide:"",
-        detailUrl:"",
-       attachList: []
-      },
-       files:[],
-       imgSrc:"",
+    // const getProduct =async() => {
+    //         try{ 
+    //              const res =  await axios.get(`/admin/product/${productNo}`);
+    //             const product = {...res.data};
+    //             productName.value=product.productName;
+    //             productSize.value=product.productSize;
+    //             productWeight.value=product.productWeight;
+    //             productDetail.value=product.productDetail;
+    //             productType.value=product.productType;
+    //             productMethod.value=product.productMetho;
+    //             productCompany.value=product.productCompany;
 
-    })
+    //             originalProduct.value = {...res.data};
+    //             console.log(product);
+    //         }catch(err){
+    //             console.log(err);         
+    //         }
+         
+    // };
+    // getProduct();
 
-      
-      
-
-
-
-    
-
-  onMounted(() => {
-    initDropzone()
-  });
-
-    const submit = () => {
-      const args = JSON.parse(JSON.stringify(state.form));
-      axios.post('/admin/product', args).then(() => {
-        console.log("등록되었습니다");
-        router.push({path: "/adminlist"});
-      })
-    }
-
-    //이미지 업로드 처리
-    const handleImageUpload = (event, fileType) => {
-        const formData = new FormData();
-          if (event.target.files) {
-            if (fileType !== "files") {
-            const file = event.target.files[0];
-            formData.append("file", file);
-            }
-             else {
-            const files = event.target.files;
-                for (const file of files) {
-                    formData.append("files", file);
-                }
-            }
-          }
-        axios.post(`/upload/${fileType}`, formData, {
-            headers: {'Content-Type': 'multipart/form-data'}
-        })
-        .then((response) => {
-            console.log("이미지가 등록되었습니다.");
-            if(fileType == "files"){
-                response.data.forEach((file) => {
-                const { uuid, folderPath, fileName } = file;
-                state.form.attachList.push({
-                    uuid,
-                    folderPath,
-                    fileName,
-                 });
-             });
-            }
-            if(state.form.imgUrl == response.data.fileName){
-                   state.form.imgUrl = response.data.folderPath +"/" + response.data.uuid+"_" + response.data.fileName; 
-            }
-            if( state.form.detailUrl == response.data.fileName){
-                state.form.detailUrl = response.data.folderPath +"/" + response.data.uuid+"_" + response.data.fileName; 
-            }
-             if( state.form.productGuide == response.data.fileName){
-                state.form.detailUrl = response.data.folderPath +"/" + response.data.uuid+"_" + response.data.fileName; 
-            }
+    // //이미지 업로드 처리
+    // const handleImageUpload = (event, fileType) => {
+    //     const formData = new FormData();
+    //       if (event.target.files) {
+    //         if (fileType !== "files") {
+    //         const file = event.target.files[0];
+    //         formData.append("file", file);
+    //         }
+    //          else {
+    //         const files = event.target.files;
+    //             for (const file of files) {
+    //                 formData.append("files", file);
+    //             }
+    //         }
+    //       }
+    //     axios.post(`/upload/${fileType}`, formData, {
+    //         headers: {'Content-Type': 'multipart/form-data'}
+    //     })
+    //     .then((response) => {
+    //         console.log("이미지가 등록되었습니다.");
+    //         if(fileType == "files"){
+    //             response.data.forEach((file) => {
+    //             const { uuid, folderPath, fileName } = file;
+    //             product.attachList.push({
+    //                 uuid,
+    //                 folderPath,
+    //                 fileName,
+    //              });
+    //          });
+    //         }
+    //         if(product.imgUrl == response.data.fileName){
+    //                product.imgUrl = response.data.folderPath +"/" + response.data.uuid+"_" + response.data.fileName; 
+    //         }
+    //         if( product.detailUrl == response.data.fileName){
+    //             product.detailUrl = response.data.folderPath +"/" + response.data.uuid+"_" + response.data.fileName; 
+    //         }
+    //          if( product.productGuide == response.data.fileName){
+    //             product.detailUrl = response.data.folderPath +"/" + response.data.uuid+"_" + response.data.fileName; 
+    //         }
             
           
-               showUploadedImages(response);
+    //            showUploadedImages(response);
             
-        })
-        .catch(error => {
-            console.log(error);
-            console.log("이미지 업로드에 실패하였습니다.");
-        });
-    };
+    //     })
+    //     .catch(error => {
+    //         console.log(error);
+    //         console.log("이미지 업로드에 실패하였습니다.");
+    //     });
+    // };
 
-        const  showUploadedImages = (response) => {
-            const fileCallPath = response.data.folderPath+"/s_"+response.data.uuid+"_"+response.data.fileName;
-             axios.get('/upload/display', { 
-                responseType: 'blob',
-                params: {  fileName: fileCallPath } })
-              .then(response => {
-                const reader = new FileReader();
-                reader.readAsDataURL(response.data);
-                reader.onload = () =>{
-                    state.imgSrc = reader.result;
-                    console.log(state.imgSrc);
-                };
-            })
-            .catch(error => {
-                console.error(error);
-            });
-        }
+    //     const  showUploadedImages = (response) => {
+    //         const fileCallPath = response.data.folderPath+"/s_"+response.data.uuid+"_"+response.data.fileName;
+    //          axios.get('/upload/display', { 
+    //             responseType: 'blob',
+    //             params: {  fileName: fileCallPath } })
+    //           .then(response => {
+    //             const reader = new FileReader();
+    //             reader.readAsDataURL(response.data);
+    //             reader.onload = () =>{
+    //                 state.imgSrc = reader.result;
+    //                 console.log(state.imgSrc);
+    //             };
+    //         })
+    //         .catch(error => {
+    //             console.error(error);
+    //         });
+    //     }
 
-        // 설명서 처리
-        const handleFileChange = (event) => {
-        const file = event.target.files[0];
-        state.form.productGuide = file.name;
-        handleImageUpload(event, "guide");
-        };
-
-        // 대표 이미지 처리
-        const handleMainChange = (event) => {
-        const file = event.target.files[0];
-        state.form.imgUrl = file.name;
-        handleImageUpload(event, "file");
-        };
-
-        // 추가 이미지 처리
-        const handleAddChange = (event) => {
-        state.files = [...state.files, ...event.target.files];
-        // for(let i = 0; i< files.length; i++){
-        //     const file = event.target.files[i]
-        //     handleImageUpload(event, "file");
-        // }
-        // state.files = files;
-         handleImageUpload(event, "files");
-        };
-
-        // 상세 이미지 처리
-        const handleDetailChange = (event) => {
-        const file = event.target.files[0];
-        state.form.detailUrl = file.name;
-         handleImageUpload(event, "file");
-        };
+      
         
-       
-    return {
-        state, 
-        submit,
-        handleFileChange,
-        handleMainChange,
-        handleAddChange,
-         handleDetailChange,
-          myDropzone,
-            files,
-            initDropzone,
-            startUpload,
-            cancelUpload
-        }
+    // return {
+    //     product,
+    //     onSave,
+    //     todoUpdated,
+    //     }
   
-    }
+    // }
 }
-
- 
 </script>
 
 <style>

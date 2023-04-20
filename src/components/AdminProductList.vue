@@ -6,39 +6,7 @@
                     <div class="container-fluid">
                     <form action="enhanced-results.html">
                         <div class="row">
-                            <div class="col-md-10 offset-md-1">
-                                <div class="row">
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <label>기능명</label>
-                                            <select class="select2" style="width: 100%;">
-                                                <option>냉온정수기</option>
-                                                <option>냉정수기</option>
-                                                <option>냉온절수기 + 얼음</option> 
-                                                <option>냉정절수기 + 얼음</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-3">
-                                        <div class="form-group">
-                                            <label>Sort Order:</label>
-                                            <select class="select2" style="width: 100%;">
-                                                <option selected>오름차순</option>
-                                                <option>내림차순</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-3">
-                                        <div class="form-group">
-                                            <label>Order By:</label>
-                                            <select class="select2" style="width: 100%;">
-                                                <option selected>제품명</option>
-                                                <option>등록일</option>
-                                                <option>판매량</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="col-md-10 offset-md-1">                               
                                 <div class="form-group">
                                     <div class="input-group input-group-lg">
                                         <input type="search" class="form-control form-control-lg" placeholder="제품 검색">
@@ -72,7 +40,7 @@
             <!-- Default box -->
             <div class="card">
                 <div class="card-header">
-                <h3 class="card-title">제품 목록</h3>
+                <h3 class="card-title"></h3>
                     <div class="card-tools">
                         <router-link class="btn btn-block btn-secondary" :to="{name: 'AdminRegister'}">제품등록</router-link>
                     </div>
@@ -81,17 +49,17 @@
                 <table class="table table-striped projects">
                     <thead>
                         <tr>
-                            <th style="width: 5%">
+                            <th style="width: 5%" class="text-center">
                                 번호
                             </th>
-                            <th style="width: 20%">
+                            <th style="width: 20%" class="text-center">
                                 상품명
                             </th>
-                            <th style="width: 30%">
+                            <th style="width: 30%" class="text-center">
                                 설치형태/정수방식
                             </th>
-                            <th>
-                                구매/렌탈
+                            <th class="text-center">
+                                판매량
                             </th>
                             <th style="width: 8%" class="text-center">
                                 등록일
@@ -106,14 +74,18 @@
                                {{product.productNo}}
                             </td>
                             <td>
-                                <li class="list-inline-item">
-                                        <img :src="imgSrc(product.imgUrl)" />
-                                    </li>
+                                <li class="list-inline-item" >
+                                        <!-- <img :src="imgSrc(product.imgUrl)" /> -->
+                                       <div class="product-image-thumb"> 
+                                         <!-- <img :src="state.imgSrc" /> -->
+                                         <img :src='`http://localhost:8082/upload/display?fileName=${product.imgUrl}`' />
+                                     </div>                                    
+                                </li>
                                 <a >
                                     {{product.productName}}
                                 </a>
                             </td>
-                            <td>
+                            <td class="text-center">
                                 <ul class="list-inline">
                                     <a>
                                     {{product.productType}}
@@ -123,8 +95,8 @@
                                     </a>
                                 </ul>
                             </td>
-                            <td class="project_progress">
-                                <a>1/1</a>                             
+                            <td class="text-center">
+                                <a>{{product.productSales}}</a>                             
                             </td>
                             <td class="project-state">
                                 <span>{{product.regDate}}</span>
@@ -163,7 +135,10 @@
 </template>
 
 <script>
+import moment from 'moment'
+import { onMounted } from 'vue';
 import axios from "axios";
+import { ref } from 'vue';
 import {reactive} from "vue";
 import {useRoute, useRouter} from 'vue-router';
 
@@ -180,45 +155,94 @@ export default {
                    productMethod:''};
         }
     },
+
       emits: ['delete-product','update-product'],
     setup(props,  {emit}){
-      
+           
+         const productsWithImgSrc = reactive([]);
+
+        const router = useRouter();
+
+          const state = reactive({
+
+             imgSrc:"",
+            imgSrcs: [],
+
+        })
+
+    
          const deleteProduct = (productNo) => {
             emit('delete-product', productNo);
             }
 
             const updateProduct = (productNo) => {
-            emit('update-product', productNo);
+            router.push({
+                        name:'AdminUpdate',
+                        params:{
+                            id: productNo
+                        }
+                    })
             }
-
-
-           
-             const imgSrc = async (path) => {
-                try {
-                        const response = await axios.get(`/upload/display?fileName=${path}`, {
-                        responseType: 'blob'
-                        });
-                        const reader = new FileReader();
-                        reader.readAsDataURL(response.data);
+            const imgSrc =(path) => {
+                axios.get(`/upload/display?fileName=${path}`, {
+                responseType: 'blob',
+                }).then(response => {
+                    const reader = new FileReader();
+                    reader.readAsDataURL(response.data);
                         return new Promise((resolve, reject) => {
-                        reader.onload = () => {
-                        resolve(reader.result);                         
+                        reader.onload = () =>{
+                            console.log(reader.result);
+                            resolve(reader.result);
+                            return reader.reasult;
                         };
                         reader.onerror = () => {
-                            reject(reader.error);
-                        };
+                            reject(new Error('Failed to load image'));
+                        }
                         });
-                    } catch (error) {
+                        // reader.readAsDataURL(response.data);
+                        // reader.onload = () =>{
+                        //     console.log(reader.result);
+                        //     return reader.result;
+                        //     // state.imgSrc = reader.result;
+                        //     // console.log(state.imgSrc);
+                                                    
+                        // };
+                       
+                    }) .catch(error => {
                         console.error(error);
-                        throw error;
-                    }
-                    };
-      
-         
+                    });
+                      
+            }
+            onMounted(async() => {
+                const productsWithImgSrc = [];
+                 console.log(props.products);
+                 let imgSrc = '';
+                for (const product of props.products) {
+                   
+                    console.log(product.imgUrl);
+                     const imgSrc = await imgSrc(product.imgUrl);
+                      productsWithImgSrc.push({
+                    ...product,
+                    imgSrc: imgSrc
+                    });
+                }
+                console.log(productsWithImgSrc);
+            });
+                // props.products.forEach(product => {
+                //     imgSrc(product.imgUrl);
+            //     });
+            // });
+
+                
 
 
+            
 
-            return{
+      return{
+
+        productsWithImgSrc,
+
+                state,
                 imgSrc,
                 deleteProduct,
                 updateProduct,
