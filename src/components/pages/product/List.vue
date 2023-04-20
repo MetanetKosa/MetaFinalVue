@@ -144,11 +144,11 @@ import { useRoute, useRouter } from 'vue-router';
 export default {
   data() {
     return {
-      sortBy: '', // 정렬 방식 선택을 위한 변수
+      sortBy: '',   // 정렬 방식 선택을 위한 변수
       products: [], // 불러온 상품 목록
     };
   },
-  computed: {
+  computed: {   // 선택한 정렬방식에 따라 정렬하고 return
     sortedProducts() {
       if (this.sortBy === 'pSales') {
         return this.products.sort((a, b) => b.productSales - a.productSales);
@@ -163,7 +163,7 @@ export default {
       }
     },
   },
-  watch: {
+  watch: {  // 정렬된 값에 따라 sortedProducts 바꿔주기
     sortBy() {
       this.sortedProducts;
     },
