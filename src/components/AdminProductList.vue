@@ -74,10 +74,11 @@
                                {{product.productNo}}
                             </td>
                             <td>
-                                <li class="list-inline-item" >
+                                <li class="list-inline-item" >                          
                                         <!-- <img :src="imgSrc(product.imgUrl)" /> -->
                                        <div class="product-image-thumb"> 
-                                         <!-- <img :src="state.imgSrc" /> -->
+                                         <!-- <img :src="image.url" /> -->
+                                         
                                          <img :src='`http://localhost:8082/upload/display?fileName=${product.imgUrl}`' />
                                      </div>                                    
                                 </li>
@@ -99,10 +100,10 @@
                                 <a>{{product.productSales}}</a>                             
                             </td>
                             <td class="project-state">
-                                <span>{{product.regDate}}</span>
+                                <span>{{new Date(product.regDate).toLocaleDateString()}}</span>
                             </td>
                             <td class="project-actions text-right">
-                                <button type="button" class="btn btn-default"  @click="updateProduct(product.productNo)" >
+                                <button type="button" class="btn btn-default"  @click="updateProduct(product)" >
                                     수정
                                 </button>
                                 <button type="button" class="btn btn-danger" @click.stop="deleteProduct(product.productNo)" >
@@ -135,11 +136,8 @@
 </template>
 
 <script>
-import moment from 'moment'
-import { onMounted } from 'vue';
+import { reactive} from 'vue';
 import axios from "axios";
-import { ref } from 'vue';
-import {reactive} from "vue";
 import {useRoute, useRouter} from 'vue-router';
 
 export default {
@@ -159,91 +157,64 @@ export default {
       emits: ['delete-product','update-product'],
     setup(props,  {emit}){
            
-         const productsWithImgSrc = reactive([]);
-
         const router = useRouter();
 
-          const state = reactive({
-
-             imgSrc:"",
-            imgSrcs: [],
-
-        })
+        const state = reactive({
+            images: [],
+        });
 
     
          const deleteProduct = (productNo) => {
             emit('delete-product', productNo);
-            }
+         }
 
-            const updateProduct = (productNo) => {
+        const updateProduct = (product) => {   
+            console.log(product);        
             router.push({
-                        name:'AdminUpdate',
-                        params:{
-                            id: productNo
-                        }
-                    })
-            }
-            const imgSrc =(path) => {
-                axios.get(`/upload/display?fileName=${path}`, {
-                responseType: 'blob',
-                }).then(response => {
-                    const reader = new FileReader();
-                    reader.readAsDataURL(response.data);
-                        return new Promise((resolve, reject) => {
-                        reader.onload = () =>{
-                            console.log(reader.result);
-                            resolve(reader.result);
-                            return reader.reasult;
-                        };
-                        reader.onerror = () => {
-                            reject(new Error('Failed to load image'));
-                        }
-                        });
-                        // reader.readAsDataURL(response.data);
-                        // reader.onload = () =>{
-                        //     console.log(reader.result);
-                        //     return reader.result;
-                        //     // state.imgSrc = reader.result;
-                        //     // console.log(state.imgSrc);
-                                                    
-                        // };
-                       
-                    }) .catch(error => {
-                        console.error(error);
-                    });
-                      
-            }
-            onMounted(async() => {
-                const productsWithImgSrc = [];
-                 console.log(props.products);
-                 let imgSrc = '';
-                for (const product of props.products) {
-                   
-                    console.log(product.imgUrl);
-                     const imgSrc = await imgSrc(product.imgUrl);
-                      productsWithImgSrc.push({
-                    ...product,
-                    imgSrc: imgSrc
-                    });
+                name: 'AdminUpdate',
+                params: {
+                    id: product.productNo
+                },
+                props: {
+                    products: product
                 }
-                console.log(productsWithImgSrc);
-            });
-                // props.products.forEach(product => {
-                //     imgSrc(product.imgUrl);
-            //     });
-            // });
+            })
+        }
 
-                
+        // const imgSrc =(product) => {
+        //     let path = product.imageUrl.replaceAll("\\", "/");
+        //     console.log(path);
+        //      const file = {
+        //         name: product.productName,
+        //         url: null,
+        //         path: path,
+        //     };
+        //     axios.get(`/upload/display?fileName=${path}`, {
+        //         responseType: 'blob',
+        //      })
+        //      .then(response => {
+        //         const reader = new FileReader();
+        //         reader.readAsDataURL(response.data);
+        //         reader.onload = () =>{
+        //             file.url = reader.result;
+        //             console.log(file.url);
+        //             state.images.push(file);
+        //         };
+        //     })
+        //     .catch(error => {
+        //         console.error(error);
+        //     });
+                      
+        // };
 
-
-            
-
+        // onBeforeMount(() => {
+        //         // imgSrc 함수 실행
+        //     props.products.forEach((product) => {
+        //         imgSrc(product);
+        //         });
+        //     });
       return{
-
-        productsWithImgSrc,
-
                 state,
-                imgSrc,
                 deleteProduct,
                 updateProduct,
             }

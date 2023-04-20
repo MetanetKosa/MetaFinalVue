@@ -112,7 +112,7 @@
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">출시년월</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control">
+                                                <input type="text" class="form-control" v-model= "state.form.productRdate">
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -156,47 +156,26 @@
                                         </div>
                                     </div>
                                 </div>
-                                  <div class="table table-striped files" id="previews">
-                                    <div id="template" class="row mt-2">
-                                        <div class="col-auto">
-                                            <span class="preview"><img src="data:," alt="" data-dz-thumbnail /></span>
-                                        </div>
-                                        <div class="col d-flex align-items-center">
-                                            <p class="mb-0">
-                                            <span class="lead" data-dz-name></span>
-                                            (<span data-dz-size></span>)
-                                            </p>
-                                            <strong class="error text-danger" data-dz-errormessage></strong>
-                                        </div>
-                                        <div class="col-auto d-flex align-items-center">
-                                            <div class="btn-group">
-                                                <button data-dz-remove class="btn btn-warning cancel">
-                                                <i class="fas fa-times-circle"></i>
-                                                <span>Cancel</span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                 
-
-                                <!-- <div class="card-footer bg-white" >
+                                <div class="card-footer bg-white" >
                                     <ul class="mailbox-attachments d-flex align-items-stretch clearfix">
-                                         <li>
+                                         <li   v-for="(image, index) in state.images" :key="index">
                                             <span class="mailbox-attachment-icon">
             
-                                                <img :src="state.imgSrc" />
+                                                <img :src="image.url" />
                                             </span>
                                             <div class="mailbox-attachment-info">
-                                                <a href="#" class="mailbox-attachment-name"></a>
-                                                    <span class="mailbox-attachment-size clearfix mt-1">                                           
-                                                    <a href="#" class="btn btn-default btn-sm float-right"><i class="fas fa-cloud-download-alt"></i></a>
-                                                    </span>
-                                                    <button @click="removeFile()"></button>
+                                                <a href="#" class="mailbox-attachment-name" >
+                                                    {{image.name}}
+                                                </a>
+                                                <span class="mailbox-attachment-size clearfix mt-1">                                           
+                                                    <a href="#" class="btn btn-default btn-sm float-right" @click="deleteImage(index)">
+                                                        <i class="fas fa-times"></i>
+                                                    </a>
+                                                </span>
                                             </div>
                                         </li>                                    
                                      </ul>
-                                </div> -->
+                                </div>
                             </div>                    
                         <div class="card-header">
                             <h3 class="card-title">사용설명서</h3>
@@ -206,8 +185,11 @@
                                 <div class="btn btn-default btn-file">
                                     <i class="fas fa-paperclip"></i> 설명서 등록
                                     <input type="file" @change="handleFileChange" accept="application/pdf">
-                                </div>
-                                    <p class="help-block">{{ state.form.productGuide }}</p>
+                                </div >                          
+                                    <p class="help-block">{{ state.form.productGuide }}</p>                                      
+                                    <a href="#" class="btn btn-default btn-sm float-right" v-if="state.form.productGuide" @click="deleteGuide(state.form.detailUrl)">
+                                        <i class="fas fa-times"></i>
+                                    </a>
                             </div>
                         </div>
                         
@@ -242,7 +224,6 @@ import Sidebar from '@/components/pages/admin/Sidebar.vue';
 import {reactive,ref} from "vue";
 import {useRouter} from 'vue-router';
 import {onMounted } from 'vue';
-import Dropzone from 'dropzone';
 
 export default {
 
@@ -251,8 +232,6 @@ export default {
   },
 
     setup(){
-        const myDropzone = ref(null)
-        const files = ref([])
 
  
       const router = useRouter();
@@ -277,23 +256,15 @@ export default {
         productColor :"",
         productGuide:"",
         detailUrl:"",
+        produtRdate:"",
        attachList: []
       },
        files:[],
-       imgSrc:"",
+       images:[],
 
     })
 
       
-      
-
-
-
-    
-
-  onMounted(() => {
-    initDropzone()
-  });
 
     const submit = () => {
       const args = JSON.parse(JSON.stringify(state.form));
@@ -324,27 +295,25 @@ export default {
         .then((response) => {
             console.log("이미지가 등록되었습니다.");
             if(fileType == "files"){
+                console.log(response);
                 response.data.forEach((file) => {
                 const { uuid, folderPath, fileName } = file;
-                state.form.attachList.push({
-                    uuid,
-                    folderPath,
-                    fileName,
-                 });
+                state.form.attachList.push({uuid,folderPath,fileName});
+                showUploadedImages(file);
              });
             }
-            if(state.form.imgUrl == response.data.fileName){
+            else if(fileType=="file"){
+                
+                 if(state.form.imgUrl == response.data.fileName){
                    state.form.imgUrl = response.data.folderPath +"/" + response.data.uuid+"_" + response.data.fileName; 
-            }
-            if( state.form.detailUrl == response.data.fileName){
-                state.form.detailUrl = response.data.folderPath +"/" + response.data.uuid+"_" + response.data.fileName; 
-            }
-             if( state.form.productGuide == response.data.fileName){
-                state.form.detailUrl = response.data.folderPath +"/" + response.data.uuid+"_" + response.data.fileName; 
-            }
-            
-          
-               showUploadedImages(response);
+                }
+                if( state.form.detailUrl == response.data.fileName){
+                    state.form.detailUrl = response.data.folderPath +"/" + response.data.uuid+"_" + response.data.fileName; 
+                }
+                showUploadedImage(response);
+                }
+
+                
             
         })
         .catch(error => {
@@ -353,8 +322,14 @@ export default {
         });
     };
 
-        const  showUploadedImages = (response) => {
+        //대표이미지, 상세이미지 미리보기
+        const  showUploadedImage = (response) => {
             const fileCallPath = response.data.folderPath+"/s_"+response.data.uuid+"_"+response.data.fileName;
+            const file = {
+                name: response.data.fileName,
+                url: null,
+                path:fileCallPath
+            };
              axios.get('/upload/display', { 
                 responseType: 'blob',
                 params: {  fileName: fileCallPath } })
@@ -362,13 +337,60 @@ export default {
                 const reader = new FileReader();
                 reader.readAsDataURL(response.data);
                 reader.onload = () =>{
-                    state.imgSrc = reader.result;
-                    console.log(state.imgSrc);
+                      file.url = reader.result;
+                        state.images.push(file);
                 };
             })
             .catch(error => {
                 console.error(error);
             });
+        }
+
+        //추가파일 미리보기
+         const  showUploadedImages = (response) => {
+            const fileCallPath = response.folderPath+"/s_"+response.uuid+"_"+response.fileName;
+              const file = {
+                name: response.fileName,
+                url: null,
+                path:fileCallPath
+            };
+             axios.get('/upload/display', { 
+                responseType: 'blob',
+                params: {  fileName: fileCallPath } })
+              .then(response => {
+                const reader = new FileReader();
+                reader.readAsDataURL(response.data);
+                reader.onload = () =>{
+                     file.url = reader.result;
+                     console.log(file.url);
+                        state.images.push(file);
+                };
+            })
+            .catch(error => {
+                console.error(error);
+            });
+        }
+
+        //업로드한 이미지 삭제
+         const deleteImage = (index) => {
+            console.log(state.images[index].path);
+            let fileName = state.images[index].path
+            fileName = fileName.replaceAll("\\", "/");
+            fileName = fileName.replaceAll("s_", "");
+            console.log(fileName);
+            axios.post(`/upload/removeFile?fileName=${fileName}`)
+            state.images.splice(index, 1);
+            state.images = [...state.images];
+        }
+
+
+        //업로드한 파일 삭제
+         const deleteGuide = (guideValue) => {
+            console.log(guideValue);
+            let guide = guideValue.replaceAll("\\", "/");
+            console.log(guide);
+            axios.post(`/upload/removeFile?fileName=${guide}`);
+            state.form.guide='';
         }
 
         // 설명서 처리
@@ -388,11 +410,6 @@ export default {
         // 추가 이미지 처리
         const handleAddChange = (event) => {
         state.files = [...state.files, ...event.target.files];
-        // for(let i = 0; i< files.length; i++){
-        //     const file = event.target.files[i]
-        //     handleImageUpload(event, "file");
-        // }
-        // state.files = files;
          handleImageUpload(event, "files");
         };
 
@@ -411,11 +428,8 @@ export default {
         handleMainChange,
         handleAddChange,
          handleDetailChange,
-          myDropzone,
-            files,
-            initDropzone,
-            startUpload,
-            cancelUpload
+         deleteImage,
+         deleteGuide
         }
   
     }
