@@ -87,18 +87,17 @@ export default {
                                     //router.push('/');
                             });
                     console.log("token의 데이터는 어떻게" + response.headers.token);
-                    if(response.headers.token == null){
-                        Swal.fire({
-                        icon: 'error',
-                            title: 'Error!',
-                            html: '아이디 또는 비밀번호를 잘못 입력했습니다.<br>입력하신 내용을 다시 확인해주세요',
-                        })
-                    }
                     token.value = response.headers.token;
                 })
                 .catch((error) => {
-                    console.log(error);
-                })      
+                    Swal.fire({
+                        icon: 'error',
+                            title: 'Error!',
+                            html: '아이디 또는 비밀번호를 잘못 입력했습니다.<br>입력하신 내용을 다시 확인해주세요',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                });      
         }
 
         return{
