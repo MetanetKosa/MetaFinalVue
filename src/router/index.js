@@ -18,7 +18,6 @@ import MyPage from '@/components/pages/mypage/MyPage.vue';
 import MyOrderList from '@/components/pages/mypage/MyOrderList.vue';
 import MyPayList from '@/components/pages/mypage/MyPayList.vue';
 
-
 const router = createRouter({
     history: createWebHashHistory(),
     // mode: history,
