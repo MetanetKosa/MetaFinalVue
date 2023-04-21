@@ -20,7 +20,19 @@ module.exports = defineConfig({
          target: "http://localhost:8082",
           changeOrigin: true,
           logLevel: 'debug',
-      }
+      },
+      '/product': {
+        target: 'http://localhost:8082',
+         changeOrigin: true,
+         ws: true,
+        logLevel: 'debug',
+        },
+        '/order': {
+          target: 'http://localhost:8082',
+          changeOrigin: true,
+           ws: true,
+         logLevel: 'debug',
+    },
   }
   }
 });

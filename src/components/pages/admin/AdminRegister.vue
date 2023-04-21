@@ -187,7 +187,7 @@
                                     <input type="file" @change="handleFileChange" accept="application/pdf">
                                 </div >                          
                                     <p class="help-block">{{ state.form.productGuide }}</p>                                      
-                                    <a href="#" class="btn btn-default btn-sm float-right" v-if="state.form.productGuide" @click="deleteGuide(state.form.detailUrl)">
+                                    <a class="btn btn-default btn-sm float-right" v-if="state.form.productGuide" @click="deleteGuide(state.form.detailUrl)">
                                         <i class="fas fa-times"></i>
                                     </a>
                             </div>
@@ -312,6 +312,12 @@ export default {
                 }
                 showUploadedImage(response);
                 }
+        else{
+            if(state.form.productGuide == response.data.fileName){
+                    state.form.productGuide = response.data.folderPath +"/" + response.data.uuid+"_" + response.data.fileName; 
+                    console.log (state.form.productGuide);
+                }
+        }
 
                 
             

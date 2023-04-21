@@ -88,9 +88,9 @@
                                 <li class="list-inline-item" >                          
                                        
                                        <div class="product-image-thumb"> 
-                                         <!-- <img :src="image.url" /> -->
+                                         
                                          <img :src="imgSrc(product.imgUrl)" />
-                                         <!-- <img :src='`http://localhost:8082/upload/display?fileName=${product.imgUrl}`' /> -->
+                                        
                                      </div>                                    
                                 </li>
                                 <a >
@@ -114,7 +114,8 @@
                                 <span>{{new Date(product.regDate).toLocaleDateString()}}</span>
                             </td>
                             <td class="project-actions text-right">
-                                <button type="button" class="btn btn-default"  @click="updateProduct(product)" >
+                                <!-- <button type="button" class="btn btn-default"  @click="updateProduct(product)" > -->
+                                    <button type="button" class="btn btn-default"  @click="updateProduct(product)" >
                                     수정
                                 </button>
                                 <button type="button" class="btn btn-danger" @click.stop="deleteProduct(product.productNo)" >
@@ -179,18 +180,44 @@ export default {
             emit('delete-product', productNo);
          }
 
-        const updateProduct = (product) => {   
-            console.log(product);        
-            router.push({
-                name: 'AdminUpdate',
-                params: {
-                    id: product.productNo
-                },
-                props: {
-                    products: product
-                }
-            })
-        }
+        // const updateProduct = (product) => {   
+        //     console.log(product);        
+        //     router.push({
+        //         name: 'AdminUpdate',
+        //         params: {
+        //             id: product.productNo
+        //         },
+        //         props: {
+        //             products: product
+        //         }
+        //     })
+        // }
+
+        const updateProduct =async (product) => {   
+             try {
+                   
+                    let path = product.productGuide.replaceAll("\\", "/");
+                    await axios.get(`/upload/download?fileName=${path}` ,{     
+                    responseType: 'blob', // 바이너리 데이터를 응답으로 받기 위해 blob 타입으로 설정           
+                    }).then(response => {
+                        const url = window.URL.createObjectURL(new Blob([response.data]));
+                        const link = document.createElement('a');
+                        link.href = url;
+
+                        // Content-Disposition 헤더에서 파일 이름을 추출하여 다운로드 파일 이름으로 설정
+                        const contentDispositionHeader = response.headers['content-disposition'];
+                        const fileName = decodeURIComponent(contentDispositionHeader.split(';')[1].trim().split('=')[1].replace(/"/g, ''));
+
+                        link.setAttribute('download', fileName);
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                    });
+                    } catch (error) {
+                        console.error(error);
+                    }
+                            }
+
 
         const imgSrc = (url) => {
         if (url) {

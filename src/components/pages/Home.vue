@@ -90,6 +90,9 @@
     });
   }
 
+
+
+
   onMounted(() => {
     getBestProductList();
   });
