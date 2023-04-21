@@ -33,7 +33,7 @@
 
                                 <router-link class="dropdown-item" v-if="pageAdmin" :to="{name: 'AdminRegister'}">관리자 등록 페이지</router-link>
                                 <router-link class="dropdown-item" v-if="pageAdmin" :to="{name: 'AdminList'}">관리자 목록 페이지</router-link>
-                                <router-link class="dropdown-item" v-if="pageAdmin" :to="{name: 'AdminMember'}">관리자 회원관리 페이지</router-link>
+                                <!-- <router-link class="dropdown-item" v-if="pageAdmin" :to="{name: 'AdminMember'}">관리자 회원관리 페이지</router-link> -->
                                 <!-- <router-link class="dropdown-item" :to="{name: 'ProductDetail'}">상품상세페이지</router-link> -->
                                 <router-link class="dropdown-item" v-if="!pageState" :to="{name: 'ProductList'}" >상품목록페이지</router-link>
                                 <!-- <router-link class="dropdown-item" v-if="pageState" :to="{name: 'MyProduct'}">마이페이지 첫화면</router-link> -->

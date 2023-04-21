@@ -3,8 +3,9 @@ import Home from '@/components/pages/Home.vue';
 import Login from '@/components/pages/member/Login.vue';
 import Signup from '@/components/pages/member/Signup.vue';
 import AdminRegister from '@/components/pages/admin/AdminRegister.vue';
+import AdminUpdate from '@/components/pages/admin/AdminUpdate.vue';
 import AdminList from '@/components/pages/admin/AdminList.vue';
-import AdminMember from '@/components/pages/admin/AdminMember.vue';
+// import AdminMember from '@/components/pages/admin/AdminMember.vue';
 import Rental from '@/components/pages/order/Rental.vue';
 import RentalResult from '@/components/pages/order/RentalResult.vue';
 import Order from '@/components/pages/order/Order.vue';
@@ -45,6 +46,11 @@ const router = createRouter({
             component: AdminRegister
         },
         {
+            path: '/adminUpdate/:id',
+            name: 'AdminUpdate',
+            component: AdminUpdate
+        },
+        {
             path: '/adminorder',
             name: 'AdminOrder',
             component: AdminOrder
@@ -54,11 +60,7 @@ const router = createRouter({
             name: 'AdminList',
             component: AdminList
         },
-        {
-            path: '/adminmember',
-            name: 'AdminMember',
-            component: AdminMember
-        },
+
         {
             path: '/rental',
             name: 'Rental',
