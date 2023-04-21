@@ -89,7 +89,9 @@
         products: [],
       })
   
-      let  memNo = 4;
+      // let  memNo = 4;
+      const memNo = sessionStorage.getItem('memNo');
+        console.log("sessionStorage에서 가져온 값 : " + memNo);
            // memNo 임의 설정 1
       axios.get(`/mypage/myorder/${memNo}`).then(({data}) =>{
         state.myOrders = data;
