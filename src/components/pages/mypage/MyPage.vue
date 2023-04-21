@@ -11,19 +11,25 @@
                     <h1 class="hero-heading mb-0">정세은님,</h1>
                     <h1 class="hero-heading mb-0">안녕하세요!</h1>
                     <p class="mt-2 text-muted">내게 맞는 제품관리 서비스와 활동 내역을 확인하세요.</p>
-                    <h4 class="mt-5 mb-3 ml-3">사용중인 제품</h4>
-                    <div class="p-4 shadow ms-lg-4 rounded" style="background-color:#F2F4F5; min-height:250px; 
+                    <!-- <h4 class="mt-5 mb-3 ml-3">사용중인 제품{{ myProducts.value.length() }}개</h4> -->
+                    <div class="p-4 pt-5 shadow ms-lg-4 rounded" style="background-color:#F2F4F5; min-height:250px; 
                                                                     display: flex; align-items: center;">
                       <!-- 사용중인 제품이 없을 경우 -->
-                      <div style="text-align:center; margin:auto;" v-if="myProducts == null">
+                      <div style="text-align:center; margin:auto;" v-if="state.myProducts == null">
                         <i class="fas fa-exclamation-circle fa-4x mb-4" style="color:gray;"></i>
                         <h6>사용중인 제품이 없습니다.</h6>
                       </div>
                       <div class="row">
                         <!-- place item-->
+                        <div class="d-flex">
+                            <h6 class="mb-2 mr-2">
+                                제품 선택
+                            </h6>
+                            <h6 class="text-primary">사용중인 제품</h6>
+                        </div>
                             <div class="col-sm-6 col-lg-4 mb-30px hover-animate" v-for="(product, index) in state.myProducts" :key="index" data-marker-id="59c0c8e33b1527bfe2abaf92">
                                 <div class="card h-100 border-0 shadow">
-                                    <div class="card-img-top overflow-hidden gradient-overlay"> <img class="img-fluid" src="../../../../public/html/img/photo/photo-1484154218962-a197022b5858.jpg" alt="Modern, Well-Appointed Room"/><a class="tile-link" @click="moveToMyOrder(product.orderNo)"></a>
+                                    <div class="card-img-top overflow-hidden"> <img class="img-fluid" v-bind:src="product.imgUrl" alt="Modern, Well-Appointed Room"/><a class="tile-link" @click="moveToMyOrder(product.orderNo)"></a>
                                         <div class="card-img-overlay-bottom z-index-20">
                                         </div>
                                         <div class="card-img-overlay-top text-end"></div>
