@@ -3,30 +3,14 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-3 me-lg-auto" style="text-align:left">
-                <div class="mb-6 mb-lg-0">
+                <MypageSidebar></MypageSidebar>
+                <!-- <div class="mb-6 mb-lg-0">
                     <div class="card-body pl-lg-5 p-md-0">
                         <div class="list-group list-group-flush rounded-0 text-sm my-5">
                             <h6>제품관리</h6>
                             <a class="mypage-menu list-group list-group-item-action" href="knowlssedge-base-topic.html">
                                 내 정수기 관리하기
                             </a>
-                            <a class="mypage-menu list-group list-group-item-action" href="knowlssedge-base-topic.html">
-                                AS 신청 내역
-                            </a>
-                            <a class="mypage-menu list-group list-group-item-action" href="knowlssedge-base-topic.html">
-                                나의 포인트
-                            </a>
-                            <a class="mypage-menu list-group list-group-item-action" href="/useProduct">
-                                사용중인 제품(임시)
-                            </a>
-                        </div>
-                        <div class="list-group list-group-flush rounded-0 text-sm my-5">
-
-                                <h6>결제관리</h6>
-                            <a class="mypage-menu list-group list-group-item-action text-muted" href="knowlssedge-base-topic.html">
-                               납부 내역</a>
-                            <a class="mypage-menu list-group-list list-group-item-action text-muted" href="knowledge-base-topic.html">
-                               납부 방법 변경</a>
                         </div>
                         <div class="list-group list-group-flush rounded-0 text-sm my-5">
 
@@ -42,8 +26,6 @@
                             <a class="mypage-menu list-group list-group-item-action text-muted" href="knowlssedge-base-topic.html">
                                나의 리뷰</a>
                             <a class="mypage-menu list-group-list list-group-item-action text-muted" href="knowledge-base-topic.html">
-                               1:1 문의 내역</a>
-                            <a class="mypage-menu list-group-list list-group-item-action text-muted" href="knowledge-base-topic.html">
                                제품 문의 내역</a>
                         </div>
                         <div class="list-group list-group-flush rounded-0 text-sm my-5">
@@ -54,7 +36,7 @@
                         </div>
                         <br>
                     </div>
-                </div>
+                </div> -->
             </div>
             <div class="col-lg-9 ps-lg-5" style="text-align:left">
                 <h1 class="hero-heading mb-0">정세은님,</h1>
@@ -100,39 +82,36 @@
 import axios from "axios";
 import {reactive} from "vue";
 import { useRoute, useRouter } from 'vue-router';
+import MypageSidebar from "./MypageSidebar.vue";
 
 export default {
-
-   setup(){
-    const route = useRoute();
-    const router = useRouter();
-    const state = reactive({
-      myProducts: [],
-    });
-
-    const moveToMyOrder = (orderNo) => {
-      console.log("orderNo : " + orderNo);
-      router.push({
-        name: 'MyProduct',
-        params: {
-            orderNo: orderNo
-        }
-      });
-    };
-
-
-    // axios.get("/mypage/myproduct/" + route.params.memNo).then(({data}) =>{ /.
-    
-    let  memNo = 1;
-         // memNo 임의 설정 1
-    axios.get(`/mypage/myorder/myproducts/${memNo}`).then(({data}) =>{
-      state.myProducts = data;
-      console.log(" 사용중인 제품 데이터 : " + data);
-    }).catch((error) => {
-        console.error("API 요청 실패", error);
-    });
-    return {state, moveToMyOrder};
-  }
+    setup() {
+        const route = useRoute();
+        const router = useRouter();
+        const state = reactive({
+            myProducts: [],
+        });
+        const moveToMyOrder = (orderNo) => {
+            console.log("orderNo : " + orderNo);
+            router.push({
+                name: "MyProduct",
+                params: {
+                    orderNo: orderNo
+                }
+            });
+        };
+        // axios.get("/mypage/myproduct/" + route.params.memNo).then(({data}) =>{ /.
+        let memNo = 1;
+        // memNo 임의 설정 1
+        axios.get(`/mypage/myorder/myproducts/${memNo}`).then(({ data }) => {
+            state.myProducts = data;
+            console.log(" 사용중인 제품 데이터 : " + data);
+        }).catch((error) => {
+            console.error("API 요청 실패", error);
+        });
+        return { state, moveToMyOrder };
+    },
+    components: { MypageSidebar }
 }
 
 </script>
