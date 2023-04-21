@@ -125,6 +125,7 @@
               <h3 class="mb-3">정말 해지하시게요?</h3>
                 <h5>지금 해지하신다면,</h5>
                 <h5>위약금 {{myProduct.rentalFee}}원이 청구됩니다.</h5>
+                <div class="text-muted mt-5" style="font-size:7px;">※ 상기 위약금의 경우 {(월렌탈료 / 30일) X (의무사용일수 - 실제사용일수)} X 10%로 산정됩니다.</div>
               <div class="text-right" style="right:0">
               <button class="btn btn-primary mt-5" @click="continueCancel = true, showCancelModal = false">그래도 해지하기</button>
             </div>
