@@ -4,49 +4,22 @@
         <div class="row">
             <div class="col-lg-3 me-lg-auto" style="text-align:left">
                 <MypageSidebar></MypageSidebar>
-                <!-- <div class="mb-6 mb-lg-0">
-                    <div class="card-body pl-lg-5 p-md-0">
-                        <div class="list-group list-group-flush rounded-0 text-sm my-5">
-                            <h6>제품관리</h6>
-                            <a class="mypage-menu list-group list-group-item-action" href="knowlssedge-base-topic.html">
-                                내 정수기 관리하기
-                            </a>
-                        </div>
-                        <div class="list-group list-group-flush rounded-0 text-sm my-5">
-
-                                <h6>쇼핑관리</h6>
-                            <a class="mypage-menu list-group list-group-item-action text-muted" href="knowlssedge-base-topic.html">
-                               주문 내역</a>
-                            <a class="mypage-menu list-group-list list-group-item-action text-muted" href="knowledge-base-topic.html">
-                                주문취소/반납/해지 내역</a>
-                        </div>
-                        <div class="list-group list-group-flush rounded-0 text-sm my-5">
-
-                                <h6>활동관리</h6>
-                            <a class="mypage-menu list-group list-group-item-action text-muted" href="knowlssedge-base-topic.html">
-                               나의 리뷰</a>
-                            <a class="mypage-menu list-group-list list-group-item-action text-muted" href="knowledge-base-topic.html">
-                               제품 문의 내역</a>
-                        </div>
-                        <div class="list-group list-group-flush rounded-0 text-sm my-5">
-
-                                <h6>정보관리</h6>
-                            <a class="mypage-menu list-group list-group-item-action text-muted" href="knowlssedge-base-topic.html">
-                               회원 정보 관리</a>
-                        </div>
-                        <br>
-                    </div>
-                </div> -->
             </div>
-            <div class="col-lg-9 ps-lg-5" style="text-align:left">
-                <h1 class="hero-heading mb-0">정세은님,</h1>
-                <h1 class="hero-heading mb-0">안녕하세요!</h1>
-                <div class="text-block">
+            <div class="col-lg-9 ps-lg-5 mt-5">
+                <div class> 
+                  <div class="text-block" style="text-align:left">
+                    <h1 class="hero-heading mb-0">정세은님,</h1>
+                    <h1 class="hero-heading mb-0">안녕하세요!</h1>
                     <p class="mt-2 text-muted">내게 맞는 제품관리 서비스와 활동 내역을 확인하세요.</p>
-                </div>
-                <div class="text-block">
-                    <h4 class="mb-5">사용중인 제품</h4>
-                    <div class="row">
+                    <h4 class="mt-5 mb-3 ml-3">사용중인 제품</h4>
+                    <div class="p-4 shadow ms-lg-4 rounded" style="background-color:#F2F4F5; min-height:250px; 
+                                                                    display: flex; align-items: center;">
+                      <!-- 사용중인 제품이 없을 경우 -->
+                      <div style="text-align:center; margin:auto;" v-if="myProducts == null">
+                        <i class="fas fa-exclamation-circle fa-4x mb-4" style="color:gray;"></i>
+                        <h6>사용중인 제품이 없습니다.</h6>
+                      </div>
+                      <div class="row">
                         <!-- place item-->
                             <div class="col-sm-6 col-lg-4 mb-30px hover-animate" v-for="(product, index) in state.myProducts" :key="index" data-marker-id="59c0c8e33b1527bfe2abaf92">
                                 <div class="card h-100 border-0 shadow">
@@ -65,13 +38,10 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
                     </div>
-                    <div class="row mh-100" v-if="myProducts == null">
-                        값이 없습니다.
-                    </div>
+                  </div>
                 </div>
-
-                
             </div>
         </div>
     </div>
