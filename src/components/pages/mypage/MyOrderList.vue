@@ -134,7 +134,7 @@
         products: [],
       })
   
-      let  memNo = 1;
+      let  memNo = 4;
            // memNo 임의 설정 1
       axios.get(`/mypage/myorder/${memNo}`).then(({data}) =>{
         state.myOrders = data;
