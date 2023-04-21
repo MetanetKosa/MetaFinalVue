@@ -477,8 +477,10 @@
         myProduct.value.remainDay = remainDay;
       }
       
-      let memNo = 4; // memNo 임의 설정 1
+      // let memNo = 4; // memNo 임의 설정 1
       
+      const memNo = sessionStorage.getItem('memNo');
+        console.log("sessionStorage에서 가져온 값 : " + memNo);
       // productNum 뽑아오기..
       // let productNum = getMyProductDetail();
       // console.log("이거야!" + productNum);
@@ -495,9 +497,9 @@
           returnTrue: 'cancel.value.returnTrue',
           orderNo: orderNo,
           // memNo: 'cancel.value.memNo',
-          // productNo: 'cancel.value.productNo'
+          productNo: cancel.value.productNo,
           memNo: memNo,
-          productNo: 1
+          // productNo: 1
               }
             console.log(data);
             await axios.post('myorder/cancel', data).then(() =>{
