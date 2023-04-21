@@ -369,7 +369,7 @@
                   </div>
                 </div> -->
 
-                <div class="text-block d-flex align-items-start mb-4" :value="review.reviewNo" :key="review.reviewNo" v-for="review in reviews">
+                <div class="text-block d-flex row align-items-start mb-4" :value="review.reviewNo" :key="review.reviewNo" v-for="review in reviews">
                   <div class="row">
                     <div class="col-md-4 mb-3 mb-md-0"><img class="d-block avatar rounded-0" v-bind:src="review.reImageUrl" alt="avatar" style="width: 200px; height: 260px;"></div>
                     <div class="col-md-8">
