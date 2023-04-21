@@ -8,10 +8,22 @@ module.exports = defineConfig({
         target: 'http://localhost:8082',
         changeOrigin: true,
         logLevel: 'debug',
-        }
+        },
+
+        '/upload': {
+          target: 'http://localhost:8082',
+          changeOrigin: true,
+          logLevel: 'debug',
+         },
+
+         '/auth' :{
+         target: "http://localhost:8082",
+          changeOrigin: true,
+          logLevel: 'debug',
       }
-}
-})
+  }
+  }
+});
 
 // module.exports = defineConfig({
 //   configureWebpack: {

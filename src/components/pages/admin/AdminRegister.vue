@@ -168,7 +168,7 @@
                                                     {{image.name}}
                                                 </a>
                                                 <span class="mailbox-attachment-size clearfix mt-1">                                           
-                                                    <a href="#" class="btn btn-default btn-sm float-right" @click="deleteImage(index)">
+                                                    <a class="btn btn-default btn-sm float-right" @click="deleteImage(index)">
                                                         <i class="fas fa-times"></i>
                                                     </a>
                                                 </span>

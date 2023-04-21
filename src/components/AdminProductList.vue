@@ -1,9 +1,9 @@
 <template>
-        <div class="content-wrapper">
+        <div class="content-wrapper" style="min-height: 942px; margin-top:130px">
             <section class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
-                    <div class="container-fluid">
+                    <!-- <div class="container-fluid">
                     <form action="enhanced-results.html">
                         <div class="row">
                             <div class="col-md-10 offset-md-1">                               
@@ -20,7 +20,7 @@
                             </div>
                         </div>
                     </form>
-                     </div>
+                     </div> -->
                         <div class="col-sm-6">
                             <h1>제품 목록</h1>
                         </div>
@@ -41,8 +41,19 @@
             <div class="card">
                 <div class="card-header">
                 <h3 class="card-title"></h3>
-                    <div class="card-tools">
-                        <router-link class="btn btn-block btn-secondary" :to="{name: 'AdminRegister'}">제품등록</router-link>
+                    <div class="d-flex justify-content-between">
+                        <div class="card-tools">
+                            <div class="input-group input-group-sm" style="width: 150px;">
+                                <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                                <div class="input-group-append">
+                                <button type="submit" class="btn btn-default">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                                </div>
+                            </div>
+                        </div>
+                        <router-link class="btn btn-secondary" :to="{name: 'AdminRegister'}">제품등록</router-link>
                     </div>
                 </div>
                 <div class="card-body p-0">
@@ -75,11 +86,11 @@
                             </td>
                             <td>
                                 <li class="list-inline-item" >                          
-                                        <!-- <img :src="imgSrc(product.imgUrl)" /> -->
+                                       
                                        <div class="product-image-thumb"> 
                                          <!-- <img :src="image.url" /> -->
-                                         
-                                         <img :src='`http://localhost:8082/upload/display?fileName=${product.imgUrl}`' />
+                                         <img :src="imgSrc(product.imgUrl)" />
+                                         <!-- <img :src='`http://localhost:8082/upload/display?fileName=${product.imgUrl}`' /> -->
                                      </div>                                    
                                 </li>
                                 <a >
@@ -163,7 +174,7 @@ export default {
             images: [],
         });
 
-    
+
          const deleteProduct = (productNo) => {
             emit('delete-product', productNo);
          }
@@ -181,6 +192,13 @@ export default {
             })
         }
 
+        const imgSrc = (url) => {
+        if (url) {
+            let path = url.replaceAll("\\", "/");
+            return `http://localhost:8082/upload/display?fileName=${path}`;
+        }
+        return "";
+        };
         // const imgSrc =(product) => {
         //     let path = product.imageUrl.replaceAll("\\", "/");
         //     console.log(path);
@@ -214,6 +232,7 @@ export default {
         //         });
         //     });
       return{
+        imgSrc,
                 state,
                 deleteProduct,
                 updateProduct,

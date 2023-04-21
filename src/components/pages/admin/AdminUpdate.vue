@@ -34,13 +34,13 @@
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label" >제품명</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" :value="product.productName" @input="updateName($event.target.value)">
+                                        <input type="text" class="form-control" :value="product.productName" @input="updateProductProperty(product.productName,$event.target.value)">
                                     </div>  
                                 </div>
                                 <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">기능</label>
                                     <div class="col-sm-10">
-                                        <select class="form-control select2" v-model= "product.productFunction">
+                                        <select class="form-control select2" :value="product.productFunction"  @input="updateProductProperty(product.productFunction,$event.target.value)">
                                             <option>냉온정수기</option>
                                             <option>냉정수기</option>
                                             <option>냉온정수기+얼음</option>
@@ -52,7 +52,7 @@
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">월 렌탈료</label>
                                     <div class="col-sm-10">
-                                         <input type="text" class="form-control" v-model= "product.productRentalPrice">
+                                         <input type="text" class="form-control" :value="product.productRentalPrice" @input="updateProductProperty(product.productRentalPrice,$event.target.value)">
                                     </div>  
                                 </div>        
                             </div>
@@ -60,13 +60,13 @@
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">모델명</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control"  v-model= "product.productModel" >
+                                        <input type="text" class="form-control"  :value="product.productModel" @input="updateProductProperty(product.productModel,$event.target.value)" >
                                     </div>  
                                 </div>
                                 <div class="form-group row">
                                  <label class="col-sm-2 col-form-label">설치형태</label>
                                     <div class="col-sm-10">
-                                        <select class="form-control select2" v-model= "product.productType" style="width: 100%;">
+                                        <select class="form-control select2" :value="product.productType" @input="updateProductProperty(product.productType,$event.target.value)" style="width: 100%;">
                                             <option value="빌트인">빌트인</option>
                                             <option value="데스크탑">데스크탑</option>
                                             <option value="스탠드">스탠드</option>
@@ -76,7 +76,7 @@
                                  <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">구매가</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" v-model="product.productPrice">
+                                        <input type="text" class="form-control" :value="product.productPrice"  @input="updateProductProperty(product.productPrice,$event.target.value)">
                                     </div>
                                 </div>                            
                             </div>
@@ -89,13 +89,13 @@
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">제조사</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" v-model= "product.productCompany">
+                                                <input type="text" class="form-control"  :value="product.productCompany"  @input="updateProductProperty(product.productCompany,$event.target.value)">
                                             </div>  
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">정수방식</label>
                                             <div class="col-sm-10">
-                                                <select class="form-control select2" v-model= "product.productMethod">
+                                                <select class="form-control select2"  :value="product.productMethod" @change="updateProductProperty(product.productMethod,$event.target.value)">
                                                     <option value="직수형">직수형</option>
                                                     <option value="탱크형">탱크형</option>
                                                 </select>
@@ -104,7 +104,7 @@
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">무게</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" v-model= "product.productWeight">
+                                                <input type="text" class="form-control"  :value="product.productWeight" @input="updateProductProperty(product.productWeight,$event.target.value)">
                                             </div>  
                                         </div>             
                                     </div>
@@ -112,19 +112,19 @@
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">출시년월</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" v-model= "product.productRdate">
+                                                <input type="text" class="form-control" :value="product.productRdate" @input="updateProductProperty(product.productRdate,$event.target.value)">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">색상</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" v-model= "product.productColor">
+                                                <input type="text" class="form-control" :value="product.productColor" @input="updateProductProperty(product.productColor,$event.target.value)">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">크기</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" v-model= "product.productSize">
+                                                <input type="text" class="form-control"  :value="product.productSize" @input="updateProductProperty(product.productSize,$event.target.value)">
                                             </div>  
                                         </div>                                            
                                     </div>
@@ -196,13 +196,13 @@
                         </div>
                         <div class="card-body">                                
                             <div class="form-group">
-                                <textarea class="form-control" id="inputExperience" placeholder="상세정보 입력하세요" v-model= "product.productDetail"></textarea>
+                                <textarea class="form-control" id="inputExperience" placeholder="상세정보 입력하세요"  :value="product.productDetail" @input="updateProductProperty(product.productDetail,$event.target.value)"></textarea>
                             </div>
                         </div>
                     </div>
                     <div class="float-right">
                         <button class="btn btn-primary" :to="{name: 'AdminList'}">취소</button>
-                        <button :disabled = "!todoUpdated" class="btn btn-primary">수정</button>
+                        <button class="btn btn-primary">수정</button>
                     </div>
                     </form>
                     </div>
@@ -242,13 +242,23 @@ export default {
       const router = useRouter();
     const productNo =  route.params.id;
      const originalProduct = ref(null);
-      const product = ref(null);
+      const product = ref();
 
 
     const onSave = async() => {
         const res = await axios.patch(`/admin/product/${productNo}`,{
-          
-
+           productName: product.value.productName,
+            productFunction: product.value.productFunction,
+            productModel: product.value.productModel,
+            productType: product.value.productType,
+            productPrice: product.value.productPrice,
+            productRentalPrice: product.value.productRentalPrice,
+            productRdate: product.value.productRdate,
+            productSales : product.value.productSales,
+            productModel : product.value.productModel,
+            productRentalPrice: product.value.productRentalPrice,
+            productPrice: product.value.productPrice,
+            productColor: product.value.productColo
   
         });
 
@@ -256,11 +266,25 @@ export default {
         router.push({path: "/adminlist"});
     }
 
-     const updateName= (value) => {
-      // 원하는 값만 업데이트합니다.
-      product.productName = value ? value : product.productName;
-      console.log(product.productName);
-    }
+    //  const updateName= (value) => {
+    //   // 원하는 값만 업데이트
+    //   product.productName = value ? value : product.productName;
+    //   console.log(product.productName);
+    // }
+
+    // const updateFunction= (value) => {
+    //     product.productFunction = value ? value : product.productFunction;
+    //   console.log(product.productFunction);
+    // }
+
+    const updateProductProperty = (propertyName, value) => {
+        if (product.value.hasOwnProperty(propertyName)) {
+            product.value[propertyName] = value || product.value[propertyName];
+            console.log(product[propertyName]);
+        } else {
+            console.log(`Product does not have property ${propertyName}`);
+        }
+    };
 
 
     const todoUpdated = computed(() => {
@@ -270,7 +294,8 @@ export default {
     const getProduct =async() => {
             try{ 
                  const res =  await axios.get(`/admin/product/${productNo}`);
-                 product.value = {...res.data};
+                 
+                 product.value={...res.data}; 
                  originalProduct.value={...res.data};
                  console.log(product);
                  showUploadedImage(product.value.imgUrl);
@@ -412,7 +437,7 @@ export default {
       
         
     return {
-        updateName,
+        updateProductProperty,
         deleteImage,
         state,
         product,
