@@ -71,7 +71,7 @@ export default {
             });
         };
         // axios.get("/mypage/myproduct/" + route.params.memNo).then(({data}) =>{ /.
-        let memNo = 1;
+        let memNo = 4;
         // memNo 임의 설정 1
         axios.get(`/mypage/myorder/myproducts/${memNo}`).then(({ data }) => {
             state.myProducts = data;
