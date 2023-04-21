@@ -60,12 +60,13 @@
           <div class> 
             <div class="text-block">
               <h1>주문내역</h1>
-              <div class="p-4 shadow ms-lg-4 rounded" style="background-color:gainsboro;">
+              <div class="p-4 shadow ms-lg-4 rounded" style="background-color:#F2F4F5;">
                 <div class="d-flex p-3 row text-block" v-for="(order, index) in state.myOrders" :key="index" style="position: relative;">
                   <div class="col-2">
                     <img class="img-fluid" src="/../../../../html/img/photo/sample1.PNG">
                   </div>
-                  <div class="col-10" id="orderContent">
+                  <div class="col-1"></div>
+                  <div class="col-9" id="orderContent">
                     <h6>{{ order.orderNo }}</h6>
                     <h6>{{ order.productNo }}</h6>
                     <h6>주문상태{{ order.orderState }}</h6>
@@ -73,7 +74,7 @@
                     <div v-if="state.products[index]">
                       <h6>제품번호 : {{ state.products[index].productModel }}</h6>
                     </div>
-                    <h6>주문일자 : {{ order.orderDate }}</h6>
+                    <h6>주문일자 : {{ new Date(order.orderDate).toLocaleDateString() }}</h6>
                     <input type="hidden" v-model="productNo">
                     <div v-if="state.products[index]"> 
                       <h6>상품명: {{ state.products[index].productName }}</h6>
@@ -133,7 +134,7 @@
         products: [],
       })
   
-      let  memNo = 1;
+      let  memNo = 4;
            // memNo 임의 설정 1
       axios.get(`/mypage/myorder/${memNo}`).then(({data}) =>{
         state.myOrders = data;

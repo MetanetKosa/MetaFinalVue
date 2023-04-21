@@ -66,8 +66,8 @@
                   <img class="img-fluid" src="/../../../../html/img/photo/sample1.PNG">
                 </div>
                 <div class="col-10">
-                  <h6>품번</h6>
-                  <h6>품명</h6>
+                  <h6>{{ myProduct.productModel }}</h6>
+                  <h5>{{ myProduct.productName }}</h5>
                 </div>
               </div>
             </div>
@@ -76,7 +76,8 @@
               <button class="btn btn-primary mx-1 py-2"><i class="fas fa-wrench"></i>&nbsp;A/S 신청&nbsp;<i class="fas fa-angle-right"></i></button>
               <button class="btn btn-primary mx-1"><i class="fas fa-won-sign"></i>&nbsp;납부 방법 변경&nbsp;<i class="fas fa-angle-right"></i></button>
               <button class="btn btn-primary mx-1"><i class="fas fa-info"></i>&nbsp;제품 사용 신청서&nbsp;<i class="fas fa-angle-right"></i></button>
-              <button class="btn mx-1 text-muted">해지신청<i class="fas fa-angle-right"></i></button>
+              <button class="btn mx-1 text-muted" @click="showReturnModal = true">반납신청<i class="fas fa-angle-right"></i></button>
+              <button class="btn mx-1 text-muted" @click="showCancelModal = true">해지신청<i class="fas fa-angle-right"></i></button>
               <button class="btn mx-1 text-muted" @click="showModal = true">문의 남기기</button>
                   <div v-if="showModal" class="modal">
                     <div class="modal-content">
@@ -90,60 +91,144 @@
                         <p>모달 내용입니다.</p>
                     </div>
                   </div>
+
+                  <!-- 해지 신청 눌렀을 때 모달 -->
+                  <div v-if="showCancelModal" class="modal">
+                    <div class="cancel-modal-content">
+                        <span class="close" @click="showCancelModal = false">&times;</span>
+                        <h3>정말 해지하시게요?</h3>
+                        <h5>지금 해지하신다면 위약금</h5><h3>금액</h3><h5>원</h5>
+                        
+                        <p>모달 내용입니다.</p>
+                        <button class="btn btn-primary" @click="continueCancel = true, showCancelModal = false">그래도 해지하기</button>
+                    </div>
+                  </div>
+
+                  <!-- 그래도 해지하기 모달 -->
+                  <div v-if="continueCancel" class="continue-cancel-modal">
+                    <div class="continue-cancel-modal-content">
+                        <span class="close" @click="continueCancel = false">&times;</span>
+                        <h5>수거 일자 선택</h5>
+                        
+                        <p>모달 내용입니다.</p>
+                        <button class="btn btn-primary" @click="continueCancel = true">해지 신청</button>
+                    </div>
+                  </div>
             </div>
           </div>
-          <div class="text-block">
-            <h4>계약정보</h4>
-            <p class="subtitle text-sm text-primary mb-4 p-0 mt-0">렌탈요금제</p>
+
+          <!-- 렌탈인 경우 -->
+          <div v-if="myProduct.rentalTerm != null">
+            <div class="text-block pt-4">
+              <div class="d-flex"><h4 class="mb-0">계약정보</h4>
+              <p class="subtitle text-sm text-primary mb-0 pl-2 mt-1">렌탈요금제</p></div>
+              
+              <div class="row"> 
+                <div class="col-md-10"> </div>
+                <div class="col-md-2">
+                  <a class="list-unstyled text-muted" @click="showCancelModal = true" style="cursor: pointer;">해지신청&nbsp&nbsp&nbsp
+                    <i class="fas fa-angle-right"></i>
+                  </a>
+                </div>
+                <div class="col-md-1">
+                </div>
+                <div class="col-md-4">
+                  <ul class="list-unstyled text-muted">
+                    <li class="mb-2"><span class="text-sm">약정기간</span></li>
+                    <li class="mb-2"><span class="text-sm">의무사용기간</span></li>
+                    <li class="mb-2"><span class="text-sm">소유권 도래일</span></li>
+                    <li><span class="text-sm">설치주소</span></li>
+                    <li class="mb-2"><span class="text-sm">&nbsp;</span></li>
+                    <li class="mb-2"><span class="text-sm">설치처 연락처</span></li>
+                    <li class="mb-2"><span class="text-sm">설치일</span></li>
+                  </ul>
+                </div>
+                <div class="col-md-7">
+                  <ul class="list-unstyled text-muted">  
+                    <li class="mb-2"><span class="text-sm">{{ myProduct.deliveryDate }} ~ </span></li>
+                    <li class="mb-2"><span class="text-sm">{{ myProduct.deliveryDate }} ~ </span></li>
+                    <li class="mb-2"><span class="text-sm">{{ myProduct.deliveryDate }} + {{ myProduct.rentalTerm }}</span></li>
+                    <li><span class="text-sm">{{ myProduct.orderAddress}}&nbsp;{{ myProduct.orderAddDetail}}</span></li>
+                    <li class="mb-2"><span class="text-sm">{{ myProduct.orderAddNumber}}</span></li>
+                    <li class="mb-2"><span class="text-sm">{{ myProduct.orderPhone}}</span></li>
+                    <li class="mb-2"><span class="text-sm">{{ myProduct.deliveryDate}}</span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="text-block">
+              <h4 class="mb-4">납부정보</h4>
+              <div class="row"> 
+                <div class="col-md-1">
+                </div>
+                <div class="col-md-4">
+                  <ul class="list-unstyled text-muted">
+                    <li class="mb-2"><span class="text-sm">결제수단</span></li>
+                    <li class="mb-2"><span class="text-sm">청구일자</span></li>
+                    <li class="mb-2"><span class="text-sm">청구금액</span></li>
+                  </ul>
+                </div>
+                <div class="col-md-7">
+                  <ul class="list-unstyled text-muted">
+                    <li class="mb-2"><span class="text-sm">{{ myProduct.orderPay}}</span></li>
+                    <li class="mb-2"><span class="text-sm">매월 {{ myProduct.rentalPayDate}}일</span></li>
+                    <li class="mb-2"><span class="text-sm">{{ myProduct.rentalPrice}}원</span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <!-- 구매인 경우 -->
+        <div v-if="myProduct.rentalTerm == null">
+          <div class="text-block pt-4">
+            <div class="d-flex"><h4>구매정보</h4></div>
+            
             <div class="row"> 
               <div class="col-md-1">
               </div>
               <div class="col-md-4">
                 <ul class="list-unstyled text-muted">
-                  <li class="mb-2"><span class="text-sm">약정기간</span></li>
-                  <li class="mb-2"><span class="text-sm">의무사용기간</span></li>
-                  <li class="mb-2"><span class="text-sm">소유권 도래일</span></li>
-                  <li class="mb-2"><span class="text-sm">설치주소</span></li>
+                  <li class="mb-2"><span class="text-sm">구매 날짜</span></li>
+                  <li><span class="text-sm">설치주소</span></li>
+                  <li class="mb-2"><span class="text-sm">&nbsp;</span></li>
                   <li class="mb-2"><span class="text-sm">설치처 연락처</span></li>
                   <li class="mb-2"><span class="text-sm">설치일</span></li>
                 </ul>
               </div>
               <div class="col-md-7">
-                <ul class="list-unstyled text-muted">
-                  <li class="mb-2"><span class="text-sm">{{ myProduct.productName }}</span></li>
-                  <li class="mb-2"><span class="text-sm">2022.08.18 ~ 2028.08.18</span></li>
-                  <li class="mb-2"><span class="text-sm">2028.08.18</span></li>
-                  <li class="mb-2"><span class="text-sm">서울시 송파구</span></li>
-                  <li class="mb-2"><span class="text-sm">010-1234-1234</span></li>
-                  <li class="mb-2"><span class="text-sm">2022.08.18</span></li>
+                <ul class="list-unstyled text-muted">  
+                  <li class="mb-2"><span class="text-sm">{{ myProduct.deliveryDate }} ~ </span></li>
+                  <li><span class="text-sm">{{ myProduct.orderAddress}}&nbsp;{{ myProduct.orderAddDetail}}</span></li>
+                  <li class="mb-2"><span class="text-sm">{{ myProduct.orderAddNumber}}</span></li>
+                  <li class="mb-2"><span class="text-sm">{{ myProduct.orderPhone}}</span></li>
+                  <li class="mb-2"><span class="text-sm">{{ myProduct.deliveryDate}}</span></li>
                 </ul>
               </div>
             </div>
           </div>
           <div class="text-block">
-            <h4 class="mb-4">납부정보</h4>
+            <h4 class="mb-4">결제정보</h4>
             <div class="row"> 
               <div class="col-md-1">
               </div>
               <div class="col-md-4">
                 <ul class="list-unstyled text-muted">
                   <li class="mb-2"><span class="text-sm">결제수단</span></li>
-                  <li class="mb-2"><span class="text-sm">청구일자</span></li>
-                  <li class="mb-2"><span class="text-sm">청구금액</span></li>
+                  <li class="mb-2"><span class="text-sm">구매일자</span></li>
+                  <li class="mb-2"><span class="text-sm">구매금액</span></li>
                 </ul>
               </div>
               <div class="col-md-7">
                 <ul class="list-unstyled text-muted">
-                  <li class="mb-2"><span class="text-sm">2022.08.18 ~ 2028.08.18</span></li>
-                  <li class="mb-2"><span class="text-sm">2022.08.18 ~ 2028.08.18</span></li>
-                  <li class="mb-2"><span class="text-sm">2028.08.18</span></li>
-                  <li class="mb-2"><span class="text-sm">서울시 송파구</span></li>
-                  <li class="mb-2"><span class="text-sm">010-1234-1234</span></li>
-                  <li class="mb-2"><span class="text-sm">2022.08.18</span></li>
+                  <li class="mb-2"><span class="text-sm">{{ myProduct.orderPay}}</span></li>
+                  <li class="mb-2"><span class="text-sm">매월 {{ myProduct.orderDate}}일</span></li>
+                  <li class="mb-2"><span class="text-sm">{{ myProduct.Price}}원</span></li>
                 </ul>
               </div>
             </div>
           </div>
+        </div>
               </div>
             </div>
           </div>
@@ -154,43 +239,44 @@
 
 <script>
   import axios from "axios";
-  import {reactive} from "vue";
+  import { reactive } from "vue";
   import { useRoute, useRouter } from 'vue-router';
+  import {ref} from '@vue/reactivity';
 
   export default {
-  data() {
-    return {
-      showModal: false,
-    };
-  },
-
+    data() {
+      return {
+        showModal: false,
+        showCancelModal: false,
+        continueCancel: false,
+      };
+    },
   
-  setup() {
-    const route = useRoute();
-    const router = useRouter();
-    const orderNo = route.params.orderNo;
-    const state = reactive({
-      myProduct: {},
-    });
-    console.log("orderNo 확인 : " + state.orderNo);
-    
+    setup() {
+      const route = useRoute();
+      const router = useRouter();
+      const orderNo = route.params.orderNo;
+      const myProduct = ref(null);
+      console.log("orderNo 확인 : " + orderNo);
+      
+      const getMyProductDetail = async() => {
+        const res = await axios
+        .get(`/mypage/myorder/myproduct/${orderNo}`);
+        myProduct.value = {...res.data};
+        console.log(myProduct.value);
+      }
+      let memNo = 1; // memNo 임의 설정 1
     
 
-    let memNo = 1; // memNo 임의 설정 1
-    axios
-      .get(`/mypage/myorder/myproduct/${orderNo}`)
-      .then(({ data }) => {
-        state.myProduct = data;
-        console.log(" 데이터값 " + data);
-      })
-      .catch((error) => {
-        console.error("API 요청 실패", error);
-      });
-  },
-};
+        getMyProductDetail();
 
+        return{
+          myProduct,
+          getMyProductDetail,
+        }
+    }
+  };
 </script>
-
 <style>
    /* 모달 스타일링 */
    .modal {
@@ -210,7 +296,7 @@
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 60%;
+    width: 40%;
     position: relative; /* close 버튼과의 위치 조정을 위해 */
   }
   
@@ -229,5 +315,48 @@
     color: #000;
     text-decoration: none;
     cursor: pointer;
+  }
+
+  .cancel-modal {
+    display: block;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  /* 해지 신청 페이지 */
+  .cancel-modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%;
+    position: relative; /* close 버튼과의 위치 조정을 위해 */
+  }
+
+  .continue-cancel-modal {
+    display: block;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+
+  }
+  /* 그래도!해지 신청 페이지 */
+  .continue-cancel-modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 40%;
+    position: relative; /* close 버튼과의 위치 조정을 위해 */
   }
 </style>
