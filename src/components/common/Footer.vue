@@ -5,8 +5,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-4 mb-5 mb-lg-0">
-                        <div class="fw-bold text-uppercase text-dark mb-3">Directory</div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+                        <div class="fw-bold text-uppercase text-dark mb-3">MetaWater</div>
+                        <p>The Best nutrient is Clean Water. </p>
+                        <p>Find purifier will satisfy you</p>
                         <ul class="list-inline">
                             <li class="list-inline-item"><a class="text-muted text-primary-hover" href="#" target="_blank" title="twitter"><i class="fab fa-twitter"></i></a></li>
                             <li class="list-inline-item"><a class="text-muted text-primary-hover" href="#" target="_blank" title="facebook"><i class="fab fa-facebook"></i></a></li>
@@ -18,11 +19,11 @@
                     <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
                         <h6 class="text-uppercase text-dark mb-3">Rentals</h6>
                         <ul class="list-unstyled">
-                            <li><a class="text-muted" href="index.html">Rooms</a></li>
+                            <li><a class="text-muted" href="index.html">Purifiers</a></li>
                             <li><a class="text-muted" href="category-rooms.html">Map on top</a></li>
                             <li><a class="text-muted" href="category-2-rooms.html">Side map</a></li>
                             <li><a class="text-muted" href="category-3-rooms.html">No map</a></li>
-                            <li><a class="text-muted" href="detail-rooms.html">Room detail</a></li>
+                            <li><a class="text-muted" href="detail-rooms.html">Purifier detail</a></li>
                         </ul>
                     </div>
                     <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
@@ -51,15 +52,7 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-md-6 text-center text-md-start">
-                        <p class="text-sm mb-md-0">&copy; 2021, Your company.  All rights reserved.</p>
-                    </div>
-                    <div class="col-md-6">
-                        <ul class="list-inline mb-0 mt-2 mt-md-0 text-center text-md-end">
-                            <li class="list-inline-item"><img class="w-2rem" src="img/visa.svg" alt="..."></li>
-                            <li class="list-inline-item"><img class="w-2rem" src="img/mastercard.svg" alt="..."></li>
-                            <li class="list-inline-item"><img class="w-2rem" src="img/paypal.svg" alt="..."></li>
-                            <li class="list-inline-item"><img class="w-2rem" src="img/western-union.svg" alt="..."></li>
-                        </ul>
+                        <p class="text-sm mb-md-0">&copy;All rights reserved.  April 2023 Team Metamong with Metanet</p>
                     </div>
                 </div>
             </div>

@@ -34,7 +34,7 @@
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label" >제품명</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" v-model= "product.productName">
+                                        <input type="text" class="form-control" :value="product.productName" @input="updateName($event.target.value)">
                                     </div>  
                                 </div>
                                 <div class="form-group row">
@@ -247,11 +247,22 @@ export default {
 
     const onSave = async() => {
         const res = await axios.patch(`/admin/product/${productNo}`,{
+          
+
   
         });
+
     originalProduct.value = {...res.data};
         router.push({path: "/adminlist"});
     }
+
+     const updateName= (value) => {
+      // 원하는 값만 업데이트합니다.
+      product.productName = value ? value : product.productName;
+      console.log(product.productName);
+    }
+
+
     const todoUpdated = computed(() => {
             return !_.isEqual(product.value, originalProduct.value);
     });
@@ -386,8 +397,11 @@ export default {
          const deleteImage = (index) => {
             console.log(state.images[index].path);
             let fileName = state.images[index].path
-            fileName = fileName.replaceAll("\\", "/");
-            fileName = fileName.replaceAll("s_", "");
+            if (fileName) {
+                fileName = fileName.includes('s_') ? fileName.replaceAll("s_", "") : fileName;
+                fileName = fileName.includes('\\') ? fileName.replaceAll("\\", "/") : fileName;
+            }
+
             console.log(fileName);
             axios.post(`/upload/removeFile?fileName=${fileName}`)
             state.images.splice(index, 1);
@@ -398,6 +412,7 @@ export default {
       
         
     return {
+        updateName,
         deleteImage,
         state,
         product,

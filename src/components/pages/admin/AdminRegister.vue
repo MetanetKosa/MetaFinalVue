@@ -4,7 +4,7 @@
 
         <Sidebar />
 
-        <div class="content-wrapper">
+        <div class="content-wrapper" style="min-height: 1443px; margin-top:120px;">
             <section class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">

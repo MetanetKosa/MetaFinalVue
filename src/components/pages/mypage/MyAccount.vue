@@ -133,31 +133,36 @@ export default {
       myProducts: [],
     });
 
-    const moveToMyOrder = (orderNo) => {
-      console.log("orderNo : " + orderNo);
-      router.push({
-        name: 'MyProduct',
-        params: {
-            orderNo: orderNo
-        }
-      });
-    };
+    const confirm = () => {
+        const id = sessionStorage.getItem('id');
+        console.log("id값 확인 : "  + id);
+        
+    }
+    confirm();
+
+   
+    // const moveToMyOrder = (orderNo) => {
+    //   console.log("orderNo : " + orderNo);
+    //   router.push({
+    //     name: 'MyProduct',
+    //     params: {
+    //         orderNo: orderNo
+    //     }
+    //   });
+    // };
 
 
-    const memNo = sessionStorage.getItem("memNo");
-    console.log("memno confirm : " + memNo);
     // axios.get("/mypage/myproduct/" + route.params.memNo).then(({data}) =>{ /.
     
-    // let  memNo = 1;
-    
+    let  memNo = 1;
          // memNo 임의 설정 1
-    axios.get(`/mypage/myorder/myproducts/${memNo}`).then(({data}) =>{
-      state.myProducts = data;
-      console.log(" 사용중인 제품 데이터 : " + data);
-    }).catch((error) => {
-        console.error("API 요청 실패", error);
-    });
-    return {state, moveToMyOrder};
+    // axios.get(`/mypage/myorder/myproducts/${memNo}`).then(({data}) =>{
+    //   state.myProducts = data;
+    //   console.log(" 사용중인 제품 데이터 : " + data);
+    // }).catch((error) => {
+    //     console.error("API 요청 실패", error);
+    // });
+    return {state};
   }
 }
 

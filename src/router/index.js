@@ -1,13 +1,14 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHashHistory } from 'vue-router';
 import Home from '@/components/pages/Home.vue';
 import Login from '@/components/pages/member/Login.vue';
 import Signup from '@/components/pages/member/Signup.vue';
 import AdminRegister from '@/components/pages/admin/AdminRegister.vue';
 import AdminUpdate from '@/components/pages/admin/AdminUpdate.vue';
 import AdminList from '@/components/pages/admin/AdminList.vue';
-import Rental1 from '@/components/pages/order/Rental1.vue';
-import Rental2 from '@/components/pages/order/Rental2.vue';
-import Rental3 from '@/components/pages/order/Rental3.vue';
+import Rental from '@/components/pages/order/Rental.vue';
+import RentalResult from '@/components/pages/order/RentalResult.vue';
+import Order from '@/components/pages/order/Order.vue';
+import OrderResult from '@/components/pages/order/OrderResult.vue';
 import Detail from '@/components/pages/product/Detail.vue';
 import List from '@/components/pages/product/List.vue';
 import SearchList from '@/components/pages/product/SearchList.vue';
@@ -16,12 +17,14 @@ import MyProduct from '@/components/pages/mypage/MyProduct.vue';
 import MyPage from '@/components/pages/mypage/MyPage.vue';
 import MyOrderList from '@/components/pages/mypage/MyOrderList.vue';
 import MyPayList from '@/components/pages/mypage/MyPayList.vue';
+import MyAccount from '@/components/pages/mypage/MyAccount.vue';
 
 
 const router = createRouter({
-    history: createWebHistory(),
-    mode: history,
-    routes: [{
+    history: createWebHashHistory(),
+    // mode: history,
+    routes: [
+        {
             path: '/',
             name: 'Home',
             component: Home
@@ -58,22 +61,33 @@ const router = createRouter({
         },
 
         {
-            path: '/rental1',
-            name: 'Rental1',
-            component: Rental1
+            path: '/rental',
+            name: 'Rental',
+            component: Rental
         },
         {
-            path: '/rental2',
-            name: 'Rental2',
-            component: Rental2
+            path: '/retal/check',
+            name: 'RentalResult',
+            component: RentalResult
         },
         {
-            path: '/rental3',
-            name: 'Rental3',
-            component: Rental3
+            // path: '/order/productNo=:pno',
+            path: '/order',
+            name: 'Order',
+            component: Order
         },
         {
-            path: '/product/detail/:pno',
+            path: '/order/check',
+            name: 'OrderResult',
+            component: OrderResult
+        },
+        // {
+        //     path: '/product/detail/:pno',
+        //     name: 'ProductDetail',
+        //     component: Detail
+        // },
+        {
+            path: '/product/detail',
             name: 'ProductDetail',
             component: Detail
         },
@@ -82,15 +96,25 @@ const router = createRouter({
             name: 'ProductList',
             component: List
         },
+        // {
+        //     path: '/search/:searchKeyword',
+        //     name: 'SearchList',
+        //     component: SearchList
+        // },
         {
-            path: '/search/:searchKeyword',
+            path: '/search',
             name: 'SearchList',
             component: SearchList
         },
         {
-            path: '/myproduct',
+            path: '/myproduct/:orderNo',
             name: 'MyProduct',
             component: MyProduct
+        },
+        {
+            path: '/mypage/myaccount',
+            name: 'MyAccount',
+            component: MyAccount
         },
         {
             path: '/mypage/myproduct',
