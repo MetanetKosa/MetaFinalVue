@@ -31,16 +31,23 @@
                             <a class="nav-link" id="docsDropdownMenuLink" href="index.html" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">관리자&nbsp;<i class="fas fa-angle-down"></i></a>
                             <div class="dropdown-menu" aria-labelledby="homeDropdownMenuLink">
 
-                                <router-link class="dropdown-item" v-if="pageAdmin" :to="{name: 'AdminRegister'}">관리자 등록 페이지</router-link>
+                                <!-- <router-link class="dropdown-item" v-if="pageAdmin" :to="{name: 'AdminRegister'}">관리자 등록 페이지</router-link>
                                 <router-link class="dropdown-item" v-if="pageAdmin" :to="{name: 'AdminList'}">관리자 목록 페이지</router-link>
-                                <!-- <router-link class="dropdown-item" v-if="pageAdmin" :to="{name: 'AdminMember'}">관리자 회원관리 페이지</router-link> -->
-                                <!-- <router-link class="dropdown-item" :to="{name: 'ProductDetail'}">상품상세페이지</router-link> -->
                                 <router-link class="dropdown-item" v-if="!pageState" :to="{name: 'ProductList'}" >상품목록페이지</router-link>
-                                <!-- <router-link class="dropdown-item" v-if="pageState" :to="{name: 'MyProduct'}">마이페이지 첫화면</router-link> -->
                                 <router-link class="dropdown-item" v-if="pageState" :to="{name: 'MyPage'}">마이페이지</router-link>
                                 <router-link class="dropdown-item" v-if="pageState" :to="{name: 'MyOrderList'}">마이페이지</router-link>
                                 <router-link class="dropdown-item" v-if="pageState" :to="{name: 'MyAccount'}">회원정보관리</router-link>
-                                <router-link class="dropdown-item" v-if="pageAdmin" :to="{name: 'AdminOrder'}">주문관리 페이지</router-link>
+                                <router-link class="dropdown-item" v-if="pageAdmin" :to="{name: 'AdminOrder'}">주문관리 페이지</router-link> -->
+
+                                <router-link class="dropdown-item" :to="{name: 'AdminRegister'}">관리자 등록 페이지</router-link>
+                                <router-link class="dropdown-item" :to="{name: 'AdminList'}">관리자 목록 페이지</router-link>
+                                <router-link class="dropdown-item" :to="{name: 'ProductList'}" >상품목록페이지</router-link>
+                                <router-link class="dropdown-item" :to="{name: 'MyPage'}">마이페이지</router-link>
+                                <router-link class="dropdown-item" :to="{name: 'MyOrderList'}">마이페이지</router-link>
+                                <router-link class="dropdown-item" :to="{name: 'MyAccount'}">회원정보관리</router-link>
+                                <router-link class="dropdown-item" :to="{name: 'AdminOrder'}">주문관리 페이지</router-link>
+
+                                
                                 <!-- <router-link class="dropdown-item" :to="{name: 'Rental'}">렌탈 결제창</router-link> -->
                                 <!-- <router-link class="dropdown-item" :to="{name: 'RentalResult'}">렌탈 결과창</router-link> -->
                                 <!-- <router-link class="dropdown-item" :to="{name: 'Order'}">주문 결제창</router-link> -->
