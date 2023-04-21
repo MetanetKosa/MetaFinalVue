@@ -3,91 +3,45 @@
       <div class="container py-5">
         <div class="row">
               <div class="col-lg-3 me-lg-auto">
-                  <div class="card border-0 mb-6 mb-lg-0">
-                      <div class="card-body pl-lg-5 p-md-0">
-                          <div class="list-group list-group-flush rounded-0 text-sm my-5">
-                              <h6>제품관리</h6>
-                              <a class="mypage-menu list-group list-group-item-action" href="knowlssedge-base-topic.html">
-                                  내 정수기 관리하기
-                              </a>
-                              <a class="mypage-menu list-group list-group-item-action" href="knowlssedge-base-topic.html">
-                                  AS 신청 내역
-                              </a>
-                              <a class="mypage-menu list-group list-group-item-action" href="knowlssedge-base-topic.html">
-                                  나의 포인트
-                              </a>
-                              <a class="mypage-menu list-group list-group-item-action" href="/useProduct">
-                                  사용중인 제품(임시)
-                              </a>
-                          </div>
-                          <div class="list-group list-group-flush rounded-0 text-sm my-5">
-  
-                                  <h6>결제관리</h6>
-                              <a class="mypage-menu list-group list-group-item-action text-muted" href="knowlssedge-base-topic.html">
-                                 납부 내역</a>
-                              <a class="mypage-menu list-group-list list-group-item-action text-muted" href="knowledge-base-topic.html">
-                                 납부 방법 변경</a>
-                          </div>
-                          <div class="list-group list-group-flush rounded-0 text-sm my-5">
-  
-                                  <h6>쇼핑관리</h6>
-                              <a class="mypage-menu list-group list-group-item-action text-muted" href="knowlssedge-base-topic.html">
-                                 주문 내역</a>
-                              <a class="mypage-menu list-group-list list-group-item-action text-muted" href="knowledge-base-topic.html">
-                                  주문취소/반납/해지 내역</a>
-                          </div>
-                          <div class="list-group list-group-flush rounded-0 text-sm my-5">
-  
-                                  <h6>활동관리</h6>
-                              <a class="mypage-menu list-group list-group-item-action text-muted" href="knowlssedge-base-topic.html">
-                                 나의 리뷰</a>
-                              <a class="mypage-menu list-group-list list-group-item-action text-muted" href="knowledge-base-topic.html">
-                                 1:1 문의 내역</a>
-                              <a class="mypage-menu list-group-list list-group-item-action text-muted" href="knowledge-base-topic.html">
-                                 제품 문의 내역</a>
-                          </div>
-                          <div class="list-group list-group-flush rounded-0 text-sm my-5">
-  
-                                  <h6>정보관리</h6>
-                              <a class="mypage-menu list-group list-group-item-action text-muted" href="knowlssedge-base-topic.html">
-                                 회원 정보 관리</a>
-                          </div>
-                          <br>
-                      </div>
-                  </div>
+                <MypageSidebar></MypageSidebar>
               </div>
               <div class="col-lg-9 ps-lg-5 mt-5">
-          <div class> 
-            <div class="text-block">
-              <h1>주문내역</h1>
-              <div class="p-4 shadow ms-lg-4 rounded" style="background-color:#F2F4F5;">
-                <div class="d-flex p-3 row text-block" v-for="(order, index) in state.myOrders" :key="index" style="position: relative;">
-                  <div class="col-2">
-                    <img class="img-fluid" src="/../../../../html/img/photo/sample1.PNG">
-                  </div>
-                  <div class="col-1"></div>
-                  <div class="col-9" id="orderContent">
-                    <h6>{{ order.orderNo }}</h6>
-                    <h6>{{ order.productNo }}</h6>
-                    <h6>주문상태{{ order.orderState }}</h6>
-                    <h6>주문타입{{ order.orderType }}</h6>
-                    <div v-if="state.products[index]">
-                      <h6>제품번호 : {{ state.products[index].productModel }}</h6>
+                <div class> 
+                  <div class="text-block">
+                    <h1 class="mb-5">주문내역</h1>
+                    <div class="p-4 shadow ms-lg-4 rounded" style="background-color:#F2F4F5; min-height:450px; 
+                                                                    display: flex; align-items: center;">
+                      <div style="text-align:center; margin:auto;" v-if="myOrders == null">
+                        <i class="fas fa-exclamation-circle fa-4x mb-4" style="color:gray;"></i>
+                        <h6>주문 내역이 존재하지 않습니다.</h6>
+                      </div>
+                      <div class="d-flex p-3 row text-block" v-for="(order, index) in state.myOrders" :key="index" style="position: relative;">
+                        <div class="col-2">
+                          <img class="img-fluid" src="/../../../../html/img/photo/sample1.PNG">
+                        </div>
+                        <div class="col-1"></div>
+                        <div class="col-9" id="orderContent">
+                          <h6>{{ order.orderNo }}</h6>
+                          <h6>{{ order.productNo }}</h6>
+                          <h6>주문상태{{ order.orderState }}</h6>
+                          <h6>주문타입{{ order.orderType }}</h6>
+                          <div v-if="state.products[index]">
+                            <h6>제품번호 : {{ state.products[index].productModel }}</h6>
+                          </div>
+                          <h6>주문일자 : {{ new Date(order.orderDate).toLocaleDateString() }}</h6>
+                          <input type="hidden" v-model="productNo">
+                          <div v-if="state.products[index]"> 
+                            <h6>상품명: {{ state.products[index].productName }}</h6>
+                          <div v-if="order.orderState === '주문 완료'">
+                          <button class="btn btn-secondary btn-sm" id="orderCancelButton" @click="orderCancel(order.orderNo)">
+                            주문취소
+                          </button>
+                        </div>
+                        </div>
+                        </div>
+                      </div>
                     </div>
-                    <h6>주문일자 : {{ new Date(order.orderDate).toLocaleDateString() }}</h6>
-                    <input type="hidden" v-model="productNo">
-                    <div v-if="state.products[index]"> 
-                      <h6>상품명: {{ state.products[index].productName }}</h6>
-                    <div v-if="order.orderState === '주문 완료'">
-                    <button class="btn btn-secondary btn-sm" id="orderCancelButton" @click="orderCancel(order.orderNo)">
-                      주문취소
-                    </button>
                   </div>
-                  </div>
-                  </div>
-                </div>
-              </div>
-            </div>
                 </div>
               </div>
             </div>
@@ -106,6 +60,7 @@
   <script>
   import axios from "axios";
   import {reactive} from "vue";
+  import MypageSidebar from "./MypageSidebar.vue";
   
   export default {
     data(){
@@ -176,6 +131,8 @@
     // }
   },
   }
+,
+  components: { MypageSidebar }
 }
   </script>
   
