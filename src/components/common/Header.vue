@@ -33,7 +33,7 @@
 
                                 <router-link class="dropdown-item" v-if="pageAdmin" :to="{name: 'AdminRegister'}">관리자 등록 페이지</router-link>
                                 <router-link class="dropdown-item" v-if="pageAdmin" :to="{name: 'AdminList'}">관리자 목록 페이지</router-link>
-                                <!-- <router-link class="dropdown-item" v-if="pageAdmin" :to="{name: 'AdminMember'}">관리자 회원관리 페이지</router-link> -->
+                                <router-link class="dropdown-item" v-if="pageAdmin" :to="{name: 'AdminMember'}">관리자 회원관리 페이지</router-link>
                                 <!-- <router-link class="dropdown-item" :to="{name: 'ProductDetail'}">상품상세페이지</router-link> -->
                                 <router-link class="dropdown-item" v-if="!pageState" :to="{name: 'ProductList'}" >상품목록페이지</router-link>
                                 <!-- <router-link class="dropdown-item" v-if="pageState" :to="{name: 'MyProduct'}">마이페이지 첫화면</router-link> -->
@@ -153,7 +153,20 @@ export default {
                         console.log("결과확인 id "+ id);
                         axios.get(`/auth/members/${id}`).then((response) => {
                             console.log("받아온 데이터"+ (response.data.auth));
+                            
                             sessionStorage.setItem("memNo",response.data.memNo);
+                            sessionStorage.setItem("memId",response.data.memId);
+                            sessionStorage.setItem("memPw",response.data.memPw);
+                            sessionStorage.setItem("memName",response.data.memName);
+                            sessionStorage.setItem("memPhone",response.data.memPhone);
+                            sessionStorage.setItem("memEmail",response.data.memEmail);
+
+                            console.log("memNo 데이터 확인 : " ,sessionStorage.getItem("memNo"));
+                            console.log("memNo 데이터 확인 : " ,sessionStorage.getItem("memId"));
+                            console.log("memNo 데이터 확인 : " ,sessionStorage.getItem("memPw"));
+                            console.log("memNo 데이터 확인 : " ,sessionStorage.getItem("memName"));
+                            console.log("memNo 데이터 확인 : " ,sessionStorage.getItem("memPhone"));
+                            console.log("memNo 데이터 확인 : " ,sessionStorage.getItem("memEmail"));
                             const memNo = sessionStorage.getItem("memNo");
                             console.log("memNo 데이터 확인 : " ,memNo );
                             authState.value = Object.assign({}, response.data);
