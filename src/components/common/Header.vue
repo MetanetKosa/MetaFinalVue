@@ -54,8 +54,7 @@
                                 <!-- <router-link class="dropdown-item" :to="{name: 'OrderResult'}">주문 결과창</router-link> -->
                                 <!-- <router-link class="dropdown-item" :to="{name: 'ProductDetail'}">상품상세페이지</router-link> -->
                                 <!-- <router-link class="dropdown-item" :to="{name: 'ProductList'}">상품목록페이지</router-link> -->
-                                <!-- <router-link class="dropdown-item" :to="{name: 'MyProduct'}">마이페이지 첫화면</router-link> -->
-                                <router-link class="dropdown-item" :to="{name: 'MyProduct'}">마이페이지-나의 정수기 상세정보</router-link>
+                                <!-- <router-link class="dropdown-item" :to="{name: 'MyProduct'}">마이페이지 나의 정수기 상세정보</router-link> -->
                                 <router-link class="dropdown-item" :to="{name: 'MyOrderList'}">내 주문내역</router-link>
                             </div>
                         </li>
