@@ -23,8 +23,7 @@ import MyAccount from '@/components/pages/mypage/MyAccount.vue';
 const router = createRouter({
     history: createWebHashHistory(),
     // mode: history,
-    routes: [
-        {
+    routes: [{
             path: '/',
             name: 'Home',
             component: Home
@@ -107,7 +106,7 @@ const router = createRouter({
             component: SearchList
         },
         {
-            path: '/myproduct/:orderNo',
+            path: '/mypage/myproduct/:orderNo',
             name: 'MyProduct',
             component: MyProduct
         },

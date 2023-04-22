@@ -3,72 +3,33 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-3 me-lg-auto" style="text-align:left">
-                <div class="mb-6 mb-lg-0">
-                    <div class="card-body pl-lg-5 p-md-0">
-                        <div class="list-group list-group-flush rounded-0 text-sm my-5">
-                            <h6>제품관리</h6>
-                            <a class="mypage-menu list-group list-group-item-action" href="knowlssedge-base-topic.html">
-                                내 정수기 관리하기
-                            </a>
-                            <a class="mypage-menu list-group list-group-item-action" href="knowlssedge-base-topic.html">
-                                AS 신청 내역
-                            </a>
-                            <a class="mypage-menu list-group list-group-item-action" href="knowlssedge-base-topic.html">
-                                나의 포인트
-                            </a>
-                            <a class="mypage-menu list-group list-group-item-action" href="/useProduct">
-                                사용중인 제품(임시)
-                            </a>
-                        </div>
-                        <div class="list-group list-group-flush rounded-0 text-sm my-5">
-
-                                <h6>결제관리</h6>
-                            <a class="mypage-menu list-group list-group-item-action text-muted" href="knowlssedge-base-topic.html">
-                               납부 내역</a>
-                            <a class="mypage-menu list-group-list list-group-item-action text-muted" href="knowledge-base-topic.html">
-                               납부 방법 변경</a>
-                        </div>
-                        <div class="list-group list-group-flush rounded-0 text-sm my-5">
-
-                                <h6>쇼핑관리</h6>
-                            <a class="mypage-menu list-group list-group-item-action text-muted" href="knowlssedge-base-topic.html">
-                               주문 내역</a>
-                            <a class="mypage-menu list-group-list list-group-item-action text-muted" href="knowledge-base-topic.html">
-                                주문취소/반납/해지 내역</a>
-                        </div>
-                        <div class="list-group list-group-flush rounded-0 text-sm my-5">
-
-                                <h6>활동관리</h6>
-                            <a class="mypage-menu list-group list-group-item-action text-muted" href="knowlssedge-base-topic.html">
-                               나의 리뷰</a>
-                            <a class="mypage-menu list-group-list list-group-item-action text-muted" href="knowledge-base-topic.html">
-                               1:1 문의 내역</a>
-                            <a class="mypage-menu list-group-list list-group-item-action text-muted" href="knowledge-base-topic.html">
-                               제품 문의 내역</a>
-                        </div>
-                        <div class="list-group list-group-flush rounded-0 text-sm my-5">
-
-                                <h6>정보관리</h6>
-                            <a class="mypage-menu list-group list-group-item-action text-muted" href="knowlssedge-base-topic.html">
-                               회원 정보 관리</a>
-                        </div>
-                        <br>
-                    </div>
-                </div>
+                <MypageSidebar></MypageSidebar>
             </div>
-            <div class="col-lg-9 ps-lg-5" style="text-align:left">
-                <h1 class="hero-heading mb-0">정세은님,</h1>
-                <h1 class="hero-heading mb-0">안녕하세요!</h1>
-                <div class="text-block">
+            <div class="col-lg-9 ps-lg-5 mt-5">
+                <div class> 
+                  <div class="text-block" style="text-align:left">
+                    <h1 class="hero-heading mb-0">정세은님,</h1>
+                    <h1 class="hero-heading mb-0">안녕하세요!</h1>
                     <p class="mt-2 text-muted">내게 맞는 제품관리 서비스와 활동 내역을 확인하세요.</p>
-                </div>
-                <div class="text-block">
-                    <h4 class="mb-5">사용중인 제품</h4>
-                    <div class="row">
+                    <!-- <h4 class="mt-5 mb-3 ml-3">사용중인 제품{{ myProducts.value.length() }}개</h4> -->
+                    <div class="p-4 pt-5 shadow ms-lg-4 rounded" style="background-color:#F2F4F5; min-height:250px; 
+                                                                    display: flex; align-items: center;">
+                      <!-- 사용중인 제품이 없을 경우 -->
+                      <div style="text-align:center; margin:auto;" v-if="state.myProducts == null">
+                        <i class="fas fa-exclamation-circle fa-4x mb-4" style="color:gray;"></i>
+                        <h6>사용중인 제품이 없습니다.</h6>
+                      </div>
+                      <div class="row">
                         <!-- place item-->
+                        <div class="d-flex">
+                            <h6 class="mb-2 mr-2">
+                                제품 선택
+                            </h6>
+                            <h6 class="text-primary">사용중인 제품</h6>
+                        </div>
                             <div class="col-sm-6 col-lg-4 mb-30px hover-animate" v-for="(product, index) in state.myProducts" :key="index" data-marker-id="59c0c8e33b1527bfe2abaf92">
                                 <div class="card h-100 border-0 shadow">
-                                    <div class="card-img-top overflow-hidden gradient-overlay"> <img class="img-fluid" src="../../../../public/html/img/photo/photo-1484154218962-a197022b5858.jpg" alt="Modern, Well-Appointed Room"/><a class="tile-link" @click="moveToMyOrder(product.orderNo)"></a>
+                                    <div class="card-img-top overflow-hidden"> <img class="img-fluid" v-bind:src="product.imgUrl" alt="Modern, Well-Appointed Room"/><a class="tile-link" @click="moveToMyOrder(product.orderNo)"></a>
                                         <div class="card-img-overlay-bottom z-index-20">
                                         </div>
                                         <div class="card-img-overlay-top text-end"></div>
@@ -83,36 +44,10 @@
                                     </div>
                                 </div>
                             </div>
-                    </div>
-                </div>
-
-                <div class="text-block">
-                    <h4 class="mb-5">고객지원 서비스</h4>
-                    <div class="row">
-                        <!-- place item-->
-                        <div class="col-sm-6 col-lg-4 mb-30px hover-animate" data-marker-id="59c0c8e33b1527bfe2abaf92">
-                            <div class="card h-100 border-0 shadow">
-                                <div class="card-img-top overflow-hidden gradient-overlay"> <img class="img-fluid" src="../../../../public/html/img/photo/photo-1484154218962-a197022b5858.jpg" alt="Modern, Well-Appointed Room"/><a class="tile-link" href="detail-rooms.html"></a>
-                                    <div class="card-img-overlay-bottom z-index-20">
-                                    </div>
-                                    <div class="card-img-overlay-top text-end"></div>
-                                </div>
-                                <div class="card-body d-flex align-items-center">
-                                    <div class="w-100">
-                                        <h6 class="card-title"><a class="text-decoration-none text-dark" href="detail-rooms.html">아이콘 정수기 2</a></h6>
-                                        <div class="d-flex card-subtitle mb-3">
-                                            <p class="flex-grow-1 mb-0 text-muted text-sm">Private room</p>
-                                            <p class="flex-shrink-1 mb-0 card-stars text-xs text-end"><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i>
-                                            </p>
-                                        </div>
-                                        <p class="card-text text-muted"><span class="h4 text-primary">$80</span> per night</p>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
+                  </div>
                 </div>
-                
             </div>
         </div>
     </div>
@@ -123,42 +58,38 @@
 import axios from "axios";
 import {reactive} from "vue";
 import { useRoute, useRouter } from 'vue-router';
+import MypageSidebar from "./MypageSidebar.vue";
 
 export default {
-
-   setup(){
-    const route = useRoute();
-    const router = useRouter();
-    const state = reactive({
-      myProducts: [],
-    });
-
-    const moveToMyOrder = (orderNo) => {
-      console.log("orderNo : " + orderNo);
-      router.push({
-        name: 'MyProduct',
-        params: {
-            orderNo: orderNo
-        }
-      });
-    };
-
-
-    const memNo = sessionStorage.getItem("memNo");
-    console.log("memno confirm : " + memNo);
-    // axios.get("/mypage/myproduct/" + route.params.memNo).then(({data}) =>{ /.
-    
-    // let  memNo = 1;
-    
-         // memNo 임의 설정 1
-    axios.get(`/mypage/myorder/myproducts/${memNo}`).then(({data}) =>{
-      state.myProducts = data;
-      console.log(" 사용중인 제품 데이터 : " + data);
-    }).catch((error) => {
-        console.error("API 요청 실패", error);
-    });
-    return {state, moveToMyOrder};
-  }
+    setup() {
+        const route = useRoute();
+        const router = useRouter();
+        const state = reactive({
+            myProducts: [],
+        });
+        const moveToMyOrder = (orderNo) => {
+            console.log("orderNo : " + orderNo);
+            router.push({
+                name: "MyProduct",
+                params: {
+                    orderNo: orderNo
+                }
+            });
+        };
+        // axios.get("/mypage/myproduct/" + route.params.memNo).then(({data}) =>{ /.
+        // let memNo = 4;
+        const memNo = sessionStorage.getItem('memNo');
+        console.log("sessionStorage에서 가져온 값 : " + memNo);
+        // memNo 임의 설정 1
+        axios.get(`/mypage/myorder/myproducts/${memNo}`).then(({ data }) => {
+            state.myProducts = data;
+            console.log(" 사용중인 제품 데이터 : " + data);
+        }).catch((error) => {
+            console.error("API 요청 실패", error);
+        });
+        return { state, moveToMyOrder };
+    },
+    components: { MypageSidebar }
 }
 
 </script>
