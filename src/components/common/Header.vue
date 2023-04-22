@@ -95,6 +95,7 @@
                                 <router-link class="dropdown-item" v-if="pageState" :to="{name: 'MyOrderList'}">마이페이지-주문내역</router-link>
                                 <router-link class="dropdown-item" v-if="pageState" :to="{name: 'MyOrderList'}">내 주문내역</router-link>
                                 <router-link class="dropdown-item" v-if="pageState" :to="{name: ''}" @click.prevent="logout()">로그아웃</router-link>
+                                <router-link class="dropdown-item" v-if="pageState" :to="{name: 'MyAccount'}">내 주문내역</router-link>
                             </div>
                         </li>
                         <li class="nav-item dropdown" v-if="pageAdmin">
