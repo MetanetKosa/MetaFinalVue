@@ -488,21 +488,22 @@
       const saveCancel = async() => {
         try {
           const data = {
-          returnDate: cancel.value.returnDate,
-          returnPrice: cancel.value.returnPrice,
-          // returnTime: 'cancel.value.returnTime',
-          returnTime: '오후 01 ~ 02시',
+            // returnTime: 'cancel.value.returnTime',
+            returnTime: '오후 01 ~ 02시',
+            returnDate: cancel.value.returnDate,
+          // returnPrice: 11233,
+          // returnPrice: cancel.value.returnPrice,
           // returnMethod: 'cancel.value.returnMethod',
           returnMethod: '카드',
-          returnTrue: 'cancel.value.returnTrue',
+          // returnTrue: 'cancel.value.returnTrue',
           orderNo: orderNo,
           // memNo: 'cancel.value.memNo',
-          productNo: cancel.value.productNo,
           memNo: memNo,
+          productNo: myProduct.value.productNo,
           // productNo: 1
               }
             console.log(data);
-            await axios.post('myorder/cancel', data).then(() =>{
+            await axios.post('/mypage/myproduct/myorder/cancel', data).then(() =>{
               Swal.fire({
                 icon: 'success',
                 title: '수거 신청을 완료하였습니다!'
@@ -515,7 +516,14 @@
         }
 
           try{
-            await axios.patch(`myorder/cancel/${orderNo}`);
+            await axios.patch(`/mypage/myproduct/myorder/cancel/${orderNo}`).then(()=>{
+              Swal.fire({
+                icon: 'success',
+                title: '수거 신청을 완료하였습니다!'
+              }).then(() => {
+                window.location.href = '/#/mypage/myproduct'
+              })
+            });
             console.log("성공했습니다!")
           }catch(error){
             console.log(error);
