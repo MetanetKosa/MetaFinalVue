@@ -42,10 +42,6 @@
                                 <router-link class="dropdown-item" :to="{name: 'AdminRegister'}">관리자 등록 페이지</router-link>
                                 <router-link class="dropdown-item" :to="{name: 'AdminList'}">관리자 목록 페이지</router-link>
                                 <router-link class="dropdown-item" :to="{name: 'ProductList'}" >상품목록페이지</router-link>
-                                <router-link class="dropdown-item" :to="{name: 'MyPage'}">첫화면. 나의 정수기 관리하기</router-link>
-                                <router-link class="dropdown-item" :to="{name: 'MyOrderList'}">마이페이지-주문내역</router-link>
-                                <router-link class="dropdown-item" :to="{name: 'MyCancelList'}">마이페이지-해지내역</router-link>
-                                <router-link class="dropdown-item" :to="{name: 'MyAccount'}">회원정보관리</router-link>
                                 <router-link class="dropdown-item" :to="{name: 'AdminOrder'}">주문관리 페이지</router-link>
 
                                 
@@ -89,14 +85,9 @@
                         <li class="nav-item dropdown" v-if="pageState">
                             <a class="nav-link dropdown" href="index.html" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="personIcon"><i class="fas fa-user-alt fa-lg"></i></a>
                             <div class="dropdown-menu" aria-labelledby="homeDropdownMenuLink">
-                                <a class="dropdown-item" v-if="!pageState" href="/mypage">사용중인 제품</a>
-                                <a class="dropdown-item" v-if="!pageState" href="/../public/index-2.html">주문내역</a>
                                 <router-link class="dropdown-item" v-if="!pageState" :to="{name: 'Login'}" >로그인</router-link>
-                                <router-link class="dropdown-item" v-if="pageState" :to="{name: 'MyPage'}">첫화면. 나의 정수기 관리하기</router-link>
-                                <router-link class="dropdown-item" v-if="pageState" :to="{name: 'MyOrderList'}">마이페이지-주문내역</router-link>
-                                <router-link class="dropdown-item" v-if="pageState" :to="{name: 'MyOrderList'}">내 주문내역</router-link>
+                                <router-link class="dropdown-item" v-if="pageState" :to="{name: 'MyPage'}">마이페이지</router-link>
                                 <router-link class="dropdown-item" v-if="pageState" :to="{name: ''}" @click.prevent="logout()">로그아웃</router-link>
-                                <router-link class="dropdown-item" v-if="pageState" :to="{name: 'MyAccount'}">내 주문내역</router-link>
                             </div>
                         </li>
                         <li class="nav-item dropdown" v-if="pageAdmin">
@@ -105,7 +96,7 @@
                                 <router-link class="dropdown-item" v-if="pageAdmin" :to="{name: ''}" @click.prevent="logout()">로그아웃</router-link>
                             </div>
                         </li>
-                        <li class="nav-item"><a class="nav-link dropdown" href="/" id="mybell"><i class="fas fa-bell fa-lg"></i></a></li>
+                        <!-- <li class="nav-item"><a class="nav-link dropdown" href="/" id="mybell"><i class="fas fa-bell fa-lg"></i></a></li> -->
                         <li class="nav-item mt-3 mt-lg-0 ms-lg-3 d-lg-none d-xl-inline-block" id="headerEmpty"></li>
                         <!-- <input type="hidden" v-model="auth"/> -->
                     </ul>
