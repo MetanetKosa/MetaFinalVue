@@ -76,7 +76,7 @@ export default {
                 }
             });
         };
-        // axios.get("/mypage/myproduct/" + route.params.memNo).then(({data}) =>{ /.
+        
         // let memNo = 4;
         const memNo = sessionStorage.getItem('memNo');
         console.log("sessionStorage에서 가져온 값 : " + memNo);

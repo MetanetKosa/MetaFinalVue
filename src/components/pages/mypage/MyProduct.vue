@@ -11,37 +11,16 @@
         <div class> 
           <div class="text-block">
             <h1>사용 중인 제품</h1>
-            <div class="p-4 shadow ms-lg-4 rounded">
+            <div class="p-4 shadow ms-lg-4 rounded" style="background-color:#F2F4F5;">
               <div class="d-flex p-3 row">
                 <div class="col-2">
-                  <img class="img-fluid" src="/../../../../html/img/photo/sample1.PNG">
+                  <img class="img-fluid" v-bind:src="myProduct.imgUrl">
                 </div>
                 <div class="col-10">
                   <h6>{{ myProduct.productModel }}</h6>
                   <h5>{{ myProduct.productName }}</h5>
                 </div>
               </div>
-            </div>
-            <div class="py-4 ms-lg-4 rounded d-flex">
-              &nbsp;&nbsp;&nbsp;
-              <button class="btn btn-primary mx-1 py-2"><i class="fas fa-wrench"></i>&nbsp;A/S 신청&nbsp;<i class="fas fa-angle-right"></i></button>
-              <button class="btn btn-primary mx-1"><i class="fas fa-won-sign"></i>&nbsp;납부 방법 변경&nbsp;<i class="fas fa-angle-right"></i></button>
-              <button class="btn btn-primary mx-1"><i class="fas fa-info"></i>&nbsp;제품 사용 신청서&nbsp;<i class="fas fa-angle-right"></i></button>
-              <button class="btn mx-1 text-muted" @click="showReturnModal = true">반납신청<i class="fas fa-angle-right"></i></button>
-              <button class="btn mx-1 text-muted" @click="showCancelModal = true">해지신청<i class="fas fa-angle-right"></i></button>
-              <button class="btn mx-1 text-muted" @click="showModal = true">문의 남기기</button>
-                  <div v-if="showModal" class="modal">
-                    <div class="modal-content">
-                        <span class="close" @click="showModal = false">&times;</span>
-                        <h3>별점</h3>
-                        <h3>사용후기</h3>
-                        <textarea></textarea>
-                        <h6>리뷰 작성 시 유의사항
-타인에게 불쾌감을 유발할 수 있는 언어 및 이미지가 포함된 리뷰는 사용자의 신고 또는 관리자 권한에 의해 노출이 제한될 수 있습니다.
-부적절한 내용 등으로 작성자에 대한 신고가 반복 접수되는 경우는 서비스 이용이 제한될 수 있습니다.</h6>
-                        <p>모달 내용입니다.</p>
-                    </div>
-                  </div>
             </div>
 
             <!-- rentalTerm이 3년이고, 계약 만료일 까지 7일이 남았을 경우 -->
@@ -61,12 +40,12 @@
               <div class="row"> 
                 <div class="col-md-10"> </div>
                 <div class="col-md-2">
-                  <a class="list-unstyled text-muted" @click="showCancelModal = true" style="cursor: pointer;">해지신청&nbsp&nbsp&nbsp
+                  <a class="list-unstyled text-muted" @click="showCancelModal = true" style="cursor: pointer;" v-if="myProduct.rentalTerm == 6 || myProduct.remainDay > 7">해지신청&nbsp&nbsp&nbsp
                     <i class="fas fa-angle-right"></i>
                   </a>
-                  <a class="list-unstyled text-muted" @click="showReturnModal = true" style="cursor: pointer;" v-if="myProduct.rentalTerm == 3 && myProduct.remainDay <= 7">
+                  <!-- <a class="list-unstyled text-muted" @click="showReturnModal = true" style="cursor: pointer;" v-if="myProduct.rentalTerm == 3 && myProduct.remainDay <= 7">
                     반납신청&nbsp&nbsp&nbsp<i class="fas fa-angle-right"></i>
-                  </a>
+                  </a> -->
                 </div>
                 <div class="col-md-1">
                 </div>
@@ -109,7 +88,7 @@
                 <div class="col-md-7">
                   <ul class="list-unstyled text-muted">
                     <li class="mb-2"><span class="text-sm">{{ myProduct.orderPay}}</span></li>
-                    <li class="mb-2"><span class="text-sm">매월 {{ myProduct.rentalPayDate}}일</span></li>
+                    <li class="mb-2"><span class="text-sm">매월 {{ myProduct.rentalPayDate}}</span></li>
                     <li class="mb-2"><span class="text-sm">{{ myProduct.rentalPrice}}원</span></li>
                   </ul>
                 </div>
@@ -119,22 +98,34 @@
 
          <!-- 해지 신청 눌렀을 때 모달 -->
         <div v-if="showCancelModal" class="modal">
-          <div class="cancel-modal-content">
+          <div class="cancel-modal-content card border-primary mb-3">
               <span class="close" @click="showCancelModal = false">&times;</span>
-              <h3>정말 해지하시게요?</h3>
-              <h5>지금 해지하신다면 위약금</h5><h3>{{myProduct.rentalFee}}</h3><h5>원</h5>
-              
-              <p>모달 내용입니다.</p>
-              <button class="btn btn-primary" @click="continueCancel = true, showCancelModal = false">그래도 해지하기</button>
+              <div class="card-header">
+                <h3 class="card-title mr-3 text-danger text-bold">잠깐!</h3>
+                <h3 class="card-title text-bold">정말 해지하시게요?</h3>
+              </div>
+              <div class="card-body row align-items-center">
+                <h5 class="card-title">지금 해지하신다면,</h5>
+                <div>
+                <h5 class="card-title">위약금</h5><h5 class="card-title text-danger">{{myProduct.rentalFee}}원</h5><h5 class="card-title">이 청구됩니다.</h5>
+                <div class="text-muted mt-5" style="font-size:7px;">※ 상기 위약금의 경우 {(월렌탈료 / 30일) X (의무사용일수 - 실제사용일수)} X 10%로 산정됩니다.</div>
+              </div>
+              </div>
+              <div class="text-right" style="right:0">
+              <button class="btn btn-primary btn-sm mt-3" @click="continueCancel = true, showCancelModal = false">그래도 해지하기</button>
+            </div>
           </div>
         </div>
 
         <!-- 그래도 해지하기 모달. 해지 정보 입력-->
         <div v-if="continueCancel" class="continue-cancel-modal">
           <form @submit.prevent="saveCancel" novalidate>
-          <div class="continue-cancel-modal-content">
+          <div class="continue-cancel-modal-content card">
               <span class="close" @click="continueCancel = false">&times;</span>
-              <h5>수거 일자 선택</h5>
+              <div class="card-header pl-0">
+                <h2 class="card-title text-bold">정수기 반납을 위한 수거지 정보를 입력해주세요</h2>
+              </div>
+              <h6 class="card-title text-bold text-muted mt-3">방문 일자 선택</h6>
               <!-- DatePicker -->
               <div class="container">
                 <div class="my-2" style="width: 100%">
@@ -142,7 +133,7 @@
                     <Datepicker
                       v-model="cancel.returnDate"
                       :ref="inputs.dp1"
-                      class="datepicker"
+                      class="datepicker mb-3"
                       :locale="locale"
                       :weekStartsOn="0"
                       :inputFormat="inputFormat"
@@ -154,9 +145,11 @@
                   </div>
                 </div>
               </div>
-              <div class="mb-4 col-md-6">
-                <label class="form-label" for="card-name">방문 시간 선택</label>
-                <!-- <select class="selectpicker form-control mb-3" v-model="cancel.returnTime" name="deliveryDate" id="deliveryDate" data-style="btn-selectpicker">
+                <div>
+                <h6 class="card-title text-bold text-muted">방문 시간 선택</h6>
+              </div>
+                <div>
+                <select class="form-control mb-3 ml-2" v-model="cancel.returnTime" name="deliveryDate" id="deliveryDate" data-style="btn-selectpicker" style="width:150px;">
                   <option>선택</option>
                   <option>오전 10 ~ 11시</option>
                   <option>오전 11 ~ 12시</option>
@@ -166,20 +159,19 @@
                   <option>오후 04 ~ 05시</option>
                   <option>오후 05 ~ 06시</option>
                   <option>오후 06 ~ 07시</option>
-                </select> -->
+                </select>
               </div>
               
-              <h5>위약금</h5>
-              <h6>{{ myProduct.rentalFee }}</h6>
+              <h6 class="card-title text-bold text-muted">위약금 납부 금액</h6>
+              <h6 class="mb-3 card-title">{{ myProduct.rentalFee }}원</h6>
               <!-- <input type="hidden" name="rentalFee" v-model="cancel.returnPrice">  -->
               <!-- <input type="hidden" v-bind:name="inputName" v-bind:value="cancel.returnPrice"> -->
-              <h5>위약금 결제 수단</h5>
-              <button class="btn btn-link btn-collapse ps-0 text-muted" type="button" data-bs-toggle="collapse" data-bs-target="#addNewCard" aria-expanded="false" aria-controls="addNewCard" data-expanded-text="닫기" data-collapsed-text="카드">카드</button>
+              <h6 class="card-title text-bold text-muted">위약금 결제 수단</h6>
           <div class="row collapse" id="addNewCard">
             
             <div class="mb-4 col-md-6">
               <label class="form-label" for="card-name">카드선택</label>
-              <select class="selectpicker form-control mb-3" v-model="cancel.returnMethod" name="payment" id="form_payment" data-style="btn-selectpicker">
+              <select class="form-control mb-3" v-model="cancel.returnMethod" name="payment" id="form_payment" data-style="btn-selectpicker" placeholder="카드 선택">
                 <option>선택</option>
                 <option>BC카드</option>
                 <option>삼성카드</option>
@@ -243,49 +235,52 @@
             </div>
           
           </div>
-          <p>모달 내용입니다.</p>
-          <button class="btn btn-primary" @click="continueCancel = true" type="submit">해지 신청</button>
-          </div>
+          <button class="btn btn-primary btn-sm" @click="continueCancel = true" type="submit">반납 신청</button>
+        </div>
         </form>
         </div>
 
         <!-- 반납 신청 눌렀을 때 모달 -->
         <div v-if="showReturnModal" class="modal">
-          <div class="cancel-modal-content">
-              <span class="close" @click="showReturnModal = false">&times;</span>
-              <h3>잠깐! 반납 전에</h3>
-              <h6>혜택 1.</h6>
-              <h5>계약 기간 3년 연장 시 ,</h5>
-              <h5>계약 기간 만료 후에도</h5>
-              <h5>지금 사용하시는 정수기를 계속 사용 하실 수 있어요!</h5>
-              
-              <h6>혜택 2.</h6>
-              <h5>필터 1년간 무료 제공!</h5>
-              <button class="btn btn-primary" @click="saveExtend, showReturnModal = false">계약 기간 연장하기</button>
-              <button class="btn btn-primary" @click="continueReturn = true, showReturnModal = false">그래도 반납하기</button>
+          <div class="cancel-modal-content card border-primary mb-3">
+            <span class="close" @click="showReturnModal = false">&times;</span>
+              <div class="card-header row align-items-center">
+                <h3 class="card-title mr-3 text-danger text-bold">잠깐! 반납 전에</h3>
+                <h3 class="card-title mr-3 text-bold">렌탈기간 연장은 어떠세요?</h3>
+              </div>
+              <div class="card-body row align-items-center">
+                <h6 class="card-title text-primary">혜택 1.</h6>
+              <h5 class="card-title">렌탈 기간 3년 연장 시 ,</h5>
+              <h5 class="card-title">렌탈 기간 만료 후에도</h5>
+              <h5 class="card-title">정수기를 계속 사용 하실 수 있어요!</h5>
+                <h6 class="card-title text-primary mt-4">혜택 2.</h6>
+              <h5 class="card-title">1년치 필터를 무료로 드려요!</h5>
+              <div class="text-muted fs-xs">(3개월 1회 교체 기준)</div>
+              </div>
+              <div class="text-right" style="right:0">
+              <button class="btn btn-primary btn-sm mt-3" @click="continueReturn = true, showReturnModal = false">그래도 반납하기</button>
+            </div>
           </div>
         </div>
 
         <!-- 그래도 반납하기 모달. 해지 정보 입력-->
+        
         <div v-if="continueReturn" class="continue-cancel-modal">
           <form @submit.prevent="saveCancel" novalidate>
-          <div class="continue-cancel-modal-content">
+          <div class="continue-cancel-modal-content card">
               <span class="close" @click="continueReturn = false">&times;</span>
-              <h5>수거 일자 선택</h5>
+              <div class="card-header pl-0">
+              <h2 class="card-title text-bold">정수기 반납을 위한 수거지 정보를 입력해주세요</h2>
+            </div>
+              <h6 class="card-title text-bold text-muted">방문 일자 선택</h6>
               <!-- DatePicker -->
               <div class="container">
                 <div class="my-2" style="width: 100%">
                   <div class="date">
-                    <font-awesome-icon
-                      icon="fa-solid fa-calendar-days"
-                      transform="down-2.5 right-20"
-                      style="z-index: 1; cursor: default"
-                      @click="clickCalIcon('dp1')"
-                    />
                     <Datepicker
                       v-model="cancel.returnDate"
                       :ref="inputs.dp1"
-                      class="datepicker"
+                      class="datepicker mb-3"
                       :locale="locale"
                       :weekStartsOn="0"
                       :inputFormat="inputFormat"
@@ -297,9 +292,9 @@
                   </div>
                 </div>
               </div>
-              <div class="mb-4 col-md-6">
-                <label class="form-label" for="card-name">방문 시간 선택</label>
-                <!-- <select class="selectpicker form-control mb-3" v-model="cancel.returnTime" name="deliveryDate" id="deliveryDate" data-style="btn-selectpicker">
+                <h6 class="card-title text-bold text-muted">방문 시간 선택</h6>
+                <div></div>
+                <select class="form-control mb-3 ml-2" v-model="cancel.returnTime" name="deliveryDate" id="deliveryDate" data-style="btn-selectpicker" style="width:150px;">
                   <option>선택</option>
                   <option>오전 10 ~ 11시</option>
                   <option>오전 11 ~ 12시</option>
@@ -309,13 +304,12 @@
                   <option>오후 04 ~ 05시</option>
                   <option>오후 05 ~ 06시</option>
                   <option>오후 06 ~ 07시</option>
-                </select> -->
+                </select>
+                <div style="text-align:right">
+                  <button class="btn btn-primary btn-sm" @click="continueCancel = true" type="submit">반납 신청</button>
+                </div>
               </div>
-              
-          <p>모달 내용입니다.</p>
-          <button class="btn btn-primary" @click="continueCancel = true" type="submit">해지 신청</button>
-          </div>
-        </form>
+            </form>
         </div>
 
         <!-- 구매인 경우 -->
@@ -472,8 +466,10 @@
         myProduct.value.remainDay = remainDay;
       }
       
-      let memNo = 4; // memNo 임의 설정 1
+      // let memNo = 4; // memNo 임의 설정 1
       
+      const memNo = sessionStorage.getItem('memNo');
+        console.log("sessionStorage에서 가져온 값 : " + memNo);
       // productNum 뽑아오기..
       // let productNum = getMyProductDetail();
       // console.log("이거야!" + productNum);
@@ -481,21 +477,22 @@
       const saveCancel = async() => {
         try {
           const data = {
-          returnDate: cancel.value.returnDate,
-          returnPrice: cancel.value.returnPrice,
-          // returnTime: 'cancel.value.returnTime',
-          returnTime: '오후 01 ~ 02시',
+            // returnTime: 'cancel.value.returnTime',
+            returnTime: '오후 01 ~ 02시',
+            returnDate: cancel.value.returnDate,
+          // returnPrice: 11233,
+          // returnPrice: cancel.value.returnPrice,
           // returnMethod: 'cancel.value.returnMethod',
           returnMethod: '카드',
-          returnTrue: 'cancel.value.returnTrue',
+          // returnTrue: 'cancel.value.returnTrue',
           orderNo: orderNo,
           // memNo: 'cancel.value.memNo',
-          // productNo: 'cancel.value.productNo'
           memNo: memNo,
-          productNo: 1
+          productNo: myProduct.value.productNo,
+          // productNo: 1
               }
             console.log(data);
-            await axios.post('myorder/cancel', data).then(() =>{
+            await axios.post('/mypage/myproduct/myorder/cancel', data).then(() =>{
               Swal.fire({
                 icon: 'success',
                 title: '수거 신청을 완료하였습니다!'
@@ -508,7 +505,14 @@
         }
 
           try{
-            await axios.patch(`myorder/cancel/${orderNo}`);
+            await axios.patch(`/mypage/myproduct/myorder/cancel/${orderNo}`).then(()=>{
+              Swal.fire({
+                icon: 'success',
+                title: '반납 신청을 완료하였습니다!'
+              }).then(() => {
+                window.location.href = '/#/mypage/myproduct'
+              })
+            });
             console.log("성공했습니다!")
           }catch(error){
             console.log(error);
@@ -599,8 +603,9 @@
   .cancel-modal-content {
     background-color: #fefefe;
     margin: 15% auto;
-    padding: 20px;
+    padding: 40px;
     border: 1px solid #888;
+    border-radius: 10px;
     width: 30%;
     position: relative; /* close 버튼과의 위치 조정을 위해 */
   }
@@ -621,9 +626,10 @@
   .continue-cancel-modal-content {
     background-color: #fefefe;
     margin: 15% auto;
-    padding: 20px;
+    padding: 30px;
     border: 1px solid #888;
-    width: 40%;
+    border-radius: 10px;
+    width: 30%;
     position: relative; /* close 버튼과의 위치 조정을 위해 */
   }
 </style>

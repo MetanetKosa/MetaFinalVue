@@ -483,6 +483,10 @@ export default {
 
       console.log(data);
       console.log(rental.value);
+      
+      // 바꾼 코드
+    const memNo = sessionStorage.getItem('memNo');
+    console.log("sessionStorage에서 가져온 값 : " + memNo);
 
       const memNo = sessionStorage.getItem('memNo');
       console.log("sessionStorage에서 가져온 값 : " + memNo);
