@@ -461,7 +461,7 @@ setup() {
 
     // 바꾼 코드
     const memNo = sessionStorage.getItem('memNo');
-        console.log("sessionStorage에서 가져온 값 : " + memNo);
+    console.log("sessionStorage에서 가져온 값 : " + memNo);
 
     try{
       //const res = await axios.post('/'+productNo+'/'+memberNo+'/rental', data);
