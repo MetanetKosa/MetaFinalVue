@@ -120,12 +120,12 @@
         <!-- 그래도 해지하기 모달. 해지 정보 입력-->
         <div v-if="continueCancel" class="continue-cancel-modal">
           <form @submit.prevent="saveCancel" novalidate>
-          <div class="continue-cancel-modal-content">
+          <div class="continue-cancel-modal-content card">
               <span class="close" @click="continueCancel = false">&times;</span>
-
-              <h2>정수기 반납을 위한</h2>
-              <h2 class="mb-3">수거지 정보를 입력해주세요</h2>
-              <h6>방문 일자 선택</h6>
+              <div class="card-header pl-0">
+                <h2 class="card-title text-bold">정수기 반납을 위한 수거지 정보를 입력해주세요</h2>
+              </div>
+              <h6 class="card-title text-bold text-muted mt-3">방문 일자 선택</h6>
               <!-- DatePicker -->
               <div class="container">
                 <div class="my-2" style="width: 100%">
@@ -145,9 +145,11 @@
                   </div>
                 </div>
               </div>
-              <div class="mb-4">
-                <h6>방문 시간 선택</h6>
-                <select class="form-control mb-3" v-model="cancel.returnTime" name="deliveryDate" id="deliveryDate" data-style="btn-selectpicker" style="width:150px;">
+                <div>
+                <h6 class="card-title text-bold text-muted">방문 시간 선택</h6>
+              </div>
+                <div>
+                <select class="form-control mb-3 ml-2" v-model="cancel.returnTime" name="deliveryDate" id="deliveryDate" data-style="btn-selectpicker" style="width:150px;">
                   <option>선택</option>
                   <option>오전 10 ~ 11시</option>
                   <option>오전 11 ~ 12시</option>
@@ -160,12 +162,11 @@
                 </select>
               </div>
               
-              <h6>위약금 납부 금액</h6>
-              <h6 class="mb-3">{{ myProduct.rentalFee }}원</h6>
+              <h6 class="card-title text-bold text-muted">위약금 납부 금액</h6>
+              <h6 class="mb-3 card-title">{{ myProduct.rentalFee }}원</h6>
               <!-- <input type="hidden" name="rentalFee" v-model="cancel.returnPrice">  -->
               <!-- <input type="hidden" v-bind:name="inputName" v-bind:value="cancel.returnPrice"> -->
-              <h6>위약금 결제 수단</h6>
-              <button class="btn btn-link btn-collapse ps-0 text-muted" type="button" data-bs-toggle="collapse" data-bs-target="#addNewCard" aria-expanded="false" aria-controls="addNewCard" data-expanded-text="닫기" data-collapsed-text="카드">카드</button>
+              <h6 class="card-title text-bold text-muted">위약금 결제 수단</h6>
           <div class="row collapse" id="addNewCard">
             
             <div class="mb-4 col-md-6">
@@ -234,10 +235,8 @@
             </div>
           
           </div>
-          <div style="text-align:right">
-          <button class="btn btn-primary" @click="continueCancel = true" type="submit">반납 신청</button>
+          <button class="btn btn-primary btn-sm" @click="continueCancel = true" type="submit">반납 신청</button>
         </div>
-          </div>
         </form>
         </div>
 
@@ -265,27 +264,23 @@
         </div>
 
         <!-- 그래도 반납하기 모달. 해지 정보 입력-->
+        
         <div v-if="continueReturn" class="continue-cancel-modal">
           <form @submit.prevent="saveCancel" novalidate>
-          <div class="continue-cancel-modal-content">
+          <div class="continue-cancel-modal-content card">
               <span class="close" @click="continueReturn = false">&times;</span>
-              <h2>정수기 반납을 위한</h2>
-              <h2>수거지 정보를 입력해주세요</h2>
-              <h5>방문 일자 선택</h5>
+              <div class="card-header pl-0">
+              <h2 class="card-title text-bold">정수기 반납을 위한 수거지 정보를 입력해주세요</h2>
+            </div>
+              <h6 class="card-title text-bold text-muted">방문 일자 선택</h6>
               <!-- DatePicker -->
               <div class="container">
                 <div class="my-2" style="width: 100%">
                   <div class="date">
-                    <font-awesome-icon
-                      icon="fa-solid fa-calendar-days"
-                      transform="down-2.5 right-20"
-                      style="z-index: 1; cursor: default"
-                      @click="clickCalIcon('dp1')"
-                    />
                     <Datepicker
                       v-model="cancel.returnDate"
                       :ref="inputs.dp1"
-                      class="datepicker"
+                      class="datepicker mb-3"
                       :locale="locale"
                       :weekStartsOn="0"
                       :inputFormat="inputFormat"
@@ -297,9 +292,9 @@
                   </div>
                 </div>
               </div>
-              <div class="mb-4 col-md-6">
-                <h6>방문 시간 선택</h6>
-                <select class="selectpicker form-control mb-3" v-model="cancel.returnTime" name="deliveryDate" id="deliveryDate" data-style="btn-selectpicker">
+                <h6 class="card-title text-bold text-muted">방문 시간 선택</h6>
+                <div></div>
+                <select class="form-control mb-3 ml-2" v-model="cancel.returnTime" name="deliveryDate" id="deliveryDate" data-style="btn-selectpicker" style="width:150px;">
                   <option>선택</option>
                   <option>오전 10 ~ 11시</option>
                   <option>오전 11 ~ 12시</option>
@@ -310,12 +305,11 @@
                   <option>오후 05 ~ 06시</option>
                   <option>오후 06 ~ 07시</option>
                 </select>
+                <div style="text-align:right">
+                  <button class="btn btn-primary btn-sm" @click="continueCancel = true" type="submit">반납 신청</button>
+                </div>
               </div>
-              
-          <p>모달 내용입니다.</p>
-          <button class="btn btn-primary" @click="continueCancel = true" type="submit">반납 신청</button>
-          </div>
-        </form>
+            </form>
         </div>
 
         <!-- 구매인 경우 -->
