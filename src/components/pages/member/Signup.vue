@@ -64,7 +64,7 @@
 
           const Swal = require('sweetalert2');
 
-          const updateMember = () =>{
+          const register = () =>{
             console.log("memId확인" + state.form.memId);
             const id = state.form.memId;
             axios.get(`/auth/members/${id}`).then((response) => {
@@ -75,11 +75,11 @@
                 if(response.data.memId == null){
                     Swal.fire({
                             title: 'Success',
-                            text: '입력 성공',
+                            text: '사용할 수 있는 아이디 입니다.',
                             icon: 'success',
                             // confirmButtonText: 'OK'
                             showConfirmButton: false,
-                            timer: 1500
+                            timer: 1800
                         })
                     }else{
                         Swal.fire({
@@ -88,16 +88,42 @@
                             icon: 'error',
                             // confirmButtonText: 'OK'
                             showConfirmButton: false,
-                            timer: 1500
+                            timer: 2000
                                 })
                     }
             });
         }
   
+          const signUp = () => {
+              console.log("memId확인" + state.form.memId);
+              console.log("memPw확인" + state.form.memPw);
+              console.log("memNamet확인" + state.form.memName);
+              console.log("memPhone확인" + state.form.memPhone);
+              console.log("memEmail확인" + state.form.memEmail);
+  
+              const args = JSON.parse(JSON.stringify(state.form));
+              axios.post("/auth/signup", args).then(() => {
+                  Swal.fire({
+                        title: 'Success!',
+                        text: '회원가입 완료!',
+                        icon: 'success',
+                        // confirmButtonText: 'OK'
+                        showConfirmButton: false,
+                        timer: 1500
+                            }).then(() => {
+                                router.push({path: "/login"})
+                                // location.reload();
+                                // window.location.href = '/Login'
+                                    // SweetAlert(Swal)의 OK 버튼을 클릭하면 메인 페이지로 이동합니다.
+                                    //router.push('/');
+                            });
+              })
+          }
         //   router.push({path: "/login"})
           return{
               state,
-              updateMember
+              signUp,
+              register
           }
       }
   }
