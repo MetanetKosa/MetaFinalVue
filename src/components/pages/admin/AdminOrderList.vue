@@ -3,7 +3,7 @@
         <div class="wrapper">
              <Sidebar />
             <AdminOrderList :orders ="state.orders"
-            :rentals="state.rentals" />  
+            :rentals ="state.rentals"          />  
         </div>
     </body>
 </template>

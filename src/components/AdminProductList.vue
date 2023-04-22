@@ -128,15 +128,12 @@
                 </div>
                  <div class="card-footer">
                     <nav aria-label="Contacts Page Navigation">
-                        <ul class="pagination justify-content-center m-0">
-                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">4</a></li>
-                        <li class="page-item"><a class="page-link" href="#">5</a></li>
-                        <li class="page-item"><a class="page-link" href="#">6</a></li>
-                        <li class="page-item"><a class="page-link" href="#">7</a></li>
-                        <li class="page-item"><a class="page-link" href="#">8</a></li>
+                       <ul class="pagination justify-content-center m-0">
+                            <li class="page-item" v-if="pageDto.prev"><a class="page-link" href="#" v-on:click.prevent="changePage(pageDto.startPage - 1)">이전</a></li>
+                            <li class="page-item" v-for="page in pageDto.pages" :key="page" :class="{ 'active': page === pageDto.pageNum }">
+                                <a class="page-link" href="#" v-on:click.prevent="changePage(page)">{{ page }}</a>
+                            </li>
+                            <li class="page-item" v-if="pageDto.next"><a class="page-link" href="#" v-on:click.prevent="changePage(pageDto.endPage + 1)">다음</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -154,7 +151,16 @@ import {useRoute, useRouter} from 'vue-router';
 
 export default {
     props: {
-        products: Object,
+        products: {
+            type: Array,
+            required: true,
+            },
+            page: {
+            type: Object,
+            required: true,
+            },
+            
+        // products: Object,
         default: () => {
             return {
                 imgUrl:'',
@@ -165,9 +171,13 @@ export default {
                    productMethod:''};
         }
     },
-
+   
       emits: ['delete-product','update-product'],
     setup(props,  {emit}){
+
+        const changePage = (page) => {
+            emit('change-page', page);
+            };
            
         const router = useRouter();
 
@@ -193,6 +203,8 @@ export default {
         //     })
         // }
 
+
+        //다운로드
         const updateProduct =async (product) => {   
              try {
                    
@@ -226,39 +238,9 @@ export default {
         }
         return "";
         };
-        // const imgSrc =(product) => {
-        //     let path = product.imageUrl.replaceAll("\\", "/");
-        //     console.log(path);
-        //      const file = {
-        //         name: product.productName,
-        //         url: null,
-        //         path: path,
-        //     };
-        //     axios.get(`/upload/display?fileName=${path}`, {
-        //         responseType: 'blob',
-        //      })
-        //      .then(response => {
-        //         const reader = new FileReader();
-        //         reader.readAsDataURL(response.data);
-        //         reader.onload = () =>{
-        //             file.url = reader.result;
-        //             console.log(file.url);
-        //             state.images.push(file);
-        //         };
-        //     })
-        //     .catch(error => {
-        //         console.error(error);
-        //     });
-                      
-        // };
-
-        // onBeforeMount(() => {
-        //         // imgSrc 함수 실행
-        //     props.products.forEach((product) => {
-        //         imgSrc(product);
-        //         });
-        //     });
+      
       return{
+        changePage,
         imgSrc,
                 state,
                 deleteProduct,

@@ -3,7 +3,8 @@
         <div class="wrapper">
              <Sidebar />
             <AdminProductList :products="state.products"
-            @delete-product="deleteProduct"/>  
+            :pages="state.page"
+            @delete-product="deleteProduct"  @change-page="onChangePage"/>  
         </div>
     </body>
 </template>
@@ -21,18 +22,35 @@ export default {
   },
    setup(){
     const state = reactive({
-      products: []
+       products: [],
+      pageDto: {
+        pageNum: 1,
+        amount: 10,
+      },
     })
      const route = useRoute();
     const router = useRouter();
 
     const productNo = route.params.id;
 
-    axios.get("/admin/products").then(({data}) =>{
-      state.products = data;
-      console.log(data);
-    });
+   const getProducts = () => {
+      const { pageNum, amount } = state.pageDto
+      axios
+        .get(`/admin/products?pageNum=${pageNum}&amount=${amount}`)
+        .then(({ data }) => {
+          state.products = data.productList
+          state.pageDto = data.pageDto
+        })
+        .catch((err) => console.error(err))
+    }
 
+    const onChangePage = (pageNum) => {
+      state.pageDto.pageNum = pageNum
+      getProducts()
+    }
+
+    
+    getProducts()
 
      const deleteProduct = async(productNo) => {
         console.log(productNo);
