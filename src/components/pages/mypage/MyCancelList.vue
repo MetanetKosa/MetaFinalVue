@@ -8,7 +8,7 @@
               <div class="col-lg-9 ps-lg-5 mt-5">
                 <div class> 
                   <div class="text-block">
-                    <h1 class="mb-5">주문내역</h1>
+                    <h1 class="mb-5">해지내역</h1>
                     <div class="p-4 shadow ms-lg-4 rounded"  v-if="state.myOrders == null" style="background-color:#F2F4F5; min-height:450px; 
                                                                     display: flex; align-items: center;">
                       <div style="text-align:center; margin:auto;">
@@ -77,16 +77,7 @@
     },
   
     // orderNo에 따른 productNo, Product 정보를 가져오기 위함
-    mounted(){
-      axios.get(`/product/products/${this.order.productNo}`)
-      .then(response => {
-        console.log("받은 값 : " + response.data);
-        this.state.products = response.data;
-      })
-      .catch(error => {
-        console.error(error);
-      });
-    },
+    
     setup(){
       const state = reactive({
         myOrders: [],
@@ -97,7 +88,7 @@
       const memNo = sessionStorage.getItem('memNo');
         console.log("sessionStorage에서 가져온 값 : " + memNo);
            // memNo 임의 설정 1
-      axios.get(`/mypage/myorder/${memNo}`).then(({data}) =>{
+      axios.get(`/mypage/mycancel/${memNo}`).then(({data}) =>{
         state.myOrders = data;
         console.log(" 데이터값 " + data);
       }).catch((error) => {
@@ -109,77 +100,8 @@
       
     return {state};
   },
-  methods: {
-    async orderCancel(orderNo){
-      try{
-        const res = await axios.delete(`mypage/myorder/${orderNo}`);
-        console.dir(res.status);
-        this.deleteOrderResponseHandler(res);
-      }catch(err){
-        console.error(err);
-      }
-      },
-      deleteOrderResponseHandler(res){
-        if(res.status === 200){ // 응답이 정상이라면 Modal 나옴
-            Swal.fire({
-              icon: 'success',
-                  title: '주문취소가 되었습니다.'
-            }).then(()=> {
-              window.location.href = '/myproduct'
-            })
-          console.log("주문 취소 성공하였어요.", res.data.error);
-        }else{
-          this.showModal = false;
-          console.log("주문 취소 실패하였어요.", res.data.error);
-        }
-    // orderCancel(orderNo){
-    //   axios.delete(`mypage/myorder/${orderNo}`)
-    //   .then(response => {
-    //     console.log(response.date);
-    //   })
-    //   .catch(error => {
-    //     console.error(error);
-    //   })
-    // }
-  },
-  async cancelAlert(){
-    Swal.fire({
-            icon: 'success',
-                title: '주문취소가 되었습니다.'
-          }).then(()=> {
-            window.location.href = '/myproduct'
-          })
-  }
-  }
-  // methods: {
-  //   async orderCancel(orderNo){
-  //     try{
-  //       const res = await axios.delete(`mypage/myorder/${orderNo}`);
-  //       console.dir(res.status);
-  //       this.deleteOrderResponseHandler(res);
-  //     }catch(err){
-  //       console.error(err);
-  //     }
-  //     },
-  //     deleteOrderResponseHandler(res){
-  //       if(res.status === 200){ // 응답이 정상이라면 Modal 나옴
-  //         this.showModal = true;
-  //       }else{
-  //         this.showModal = false;
-  //         console.log("실패하였어요.", res.data.error);
-  //       }
-  //   // orderCancel(orderNo){
-  //   //   axios.delete(`mypage/myorder/${orderNo}`)
-  //   //   .then(response => {
-  //   //     console.log(response.date);
-  //   //   })
-  //   //   .catch(error => {
-  //   //     console.error(error);
-  //   //   })
-  //   // }
-  // },
-  // }
-,
+ 
+
   components: { MypageSidebar }
 }
   </script>

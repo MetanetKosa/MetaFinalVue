@@ -44,6 +44,7 @@
                                 <router-link class="dropdown-item" :to="{name: 'ProductList'}" >상품목록페이지</router-link>
                                 <router-link class="dropdown-item" :to="{name: 'MyPage'}">첫화면. 나의 정수기 관리하기</router-link>
                                 <router-link class="dropdown-item" :to="{name: 'MyOrderList'}">마이페이지-주문내역</router-link>
+                                <router-link class="dropdown-item" :to="{name: 'MyCancelList'}">마이페이지-해지내역</router-link>
                                 <router-link class="dropdown-item" :to="{name: 'MyAccount'}">회원정보관리</router-link>
                                 <router-link class="dropdown-item" :to="{name: 'AdminOrder'}">주문관리 페이지</router-link>
 

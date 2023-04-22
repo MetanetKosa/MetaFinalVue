@@ -22,27 +22,6 @@
                 </div>
               </div>
             </div>
-            <div class="py-4 ms-lg-4 rounded d-flex">
-              &nbsp;&nbsp;&nbsp;
-              <button class="btn btn-primary mx-1 py-2"><i class="fas fa-wrench"></i>&nbsp;A/S 신청&nbsp;<i class="fas fa-angle-right"></i></button>
-              <button class="btn btn-primary mx-1"><i class="fas fa-won-sign"></i>&nbsp;납부 방법 변경&nbsp;<i class="fas fa-angle-right"></i></button>
-              <button class="btn btn-primary mx-1"><i class="fas fa-info"></i>&nbsp;제품 사용 신청서&nbsp;<i class="fas fa-angle-right"></i></button>
-              <button class="btn mx-1 text-muted" @click="showReturnModal = true">반납신청<i class="fas fa-angle-right"></i></button>
-              <button class="btn mx-1 text-muted" @click="showCancelModal = true">해지신청<i class="fas fa-angle-right"></i></button>
-              <button class="btn mx-1 text-muted" @click="showModal = true">문의 남기기</button>
-                  <div v-if="showModal" class="modal">
-                    <div class="modal-content">
-                        <span class="close" @click="showModal = false">&times;</span>
-                        <h3>별점</h3>
-                        <h3>사용후기</h3>
-                        <textarea></textarea>
-                        <h6>리뷰 작성 시 유의사항
-타인에게 불쾌감을 유발할 수 있는 언어 및 이미지가 포함된 리뷰는 사용자의 신고 또는 관리자 권한에 의해 노출이 제한될 수 있습니다.
-부적절한 내용 등으로 작성자에 대한 신고가 반복 접수되는 경우는 서비스 이용이 제한될 수 있습니다.</h6>
-                        <p>모달 내용입니다.</p>
-                    </div>
-                  </div>
-            </div>
 
             <!-- rentalTerm이 3년이고, 계약 만료일 까지 7일이 남았을 경우 -->
             <div v-if="myProduct.rentalTerm == 3 && myProduct.remainDay <= 7">
@@ -61,12 +40,12 @@
               <div class="row"> 
                 <div class="col-md-10"> </div>
                 <div class="col-md-2">
-                  <a class="list-unstyled text-muted" @click="showCancelModal = true" style="cursor: pointer;">해지신청&nbsp&nbsp&nbsp
+                  <a class="list-unstyled text-muted" @click="showCancelModal = true" style="cursor: pointer;" v-if="myProduct.rentalTerm == 6 || myProduct.remainDay > 7">해지신청&nbsp&nbsp&nbsp
                     <i class="fas fa-angle-right"></i>
                   </a>
-                  <a class="list-unstyled text-muted" @click="showReturnModal = true" style="cursor: pointer;" v-if="myProduct.rentalTerm == 3 && myProduct.remainDay <= 7">
+                  <!-- <a class="list-unstyled text-muted" @click="showReturnModal = true" style="cursor: pointer;" v-if="myProduct.rentalTerm == 3 && myProduct.remainDay <= 7">
                     반납신청&nbsp&nbsp&nbsp<i class="fas fa-angle-right"></i>
-                  </a>
+                  </a> -->
                 </div>
                 <div class="col-md-1">
                 </div>
@@ -137,8 +116,10 @@
           <form @submit.prevent="saveCancel" novalidate>
           <div class="continue-cancel-modal-content">
               <span class="close" @click="continueCancel = false">&times;</span>
-              <h2>해지 신청</h2>
-              <h6>수거 일자 선택</h6>
+
+              <h2>정수기 반납을 위한</h2>
+              <h2 class="mb-3">수거지 정보를 입력해주세요</h2>
+              <h6>방문 일자 선택</h6>
               <!-- DatePicker -->
               <div class="container">
                 <div class="my-2" style="width: 100%">
@@ -159,7 +140,7 @@
                 </div>
               </div>
               <div class="mb-4">
-                <h6>수거 시간 선택</h6>
+                <h6>방문 시간 선택</h6>
                 <select class="form-control mb-3" v-model="cancel.returnTime" name="deliveryDate" id="deliveryDate" data-style="btn-selectpicker" style="width:150px;">
                   <option>선택</option>
                   <option>오전 10 ~ 11시</option>
@@ -248,7 +229,7 @@
           
           </div>
           <div style="text-align:right">
-          <button class="btn btn-primary" @click="continueCancel = true" type="submit">해지 신청</button>
+          <button class="btn btn-primary" @click="continueCancel = true" type="submit">반납 신청</button>
         </div>
           </div>
         </form>
@@ -266,7 +247,7 @@
               
               <h6>혜택 2.</h6>
               <h5>필터 1년간 무료 제공!</h5>
-              <button class="btn btn-primary" @click="saveExtend, showReturnModal = false">계약 기간 연장하기</button>
+              <!-- <button class="btn btn-primary" @click="saveExtend, showReturnModal = false">계약 기간 연장하기</button> -->
               <button class="btn btn-primary" @click="continueReturn = true, showReturnModal = false">그래도 반납하기</button>
           </div>
         </div>
@@ -276,7 +257,9 @@
           <form @submit.prevent="saveCancel" novalidate>
           <div class="continue-cancel-modal-content">
               <span class="close" @click="continueReturn = false">&times;</span>
-              <h5>수거 일자 선택</h5>
+              <h2>정수기 반납을 위한</h2>
+              <h2>수거지 정보를 입력해주세요</h2>
+              <h5>방문 일자 선택</h5>
               <!-- DatePicker -->
               <div class="container">
                 <div class="my-2" style="width: 100%">
@@ -303,8 +286,8 @@
                 </div>
               </div>
               <div class="mb-4 col-md-6">
-                <label class="form-label" for="card-name">방문 시간 선택</label>
-                <!-- <select class="selectpicker form-control mb-3" v-model="cancel.returnTime" name="deliveryDate" id="deliveryDate" data-style="btn-selectpicker">
+                <h6>방문 시간 선택</h6>
+                <select class="selectpicker form-control mb-3" v-model="cancel.returnTime" name="deliveryDate" id="deliveryDate" data-style="btn-selectpicker">
                   <option>선택</option>
                   <option>오전 10 ~ 11시</option>
                   <option>오전 11 ~ 12시</option>
@@ -314,11 +297,11 @@
                   <option>오후 04 ~ 05시</option>
                   <option>오후 05 ~ 06시</option>
                   <option>오후 06 ~ 07시</option>
-                </select> -->
+                </select>
               </div>
               
           <p>모달 내용입니다.</p>
-          <button class="btn btn-primary" @click="continueCancel = true" type="submit">해지 신청</button>
+          <button class="btn btn-primary" @click="continueCancel = true" type="submit">반납 신청</button>
           </div>
         </form>
         </div>
@@ -519,7 +502,7 @@
             await axios.patch(`/mypage/myproduct/myorder/cancel/${orderNo}`).then(()=>{
               Swal.fire({
                 icon: 'success',
-                title: '수거 신청을 완료하였습니다!'
+                title: '반납 신청을 완료하였습니다!'
               }).then(() => {
                 window.location.href = '/#/mypage/myproduct'
               })
@@ -640,7 +623,7 @@
     padding: 30px;
     border: 1px solid #888;
     border-radius: 10px;
-    width: 40%;
+    width: 30%;
     position: relative; /* close 버튼과의 위치 조정을 위해 */
   }
 </style>
