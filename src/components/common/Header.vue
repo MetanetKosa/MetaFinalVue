@@ -170,12 +170,12 @@ export default {
                             sessionStorage.setItem("memPhone",response.data.memPhone);
                             sessionStorage.setItem("memEmail",response.data.memEmail);
 
-                            console.log("memNo 데이터 확인 : " ,sessionStorage.getItem("memNo"));
-                            console.log("memNo 데이터 확인 : " ,sessionStorage.getItem("memId"));
-                            console.log("memNo 데이터 확인 : " ,sessionStorage.getItem("memPw"));
-                            console.log("memNo 데이터 확인 : " ,sessionStorage.getItem("memName"));
-                            console.log("memNo 데이터 확인 : " ,sessionStorage.getItem("memPhone"));
-                            console.log("memNo 데이터 확인 : " ,sessionStorage.getItem("memEmail"));
+                            // console.log("memNo 데이터 확인 : " ,sessionStorage.getItem("memNo"));
+                            // console.log("memNo 데이터 확인 : " ,sessionStorage.getItem("memId"));
+                            // console.log("memNo 데이터 확인 : " ,sessionStorage.getItem("memPw"));
+                            // console.log("memNo 데이터 확인 : " ,sessionStorage.getItem("memName"));
+                            // console.log("memNo 데이터 확인 : " ,sessionStorage.getItem("memPhone"));
+                            // console.log("memNo 데이터 확인 : " ,sessionStorage.getItem("memEmail"));
                             const memNo = sessionStorage.getItem("memNo");
                             console.log("memNo 데이터 확인 : " ,memNo );
                             authState.value = Object.assign({}, response.data);

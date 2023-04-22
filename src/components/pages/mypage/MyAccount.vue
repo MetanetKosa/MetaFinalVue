@@ -57,61 +57,92 @@
                 </div>
             </div>
             <div class="col-lg-9 ps-lg-5" style="text-align:left">
-                <h1 class="hero-heading mb-0">정세은님,</h1>
-                <h1 class="hero-heading mb-0">안녕하세요!</h1>
-                <div class="text-block">
-                    <p class="mt-2 text-muted">내게 맞는 제품관리 서비스와 활동 내역을 확인하세요.</p>
-                </div>
-                <div class="text-block">
-                    <h4 class="mb-5">사용중인 제품</h4>
-                    <div class="row">
-                        <!-- place item-->
-                            <div class="col-sm-6 col-lg-4 mb-30px hover-animate" v-for="(product, index) in state.myProducts" :key="index" data-marker-id="59c0c8e33b1527bfe2abaf92">
-                                <div class="card h-100 border-0 shadow">
-                                    <div class="card-img-top overflow-hidden gradient-overlay"> <img class="img-fluid" src="../../../../public/html/img/photo/photo-1484154218962-a197022b5858.jpg" alt="Modern, Well-Appointed Room"/><a class="tile-link" @click="moveToMyOrder(product.orderNo)"></a>
-                                        <div class="card-img-overlay-bottom z-index-20">
-                                        </div>
-                                        <div class="card-img-overlay-top text-end"></div>
-                                    </div>
-                                    <div class="card-body d-flex">
-                                        <div class="w-100">
-                                            <!-- <h6 class="card-title"><a class="text-decoration-none text-dark" href="detail-rooms.html">{{product.productName}}</a></h6>
-                                            <h6 class="flex-grow-1 mb-0 text-muted text-sm">{{product.productModel}}</h6> -->
-                                            <h6 >{{product.productName}}</h6>
-                                            <h6 class="text-muted text-sm">{{product.productModel}}</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                    </div>
-                </div>
+                
 
-                <div class="text-block">
-                    <h4 class="mb-5">고객지원 서비스</h4>
-                    <div class="row">
-                        <!-- place item-->
-                        <div class="col-sm-6 col-lg-4 mb-30px hover-animate" data-marker-id="59c0c8e33b1527bfe2abaf92">
-                            <div class="card h-100 border-0 shadow">
-                                <div class="card-img-top overflow-hidden gradient-overlay"> <img class="img-fluid" src="../../../../public/html/img/photo/photo-1484154218962-a197022b5858.jpg" alt="Modern, Well-Appointed Room"/><a class="tile-link" href="detail-rooms.html"></a>
-                                    <div class="card-img-overlay-bottom z-index-20">
-                                    </div>
-                                    <div class="card-img-overlay-top text-end"></div>
-                                </div>
-                                <div class="card-body d-flex align-items-center">
-                                    <div class="w-100">
-                                        <h6 class="card-title"><a class="text-decoration-none text-dark" href="detail-rooms.html">아이콘 정수기 2</a></h6>
-                                        <div class="d-flex card-subtitle mb-3">
-                                            <p class="flex-grow-1 mb-0 text-muted text-sm">Private room</p>
-                                            <p class="flex-shrink-1 mb-0 card-stars text-xs text-end"><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i>
-                                            </p>
-                                        </div>
-                                        <p class="card-text text-muted"><span class="h4 text-primary">$80</span> per night</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
+              <div class="col-lg-7 mb-5 mb-lg-0">
+            <div class="text-block"> 
+              <div class="row mb-3">
+                <div class="col-sm-9">
+                  <h5>회원 정보 관리</h5>
                 </div>
+                <div class="col-sm-3 text-end">
+                  <button class="btn btn-link ps-0 text-primary collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#personalDetails" aria-expanded="false" aria-controls="personalDetails">Update</button>
+                </div>
+              </div>
+              <p class="text-sm text-muted"><i class="fa fa-id-card fa-fw me-2"></i>John Doe<br><i class="fa fa-birthday-cake fa-fw me-2"></i>06/22/1980<br><i class="fa fa-envelope-open fa-fw me-2"></i>john.doe@directory.com  <span class="mx-2"> | </span>  <i class="fa fa-phone fa-fw me-2"></i>+42055544466</p>
+              <div class="collapse" id="personalDetails">
+                <form action="#">
+                  <div class="row pt-4">
+                    <div class="mb-4 col-md-6">
+                      <label class="form-label" for="name">이름</label>
+                      <input class="form-control" type="text" name="name" id="name" value="">
+                    </div>
+                    <div class="mb-4 col-md-6">
+                      <label class="form-label" for="phone">전화번호</label>
+                      <input class="form-control" type="text" name="phone" id="phone" value="+42055544466">
+                    </div>
+                    <div class="mb-4 col-md-6">
+                      <label class="form-label" for="email">이메일</label>
+                      <input class="form-control" type="email" name="email" id="email" value="john.doe@directory.com">
+                    </div>
+                  </div>
+                  <button class="btn btn-outline-primary mb-4" type="submit">변경사항 저장</button>
+                </form>
+              </div>
+            </div>
+            <div class="text-block"> 
+              <div class="row mb-3">
+                <div class="col-sm-9">
+                  <h5>계정삭제</h5>
+                </div>
+                <div class="col-sm-3 text-end">
+                  <button class="btn btn-link ps-0 text-primary collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#address" aria-expanded="false" aria-controls="address">Change</button>
+                </div>
+              </div>
+              <div class="d-flex text-sm text-muted"> <i class="fa fa-address-book fa-fw flex-shrink-0 me-2"></i>
+                <div class="mt-n1">삭제 된 계정은 복원 할 수 없습니다!! 귀하의 계정은 시스템에서 영구적으로 삭제됩니다. 다시 한 번 생각해주세요</div>
+              </div>
+              <div class="collapse" id="address">
+                <form action="#">
+                  <div class="row pt-4">
+                    <div class="mb-4 col-md-6">
+                      <label class="form-label" for="street">Street</label>
+                      <input class="form-control" type="text" name="street" id="street" value="123 Main St.">
+                    </div>
+                    <div class="mb-4 col-md-6">
+                      <label class="form-label" for="apt">Apt. (optional)</label>
+                      <input class="form-control" type="text" name="apt" id="apt" value="Apt #7">
+                    </div>
+                    <div class="mb-4 col-md-6">
+                      <label class="form-label" for="city">City</label>
+                      <input class="form-control" type="text" name="city" id="city" value="San Francisco">
+                    </div>
+                    <div class="mb-4 col-md-6">
+                      <label class="form-label" for="state">State</label>
+                      <select class="selectpicker form-control" name="state" id="state" data-style="btn-selectpicker">
+                        <option value="state_0">Alabama    </option>
+                        <option value="state_1">Alaska    </option>
+                        <option value="state_2">Arizona    </option>
+                        <option value="state_3">Arkansas    </option>
+                        <option value="state_4" selected>California    </option>
+                        
+                        <option value="state_47">West Virginia    </option>
+                        <option value="state_48">Wisconsin    </option>
+                        <option value="state_49">Wyoming    </option>
+                      </select>
+                    </div>
+                    <div class="mb-4 col-md-6">
+                      <label class="form-label" for="zip">보안 상의 이유로 현재 비밀번호가 필요합니다</label>
+                      <input class="form-control" type="text" name="zip" id="zip" value="902 10">
+                    </div>
+                  </div>
+                  <button class="btn btn-outline-primary">회원 탈퇴</button>
+                </form>
+              </div>
+            </div>
+          </div>
+                
                 
             </div>
         </div>
@@ -129,40 +160,40 @@ export default {
    setup(){
     const route = useRoute();
     const router = useRouter();
-    const state = reactive({
-      myProducts: [],
-    });
 
-    const confirm = () => {
-        const id = sessionStorage.getItem('id');
-        console.log("id값 확인 : "  + id);
-        
-    }
-    confirm();
-
-   
-    // const moveToMyOrder = (orderNo) => {
-    //   console.log("orderNo : " + orderNo);
-    //   router.push({
-    //     name: 'MyProduct',
-    //     params: {
-    //         orderNo: orderNo
-    //     }
-    //   });
-    // };
+    const id = sessionStorage.getItem("memId");
+    const memName = reactive('');
+    const memPhone = reactive('');
+    const memEmail = reactive('');
 
 
-    // axios.get("/mypage/myproduct/" + route.params.memNo).then(({data}) =>{ /.
-    
-    let  memNo = 1;
-         // memNo 임의 설정 1
-    // axios.get(`/mypage/myorder/myproducts/${memNo}`).then(({data}) =>{
-    //   state.myProducts = data;
-    //   console.log(" 사용중인 제품 데이터 : " + data);
-    // }).catch((error) => {
-    //     console.error("API 요청 실패", error);
-    // });
-    return {state};
+
+    const checkAuth = () =>{
+                        console.log("결과확인----======---- id "+ id);  
+                        axios.get(`/auth/members/${id}`).then((response) => {
+                            memName.value = response.data.memName;
+                            memPhone.value = response.data.memName;
+                            memEmail.value = response.data.memEmail;
+                            console.log("============="+ (response.data.memPw));
+                            console.log("============="+ (response.data.memName));
+                            console.log("============="+ (response.data.memPhone));
+                            console.log("============="+ (response.data.memEmail));
+                           
+                        });
+                    }
+                    checkAuth();
+
+                    console.log("=====유r값확인====="+memName.value);
+                    console.log("=====유r값확인====="+memPhone.value);
+                    console.log("=====유r값확인====="+memEmail.value);
+
+
+    return {
+        id,
+        memName,
+        memPhone,
+        memEmail
+    };
   }
 }
 

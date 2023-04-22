@@ -31,14 +31,8 @@
                           <div class="d-grid">
                               <button class="btn btn-lg btn-primary">로그인</button>
                           </div>
-                          <hr class="my-3 hr-text letter-spacing-2" data-content="OR">
-                          <div class="d-grid gap-2">
-                              <button class="btn btn btn-outline-primary btn-social"><i class="fa-2x fa-facebook-f fab btn-social-icon"> </i>Connect <span class="d-none d-sm-inline">with Facebook</span></button>
-                              <button class="btn btn btn-outline-muted btn-social"><i class="fa-2x fa-google fab btn-social-icon"> </i>Connect <span class="d-none d-sm-inline">with Google</span></button>
-                          </div>
-                          <hr class="my-4">
-                          <p class="text-center"><small class="text-muted text-center">Don't have an account yet? <a href="signup.html">Sign Up                </a></small></p>
-                      </form><a class="close-absolute me-md-5 me-xl-6 pt-5" href="index.html">
+                        
+                           </form><a class="close-absolute me-md-5 me-xl-6 pt-5" href="index.html">
                       <svg class="svg-icon w-3rem h-3rem">
                           <use xlink:href="#close-1"> </use>
                       </svg></a>
