@@ -70,7 +70,10 @@
                   <button class="btn btn-link ps-0 text-primary collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#personalDetails" aria-expanded="false" aria-controls="personalDetails">Update</button>
                 </div>
               </div>
-              <p class="text-sm text-muted"><i class="fa fa-id-card fa-fw me-2"></i>John Doe<br><i class="fa fa-birthday-cake fa-fw me-2"></i>06/22/1980<br><i class="fa fa-envelope-open fa-fw me-2"></i>john.doe@directory.com  <span class="mx-2"> | </span>  <i class="fa fa-phone fa-fw me-2"></i>+42055544466</p>
+              <p class="text-sm text-muted"><i class="fa fa-id-card fa-fw me-2"></i><br>
+                <!-- <i class="fa fa-birthday-cake fa-fw me-2"></i>{{detailMember.memEmail}}<br> -->
+                <i class="fa fa-envelope-open fa-fw me-2"></i> <span class="mx-2"> | </span> 
+                 <i class="fa fa-phone fa-fw me-2"></i></p>
               <div class="collapse" id="personalDetails">
                 <form action="#">
                   <div class="row pt-4">
@@ -80,11 +83,11 @@
                     </div>
                     <div class="mb-4 col-md-6">
                       <label class="form-label" for="phone">전화번호</label>
-                      <input class="form-control" type="text" name="phone" id="phone" value="+42055544466">
+                      <input class="form-control" type="text" name="phone" id="phone" value="">
                     </div>
                     <div class="mb-4 col-md-6">
                       <label class="form-label" for="email">이메일</label>
-                      <input class="form-control" type="email" name="email" id="email" value="john.doe@directory.com">
+                      <input class="form-control" type="email" name="email" id="email" value="">
                     </div>
                   </div>
                   <button class="btn btn-outline-primary mb-4" type="submit">변경사항 저장</button>
@@ -152,47 +155,47 @@
 
 <script>
 import axios from "axios";
-import {reactive} from "vue";
-import { useRoute, useRouter } from 'vue-router';
-
+import {ref,onMounted} from "vue";
 export default {
 
    setup(){
-    const route = useRoute();
-    const router = useRouter();
+    const detailMember = ref({
+      memName: '',
+      memPhone: '',
+      memEmail: '',
+    });
 
-    const id = sessionStorage.getItem("memId");
-    const memName = reactive('');
-    const memPhone = reactive('');
-    const memEmail = reactive('');
+    
+    const id = sessionStorage.getItem("memId"); 
+
+    const getMemberDetail = async() => {
+            console.log("memId확인" + sessionStorage.getItem("memId"));
+            axios.get(`/auth/members/${id}`).then((response) => {
+                console.log("받아온 데이터: "+ (response.data.memName));
+                console.log("받아온 데이터: "+ (response.data.memEmail));
+                console.log("받아온 데이터: "+ (response.data.memPhone));
 
 
+                // detailMember.value = {...response.data};
+                // console.log("detailMember받아온 데이터: "+ (detailMember.value ));
+                // console.log("detailMember받아온 데이터: "+ (detailMember.value.memEmail ));
+                // console.log("detailMember받아온 데이터: "+ (detailMember.value.memPhone ));
 
-    const checkAuth = () =>{
-                        console.log("결과확인----======---- id "+ id);  
-                        axios.get(`/auth/members/${id}`).then((response) => {
-                            memName.value = response.data.memName;
-                            memPhone.value = response.data.memName;
-                            memEmail.value = response.data.memEmail;
-                            console.log("============="+ (response.data.memPw));
-                            console.log("============="+ (response.data.memName));
-                            console.log("============="+ (response.data.memPhone));
-                            console.log("============="+ (response.data.memEmail));
-                           
-                        });
-                    }
-                    checkAuth();
+            });
+        }
 
-                    console.log("=====유r값확인====="+memName.value);
-                    console.log("=====유r값확인====="+memPhone.value);
-                    console.log("=====유r값확인====="+memEmail.value);
+        //상세 페이지 바로 가져오기
+     onMounted(() => {
+        detailMember,
+        getMemberDetail
+    });
 
+        
+  
 
     return {
         id,
-        memName,
-        memPhone,
-        memEmail
+        getMemberDetail
     };
   }
 }

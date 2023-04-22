@@ -10,12 +10,11 @@
                           <div class="mb-4">
                               <label class="form-label" for="memId"> 아이디</label>
                               <input class="form-control" name="memId" id="memId" placeholder="영어/숫자 조합 4-20글자" type="text" v-model="state.form.memId" required pattern="[A-Za-z0-9]{4,20}" autocomplete="off">
-                              <button class="btn btn-lg btn-primary" type="submit">아이디중복체크</button>
+                              <button class="btn btn-lg btn-primary" @click="register" >아이디중복체크</button>
                             </div>
                           <div class="mb-4">
                               <label class="form-label" for="memPw"> 비밀번호 </label>
                               <input class="form-control" name="memPw" id="memPw"  type="password" placeholder="최소 4글자 이상" v-model="state.form.memPw" required minlength="4">
-                              <button @click="register">중복확인</button>
                             </div>
                           <div class="mb-4">
                               <label class="form-label" for="memName"> 이름</label>
@@ -71,10 +70,30 @@
           const register = () =>{
             console.log("memId확인" + state.form.memId);
             const id = state.form.memId;
-            axios.post(`/auth/checkid/{id}`)
-            .then((response) => {
-                alert("결과는 ?" + response);
-                console.log("결과 확인");
+            axios.get(`/auth/members/${id}`).then((response) => {
+                            console.log("받아온 데이터: "+ (response.data.auth));
+                            console.log("받아온 데이터: "+ (response.data.memId));
+                            console.log("받아온 데이터: "+ (response.data.memPw));
+
+                if(response.data.memId == null){
+                    Swal.fire({
+                            title: 'Success',
+                            text: '입력 성공',
+                            icon: 'success',
+                            // confirmButtonText: 'OK'
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                    }else{
+                        Swal.fire({
+                            title: 'Error!',
+                            text: '중복된 아이디가 있습니다 다시 확인해주세요!',
+                            icon: 'error',
+                            // confirmButtonText: 'OK'
+                            showConfirmButton: false,
+                            timer: 1500
+                                })
+                    }
             });
         }
   
@@ -101,6 +120,20 @@
                                     // SweetAlert(Swal)의 OK 버튼을 클릭하면 메인 페이지로 이동합니다.
                                     //router.push('/');
                             });
+                        //     Swal.fire({
+                        // title: 'Success!',
+                        // text: '중복된 아이디가 있습니다 다시 입력해주세요!',
+                        // icon: 'success',
+                        // // confirmButtonText: 'OK'
+                        // showConfirmButton: false,
+                        // timer: 1500
+                        //     }).then(() => {
+                        //         router.push({path: "/login"})
+                        //         // location.reload();
+                        //         // window.location.href = '/Login'
+                        //             // SweetAlert(Swal)의 OK 버튼을 클릭하면 메인 페이지로 이동합니다.
+                        //             //router.push('/');
+                        //     });
               })
           }
         //   router.push({path: "/login"})
