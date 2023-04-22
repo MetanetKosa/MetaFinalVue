@@ -98,15 +98,21 @@
 
          <!-- 해지 신청 눌렀을 때 모달 -->
         <div v-if="showCancelModal" class="modal">
-          <div class="cancel-modal-content">
+          <div class="cancel-modal-content card border-primary mb-3">
               <span class="close" @click="showCancelModal = false">&times;</span>
-              <h3>잠깐!</h3>
-              <h3 class="mb-3">정말 해지하시게요?</h3>
-                <h5>지금 해지하신다면,</h5>
-                <h5>위약금 {{myProduct.rentalFee}}원이 청구됩니다.</h5>
+              <div class="card-header">
+                <h3 class="card-title mr-3 text-danger text-bold">잠깐!</h3>
+                <h3 class="card-title text-bold">정말 해지하시게요?</h3>
+              </div>
+              <div class="card-body row align-items-center">
+                <h5 class="card-title">지금 해지하신다면,</h5>
+                <div>
+                <h5 class="card-title">위약금</h5><h5 class="card-title text-danger">{{myProduct.rentalFee}}원</h5><h5 class="card-title">이 청구됩니다.</h5>
                 <div class="text-muted mt-5" style="font-size:7px;">※ 상기 위약금의 경우 {(월렌탈료 / 30일) X (의무사용일수 - 실제사용일수)} X 10%로 산정됩니다.</div>
+              </div>
+              </div>
               <div class="text-right" style="right:0">
-              <button class="btn btn-primary mt-5" @click="continueCancel = true, showCancelModal = false">그래도 해지하기</button>
+              <button class="btn btn-primary btn-sm mt-3" @click="continueCancel = true, showCancelModal = false">그래도 해지하기</button>
             </div>
           </div>
         </div>
@@ -237,18 +243,24 @@
 
         <!-- 반납 신청 눌렀을 때 모달 -->
         <div v-if="showReturnModal" class="modal">
-          <div class="cancel-modal-content">
-              <span class="close" @click="showReturnModal = false">&times;</span>
-              <h3>잠깐! 반납 전에</h3>
-              <h6>혜택 1.</h6>
-              <h5>계약 기간 3년 연장 시 ,</h5>
-              <h5>계약 기간 만료 후에도</h5>
-              <h5>지금 사용하시는 정수기를 계속 사용 하실 수 있어요!</h5>
-              
-              <h6>혜택 2.</h6>
-              <h5>필터 1년간 무료 제공!</h5>
-              <!-- <button class="btn btn-primary" @click="saveExtend, showReturnModal = false">계약 기간 연장하기</button> -->
-              <button class="btn btn-primary" @click="continueReturn = true, showReturnModal = false">그래도 반납하기</button>
+          <div class="cancel-modal-content card border-primary mb-3">
+            <span class="close" @click="showReturnModal = false">&times;</span>
+              <div class="card-header row align-items-center">
+                <h3 class="card-title mr-3 text-danger text-bold">잠깐! 반납 전에</h3>
+                <h3 class="card-title mr-3 text-bold">렌탈기간 연장은 어떠세요?</h3>
+              </div>
+              <div class="card-body row align-items-center">
+                <h6 class="card-title text-primary">혜택 1.</h6>
+              <h5 class="card-title">렌탈 기간 3년 연장 시 ,</h5>
+              <h5 class="card-title">렌탈 기간 만료 후에도</h5>
+              <h5 class="card-title">정수기를 계속 사용 하실 수 있어요!</h5>
+                <h6 class="card-title text-primary mt-4">혜택 2.</h6>
+              <h5 class="card-title">1년치 필터를 무료로 드려요!</h5>
+              <div class="text-muted fs-xs">(3개월 1회 교체 기준)</div>
+              </div>
+              <div class="text-right" style="right:0">
+              <button class="btn btn-primary btn-sm mt-3" @click="continueReturn = true, showReturnModal = false">그래도 반납하기</button>
+            </div>
           </div>
         </div>
 

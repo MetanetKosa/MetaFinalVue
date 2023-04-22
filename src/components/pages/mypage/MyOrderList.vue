@@ -8,7 +8,8 @@
               <div class="col-lg-9 ps-lg-5 mt-5">
                 <div class> 
                   <div class="text-block">
-                    <h1 class="mb-5">주문내역</h1>
+                    <h1 class>주문내역</h1>
+                    <h6 class="mb-5 ml-3 text-muted">주문 내역입니다.</h6>
                     <div class="p-4 shadow ms-lg-4 rounded"  v-if="state.myOrders == null" style="background-color:#F2F4F5; min-height:450px; 
                                                                     display: flex; align-items: center;">
                       <div style="text-align:center; margin:auto;">
@@ -16,25 +17,24 @@
                         <h6>주문 내역이 존재하지 않습니다.</h6>
                       </div>
                     </div>
-                    <div class="p-4 shadow ms-lg-4 rounded"  v-if="state.myOrders != null" style="background-color:#F2F4F5; min-height:350px; 
+                    <div class="p-4 shadow ms-lg-4 rounded"  v-if="state.myOrders != null" style="background-color:#F2F4F5; min-height:250px; 
                                                                     align-items: center;">
                       <div class="d-flex p-3 row text-block" v-for="(order, index) in state.myOrders" :key="index" style="position: relative;">
-                        <div class="col-2">
-                          <img class="img-fluid" src="/../../../../html/img/photo/sample1.PNG">
+                        <div class="col-3">
+                          <img class="img-fluid" v-bind:src="state.products[index].imgUrl">
                         </div>
-                        <div class="col-1"></div>
                         <div class="col-9" id="orderContent">
-                          <h6>{{ order.orderNo }}</h6>
-                          <h6>{{ order.productNo }}</h6>
-                          <h6>주문상태{{ order.orderState }}</h6>
-                          <h6>주문타입{{ order.orderType }}</h6>
+                          <h5 class="mt-3">{{ state.products[index].productName }}</h5>
+                          <h6>{{ state.products[index].productModel }}</h6>
+                          <h6>주문상태 : {{ order.orderState }}</h6>
+                          <h6>결제수단 : {{ order.orderPay }}</h6>
+                          <h6>주문일 : {{ new Date(order.orderDate).toLocaleDateString() }}</h6>
+                          <!-- <h6>{{ order.orderNo }}</h6>
+                          <h6>{{ order.productNo }}</h6> -->
                           <div v-if="state.products[index]">
-                            <h6>제품번호 : {{ state.products[index].productModel }}</h6>
                           </div>
-                          <h6>주문일자 : {{ new Date(order.orderDate).toLocaleDateString() }}</h6>
                           <input type="hidden" v-model="productNo">
                           <div v-if="state.products[index]"> 
-                            <h6>상품명: {{ state.products[index].productName }}</h6>
                           <div v-if="order.orderState === '주문 완료'">
                           <button class="btn btn-secondary btn-sm" id="orderCancelButton" @click="orderCancel(order.orderNo)">
                             주문취소
