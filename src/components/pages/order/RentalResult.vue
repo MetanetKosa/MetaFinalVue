@@ -237,7 +237,8 @@ export default {
     const getOrderDetail = async () => {
       console.log("주문 상세 받아와??");
       try {
-        const res = await axios.get('/order/check/' + orderNo);
+        //const res = await axios.get('/order/check/' + orderNo);
+        const res = await axios.get(`/order/check/${orderNo}`);
         detailOrder.value = {...res.data};
         console.log(detailOrder.value);
         console.log(detailOrder.value.orderName);

@@ -536,7 +536,6 @@
           saveCancel,
           cancel,
           saveExtend,
-          memName,
           //&&& DatePicker &&&
           picked,
           locale,
