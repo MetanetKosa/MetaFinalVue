@@ -1,14 +1,14 @@
 <template>
-    <section class="py-5 mt-6">
+    <section class="py-5">
     <div class="container">
         <div class="row">
-            <div class="col-lg-3 me-lg-auto" style="text-align:left">
+            <div class="col-lg-3 me-lg-auto mt-5" style="text-align:left">
                 <MypageSidebar></MypageSidebar>
             </div>
             <div class="col-lg-9 ps-lg-5 mt-5">
                 <div class> 
                   <div class="text-block" style="text-align:left">
-                    <h1 class="hero-heading mb-0">정세은님,</h1>
+                    <h1 class="hero-heading mb-0">{{memName}}님,</h1>
                     <h1 class="hero-heading mb-0">안녕하세요!</h1>
                     <p class="mt-2 text-muted">내게 맞는 제품관리 서비스와 활동 내역을 확인하세요.</p>
                     <!-- <h4 class="mt-5 mb-3 ml-3">사용중인 제품{{ myProducts.value.length() }}개</h4> -->
@@ -81,13 +81,17 @@ export default {
         const memNo = sessionStorage.getItem('memNo');
         console.log("sessionStorage에서 가져온 값 : " + memNo);
         // memNo 임의 설정 1
+
+        const memName = sessionStorage.getItem('memName');
+      console.log("회원 이름 : " + memName);
+
         axios.get(`/mypage/myorder/myproducts/${memNo}`).then(({ data }) => {
             state.myProducts = data;
             console.log(" 사용중인 제품 데이터 : " + data);
         }).catch((error) => {
             console.error("API 요청 실패", error);
         });
-        return { state, moveToMyOrder };
+        return { state, moveToMyOrder, memName };
     },
     components: { MypageSidebar }
 }

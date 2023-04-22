@@ -474,6 +474,7 @@
       // let productNum = getMyProductDetail();
       // console.log("이거야!" + productNum);
 
+
       const saveCancel = async() => {
         try {
           const data = {
@@ -535,6 +536,7 @@
           saveCancel,
           cancel,
           saveExtend,
+          memName,
           //&&& DatePicker &&&
           picked,
           locale,
