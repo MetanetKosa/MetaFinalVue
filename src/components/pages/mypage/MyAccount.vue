@@ -70,24 +70,24 @@
                   <button class="btn btn-link ps-0 text-primary collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#personalDetails" aria-expanded="false" aria-controls="personalDetails">Update</button>
                 </div>
               </div>
-              <p class="text-sm text-muted"><i class="fa fa-id-card fa-fw me-2"></i><br>
+              <p class="text-sm text-muted"><i class="fa fa-id-card fa-fw me-2"></i>{{detailMember.memName}}<br>
                 <!-- <i class="fa fa-birthday-cake fa-fw me-2"></i>{{detailMember.memEmail}}<br> -->
-                <i class="fa fa-envelope-open fa-fw me-2"></i> <span class="mx-2"> | </span> 
-                 <i class="fa fa-phone fa-fw me-2"></i></p>
+                <i class="fa fa-envelope-open fa-fw me-2"></i> {{detailMember.memPhone}}<span class="mx-2"> | </span> 
+                 <i class="fa fa-phone fa-fw me-2"></i>{{detailMember.memEmail}}</p>
               <div class="collapse" id="personalDetails">
                 <form action="#">
                   <div class="row pt-4">
                     <div class="mb-4 col-md-6">
                       <label class="form-label" for="name">이름</label>
-                      <input class="form-control" type="text" name="name" id="name" value="">
+                      <input class="form-control" type="text" name="name" id="name" v-model="detailMember.memName">
                     </div>
                     <div class="mb-4 col-md-6">
                       <label class="form-label" for="phone">전화번호</label>
-                      <input class="form-control" type="text" name="phone" id="phone" value="">
+                      <input class="form-control" type="text" name="phone" id="phone" v-model="detailMember.memPhone">
                     </div>
                     <div class="mb-4 col-md-6">
                       <label class="form-label" for="email">이메일</label>
-                      <input class="form-control" type="email" name="email" id="email" value="">
+                      <input class="form-control" type="email" name="email" id="email" v-model="detailMember.memEmail">
                     </div>
                   </div>
                   <button class="btn btn-outline-primary mb-4" type="submit">변경사항 저장</button>
@@ -165,28 +165,25 @@ export default {
       memEmail: '',
     });
 
+    console.log("detailMember memId확인" + sessionStorage.getItem("memId"));
+    console.log("detailMember memId확인" + sessionStorage.getItem("memId"));
+
     
     const id = sessionStorage.getItem("memId"); 
 
     const getMemberDetail = async() => {
             console.log("memId확인" + sessionStorage.getItem("memId"));
             axios.get(`/auth/members/${id}`).then((response) => {
+                detailMember.value = {...response.data}
                 console.log("받아온 데이터: "+ (response.data.memName));
                 console.log("받아온 데이터: "+ (response.data.memEmail));
                 console.log("받아온 데이터: "+ (response.data.memPhone));
-
-
-                // detailMember.value = {...response.data};
-                // console.log("detailMember받아온 데이터: "+ (detailMember.value ));
-                // console.log("detailMember받아온 데이터: "+ (detailMember.value.memEmail ));
-                // console.log("detailMember받아온 데이터: "+ (detailMember.value.memPhone ));
-
             });
         }
 
+        getMemberDetail();
         //상세 페이지 바로 가져오기
      onMounted(() => {
-        detailMember,
         getMemberDetail
     });
 
@@ -195,7 +192,9 @@ export default {
 
     return {
         id,
+        detailMember,
         getMemberDetail
+
     };
   }
 }

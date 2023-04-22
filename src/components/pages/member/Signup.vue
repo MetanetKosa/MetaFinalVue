@@ -1,21 +1,23 @@
 <template>
-    <div class="container-fluid px-3">
-          <div class="row min-vh-100">
-              <div class="col-md-8 col-lg-6 col-xl-5 d-flex align-items-center">
+    <div class="container px-3">
+          <div class="row min-vh-100 justify-content-center">
+              <div class="d-flex" style="width:700px;">
                   <div class="w-100 py-5 px-md-5 px-xxl-6 position-relative">
-                      <div class="mb-4"><img class="img-fluid mb-4" src="img/logo-square.svg" alt="..." style="max-width: 4rem;">
+                      <div class="mb-4">
+                        <!-- <img class="img-fluid mb-4" src="img/logo-square.svg" alt="..." style="max-width: 10rem;"> -->
                           <h2>회원가입</h2>
+                         
                       </div>
                       <form  @submit.prevent="signUp" class="form-validate">
                           <div class="mb-4">
-                              <label class="form-label" for="memId"> 아이디</label>
+                              <label class="form-label" for="memId" style="text-align:left;"> 아이디</label>
                               <input class="form-control" name="memId" id="memId" placeholder="영어/숫자 조합 4-20글자" type="text" v-model="state.form.memId" required pattern="[A-Za-z0-9]{4,20}" autocomplete="off">
                               <button class="btn btn-lg btn-primary" @click="register" >아이디중복체크</button>
                             </div>
                           <div class="mb-4">
                               <label class="form-label" for="memPw"> 비밀번호 </label>
-                              <input class="form-control" name="memPw" id="memPw"  type="password" placeholder="최소 4글자 이상" v-model="state.form.memPw" required minlength="4">
-                            </div>
+                              <input class="form-control" name="memPw" id="memPw" placeholder="최소 4글자 이상" type="password" v-model="state.form.memPw" required minlength="4">
+                          </div>
                           <div class="mb-4">
                               <label class="form-label" for="memName"> 이름</label>
                               <input class="form-control" name="memName" id="memName" placeholder="" type="text" v-model="state.form.memName">
@@ -26,21 +28,16 @@
                           </div>
                           <div class="mb-4">
                               <label class="form-label" for="memEmail"> 이메일 등록</label>
-                              <input class="form-control" name="memEmail" id="loginUsername" placeholder="name@address.com" type="email" v-model="state.form.memEmail">
+                              <input class="form-control" name="memEmail" id="loginUsername" type="email" v-model="state.form.memEmail" placeholder="name@address.com">
                           </div>
                           <div class="d-grid gap-2">
                               <button class="btn btn-lg btn-primary" type="submit">가입하기</button>
                           </div>
-                         
                       </form><a class="close-absolute me-md-5 me-xl-6 pt-5" href="index.html">
                       <svg class="svg-icon w-3rem h-3rem">
                           <use xlink:href="#close-1"> </use>
                       </svg></a>
                   </div>
-              </div>
-              <div class="col-md-4 col-lg-6 col-xl-7 d-none d-md-block">
-                  <!-- Image-->
-                  <div class="bg-cover h-100 me-n3" style="background-image: url(../../../../public/html/img/photo/photo-1497436072909-60f360e1d4b1.jpg);"></div>
               </div>
           </div>
       </div>
@@ -67,7 +64,7 @@
 
           const Swal = require('sweetalert2');
 
-          const register = () =>{
+          const updateMember = () =>{
             console.log("memId확인" + state.form.memId);
             const id = state.form.memId;
             axios.get(`/auth/members/${id}`).then((response) => {
@@ -97,50 +94,10 @@
             });
         }
   
-          const signUp = () => {
-              console.log("memId확인" + state.form.memId);
-              console.log("memPw확인" + state.form.memPw);
-              console.log("memNamet확인" + state.form.memName);
-              console.log("memPhone확인" + state.form.memPhone);
-              console.log("memEmail확인" + state.form.memEmail);
-  
-              const args = JSON.parse(JSON.stringify(state.form));
-              axios.post("/auth/signup", args).then(() => {
-                  Swal.fire({
-                        title: 'Success!',
-                        text: '회원가입 완료!',
-                        icon: 'success',
-                        // confirmButtonText: 'OK'
-                        showConfirmButton: false,
-                        timer: 1500
-                            }).then(() => {
-                                router.push({path: "/login"})
-                                // location.reload();
-                                // window.location.href = '/Login'
-                                    // SweetAlert(Swal)의 OK 버튼을 클릭하면 메인 페이지로 이동합니다.
-                                    //router.push('/');
-                            });
-                        //     Swal.fire({
-                        // title: 'Success!',
-                        // text: '중복된 아이디가 있습니다 다시 입력해주세요!',
-                        // icon: 'success',
-                        // // confirmButtonText: 'OK'
-                        // showConfirmButton: false,
-                        // timer: 1500
-                        //     }).then(() => {
-                        //         router.push({path: "/login"})
-                        //         // location.reload();
-                        //         // window.location.href = '/Login'
-                        //             // SweetAlert(Swal)의 OK 버튼을 클릭하면 메인 페이지로 이동합니다.
-                        //             //router.push('/');
-                        //     });
-              })
-          }
         //   router.push({path: "/login"})
           return{
               state,
-              signUp,
-              register
+              updateMember
           }
       }
   }
