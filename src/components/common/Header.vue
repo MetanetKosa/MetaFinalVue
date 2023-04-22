@@ -41,9 +41,9 @@
 
                                 <router-link class="dropdown-item" :to="{name: 'AdminRegister'}">관리자 등록 페이지</router-link>
                                 <router-link class="dropdown-item" :to="{name: 'AdminList'}">관리자 목록 페이지</router-link>
-                                <router-link class="dropdown-item" :to="{name: 'ProductList'}" >상품목록페이지</router-link>
-                                <router-link class="dropdown-item" :to="{name: 'MyPage'}">첫화면. 나의 정수기 관리하기</router-link>
-                                <router-link class="dropdown-item" :to="{name: 'MyOrderList'}">마이페이지-주문내역</router-link>
+                                <!-- <router-link class="dropdown-item" :to="{name: 'ProductList'}" >상품목록페이지</router-link> -->
+                                <!-- <router-link class="dropdown-item" :to="{name: 'MyPage'}">첫화면. 나의 정수기 관리하기</router-link>
+                                <router-link class="dropdown-item" :to="{name: 'MyOrderList'}">마이페이지-주문내역</router-link> -->
                                 <router-link class="dropdown-item" :to="{name: 'MyAccount'}">회원정보관리</router-link>
                                 <router-link class="dropdown-item" :to="{name: 'AdminOrder'}">주문관리 페이지</router-link>
 
@@ -55,7 +55,6 @@
                                 <!-- <router-link class="dropdown-item" :to="{name: 'ProductDetail'}">상품상세페이지</router-link> -->
                                 <!-- <router-link class="dropdown-item" :to="{name: 'ProductList'}">상품목록페이지</router-link> -->
                                 <!-- <router-link class="dropdown-item" :to="{name: 'MyProduct'}">마이페이지 나의 정수기 상세정보</router-link> -->
-                                <router-link class="dropdown-item" :to="{name: 'MyOrderList'}">내 주문내역</router-link>
                             </div>
                         </li>
                         <li class="nav-item mt-3 mt-lg-0 ms-lg-3 d-lg-none d-xl-inline-block"></li>
@@ -92,6 +91,9 @@
                                 <a class="dropdown-item" v-if="!pageState" href="/mypage">사용중인 제품</a>
                                 <a class="dropdown-item" v-if="!pageState" href="/../public/index-2.html">주문내역</a>
                                 <router-link class="dropdown-item" v-if="!pageState" :to="{name: 'Login'}" >로그인</router-link>
+                                <router-link class="dropdown-item" v-if="pageState" :to="{name: 'MyPage'}">첫화면. 나의 정수기 관리하기</router-link>
+                                <router-link class="dropdown-item" v-if="pageState" :to="{name: 'MyOrderList'}">마이페이지-주문내역</router-link>
+                                <router-link class="dropdown-item" v-if="pageState" :to="{name: 'MyOrderList'}">내 주문내역</router-link>
                                 <router-link class="dropdown-item" v-if="pageState" :to="{name: ''}" @click.prevent="logout()">로그아웃</router-link>
                             </div>
                         </li>
