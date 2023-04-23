@@ -150,7 +150,7 @@
                       
                       <div class="mb-4 col-md-6">
                         <label class="form-label" for="card-name">카드선택</label>
-                        <select class="selectpicker form-control mb-3" v-model="retal.orderPay" name="payment" id="form_payment" data-style="btn-selectpicker" placeholder="카드 선택">
+                        <select class="selectpicker form-control mb-3" v-model="rental.orderPay" name="payment" id="form_payment" data-style="btn-selectpicker" placeholder="카드 선택">
                           <option>선택</option>
                           <option>BC카드</option>
                           <option>삼성카드</option>

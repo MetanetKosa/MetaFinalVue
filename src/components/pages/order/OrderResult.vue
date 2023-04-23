@@ -257,7 +257,7 @@ setup() {
       title: '주문이 완료되었습니다.'
     })
     router.push({
-      name: 'ProductDetail'
+      name: 'ProductList'
     })
 
   }

@@ -167,8 +167,8 @@
               <!-- <input type="hidden" name="rentalFee" v-model="cancel.returnPrice">  -->
               <!-- <input type="hidden" v-bind:name="inputName" v-bind:value="cancel.returnPrice"> -->
               <h6 class="card-title text-bold text-muted">위약금 결제 수단</h6>
+              <button class="btn btn-link btn-collapse ps-0 text-muted" type="button" data-bs-toggle="collapse" data-bs-target="#addNewCard" aria-expanded="false" aria-controls="addNewCard" data-expanded-text="닫기" data-collapsed-text="카드">카드</button>
           <div class="row collapse" id="addNewCard">
-            
             <div class="mb-4 col-md-6">
               <label class="form-label" for="card-name">카드선택</label>
               <select class="form-control mb-3" v-model="cancel.returnMethod" name="payment" id="form_payment" data-style="btn-selectpicker" placeholder="카드 선택">
@@ -210,7 +210,7 @@
             
             <div class="mb-4 col-md-6">
               <label class="form-label" for="card-name">은행명</label>
-              <select class="selectpicker form-control mb-3" name="payment" id="form_payment" data-style="btn-selectpicker">
+              <select class="form-control mb-3" name="payment" id="form_payment" data-style="btn-selectpicker">
                 <option value="">선택</option>
                 <option value="">산업은행</option>
                 <option value="">기업은행</option>
@@ -272,7 +272,7 @@
               <div class="card-header pl-0">
               <h2 class="card-title text-bold">정수기 반납을 위한 수거지 정보를 입력해주세요</h2>
             </div>
-              <h6 class="card-title text-bold text-muted">방문 일자 선택</h6>
+              <h6 class="card-title text-bold text-muted mt-4">방문 일자 선택</h6>
               <!-- DatePicker -->
               <div class="container">
                 <div class="my-2" style="width: 100%">
@@ -306,7 +306,7 @@
                   <option>오후 06 ~ 07시</option>
                 </select>
                 <div style="text-align:right">
-                  <button class="btn btn-primary btn-sm" @click="continueCancel = true" type="submit">반납 신청</button>
+                  <button class="btn btn-primary btn-sm" type="submit">반납 신청</button>
                 </div>
               </div>
             </form>

@@ -207,8 +207,10 @@ export default {
                 timer: 1500
                 // confirmButtonText: 'OK'
             }).then(()=>{
-                router.push('/')
-                location.reload();
+                router.push({
+                    name: 'Home'
+                })
+                //location.reload();
 ;            })
         }
 

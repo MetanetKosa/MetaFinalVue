@@ -125,7 +125,8 @@
               icon: 'success',
                   title: '주문취소가 되었습니다.'
             }).then(()=> {
-              window.location.href = '/myproduct'
+              // window.location.href = '/myorder'
+              window.location.reload();
             })
           console.log("주문 취소 성공하였어요.", res.data.error);
         }else{
