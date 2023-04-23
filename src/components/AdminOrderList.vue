@@ -124,7 +124,7 @@
                             <td class="text-center">{{order.product.productPrice}}</td>                    
                             <td class="text-center">
                                 <select class="form-select" v-model="order.orderState" >
-                                    <option value="주문완료">주문완료</option>
+                                    <option value="주문완료">주문 완료</option>
                                     <option value="배송 중">배송 중</option>
                                     <option value="배송 중">배송 완료</option>
                                     <option value="설치 완료">설치 완료</option>
@@ -204,7 +204,7 @@
                             <td class="text-center">
                                 <select class="form-select" v-model="rental.orderState" >
                                     <option value="" disabled selected></option>
-                                    <option value="주문완료">주문완료</option>
+                                    <option value="주문완료">주문 완료</option>
                                     <option value="배송 중">배송 중</option>
                                     <option value="배송 중">배송 완료</option>
                                     <option value="설치 완료">설치 완료</option>
