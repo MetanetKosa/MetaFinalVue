@@ -27,7 +27,7 @@
                                 <a class="dropdown-item" href="index-3.html">1:1 문의</a>
                             </div>
                         </li>
-                        <li class="header-menu nav-item dropdown">
+                        <li v-if="pageAdmin" class="header-menu nav-item dropdown">
                             <a class="nav-link" id="docsDropdownMenuLink" href="index.html" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">관리자&nbsp;<i class="fas fa-angle-down"></i></a>
                             <div class="dropdown-menu" aria-labelledby="homeDropdownMenuLink">
 
@@ -210,7 +210,7 @@ export default {
                 router.push({
                     name: 'Home'
                 })
-                //location.reload();
+                location.reload();
 ;            })
         }
 
