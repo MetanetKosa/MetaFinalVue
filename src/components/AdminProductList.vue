@@ -215,7 +215,7 @@ export default {
         };
 
       const currentPage = ref(1);
-    const perPage = ref(10);
+    const perPage = ref(5);
 
     const displayedItems = computed(() => {
       const start = (currentPage.value - 1) * perPage.value;

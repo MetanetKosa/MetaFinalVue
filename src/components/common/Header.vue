@@ -81,9 +81,11 @@
                         </div>
                     </form>
                     </li>
+                    <div v-if="pageState">
                         <li class="nav-item"><router-link class="nav-link" v-if="!pageDefault" :to="{name: 'Signup'}">회원가입</router-link></li>
                         <li class="nav-item"><router-link class="nav-link" v-if="!pageDefault" :to="{name: 'Login'}" >로그인</router-link></li>
-                        <li class="nav-item dropdown" v-if="pageState">
+                    </div>
+                        <li class="nav-item dropdown" v-if="!pageState">
                             <a class="nav-link dropdown" href="index.html" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="personIcon"><i class="fas fa-user-alt fa-lg"></i></a>
                             <div class="dropdown-menu" aria-labelledby="homeDropdownMenuLink">
                                 <router-link class="dropdown-item" v-if="!pageState" :to="{name: 'Login'}" >로그인</router-link>

@@ -233,7 +233,7 @@ export default {
 
     setup(){
 
- 
+        let fileNo = 0;
       const router = useRouter();
       const state = reactive({
       products: [],
@@ -267,6 +267,8 @@ export default {
       
 
     const submit = () => {
+
+
       const args = JSON.parse(JSON.stringify(state.form));
       axios.post('/admin/product', args).then(() => {
         console.log("등록되었습니다");
@@ -277,6 +279,8 @@ export default {
     //이미지 업로드 처리
     const handleImageUpload = (event, fileType) => {
         const formData = new FormData();
+
+
           if (event.target.files) {
             if (fileType !== "files") {
             const file = event.target.files[0];
@@ -415,6 +419,11 @@ export default {
 
         // 추가 이미지 처리
         const handleAddChange = (event) => {
+             const files = event.target.files;
+            if (state.files.length + files.length > 3) {
+              alert("추가 이미지는 최대 3개의 파일까지 업로드할 수 있습니다.");
+             return;
+            }
         state.files = [...state.files, ...event.target.files];
          handleImageUpload(event, "files");
         };
