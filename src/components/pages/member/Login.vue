@@ -2,10 +2,10 @@
     <body>
       <div class="container px-3">
           <div class="row min-vh-100 justify-content-center">
-              <div class="col-md-8 col-lg-6 col-xl-5 d-flex align-items-center">
-                  <div class="w-100 py-5 px-md-5 px-xxl-6 position-relative">
-                      <div class="mb-5">
-                        <!-- <img class="img-fluid mb-3" src="img/logo-square.svg" alt="..." style="max-width: 4rem;"> -->
+              <div class="col-md-8 col-lg-6 col-xl-5 d-flex mt-5">
+                  <div class="w-100 py-5 mt-5 px-md-5 px-xxl-6 position-relative">
+                      <div class="mb-5" style="text-align: center;">
+                        <img class="img-fluid mb-5" src="../../../../public/html/img/metawater-logo.png" alt="..." style="max-width: 15rem;">
                           <h2>로그인</h2>
                       </div>
                       <form @submit.prevent="login" class="form-validate">

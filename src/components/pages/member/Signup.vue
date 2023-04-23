@@ -2,17 +2,20 @@
     <div class="container px-3">
           <div class="row min-vh-100 justify-content-center">
               <div class="d-flex" style="width:700px;">
-                  <div class="w-100 py-5 px-md-5 px-xxl-6 position-relative">
+                  <div class="w-100 py-5 px-md-5 px-xxl-6 mt-5 position-relative">
                       <div class="mb-4">
-                        <!-- <img class="img-fluid mb-4" src="img/logo-square.svg" alt="..." style="max-width: 10rem;"> -->
-                          <h2>회원가입</h2>
+                        <img class="img-fluid mb-5" src="../../../../public/html/img/metawater-logo.png" alt="..." style="max-width: 15rem;">
+                          <h2 class="mb-4">회원가입</h2>
                          
                       </div>
                       <form  @submit.prevent="signUp" class="form-validate">
                           <div class="mb-4">
                               <label class="form-label" for="memId" style="text-align:left;"> 아이디</label>
-                              <input class="form-control" name="memId" id="memId" placeholder="영어/숫자 조합 4-20글자" type="text" v-model="state.form.memId" required pattern="[A-Za-z0-9]{4,20}" autocomplete="off">
-                              <button class="btn btn-lg btn-primary" @click="register" >아이디중복체크</button>
+                              <div class="row">
+                              <input class="form-control col-8 ml-2" name="memId" id="memId" placeholder="영어/숫자 조합 4-20글자" type="text" v-model="state.form.memId" required pattern="[A-Za-z0-9]{4,20}" autocomplete="off">
+                              
+                              <button class="btn btn-sm btn-secondary col-3 mx-2" @click="register" >아이디중복체크</button>
+                            </div>
                             </div>
                           <div class="mb-4">
                               <label class="form-label" for="memPw"> 비밀번호 </label>

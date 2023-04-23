@@ -87,7 +87,7 @@
                     </div> -->
                     <div class="mb-4 col-md-12">
                       <label class="form-label" for="password">보안 상의 이유로 현재 비밀번호가 필요합니다</label>
-                      <input class="form-control" type="password" name="pw" id="pw" >
+                      <input class="form-control" type="password" name="pw" id="pw" v-model="deleteState.password" >
                     </div>
                   </div>
                   <button class="btn btn-outline-primary" type="submit">회원 탈퇴</button>
@@ -122,31 +122,61 @@ export default {
     const Swal = require('sweetalert2');
 
 
-    const updateState = ref({
+    const deleteState = ref({
               form: {
-                name: "",
-                  phone: "",
-                  email: "",
+                password: "",
               },
           })
 
-          const id = sessionStorage.getItem("memId"); 
-
-
+    const id = sessionStorage.getItem("memId"); 
     console.log("detailMember memId확인" + sessionStorage.getItem("memId"));
 
 
-    //회원 삭제
-    // const deleteMember  = () => {
-    //     console.log("이건 실행되는 건가?");
+    // 회원 삭제
+    const deleteMember  = () => {
+        console.log("이건 실행되는 건가?");
+        const id = sessionStorage.getItem("memId"); 
+        console.log("detailMember memId확인" + detailMember.value.memId);
+               console.log("---detailMember memId확인---" + id);
+        console.log(" detailMember 삭제된 데이터 " +deleteState.value.password);
+        const pw = deleteState.value.password;
+        //form에서 가져온 데이터!!!!????
+        const data = {
+            memId : id,
+            memPw : pw,
+      }
+      // data.value.memId = id;
+      // data.value.memPw = deleteState.value.password;
 
-        
-    // axios.post("/auth/delete",data).then(() =>{
-    // //   console.log("업데이트 된 데이터 가져오기 response "+response.value);
- 
-    // });
-
-    // }
+                  axios.post('/auth/delete',data).then((response) => {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: '탈퇴처리가 완료되었습니다.',
+                        icon: 'success',
+                        // confirmButtonText: 'OK'
+                        showConfirmButton: false,
+                        timer: 1500
+                            }).then(() => {
+                              sessionStorage.clear();
+                                location.reload();
+                                window.location.href = '/'
+                                    // SweetAlert(Swal)의 OK 버튼을 클릭하면 메인 페이지로 이동합니다.
+                                    //router.push('/');
+                            });
+                    console.log("삭제된 메서드 실행이 잘 되나교? 왜 안된는 화깅ㄴ");
+                            console.log("받아온 데이터: "+ (response.data.memId));
+                            console.log("받아온 데이터: "+ (response.data.memPw));
+            })
+            // .catch((error) => {
+            //         Swal.fire({
+            //             icon: 'error',
+            //                 title: 'Error!',
+            //                 html: '비밀번호를 잘못 입력했습니다.<br>입력하신 내용을 다시 확인해주세요',
+            //                 showConfirmButton: false,
+            //                 timer: 1500
+            //             });
+            //     });     
+    }
     
     //회원 수정
     const updateMember = () => {
@@ -211,10 +241,10 @@ export default {
     return {
         id,
         detailMember,
-        updateState,
+        deleteState,
         getMemberDetail,
         updateMember,
-        // deleteMember
+        deleteMember
     }
     
   },
