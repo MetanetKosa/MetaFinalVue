@@ -610,7 +610,8 @@
     const getProductDetail = async() => {
       console.log("해당 상품 받아와??");
       console.log("상품 번호: "+productNo);
-      const res = await axios.get('/product/' +productNo);
+      //const res = await axios.get('/product/' +productNo);
+      const res = await axios.get(`/product/${productNo}`);
       console.log(res.data);
       detailProduct.value = {...res.data};
       
@@ -620,7 +621,8 @@
 
     const getReviewList = async() => {
       console.log("리뷰 받아와??");
-      const res = await axios.get('/product/' +productNo+ '/reviews');
+      //const res = await axios.get('/product/' +productNo+ '/reviews');
+      const res = await axios.get(`/product/${productNo}/reviews`);
       console.log(res.data);
       reviews.value = res.data;
       reviewTotal.value = reviews.value.length;
@@ -629,14 +631,16 @@
     const avgStar = ref(0);
 
     const getReviewStar = async() => {
-      const avg = await axios.get('/product/' +productNo+ '/reviewStar');
+      //const avg = await axios.get('/product/' +productNo+ '/reviewStar');
+      const avg = await axios.get(`/product/${productNo}/reviewStar`);
       console.log(avg.data);
       avgStar.value = avg.data;
     } 
 
     const getInquiryList = async() => {
       console.log("문의 받아와??");
-      const res = await axios.get('/product/' +productNo+ '/proQna');
+      //const res = await axios.get('/product/' +productNo+ '/proQna');
+      const res = await axios.get(`/product/${productNo}/proQna`);
       console.log(res.data);
       inquirys.value = res.data;
       inquiryTotal.value = inquirys.value.length;
@@ -654,7 +658,8 @@
       //if(data=null) alert("문의를 작성해주세요");
       try{  ///{productNo}/{memNo}/qnaInsert
         //const res = await axios.post('/product/' +productNo+ '/qnaInsert', data);
-        const res = await axios.post('/product/' +productNo+ '/' +memNo+ '/qnaInsert', data);
+        //const res = await axios.post('/product/' +productNo+ '/' +memNo+ '/qnaInsert', data);
+        const res = await axios.post(`/product/${productNo}/${memNo}/qnaInsert`, data);
         if(res != null) {
           //alert("문의가 등록되었습니다");
           Swal.fire({

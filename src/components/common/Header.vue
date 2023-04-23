@@ -229,14 +229,16 @@ export default {
         // }
 
         const search = () => {
+    window.location.reload();
             router.push({
                 name: 'ProductList',
                 query: {
                     searchKeyword: searchKeyword.value
                 }
-            }, () => {
-                location.reload();
             })
+            // , () => {
+            //     window.location.reload()
+            // })
         }
 
         return {
