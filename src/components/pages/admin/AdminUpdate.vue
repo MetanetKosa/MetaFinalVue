@@ -165,11 +165,11 @@
                                                 <img :src="image.url" style="width: 132px; height: auto;" />
                                             </span>
                                             <div class="mailbox-attachment-info">
-                                                <a href="#" class="mailbox-attachment-name" >
+                                                <a class="mailbox-attachment-name" >
                                                     {{image.name}}
                                                 </a>
                                                 <span class="mailbox-attachment-size clearfix mt-1">                                           
-                                                    <a href="#" class="btn btn-default btn-sm float-right" @click="deleteImage(index)">
+                                                    <a  class="btn btn-default btn-sm float-right" @click="deleteImage(index)">
                                                         <i class="fas fa-times"></i>
                                                     </a>
                                                 </span>
@@ -187,7 +187,7 @@
                                     <i class="fas fa-paperclip"></i> 설명서 등록
                                     <input type="file" @change="handleFileChange" accept="application/pdf">
                                 </div>
-                                    <h6 class="help-block">{{product.productGuide}}</h6>
+                                    <h6 class="help-block">{{product.productGuide.split("_")[1]}}</h6>
                             </div>
                         </div>
                         
