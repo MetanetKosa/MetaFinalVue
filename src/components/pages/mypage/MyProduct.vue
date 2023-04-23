@@ -333,7 +333,7 @@
               </div>
               <div class="col-md-7">
                 <ul class="list-unstyled text-muted">  
-                  <li class="mb-2"><span class="text-sm">{{ myProduct.orderDate }}</span></li>
+                  <li class="mb-2"><span class="text-sm">{{ new Date(myProduct.orderDate).toLocaleDateString() }}</span></li>
                   <li><span class="text-sm">{{ myProduct.orderAddress}}&nbsp;{{ myProduct.orderAddDetail}}</span></li>
                   <li class="mb-2"><span class="text-sm">{{ myProduct.orderAddNumber}}</span></li>
                   <li class="mb-2"><span class="text-sm">{{ myProduct.orderPhone}}</span></li>

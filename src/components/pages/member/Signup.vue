@@ -10,7 +10,7 @@
                       </div>
                       <form  @submit.prevent="signUp" class="form-validate">
                           <div class="mb-4">
-                              <label class="form-label" for="memId" style="text-align:left;"> 아이디</label>
+                              <label class="form-label" for="memId" style="text-align:left;" autocomplete="off"> 아이디</label>
                               <div class="row">
                               <input class="form-control col-8 ml-2" name="memId" id="memId" placeholder="영어/숫자 조합 4-20글자" type="text" v-model="state.form.memId" required pattern="[A-Za-z0-9]{4,20}" autocomplete="off">
                               
@@ -18,19 +18,19 @@
                             </div>
                             </div>
                           <div class="mb-4">
-                              <label class="form-label" for="memPw"> 비밀번호 </label>
+                              <label class="form-label" for="memPw" autocomplete="off"> 비밀번호 </label>
                               <input class="form-control" name="memPw" id="memPw" placeholder="최소 4글자 이상" type="password" v-model="state.form.memPw" required minlength="4">
                           </div>
                           <div class="mb-4">
-                              <label class="form-label" for="memName"> 이름</label>
+                              <label class="form-label" for="memName" autocomplete="off"> 이름</label>
                               <input class="form-control" name="memName" id="memName" placeholder="" type="text" v-model="state.form.memName">
                           </div>
                            <div class="mb-4"> 
-                              <label class="form-label" for="memPhone"> 전화번호</label>
+                              <label class="form-label" for="memPhone" autocomplete="off"> 전화번호</label>
                               <input class="form-control" name="memPhone" id="memPhone" placeholder="" type="tel" v-model="state.form.memPhone">
                           </div>
                           <div class="mb-4">
-                              <label class="form-label" for="memEmail"> 이메일 등록</label>
+                              <label class="form-label" for="memEmail" autocomplete="off"> 이메일 등록</label>
                               <input class="form-control" name="memEmail" id="loginUsername" type="email" v-model="state.form.memEmail" placeholder="name@address.com">
                           </div>
                           <div class="d-grid gap-2">
