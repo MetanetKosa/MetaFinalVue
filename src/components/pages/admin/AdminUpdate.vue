@@ -196,7 +196,7 @@
                         </div>
                         <div class="card-body">                                
                             <div class="form-group">
-                                <textarea class="form-control" id="inputExperience" placeholder="상세정보 입력하세요"  :value="product.productDetail" @input="updateProductProperty(product.productDetail,$event.target.value)"></textarea>
+                                <textarea class="form-control" id="inputExperience" placeholder="상세정보 입력하세요"  v-model="product.productDetail"></textarea>
                             </div>
                         </div>
                     </div>
@@ -247,18 +247,8 @@ export default {
 
     const onSave = async() => {
         const res = await axios.patch(`/admin/product/${productNo}`,{
-           productName: product.value.productName,
-            productFunction: product.value.productFunction,
-            productModel: product.value.productModel,
-            productType: product.value.productType,
-            productPrice: product.value.productPrice,
-            productRentalPrice: product.value.productRentalPrice,
-            productRdate: product.value.productRdate,
-            productSales : product.value.productSales,
-            productModel : product.value.productModel,
-            productRentalPrice: product.value.productRentalPrice,
-            productPrice: product.value.productPrice,
-            productColor: product.value.productColo
+           productDetail: product.value.productDetail,
+
   
         });
 

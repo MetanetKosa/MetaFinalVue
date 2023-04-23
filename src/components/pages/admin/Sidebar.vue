@@ -1,9 +1,9 @@
  <template>
    <!-- Main Sidebar Container -->
-        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <aside class="main-sidebar sidebar-dark-primary elevation-4"  style="position:fixed">
             <!-- Brand Logo -->
             <a href="../../../../public/html/index3.html" class="brand-link">
-            <img src="../../../../public/html/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+            <img  class="brand-image img-circle elevation-3">
             <span class="brand-text font-weight-light">Metawater</span>
             </a>
 
@@ -22,69 +22,36 @@
                     </a>
                 </li> -->
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a data-widget="expandable-table"  class="nav-link">
                     <i class="nav-icon fas fa-copy"></i>
                     <router-link :to="{name: 'AdminList'}">
-                        제품 관리
+                        <p>   제품 관리</p> 
                     </router-link>
-                    <i class="fas fa-angle-left right"></i>
+                    <!-- <i class="fas fa-angle-left right"></i> -->
                     </a>
-                    <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                        <a href="../layout/top-nav.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>제품 등록</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../layout/top-nav-sidebar.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>제품 목록 </p>
-                        </a>
-                    </li>
-                    </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a  class="nav-link">
+                    <i class="nav-icon fas fa-chart-pie"></i>
+                    <router-link :to="{name: 'AdminRegister'}">
+                        제품 등록
+                    </router-link>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">
                     <i class="nav-icon fas fa-chart-pie"></i>
                     <router-link :to="{name: 'AdminOrder'}">
-                        주문/배송 관리
+                        주문 관리
                     </router-link>
-                    <i class="right fas fa-angle-left"></i>
                     </a>
-                    <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                        <a href="../charts/chartjs.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>ChartJS</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../charts/flot.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Flot</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../charts/inline.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Inline</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../charts/uplot.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>uPlot</p>
-                        </a>
-                    </li>
-                    </ul>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-tree"></i>
+                   
                     <p>
-                        해지/반납 관리
-                        <i class="fas fa-angle-left right"></i>
+                        
+
                     </p>
                     </a>
                     <ul class="nav nav-treeview">

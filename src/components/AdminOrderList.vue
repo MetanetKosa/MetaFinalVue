@@ -49,10 +49,11 @@
                                         <td class="text-center">구매</td>
                                         <td class="text-center" >{{new Date(order.orderDate).toLocaleDateString()}}</td>
                                         <td class="text-center">{{order.product.productName}}</td>                    
-                                        <td class="text-center">{{order.member.memName}}</td>
+                                        <td class="text-center">{{order.orderName}}</td>
                                         <td class="text-center">{{order.product.productPrice}}</td>
                                         <td class="text-center">
-                                            <button type="button" class="btn btn-default" @click="showModal = true; orderDetail(order.orderNo)">
+                                            <!-- <button type="button" class="btn btn-default" @click="showModal = true; orderDetail(order.orderNo)"> -->
+                                                 <button type="button" class="btn btn-default" @click="orderDetail(order.orderNo)">
                                                 상세
                                             </button>
                                         </td>
@@ -78,7 +79,7 @@
                                 <tr  v-for ="(rental,index) in rentals" :key="index">                                                      
                                     <th class="text-center">{{new Date(rental.orderDate).toLocaleDateString()}}</th>
                                     <td class="text-center">{{rental.product.productName}}</td>
-                                    <td class="text-center">{{rental.member.memName}}</td>                    
+                                    <td class="text-center">{{rental.orderName}}</td>                    
                                     <td class="text-center">{{rental.rentalTerm}}년</td>
                                      <td class="text-center">
                                         <button type="button" class="btn btn-default" @click="orderRentalDetail(rental.orderNo)">
@@ -99,9 +100,9 @@
 
         
     </section>
-    <div v-if="showModal && order !== null " class="modal" id="order-modal">
+    <div v-if="showOrderlModal" class="modal" :id="order-modal">
           <div class="cancel-modal-content card border-primary mb-3" style="width:50%;">
-              <span class="close" @click="showModal = false">&times;</span>
+              <span class="close" @click="showOrderlModal = false">&times;</span>
               <div class="card-header">
                 <h3 class="card-title text-bold">주문 상세정보</h3>
               </div>
@@ -125,7 +126,7 @@
                                 <select class="form-select" v-model="order.orderState" >
                                     <option value="주문완료">주문완료</option>
                                     <option value="배송 중">배송 중</option>
-                                    <option value="배송 완료">배송 완료</option>
+                                    <option value="배송 중">배송 완료</option>
                                     <option value="설치 완료">설치 완료</option>
                                     <option value="취소">취소</option>
                                     <option value="반납">반납</option>
@@ -155,7 +156,7 @@
                          </tr>
                           <tr>
                               <th class="text-center">설치주소</th>
-                              <td class="text-center" colspan="3">{{order.orderAddress}}-{{orderAddDetail}}</td>                                                                                                                            
+                              <td class="text-center" colspan="3">{{order.orderAddress}}-{{order.orderAddDetail}}</td>                                                                                                                            
                          </tr>
                           <tr>
                               <th class="text-center">설치우편번호</th>
@@ -167,7 +168,7 @@
                      </table>
                     </div>
                         <div class="modal-footer justify-content-between" >
-                            <button type="button" class="btn btn-default" @click ="showModal = false">닫기</button>
+                            <button type="button" class="btn btn-default" @click ="showOrderlModal = false">닫기</button>
                             <button type="button" class="btn btn-primary" @click="onSaveAndUpdateModal(order.orderNo)"   >저장</button>
                         </div>
                     </div>                              
@@ -176,9 +177,9 @@
 
 
      <!-- 렌탈 상세      -->
-      <div v-if="showModal && order == null " class="modal" id="rental-modal">
-          <div class="cancel-modal-content card border-primary mb-3" style="width:50%;">
-              <span class="close" @click="showModal = false">&times;</span>
+      <div v-if="showRentalModel" class="modal" id="rental-modal">
+          <div class="cancel-modal-content card border-primary mb-3" style="width:55%;">
+              <span class="close" @click="showRentalModel = false">&times;</span>
               <div class="card-header">
                 <h3 class="card-title text-bold">주문 상세정보</h3>
               </div>
@@ -190,6 +191,7 @@
                         <tr>
                             <th class="text-center">주문상품</th>
                             <th class="text-center">월 렌탈료</th>
+                            <th class="text-center">계약기간</th>
                             <th class="text-center">상태</th>
                             <th class="text-center">결제수단</th>          
                         </tr>
@@ -197,12 +199,14 @@
                     <tbody>
                         <tr >                                          
                             <td class="text-center">{{rental.product.productName}}</td>
-                            <td class="text-center">{{rental.product.productRentalPrice}}</td>                    
+                            <td class="text-center">{{rental.product.productRentalPrice}}원</td>   
+                            <td class="text-center">{{rental.rentalTerm}}년</td>                                              
                             <td class="text-center">
                                 <select class="form-select" v-model="rental.orderState" >
+                                    <option value="" disabled selected></option>
                                     <option value="주문완료">주문완료</option>
                                     <option value="배송 중">배송 중</option>
-                                    <option value="배송 완료">배송 완료</option>
+                                    <option value="배송 중">배송 완료</option>
                                     <option value="설치 완료">설치 완료</option>
                                     <option value="취소">취소</option>
                                     <option value="반납">반납</option>
@@ -244,8 +248,8 @@
                      </table>
                     </div>
                         <div class="modal-footer justify-content-between" >
-                            <button type="button" class="btn btn-default" @click ="showModal = false">닫기</button>
-                            <button type="button" class="btn btn-primary" @click="onSaveAndUpdateModal(order.orderNo)"   >저장</button>
+                            <button type="button" class="btn btn-default" @click ="showRentalModel = false">닫기</button>
+                            <button type="button" class="btn btn-primary" @click="onRentalUpdateModal(rental.orderNo)"   >저장</button>
                         </div>
                     </div>                              
                 </div>
@@ -277,24 +281,36 @@ export default {
         const rental = ref(null);
         const showModal = ref(false);
         const originalOrder = ref(null);
+        const showOrderlModal = ref(false);
+        const showRentalModel = ref(false);
+         const originalRental = ref(null);
 
 
         const orderDetail = (orderNo) => {
             axios.get(`/admin/orders/${orderNo}`).then(({ data }) => {
                 order.value = { ...data };
+                showOrderlModal.value = true;
             });
         };
-        const orderRentalDetail = (orderNo)  => {
-              axios.get(`/admin/orders/${orderNo}`).then(({ data }) => {
+
+
+        const orderRentalDetail = (renNo)  => {    
+              axios.get(`/admin/orders/${renNo}`).then(({ data }) => {
                 rental.value = { ...data };
+                console.log(rental);
+                 showRentalModel.value = true;
             });
         };
 
         const onSaveAndUpdateModal = async (orderNo) => {
             await onSave(orderNo);
-            showModal.value = false;
+            showOrderlModal.value = false;
             };
 
+        const onRentalUpdateModal = async(renNo) => {
+             await onRentalSave(renNo);
+            showRentalModel.value = false;
+        }
 
          const onSave = async(orderNo) =>{
              const orderState = order.value.orderState;      
@@ -302,6 +318,15 @@ export default {
                     orderState,
             });
             originalOrder.value = {...res.data};
+            
+            }
+
+             const onRentalSave = async(renNo) =>{
+             const orderState = rental.value.orderState;      
+                const res = await axios.patch(`/admin/orders/${renNo}`,{
+                    orderState,
+            });
+            originalRental.value = {...res.data};
             
             }
    
@@ -316,7 +341,11 @@ export default {
             orderDetail,
             order,
             rental,
-            showModal
+            showModal,
+            showOrderlModal,
+            showRentalModel,
+            onRentalUpdateModal,
+            originalRental
         }
     }
 }

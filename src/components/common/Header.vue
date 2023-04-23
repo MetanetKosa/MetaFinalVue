@@ -1,9 +1,10 @@
+
 <template>
 <header class="header">
         <!-- Navbar-->
         <nav class="navbar navbar-expand-lg fixed-top shadow navbar-light bg-white">
             <div class="container-fluid" style="width: 1400px;">
-                <div class="d-flex align-items-center"><router-link class="navbar-brand py-1" :to="{name: 'Home'}"><img src="../../../public/html/img/metawater-logo.png" alt="Metawater logo" style="width:150px;"></router-link>
+                <div class="d-flex align-items-center"><router-link class="navbar-brand py-1" :to="{name: 'Home'}"></router-link>
                     <ul class="navbar-nav ms-auto">
                         <li class="header-menu nav-item">
                             <router-link class="nav-link" :to="{name: 'ProductList'}">제품</router-link>
@@ -42,9 +43,6 @@
                                 <router-link class="dropdown-item" :to="{name: 'AdminRegister'}">관리자 등록 페이지</router-link>
                                 <router-link class="dropdown-item" :to="{name: 'AdminList'}">관리자 목록 페이지</router-link>
                                 <router-link class="dropdown-item" :to="{name: 'ProductList'}" >상품목록페이지</router-link>
-                                <router-link class="dropdown-item" :to="{name: 'MyPage'}">첫화면. 나의 정수기 관리하기</router-link>
-                                <router-link class="dropdown-item" :to="{name: 'MyOrderList'}">마이페이지-주문내역</router-link>
-                                <router-link class="dropdown-item" :to="{name: 'MyAccount'}">회원정보관리</router-link>
                                 <router-link class="dropdown-item" :to="{name: 'AdminOrder'}">주문관리 페이지</router-link>
 
                                 
@@ -55,7 +53,6 @@
                                 <!-- <router-link class="dropdown-item" :to="{name: 'ProductDetail'}">상품상세페이지</router-link> -->
                                 <!-- <router-link class="dropdown-item" :to="{name: 'ProductList'}">상품목록페이지</router-link> -->
                                 <!-- <router-link class="dropdown-item" :to="{name: 'MyProduct'}">마이페이지 나의 정수기 상세정보</router-link> -->
-                                <router-link class="dropdown-item" :to="{name: 'MyOrderList'}">내 주문내역</router-link>
                             </div>
                         </li>
                         <li class="nav-item mt-3 mt-lg-0 ms-lg-3 d-lg-none d-xl-inline-block"></li>
@@ -89,9 +86,8 @@
                         <li class="nav-item dropdown" v-if="pageState">
                             <a class="nav-link dropdown" href="index.html" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="personIcon"><i class="fas fa-user-alt fa-lg"></i></a>
                             <div class="dropdown-menu" aria-labelledby="homeDropdownMenuLink">
-                                <a class="dropdown-item" v-if="!pageState" href="/mypage">사용중인 제품</a>
-                                <a class="dropdown-item" v-if="!pageState" href="/../public/index-2.html">주문내역</a>
                                 <router-link class="dropdown-item" v-if="!pageState" :to="{name: 'Login'}" >로그인</router-link>
+                                <router-link class="dropdown-item" v-if="pageState" :to="{name: 'MyPage'}">마이페이지</router-link>
                                 <router-link class="dropdown-item" v-if="pageState" :to="{name: ''}" @click.prevent="logout()">로그아웃</router-link>
                             </div>
                         </li>
@@ -101,7 +97,7 @@
                                 <router-link class="dropdown-item" v-if="pageAdmin" :to="{name: ''}" @click.prevent="logout()">로그아웃</router-link>
                             </div>
                         </li>
-                        <li class="nav-item"><a class="nav-link dropdown" href="/" id="mybell"><i class="fas fa-bell fa-lg"></i></a></li>
+                        <!-- <li class="nav-item"><a class="nav-link dropdown" href="/" id="mybell"><i class="fas fa-bell fa-lg"></i></a></li> -->
                         <li class="nav-item mt-3 mt-lg-0 ms-lg-3 d-lg-none d-xl-inline-block" id="headerEmpty"></li>
                         <!-- <input type="hidden" v-model="auth"/> -->
                     </ul>
@@ -118,7 +114,6 @@ import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import Swal from 'sweetalert2';
 // import jwt_decode from 'vue-jwt-decode';
-
 export default {
     name: "Header",
     setup() {
@@ -135,17 +130,13 @@ export default {
             auth:'',
             status:''
         });
-
-
         const pageAdmin = ref(false);
         const pageState = ref(false);
         const pageDefault = ref(false);
-
         const token = sessionStorage.getItem("token");
         console.log("로그인 후 토큰생성 확인? : " + token);
         const id = sessionStorage.getItem("id");
         console.log("로그인 후 id생성 확인 sessionStorage.getItem? : " + id);
-
         const checkToken = () => {
             if(token == null){
                 console.log('token == null일 때 로그인 전');
@@ -154,7 +145,6 @@ export default {
                 pageDefault.value = true;
                 console.log('-------------------------------------------------')
                 console.log('로그인 후');
-
                     const checkAuth = () =>{
                         console.log("결과확인 id "+ id);
                         axios.get(`/auth/members/${id}`).then((response) => {
@@ -166,13 +156,12 @@ export default {
                             sessionStorage.setItem("memName",response.data.memName);
                             sessionStorage.setItem("memPhone",response.data.memPhone);
                             sessionStorage.setItem("memEmail",response.data.memEmail);
-
-                            console.log("memNo 데이터 확인 : " ,sessionStorage.getItem("memNo"));
-                            console.log("memNo 데이터 확인 : " ,sessionStorage.getItem("memId"));
-                            console.log("memNo 데이터 확인 : " ,sessionStorage.getItem("memPw"));
-                            console.log("memNo 데이터 확인 : " ,sessionStorage.getItem("memName"));
-                            console.log("memNo 데이터 확인 : " ,sessionStorage.getItem("memPhone"));
-                            console.log("memNo 데이터 확인 : " ,sessionStorage.getItem("memEmail"));
+                            // console.log("memNo 데이터 확인 : " ,sessionStorage.getItem("memNo"));
+                            // console.log("memNo 데이터 확인 : " ,sessionStorage.getItem("memId"));
+                            // console.log("memNo 데이터 확인 : " ,sessionStorage.getItem("memPw"));
+                            // console.log("memNo 데이터 확인 : " ,sessionStorage.getItem("memName"));
+                            // console.log("memNo 데이터 확인 : " ,sessionStorage.getItem("memPhone"));
+                            // console.log("memNo 데이터 확인 : " ,sessionStorage.getItem("memEmail"));
                             const memNo = sessionStorage.getItem("memNo");
                             console.log("memNo 데이터 확인 : " ,memNo );
                             authState.value = Object.assign({}, response.data);
@@ -189,18 +178,15 @@ export default {
                         });
                     }
                     checkAuth();
-
             
                 
                 // if(id.auth == "ROLE_ADMIN"){
-
                 // }else{
                 //     pageState.value= true;
                 // }
             }
         }
         checkToken();
-
         //로그아웃
         const logout  = () =>{
             sessionStorage.clear();
@@ -212,12 +198,12 @@ export default {
                 timer: 1500
                 // confirmButtonText: 'OK'
             }).then(()=>{
-                router.push('/')
-                location.reload();
+                router.push({
+                    name: 'Home'
+                })
+                //location.reload();
 ;            })
         }
-
-
         // const moveToSearchPage = (s) => {
         //     if (!s) {
         //         alert("검색어를 입력하세요.");
@@ -232,18 +218,18 @@ export default {
         //         }
         //     });
         // }
-
         const search = () => {
+    window.location.reload();
             router.push({
                 name: 'ProductList',
                 query: {
                     searchKeyword: searchKeyword.value
                 }
-            }, () => {
-                location.reload();
             })
+            // , () => {
+            //     window.location.reload()
+            // })
         }
-
         return {
             //moveToSearchPage,
             searchKeyword,
@@ -263,7 +249,6 @@ export default {
             // search,
         }
     },
-
     name: 'Header'
          // const {payload} = useJwt(token);
         // const tokenId = payload.id;
@@ -272,7 +257,6 @@ export default {
         //     const userRoles =  token.userRoles?.userRoles; 
         //     const userId =  token.userAud?.userAud;
         //     const userAud =  token.userSub?.userSub;//사용할 수 있는 대상자
-
         //     console.log("토큰 userSub: " + userSub );
         //     console.log("토큰 userRoles: " + userRoles);
         //     console.log("토큰 userId : " + userId);
@@ -288,5 +272,19 @@ export default {
 </script>
 
 <style>
-
 </style>
+Footer
+© 2023 GitHub, Inc.
+Footer navigation
+Terms
+Privacy
+Security
+Status
+Docs
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
+MetaFinalVue/Header.vue at main · MetanetKosa/MetaFinalVue

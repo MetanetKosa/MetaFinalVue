@@ -500,10 +500,31 @@
                       </div>
                   </div>
               </div>
-            </div> 
+            </div>
+          </div>         <!-- 문의 작성 ============== -->
+
+          <div class="text-block">
+              <div class="row" data-bs-toggle="collapse" data-bs-target="#way" aria-expanded="false" aria-controls="way">
+                <div class="col-md-11">
+                  <h2>사용설명서</h2>
+                </div>
+                <div class="col-md-1">
+                  <h2>+</h2>
+                </div>
+              </div>
+              <div class="collapse mt-4 question" id="way" >
+              <br>
+                 <div class="mb-5 pb-3" style="text-align: center;">
+                  <button class="btn btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#leaveQuestion" aria-expanded="false" aria-controls="leaveQuestion" @click="updateProduct(product)"  >제품 사용 설명서받기</button>
+                </div>
+                <div class="collapse mt-4" id="leaveQuestion" style="text-align: center; width: 50%; margin: 0 auto;">
+                    <!-- <h5 class="mb-4">문의하실 제목과 내용을 작성하신 후 [작성하기] 버튼을 클릭하세요 :)</h5> -->
+               
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
+         </div>
+         </div>
   
       </body>
   </template>
@@ -680,8 +701,34 @@
       getReviewStar();
       getInquiryList();
     });
+
+    const updateProduct =async (product) => {   
+              try {
+                   
+                    let path = product.productGuide.replaceAll("\\", "/");
+                    await axios.get(`/upload/download?fileName=${path}` ,{     
+                     responseType: 'blob', // 바이너리 데이터를 응답으로 받기 위해 blob 타입으로 설정           
+                     }).then(response => {
+                         const url = window.URL.createObjectURL(new Blob([response.data]));
+                         const link = document.createElement('a');
+                         link.href = url;
+
+                         // Content-Disposition 헤더에서 파일 이름을 추출하여 다운로드 파일 이름으로 설정
+                         const contentDispositionHeader = response.headers['content-disposition'];
+                         const fileName = decodeURIComponent(contentDispositionHeader.split(';')[1].trim().split('=')[1].replace(/"/g, ''));
+
+                         link.setAttribute('download', fileName);
+                         document.body.appendChild(link);
+                         link.click();
+                         document.body.removeChild(link);
+                     });
+                     } catch (error) {
+                         console.error(error);
+                     }
+                             }
     
   return {
+    updateProduct,
     route,
     router,
     detailProduct,

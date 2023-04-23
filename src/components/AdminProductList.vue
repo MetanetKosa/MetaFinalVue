@@ -3,24 +3,6 @@
             <section class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
-                    <!-- <div class="container-fluid">
-                    <form action="enhanced-results.html">
-                        <div class="row">
-                            <div class="col-md-10 offset-md-1">                               
-                                <div class="form-group">
-                                    <div class="input-group input-group-lg">
-                                        <input type="search" class="form-control form-control-lg" placeholder="제품 검색">
-                                        <div class="input-group-append">
-                                            <button type="submit" class="btn btn-lg btn-default">
-                                                <i class="fa fa-search"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                     </div> -->
                         <div class="col-sm-6">
                             <h1>제품 목록</h1>
                         </div>
@@ -79,7 +61,9 @@
                             </th>
                         </tr>
                     </thead>
-                    <tbody v-for="(product) in products" :key="product.productNo">
+
+                    <!-- <tbody v-for="(product) in products" :key="product.productNo"> -->
+                         <tbody v-for="(product) in displayedItems" :key="product.productNo"> 
                         <tr>
                             <td>
                                {{product.productNo}}
@@ -127,15 +111,8 @@
                 </table>
                 </div>
                  <div class="card-footer">
-                    <nav aria-label="Contacts Page Navigation">
-                       <ul class="pagination justify-content-center m-0">
-                            <li class="page-item" v-if="pageDto.prev"><a class="page-link" href="#" v-on:click.prevent="changePage(pageDto.startPage - 1)">이전</a></li>
-                            <li class="page-item" v-for="page in pageDto.pages" :key="page" :class="{ 'active': page === pageDto.pageNum }">
-                                <a class="page-link" href="#" v-on:click.prevent="changePage(page)">{{ page }}</a>
-                            </li>
-                            <li class="page-item" v-if="pageDto.next"><a class="page-link" href="#" v-on:click.prevent="changePage(pageDto.endPage + 1)">다음</a></li>
-                        </ul>
-                    </nav>
+                      <button @click="prevPage">Previous</button>
+                     <button @click="nextPage">Next</button>
                 </div>
             </div>
             </section>
@@ -145,17 +122,13 @@
 </template>
 
 <script>
-import { reactive} from 'vue';
+import { reactive, computed, watch , ref} from 'vue';
 import axios from "axios";
 import {useRoute, useRouter} from 'vue-router';
 
 export default {
     props: {
         products: {
-            type: Array,
-            required: true,
-            },
-            page: {
             type: Object,
             required: true,
             },
@@ -175,6 +148,8 @@ export default {
       emits: ['delete-product','update-product'],
     setup(props,  {emit}){
 
+         
+
         const changePage = (page) => {
             emit('change-page', page);
             };
@@ -190,45 +165,45 @@ export default {
             emit('delete-product', productNo);
          }
 
-        // const updateProduct = (product) => {   
-        //     console.log(product);        
-        //     router.push({
-        //         name: 'AdminUpdate',
-        //         params: {
-        //             id: product.productNo
-        //         },
-        //         props: {
-        //             products: product
-        //         }
-        //     })
-        // }
+        const updateProduct = (product) => {   
+            console.log(product);        
+            router.push({
+                name: 'AdminUpdate',
+                params: {
+                    id: product.productNo
+                },
+                props: {
+                    products: product
+                }
+            })
+        }
 
 
         //다운로드
-        const updateProduct =async (product) => {   
-             try {
+        // const updateProduct =async (product) => {   
+        //      try {
                    
-                    let path = product.productGuide.replaceAll("\\", "/");
-                    await axios.get(`/upload/download?fileName=${path}` ,{     
-                    responseType: 'blob', // 바이너리 데이터를 응답으로 받기 위해 blob 타입으로 설정           
-                    }).then(response => {
-                        const url = window.URL.createObjectURL(new Blob([response.data]));
-                        const link = document.createElement('a');
-                        link.href = url;
+        //             let path = product.productGuide.replaceAll("\\", "/");
+        //             await axios.get(`/upload/download?fileName=${path}` ,{     
+        //             responseType: 'blob', // 바이너리 데이터를 응답으로 받기 위해 blob 타입으로 설정           
+        //             }).then(response => {
+        //                 const url = window.URL.createObjectURL(new Blob([response.data]));
+        //                 const link = document.createElement('a');
+        //                 link.href = url;
 
-                        // Content-Disposition 헤더에서 파일 이름을 추출하여 다운로드 파일 이름으로 설정
-                        const contentDispositionHeader = response.headers['content-disposition'];
-                        const fileName = decodeURIComponent(contentDispositionHeader.split(';')[1].trim().split('=')[1].replace(/"/g, ''));
+        //                 // Content-Disposition 헤더에서 파일 이름을 추출하여 다운로드 파일 이름으로 설정
+        //                 const contentDispositionHeader = response.headers['content-disposition'];
+        //                 const fileName = decodeURIComponent(contentDispositionHeader.split(';')[1].trim().split('=')[1].replace(/"/g, ''));
 
-                        link.setAttribute('download', fileName);
-                        document.body.appendChild(link);
-                        link.click();
-                        document.body.removeChild(link);
-                    });
-                    } catch (error) {
-                        console.error(error);
-                    }
-                            }
+        //                 link.setAttribute('download', fileName);
+        //                 document.body.appendChild(link);
+        //                 link.click();
+        //                 document.body.removeChild(link);
+        //             });
+        //             } catch (error) {
+        //                 console.error(error);
+        //             }
+        //                     }
 
 
         const imgSrc = (url) => {
@@ -238,8 +213,37 @@ export default {
         }
         return "";
         };
-      
+
+      const currentPage = ref(1);
+    const perPage = ref(10);
+
+    const displayedItems = computed(() => {
+      const start = (currentPage.value - 1) * perPage.value;
+      const end = start + perPage.value;
+      return props.products.slice(start, end);
+    });
+
+    const prevPage = () => {
+      if (currentPage.value > 1) {
+        currentPage.value--;
+      }
+    };
+
+    const nextPage = () => {
+      const pageCount = Math.ceil(props.products.length / perPage.value);
+      if (currentPage.value < pageCount) {
+        currentPage.value++;
+      }
+    }
+
+
+
       return{
+        perPage,
+        currentPage,
+        displayedItems,
+        prevPage,
+        nextPage,
         changePage,
         imgSrc,
                 state,

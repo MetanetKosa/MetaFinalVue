@@ -186,7 +186,7 @@
                                     <i class="fas fa-paperclip"></i> 설명서 등록
                                     <input type="file" @change="handleFileChange" accept="application/pdf">
                                 </div >                          
-                                    <p class="help-block">{{ state.form.productGuide }}</p>                                      
+                                    <p class="help-block">{{state.form.productGuide.split("_")[1]}} </p>                                      
                                     <a class="btn btn-default btn-sm float-right" v-if="state.form.productGuide" @click="deleteGuide(state.form.detailUrl)">
                                         <i class="fas fa-times"></i>
                                     </a>
