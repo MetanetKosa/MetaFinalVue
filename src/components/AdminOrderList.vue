@@ -1,5 +1,5 @@
 <template>orderDetail
-  <div class="content-wrapper">
+  <div class="content-wrapper" style="min-height: 942px; margin-top:10px">
     <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
@@ -126,10 +126,10 @@
                                 <select class="form-select" v-model="order.orderState" >
                                     <option value="주문완료">주문 완료</option>
                                     <option value="배송 중">배송 중</option>
-                                    <option value="배송 중">배송 완료</option>
+                                    <option value="배송 완료">배송 완료</option>
                                     <option value="설치 완료">설치 완료</option>
-                                    <option value="취소">취소</option>
-                                    <option value="반납">반납</option>
+                                    <!-- <option value="취소">취소</option> -->
+                                    <!-- <option value="반납">반납</option> -->
                                 </select>
                             </td>
                              <td class="text-center">{{order.orderPay}}</td>
@@ -206,10 +206,10 @@
                                     <option value="" disabled selected></option>
                                     <option value="주문완료">주문 완료</option>
                                     <option value="배송 중">배송 중</option>
-                                    <option value="배송 중">배송 완료</option>
+                                    <option value="배송 완료">배송 완료</option>
                                     <option value="설치 완료">설치 완료</option>
-                                    <option value="취소">취소</option>
-                                    <option value="반납">반납</option>
+                                    <!-- <option value="취소">취소</option> -->
+                                    <option value="반납">반납 완료</option>
                                 </select>
                             </td>
                              <td class="text-center">{{rental.orderPay}}</td>
@@ -255,10 +255,7 @@
                 </div>
           </div>
     </div>
-  
-  <aside class="control-sidebar control-sidebar-dark">
 
-  </aside>
 
 
 

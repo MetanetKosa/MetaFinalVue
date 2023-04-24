@@ -1,5 +1,5 @@
 <template>
-        <div class="content-wrapper" style="min-height: 942px; margin-top:130px">
+        <div class="content-wrapper" style="min-height: 942px; margin-top:10px">
             <section class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
@@ -98,7 +98,7 @@
                                 <span>{{new Date(product.regDate).toLocaleDateString()}}</span>
                             </td>
                             <td class="project-actions text-right">
-                                <!-- <button type="button" class="btn btn-default"  @click="updateProduct(product)" > -->
+                                <button type="button" class="btn btn-default"  @click="updateGuide(product)" >설명서 받기</button>
                                     <button type="button" class="btn btn-default"  @click="updateProduct(product)" >
                                     수정
                                 </button>
@@ -165,22 +165,22 @@ export default {
             emit('delete-product', productNo);
          }
 
-        // const updateProduct = (product) => {   
-        //     console.log(product);        
-        //     router.push({
-        //         name: 'AdminUpdate',
-        //         params: {
-        //             id: product.productNo
-        //         },
-        //         props: {
-        //             products: product
-        //         }
-        //     })
-        // }
+        const updateProduct = (product) => {   
+            console.log(product);        
+            router.push({
+                name: 'AdminUpdate',
+                params: {
+                    id: product.productNo
+                },
+                props: {
+                    products: product
+                }
+            })
+        }
 
 
         //다운로드
-        const updateProduct =async (product) => {   
+        const updateGuide =async (product) => {   
              try {
                    
                     let path = product.productGuide.replaceAll("\\", "/");
@@ -215,7 +215,7 @@ export default {
         };
 
       const currentPage = ref(1);
-    const perPage = ref(10);
+    const perPage = ref(5);
 
     const displayedItems = computed(() => {
       const start = (currentPage.value - 1) * perPage.value;
@@ -246,6 +246,7 @@ export default {
         nextPage,
         changePage,
         imgSrc,
+        updateGuide,
                 state,
                 deleteProduct,
                 updateProduct,

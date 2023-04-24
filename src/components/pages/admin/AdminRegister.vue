@@ -4,7 +4,7 @@
 
         <Sidebar />
 
-        <div class="content-wrapper" style="min-height: 1443px; margin-top:120px;">
+        <div class="content-wrapper" style="min-height: 1443px; margin-top:10px;">
             <section class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
@@ -415,6 +415,11 @@ export default {
 
         // 추가 이미지 처리
         const handleAddChange = (event) => {
+            const files = event.target.files;
+            if (state.files.length + files.length > 3) {
+              alert("추가 이미지는 최대 3개의 파일까지 업로드할 수 있습니다.");
+             return;
+            }
         state.files = [...state.files, ...event.target.files];
          handleImageUpload(event, "files");
         };
