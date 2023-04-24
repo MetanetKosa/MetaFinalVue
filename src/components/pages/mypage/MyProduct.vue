@@ -40,7 +40,7 @@
               <div class="row"> 
                 <div class="col-md-10"> </div>
                 <div class="col-md-2">
-                  <a class="list-unstyled text-muted" @click="showCancelModal = true" style="cursor: pointer;" v-if="myProduct.rentalTerm == 6 || myProduct.remainDay > 7">해지신청&nbsp&nbsp&nbsp
+                  <a class="list-unstyled text-muted" @click="showCancelModal = true" style="cursor: pointer;" v-if="myProduct.rentalTerm == 6 || myProduct.remainDay > 7">해지신청&nbsp;&nbsp;&nbsp;
                     <i class="fas fa-angle-right"></i>
                   </a>
                   <!-- <a class="list-unstyled text-muted" @click="showReturnModal = true" style="cursor: pointer;" v-if="myProduct.rentalTerm == 3 && myProduct.remainDay <= 7">
