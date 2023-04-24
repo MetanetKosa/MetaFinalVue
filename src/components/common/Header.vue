@@ -207,10 +207,11 @@ export default {
                 timer: 1500
                 // confirmButtonText: 'OK'
             }).then(()=>{
+                pageState == false;
                 router.push({
                     name: 'Home'
                 })
-                //location.reload();
+                location.reload();
 ;            })
         }
 
@@ -253,36 +254,10 @@ export default {
             authState,
             pageAdmin,
             pageDefault
-            // decodeToken,
-            // userSub,
-            // userRoles,
-            // userId,
-            // userAud,
-            // tokenId
-            // search,
         }
     },
 
     name: 'Header'
-         // const {payload} = useJwt(token);
-        // const tokenId = payload.id;
-        //  const decodeToken = token ? jwt_decode(token) : null;
-        //     const userSub = token.userId?.sub; //고유식별자
-        //     const userRoles =  token.userRoles?.userRoles; 
-        //     const userId =  token.userAud?.userAud;
-        //     const userAud =  token.userSub?.userSub;//사용할 수 있는 대상자
-
-        //     console.log("토큰 userSub: " + userSub );
-        //     console.log("토큰 userRoles: " + userRoles);
-        //     console.log("토큰 userId : " + userId);
-        //     console.log("토큰 userAud : " + userAud);
-        //     console.log("토큰 tokenId tokenId : " + tokenId );
-    
-        // const state = ref({});
-        // axios.get(`/auth/members/${id}`).then(({data}) =>{
-        //     state.value = data;
-        //     console.log("모든 회원 데이터 " + data);
-        // })
 }
 </script>
 
